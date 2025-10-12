@@ -1,0 +1,27 @@
+
+.button {
+    display: inline-block;
+    padding: 6px 24px;
+    border-radius: 55px;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    transition: color;
+
+      &:hover {
+        /*mix-blend-mode: lighten;*/
+        
+      }
+
+    &-fill { background-color: #fff; color: $rich-black; }
+    &-outline { background-color: transparent; color: #fff; }
+    &-dark { background-color: $rich-black; border-color: $rich-black; color: #fff;
+      &:hover {
+        background-color: lighten($rich-black, 10%);
+      }
+    }
+}

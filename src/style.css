@@ -1,0 +1,61 @@
+/*:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}*/
+
+@import "tailwindcss";
+@font-face {
+   font-family: 'PPMori';
+   src: url('./fonts/PPMori-Regular.otf') format('otf'),
+        url('./fonts/PPMori-Regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'PPMori';
+   src: url('./fonts/PPMori-Extralight.otf') format('otf'),
+        url('./fonts/PPMori-Extralight.woff') format('woff');
+   font-weight: 100;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'PPMori';
+   src: url('./fonts/PPMori-SemiBold.otf') format('otf'),
+        url('./fonts/PPMori-SemiBold.woff') format('woff');
+   font-weight: 600;
+   font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'PPMori';
+  font-weight: 100;
+}
+
+#app {
+  /*max-width: 1280px;*/
+  /*margin: 0 auto;*/
+  /*padding: 2rem;*/
+  /*text-align: center;*/
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #121212;
+    background-color: #ffffff;
+  }
+  /*button {
+    background-color: #f9f9f9;
+  }*/
+}
