@@ -27,10 +27,8 @@
             society with purpose.
           </p>
         </div>
-
       </div>
-
-
+      
       <div class="about-banner py-8">
         <img src="/public/about/about-banner.jpg" alt="" class="max-w-full rounded-2xl">
       </div>
