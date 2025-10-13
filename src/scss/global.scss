@@ -21,7 +21,7 @@
     &-outline { background-color: transparent; color: #fff; }
     &-dark { background-color: $rich-black; border-color: $rich-black; color: #fff;
       &:hover {
-        background-color: lighten($rich-black, 10%);
+        background-color: color.adjust($rich-black, $lightness: 10%);
       }
     }
 }

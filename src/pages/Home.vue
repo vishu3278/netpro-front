@@ -1,7 +1,7 @@
 <template>
     <section class="video1 h-dvh relative overflow-clip">
-        <video autoplay muted loop id="myVideo" class="absolute inset-0 w-full h-full object-cover object-center">
-            <source src="/silhouette-of-a-sports-girl.mp4" type="video/mp4">
+        <video autoplay muted loop id="myVideo1" class="absolute inset-0 w-full h-full object-cover object-center">
+            <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video>
         <div class="container mx-auto relative">
             <div class="grid grid-cols-2 grid-rows-2 h-dvh place-items-end">
@@ -16,8 +16,8 @@
         </div>
     </section>
     <section class="video2 h-dvh relative overflow-clip">
-        <video autoplay muted loop id="myVideo" class="absolute inset-0 w-full h-full object-cover object-center">
-            <source src="/silhouette-engineer-and-inspector.mp4" type="video/mp4">
+        <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
+            <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video>
         <div class="container mx-auto relative">
             <div class="grid grid-cols-2 ">
@@ -72,6 +72,68 @@
             </div>
         </div>
     </section>
+    <section class="power py-24">
+        <div class="container mx-auto px-4 md:px-0">
+            <div class="title text-center">
+                <h4>
+                    Powering India
+                </h4>
+                <p>Digital infrastructure across India</p>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-6 mt-16">
+                <div class="col-start-1 col-end-3 ">
+                    <div class="card-green relative">
+                        <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
+                            <source src="/home/motion-2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="col-start-3 col-end-6">
+                    <div class="card-white">
+                        <p>Delivering Excellence State-by-State Across India</p>
+                    </div>
+                </div>
+                <div class="col-start-1 col-end-4">
+                    <div class="card-grey">
+                        <p>Trusted Partnership that Makes an Impact</p>
+                        <div class="grid grid-cols-3 gap-10 px-20 py-16 place-items-center">
+                            <figure><img src="/public/icons/gem.svg" alt=""></figure>
+                            <figure><img src="/public/icons/cel.svg" alt=""></figure>
+                            <figure><img src="/public/icons/updesco.svg" alt=""></figure>
+                            <figure><img src="/public/icons/ddu-gky.svg" alt=""></figure>
+                            <figure><img src="/public/icons/becil.svg" alt=""></figure>
+                            <figure><img src="/public/icons/railtel.svg" alt=""></figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-start-4 col-end-6">
+                    <div class="card-dark">
+                        <p>Certified Excellence Our Trusted Credentials</p>
+                        <div class="grid grid-cols-3 gap-10 my-24 px-10">
+                            <div v-for="item in certified" :key="item.id" class="flex flex-col" >
+                                <figure class="h-20 mb-4">
+                                    <img :src="`/public/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
+                                </figure>
+                                <label>{{item.title}}</label>
+                            </div>
+                            <!-- <figure>
+                                <img src="/public/icons/cmmi5-color.svg" alt="">
+                                <figcaption>CMMI Maturity Level-5</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="/public/icons/iso-color.svg" alt="">
+                                <figcaption>ISO 9001:2015</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="/public/icons/pci-dss-color.svg" alt="">
+                                <figcaption>CMMI Maturity Level-5</figcaption>
+                            </figure> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="testimonials py-16">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid md:grid-cols-2 lg:grid-cols-3">
@@ -107,6 +169,11 @@
 import OliveSection from '@/components/OliveSection.vue'
 import { ref } from 'vue'
 import { motion } from "motion-v"
+const certified = ref([
+    {id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5"},
+    {id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5"},
+    {id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015"}
+])
 </script>
 <style lang="scss" scoped>
 .video1 {
@@ -143,6 +210,7 @@ import { motion } from "motion-v"
 
 .about {
     color: $rich-black;
+    background-color: $grey1;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -176,6 +244,69 @@ import { motion } from "motion-v"
 
     .detail {
         /*font-weight: normal;*/
+    }
+}
+
+
+.power {
+    color: $rich-black;
+
+    .title {
+        font-size: 60px;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+
+        p {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+        }
+    }
+
+    @mixin card() {
+        border-radius: 20px;
+        height: 400px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        border: 1px solid transparent;
+        padding-top: 2.25rem;
+        padding-bottom: 1.5rem;
+    }
+
+    $card-colors: ("green": $olive2, "white": #fff, "grey": $grey1, "dark": $rich-black);
+
+    @each $card, $color in $card-colors {
+        .card-#{$card} {
+            @include card();
+            background-color: $color;
+
+            @if $color == #fff {
+                border-color: $grey2;
+            } @else {
+                border-color: $color;
+            }
+
+            @if $card == dark {
+                color: #fff;
+            }
+        }
+    }
+
+    .card-dark {
+        .subgrid {
+        }
+        figure {            
+            
+        }
+        label {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 17px;
+            letter-spacing: -0.26px;
+        }
     }
 }
 
