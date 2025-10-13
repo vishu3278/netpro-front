@@ -5,11 +5,11 @@ import SiteHeader from './components/SiteHeader.vue'
 <template>
     <div class="app-wrapper">
         <site-header></site-header>
-        <nav>
+        <!-- <nav>
             <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link> |
             <router-link to="/contact">Contact</router-link>
-        </nav>
+        </nav> -->
         <router-view></router-view>
         <site-footer></site-footer>
     </div>
