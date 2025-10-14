@@ -97,12 +97,12 @@
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
                         <div class="grid grid-cols-3 gap-10 px-20 py-16 place-items-center">
-                            <figure><img src="/public/icons/gem.svg" alt=""></figure>
-                            <figure><img src="/public/icons/cel.svg" alt=""></figure>
-                            <figure><img src="/public/icons/updesco.svg" alt=""></figure>
-                            <figure><img src="/public/icons/ddu-gky.svg" alt=""></figure>
-                            <figure><img src="/public/icons/becil.svg" alt=""></figure>
-                            <figure><img src="/public/icons/railtel.svg" alt=""></figure>
+                            <figure><img src="/icons/gem.svg" alt=""></figure>
+                            <figure><img src="/icons/cel.svg" alt=""></figure>
+                            <figure><img src="/icons/updesco.svg" alt=""></figure>
+                            <figure><img src="/icons/ddu-gky.svg" alt=""></figure>
+                            <figure><img src="/icons/becil.svg" alt=""></figure>
+                            <figure><img src="/icons/railtel.svg" alt=""></figure>
                         </div>
                     </div>
                 </div>
@@ -112,22 +112,56 @@
                         <div class="grid grid-cols-3 gap-10 my-24 px-10">
                             <div v-for="item in certified" :key="item.id" class="flex flex-col" >
                                 <figure class="h-20 mb-4">
-                                    <img :src="`/public/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
+                                    <img :src="`/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
                                 <label>{{item.title}}</label>
                             </div>
                             <!-- <figure>
-                                <img src="/public/icons/cmmi5-color.svg" alt="">
+                                <img src="/icons/cmmi5-color.svg" alt="">
                                 <figcaption>CMMI Maturity Level-5</figcaption>
                             </figure>
                             <figure>
-                                <img src="/public/icons/iso-color.svg" alt="">
+                                <img src="/icons/iso-color.svg" alt="">
                                 <figcaption>ISO 9001:2015</figcaption>
                             </figure>
                             <figure>
-                                <img src="/public/icons/pci-dss-color.svg" alt="">
+                                <img src="/icons/pci-dss-color.svg" alt="">
                                 <figcaption>CMMI Maturity Level-5</figcaption>
                             </figure> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="technology py-16 relative">
+        <div class="container mx-auto px-4 md:px-0">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div>
+                    <div class="title">Technology for change</div>
+                    <div class="logo-bg">
+                        <img src="/home/logo-bg-home.svg" class="w-full h-full object-contain" alt="">
+                    </div>
+                </div>
+                <div>
+                    <div class="accordion">
+                        <div v-for="(item, index) in techFaq" :key="item.id" class="item pt-6 pb-10">
+                            <div class="heading flex cursor-pointer" @click="toggle(index)">
+                                <span class="count pt-2 basis-10 shrink-0">({{item.id}})</span>
+                                <div class="ques grow">{{item.title}} <br><small>{{item.subtitle}}</small> </div>
+                                <div><svg xmlns="http://www.w3.org/2000/svg" :id="`accicon-${index}`" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                  <g clip-path="url(#clip0_329_2)">
+                                    <path d="M10 0V20" stroke="black" stroke-width="2"/>
+                                    <path d="M0 10H20" stroke="black" stroke-width="2"/>
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_329_2">
+                                      <rect width="20" height="20" fill="white"/>
+                                    </clipPath>
+                                  </defs>
+                                </svg></div>
+                            </div>
+                            <div :id="`acc-${index}`" class="description overflow-clip px-10" v-html="item.description"></div>
                         </div>
                     </div>
                 </div>
@@ -169,11 +203,43 @@
 import OliveSection from '@/components/OliveSection.vue'
 import { ref } from 'vue'
 import { motion } from "motion-v"
+import { gsap } from "gsap";
+    
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
+
 const certified = ref([
     {id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5"},
     {id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5"},
     {id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015"}
 ])
+const techFaq = ref([
+    {id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    {id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    {id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    {id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    {id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+])
+const openIndexes = ref([])
+const toggle = (index) => {
+    
+    /*const tl = gsap.timeline()
+    tl.to("#accicon-"+index, { rotation: 90, duration: 0.5, ease: "elastic" })
+    tl.to("#acc-"+index, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 1 })*/
+
+    if (openIndexes.value.includes(index)) {
+        openIndexes.value = openIndexes.value.filter(i => i !== index)
+        // console.log(openIndexes.value)
+        gsap.to("#acc-"+index, { maxHeight: 0, opacity: 0, margin: 0, duration: 1 })
+        gsap.to("#accicon-"+index, { rotation: -90, duration: 1 })
+        
+    } else {
+        openIndexes.value.push(index)
+        gsap.fromTo("#acc-"+index, {maxHeight: 0, opacity: 0, margin: 0}, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
+        gsap.to("#accicon-"+index, { rotation: 90, duration: 1 })
+    }
+}
 </script>
 <style lang="scss" scoped>
 .video1 {
@@ -306,6 +372,57 @@ const certified = ref([
             font-weight: 400;
             line-height: 17px;
             letter-spacing: -0.26px;
+        }
+    }
+}
+
+.technology {
+    background-color: $grey1;
+    .title {
+        font-size: 80px;
+        line-height: 90px;
+        letter-spacing: -2.4px;
+        @include text-primary-gradient;
+    }
+    .logo-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 60%;
+    }
+    .accordion {
+        .item {
+            border-bottom: 1px solid $grey2;
+            &:last-child {
+                border-color: transparent;
+            }
+        }
+        .count {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: -0.48px;
+        }
+        .ques {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+            letter-spacing: -0.6px;
+            small {
+                color: $grey-text;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 26px;
+                letter-spacing: -0.54px;
+            }
+        }
+        .description {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 30px;
+            letter-spacing: -0.48px;
+            max-height: 0;
+            opacity: 0;
         }
     }
 }
