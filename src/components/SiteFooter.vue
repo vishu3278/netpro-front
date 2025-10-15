@@ -1,21 +1,105 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 // import logo from './NetProphetsCyberworks-mono.svg'
 import { motion } from 'motion-v'
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-/*defineProps({
-    msg: String,
-})*/
+gsap.registerPlugin(SplitText)
+gsap.registerPlugin(ScrollTrigger)
 
-// const count = ref(0)
+onMounted(() => {
+    let split1 = SplitText.create("#footerh1", {
+        type: "words",
+        autoSplit: true,
+        mask: 'lines',
+    });
+    /*let anim1 = gsap.from(split1.words, {
+        rotationX: -100,
+        transformOrigin: "50% 50% -160px",
+        yPercent: 120,
+        opacity: 0,
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power3",
+        stagger: 0.5,
+        onComplete: () => split1.revert()
+    })*/
+
+    let split2 = SplitText.create("#logoText", {
+        type: "chars",
+    });
+    /*let anim2 = gsap.from(split2.chars, {
+        duration: 1,
+        // mask: 'lines',
+        y: 100, // animate from 100px below
+        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+        stagger: 0.1,
+        onComplete: () => split2.revert()
+    })*/
+
+    /*let anim3 = gsap.from(".main-links li", {
+        y: 100,
+        autoAlpha: 0,
+        stagger: 0.1,
+        delay: 1
+    })*/
+
+    /*const sto = setTimeout(function() {
+        anim1.play(0)
+        anim2.play(0)
+        // anim3.play(0)
+    }, 2000)*/
+
+    function tlComplete(argument) {
+        console.log('kek')
+    }
+
+    let tl = gsap.timeline();
+    tl.from(split1.words, {
+        rotationX: -100,
+        transformOrigin: "50% 50% -160px",
+        // yPercent: 120,
+        // opacity: 0,
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: "power3",
+        stagger: 0.25,
+        mask: "lines",
+        onComplete: () => split1.revert()
+    }).from(".main-links li", {
+        y: 100,
+        autoAlpha: 0,
+        duration: 0.75,
+        stagger: 0.1,
+    }).from(split2.chars, {
+        duration: 0.8,
+        // mask: 'lines',
+        y: 100, // animate from 100px below
+        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+        stagger: 0.1,
+        onComplete: () => split2.revert()
+    })
+
+    let st = ScrollTrigger.create({
+        trigger: "#footerSection1",
+        start: "top center",
+        end: "+=200",
+        once: false,
+        animation: tl,
+    });
+
+    // console.log(st.animation)
+})
 </script>
 <template>
     <footer class="pt-24 pb-20">
         <div class="container px-4 md:px-0 mx-auto">
-            <div class="grid md:grid-cols-2 footer-section1">
+            <div id="footerSection1" class="grid md:grid-cols-2 footer-section1">
                 <div class="pb-6 md:pb-1">
-                    <div class="title" >
-                        <motion.h1 class="mb-2 md:mb-8" :initial="{opacity: 0, y: 100}" :animate="{opacity: 1, y: 0}">Technology that drives meaningful change</motion.h1>
+                    <div class="title">
+                        <div id="footerh1" class="h1 mb-2 md:mb-8" :initial="{opacity: 0, y: 100}" :animate="{opacity: 1, y: 0}">Technology that drives meaningful change</div>
                         <p>New Business: <br>hello@netprophetsglobal.com</p>
                     </div>
                 </div>
@@ -74,14 +158,17 @@ import { motion } from 'motion-v'
                     </ul>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 footer-section2" >
-                <div class="flex gap-4 items-center md:pr-36">
+            <div class="grid md:grid-cols-2 footer-section2">
+                <div class="flex gap-4 items-center md:pr-10">
                     <figure class="max-w-[30%]">
                         <img src="/logo-mono.svg" class="w-full" alt="">
                     </figure>
-                    <figure class="max-w-[70%]">
+                    <!-- <figure class="max-w-[70%]">
                         <img src="/NetProphetsCyberworks-mono.svg" class="w-full" alt="">
-                    </figure>
+                    </figure> -->
+                    <div id="logoText" class="logo-text">
+                        NetProphets<br>Cyberworks
+                    </div>
                 </div>
                 <div class="md:flex gap-16 items-end">
                     <div class="icons py-4 md:py-2">
@@ -112,16 +199,19 @@ import { motion } from 'motion-v'
 footer {
     background-color: #002;
     color: #fff;
+
     .footer-section2 {
         margin-top: 300px;
         font-size: 14px;
         line-height: 42px;
         color: $grey3;
         font-weight: normal;
+
         li {
             color: $olive;
         }
     }
+
     @media screen and (max-width: 40rem) {
         .footer-section2 {
             margin-top: 3rem;
@@ -132,22 +222,38 @@ footer {
 
 .title {
     width: 550px;
-    h1 {
+
+    .h1 {
         font-size: 60px;
         line-height: 80px;
         letter-spacing: -1.8px;
     }
+
     p {
         font-size: 20px;
         line-height: 32px;
         font-weight: normal;
         letter-spacing: -0.6px;
     }
+
     @media screen and (max-width: 40rem) {
         width: auto;
-        h1 { font-size: clamp(2rem, 36px, 3rem); line-height: normal;}
+
+        h1 {
+            font-size: clamp(2rem, 36px, 3rem);
+            line-height: normal;
+        }
     }
 }
+
+.logo-text {
+    color: #353535;
+    font-size: 90px;
+    font-weight: 600;
+    line-height: 100px;
+    letter-spacing: -1.8px;
+}
+
 .main-links {
     color: $grey3;
     font-size: 20px;
