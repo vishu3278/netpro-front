@@ -10,11 +10,54 @@ gsap.registerPlugin(SplitText)
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(() => {
-    let split1 = SplitText.create("#footerh1", {
-        type: "words",
-        autoSplit: true,
-        mask: 'lines',
-    });
+    document.fonts.ready.then(() => {
+
+        let split1 = SplitText.create("#footerh1", {
+            type: "words",
+            autoSplit: true,
+            mask: 'lines',
+        });
+
+        let split2 = SplitText.create("#logoText", {
+            type: "chars",
+        });
+
+        let tl = gsap.timeline();
+        tl.from(split1.words, {
+            rotationX: -100,
+            transformOrigin: "50% 50%",
+            // yPercent: 120,
+            // opacity: 0,
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.5,
+            mask: "lines",
+            onComplete: () => split1.revert()
+        }).from(".main-links ul", {
+            y: 100,
+            opacity: 0,
+            autoAlpha: 0,
+            duration: 0.5,
+            stagger: 0.25,
+        }).from(split2.chars, {
+            duration: 0.5,
+            // mask: 'lines',
+            y: 50, // animate from 100px below
+            autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+            stagger: 0.1,
+            onComplete: () => split2.revert()
+        })
+
+        let st = ScrollTrigger.create({
+            trigger: "#footerSection1",
+            start: "top center",
+            // end: "+=200",
+            // once: false,
+            animation: tl,
+        });
+    })
+
     /*let anim1 = gsap.from(split1.words, {
         rotationX: -100,
         transformOrigin: "50% 50% -160px",
@@ -27,9 +70,6 @@ onMounted(() => {
         onComplete: () => split1.revert()
     })*/
 
-    let split2 = SplitText.create("#logoText", {
-        type: "chars",
-    });
     /*let anim2 = gsap.from(split2.chars, {
         duration: 1,
         // mask: 'lines',
@@ -52,45 +92,6 @@ onMounted(() => {
         // anim3.play(0)
     }, 2000)*/
 
-    function tlComplete(argument) {
-        console.log('kek')
-    }
-
-    let tl = gsap.timeline();
-    tl.from(split1.words, {
-        rotationX: -100,
-        transformOrigin: "50% 50% -160px",
-        // yPercent: 120,
-        // opacity: 0,
-        autoAlpha: 0,
-        duration: 0.6,
-        ease: "power3",
-        stagger: 0.25,
-        mask: "lines",
-        onComplete: () => split1.revert()
-    }).from(".main-links li", {
-        y: 100,
-        autoAlpha: 0,
-        duration: 0.75,
-        stagger: 0.1,
-    }).from(split2.chars, {
-        duration: 0.8,
-        // mask: 'lines',
-        y: 100, // animate from 100px below
-        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-        stagger: 0.1,
-        onComplete: () => split2.revert()
-    })
-
-    let st = ScrollTrigger.create({
-        trigger: "#footerSection1",
-        start: "top center",
-        end: "+=200",
-        once: false,
-        animation: tl,
-    });
-
-    // console.log(st.animation)
 })
 </script>
 <template>
@@ -159,14 +160,14 @@ onMounted(() => {
                 </div>
             </div>
             <div class="grid md:grid-cols-2 footer-section2">
-                <div class="flex gap-4 items-center md:pr-10">
+                <div class="flex gap-4 items-center ">
                     <figure class="max-w-[30%]">
                         <img src="/logo-mono.svg" class="w-full" alt="">
                     </figure>
                     <!-- <figure class="max-w-[70%]">
                         <img src="/NetProphetsCyberworks-mono.svg" class="w-full" alt="">
                     </figure> -->
-                    <div id="logoText" class="logo-text">
+                    <div id="logoText" class="logo-text min-w-fit">
                         NetProphets<br>Cyberworks
                     </div>
                 </div>

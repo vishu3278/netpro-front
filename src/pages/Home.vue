@@ -38,7 +38,7 @@
             </div>
         </div>
     </section>
-    <section class="about py-20">
+    <section id="aboutsection" class="about py-20">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="col">
@@ -55,13 +55,13 @@
                                 <div class="detail">Citizen Lives positively impacted worldwide</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.5}" class="item border-t pb-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.75}" class="item border-t pb-12">
                             <div class="flex justify-between pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.5}" class="item border-t ">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 1}" class="item border-t ">
                             <div class="flex justify-between pt-12">
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
@@ -134,7 +134,7 @@
             </div>
         </div>
     </section>
-    <section class="technology py-16 relative">
+    <section id="techsection" class="technology py-16 relative">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>
@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="accordion">
+                    <div id="accordion" class="accordion">
                         <div v-for="(item, index) in techFaq" :key="item.id" class="item pt-6 pb-10">
                             <div class="heading flex cursor-pointer" @click="toggle(index)">
                                 <span class="count pt-2 basis-10 shrink-0">({{item.id}})</span>
@@ -184,7 +184,7 @@
         </div>
     </section>
     <olive-section />
-    <section>
+    <section id="clientsection">
         <div class="container mx-auto py-8 overflow-auto">
             <div class="flex items-center gap-16">
                 <figure><img src="/icons/fabindia.svg" alt=""></figure>
@@ -201,13 +201,15 @@
 </template>
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
     
 import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger)
 
 const certified = ref([
     {id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5"},
@@ -240,6 +242,68 @@ const toggle = (index) => {
         gsap.to("#accicon-"+index, { rotation: 90, duration: 1 })
     }
 }
+
+// animation
+onMounted(() => {
+    let abouttitle = SplitText.create("#aboutsection h4", {
+        type: "lines",
+        autoSplit: true,
+        mask: "lines"
+    })
+
+    let abouttl = gsap.timeline();
+    abouttl.from(abouttitle.lines, {
+        autoAlpha: 0,
+        y: 100,
+        stagger: 0.05,
+    })
+    let aboutst = ScrollTrigger.create({
+        trigger: "#aboutsection",
+        start: "top 80%",
+        end: "bottom 20%",
+        id: "aboutsection",
+        markers: true,
+        animation: abouttl,
+    });
+
+    let techtitle = SplitText.create("#techsection .title", {
+        type: "words",
+        autoSplit: true,
+        mask: 'lines',
+    });
+
+    let techtl = gsap.timeline();
+    techtl.from(techtitle.words, {
+        rotationX: -100,
+        transformOrigin: "50% 50%",
+        autoAlpha: 0,
+        duration: 0.75,
+        stagger: 0.25,
+    })
+    techtl.from(".logo-bg img", {
+        x: -200,
+        opacity: 0,
+        autoAlpha: 0,
+        duration: 0.25,
+    })
+    techtl.from("#accordion .item", {
+        y: 100,
+        opacity: 0,
+        autoAlpha: 0,
+        duration: 0.5,
+        stagger: 0.25
+    })
+
+    let st = ScrollTrigger.create({
+        trigger: "#techsection",
+        start: "top 80%",
+        end: "+=200",
+        id: "techsection",
+        // once: false,
+        markers: true,
+        animation: techtl,
+    });
+})
 </script>
 <style lang="scss" scoped>
 .video1 {
