@@ -34,16 +34,16 @@ onMounted(() => {
             stagger: 0.5,
             mask: "lines",
             onComplete: () => split1.revert()
-        }).from(".main-links ul", {
+        })/*.from(".main-links ul", {
             y: 100,
             opacity: 0,
             autoAlpha: 0,
             duration: 0.5,
             stagger: 0.25,
-        }).from(split2.chars, {
+        })*/.from(split2.chars, {
             duration: 0.5,
             // mask: 'lines',
-            y: 50, // animate from 100px below
+            y: 50,
             autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
             stagger: 0.1,
             onComplete: () => split2.revert()
@@ -57,40 +57,6 @@ onMounted(() => {
             animation: tl,
         });
     })
-
-    /*let anim1 = gsap.from(split1.words, {
-        rotationX: -100,
-        transformOrigin: "50% 50% -160px",
-        yPercent: 120,
-        opacity: 0,
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power3",
-        stagger: 0.5,
-        onComplete: () => split1.revert()
-    })*/
-
-    /*let anim2 = gsap.from(split2.chars, {
-        duration: 1,
-        // mask: 'lines',
-        y: 100, // animate from 100px below
-        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-        stagger: 0.1,
-        onComplete: () => split2.revert()
-    })*/
-
-    /*let anim3 = gsap.from(".main-links li", {
-        y: 100,
-        autoAlpha: 0,
-        stagger: 0.1,
-        delay: 1
-    })*/
-
-    /*const sto = setTimeout(function() {
-        anim1.play(0)
-        anim2.play(0)
-        // anim3.play(0)
-    }, 2000)*/
 
 })
 </script>

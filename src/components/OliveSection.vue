@@ -42,7 +42,16 @@ onMounted(() => {
         mask: 'lines',
     });
 
-    let tl = gsap.timeline();
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#olivesection",
+            start: "top top",
+            end: "+=800",  // 800px scroll distance
+            // scrub: 1,
+            // pin: true,
+            markers: true,
+          }
+    });
     tl.from(split1.words, {
         rotationX: -100,
         transformOrigin: "50% 50%",

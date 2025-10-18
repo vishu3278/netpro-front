@@ -1,5 +1,5 @@
 <template>
-    <section class="video1 h-dvh relative overflow-clip">
+    <section id="video1" class="video1 h-dvh relative overflow-clip">
         <video autoplay muted loop id="myVideo1" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </section>
-    <section class="video2 h-dvh relative overflow-clip">
+    <section id="video2" class="video2 h-dvh relative overflow-clip">
         <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video>
@@ -110,7 +110,7 @@
                     <div class="card-dark">
                         <p>Certified Excellence Our Trusted Credentials</p>
                         <div class="grid grid-cols-3 gap-10 my-24 px-10">
-                            <div v-for="item in certified" :key="item.id" class="flex flex-col" >
+                            <div v-for="item in certified" :key="item.id" class="flex flex-col">
                                 <figure class="h-20 mb-4">
                                     <img :src="`/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
@@ -150,16 +150,16 @@
                                 <span class="count pt-2 basis-10 shrink-0">({{item.id}})</span>
                                 <div class="ques grow">{{item.title}} <br><small>{{item.subtitle}}</small> </div>
                                 <div><svg xmlns="http://www.w3.org/2000/svg" :id="`accicon-${index}`" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                  <g clip-path="url(#clip0_329_2)">
-                                    <path d="M10 0V20" stroke="black" stroke-width="2"/>
-                                    <path d="M0 10H20" stroke="black" stroke-width="2"/>
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_329_2">
-                                      <rect width="20" height="20" fill="white"/>
-                                    </clipPath>
-                                  </defs>
-                                </svg></div>
+                                        <g clip-path="url(#clip0_329_2)">
+                                            <path d="M10 0V20" stroke="black" stroke-width="2" />
+                                            <path d="M0 10H20" stroke="black" stroke-width="2" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_329_2">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg></div>
                             </div>
                             <div :id="`acc-${index}`" class="description overflow-clip px-10" v-html="item.description"></div>
                         </div>
@@ -204,7 +204,7 @@ import OliveSection from '@/components/OliveSection.vue'
 import { ref, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
-    
+
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -212,20 +212,20 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
 const certified = ref([
-    {id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5"},
-    {id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5"},
-    {id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015"}
+    { id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5" },
+    { id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5" },
+    { id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015" }
 ])
 const techFaq = ref([
-    {id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
+    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
+    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
+    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
+    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
 ])
 const openIndexes = ref([])
 const toggle = (index) => {
-    
+
     /*const tl = gsap.timeline()
     tl.to("#accicon-"+index, { rotation: 90, duration: 0.5, ease: "elastic" })
     tl.to("#acc-"+index, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 1 })*/
@@ -233,25 +233,79 @@ const toggle = (index) => {
     if (openIndexes.value.includes(index)) {
         openIndexes.value = openIndexes.value.filter(i => i !== index)
         // console.log(openIndexes.value)
-        gsap.to("#acc-"+index, { maxHeight: 0, opacity: 0, margin: 0, duration: 1 })
-        gsap.to("#accicon-"+index, { rotation: -90, duration: 1 })
-        
+        gsap.to("#acc-" + index, { maxHeight: 0, opacity: 0, margin: 0, duration: 1 })
+        gsap.to("#accicon-" + index, { rotation: -90, duration: 1 })
+
     } else {
         openIndexes.value.push(index)
-        gsap.fromTo("#acc-"+index, {maxHeight: 0, opacity: 0, margin: 0}, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
-        gsap.to("#accicon-"+index, { rotation: 90, duration: 1 })
+        gsap.fromTo("#acc-" + index, { maxHeight: 0, opacity: 0, margin: 0 }, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
+        gsap.to("#accicon-" + index, { rotation: 90, duration: 1 })
     }
 }
 
 // animation
 onMounted(() => {
-    let abouttitle = SplitText.create("#aboutsection h4", {
-        type: "lines",
+    let video1title = SplitText.create("#video1 .content", {
+        type: "words",
         autoSplit: true,
-        mask: "lines"
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.words, {
+                y: 80,
+                // opacity: 0,
+                autoAlpha: 0,
+                stagger: 0.15
+            });
+        }
+    })
+    SplitText.create("#video2 h2", {
+        type: "chars",
+        autoSplit: true,
+        smartWrap: true,
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.chars, {
+                x: 100,
+                // opacity: 0,
+                autoAlpha: 0,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: "#video2",
+                    start: "top center",
+                    toggleActions: "play none none reset",
+
+                }
+            });
+        }
     })
 
-    let abouttl = gsap.timeline();
+    /*let video2trigger = ScrollTrigger.create({
+        trigger: "#video2",
+        toggleActions: "play none none reset",
+        onEnter: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
+    })*/
+    SplitText.create("#aboutsection h4", {
+        type: "lines",
+        autoSplit: true,
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.lines, {
+                autoAlpha: 0,
+                y: 100,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: "#aboutsection",
+                    start: "top 70%",
+                    id: "aboutsection",
+                    markers: true,
+                    toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
+
+                }
+            })
+        }
+    })
+
+    /*let abouttl = gsap.timeline();
     abouttl.from(abouttitle.lines, {
         autoAlpha: 0,
         y: 100,
@@ -264,12 +318,12 @@ onMounted(() => {
         id: "aboutsection",
         markers: true,
         animation: abouttl,
-    });
+    });*/
 
     let techtitle = SplitText.create("#techsection .title", {
         type: "words",
         autoSplit: true,
-        mask: 'lines',
+        mask: 'lines'
     });
 
     let techtl = gsap.timeline();
@@ -303,6 +357,19 @@ onMounted(() => {
         markers: true,
         animation: techtl,
     });
+
+    gsap.from("#clientsection img", {
+        x: 200,
+        autoAlpha: 0,
+        duration: 0.5,
+        stagger: 0.25,
+        scrollTrigger: {
+            trigger: "#clientsection",
+            start: "top bottom",
+            // end: "+=200",
+            toggleActions: "play none none reset",
+        }
+    })
 })
 </script>
 <style lang="scss" scoped>
@@ -408,29 +475,31 @@ onMounted(() => {
 
     $card-colors: ("green": $olive2, "white": #fff, "grey": $grey1, "dark": $rich-black);
 
-    @each $card, $color in $card-colors {
+    @each $card,
+    $color in $card-colors {
         .card-#{$card} {
             @include card();
             background-color: $color;
 
-            @if $color == #fff {
+            @if $color==#fff {
                 border-color: $grey2;
-            } @else {
+            }
+
+            @else {
                 border-color: $color;
             }
 
-            @if $card == dark {
+            @if $card==dark {
                 color: #fff;
             }
         }
     }
 
     .card-dark {
-        .subgrid {
-        }
-        figure {            
-            
-        }
+        .subgrid {}
+
+        figure {}
+
         label {
             font-size: 13px;
             font-weight: 400;
@@ -442,36 +511,43 @@ onMounted(() => {
 
 .technology {
     background-color: $grey1;
+
     .title {
         font-size: 80px;
         line-height: 90px;
         letter-spacing: -2.4px;
         @include text-primary-gradient;
     }
+
     .logo-bg {
         position: absolute;
         bottom: 0;
         left: 0;
         height: 60%;
     }
+
     .accordion {
         .item {
             border-bottom: 1px solid $grey2;
+
             &:last-child {
                 border-color: transparent;
             }
         }
+
         .count {
             font-size: 16px;
             font-weight: 400;
             line-height: 100%;
             letter-spacing: -0.48px;
         }
+
         .ques {
             font-size: 20px;
             font-weight: 600;
             line-height: 30px;
             letter-spacing: -0.6px;
+
             small {
                 color: $grey-text;
                 font-size: 18px;
@@ -480,6 +556,7 @@ onMounted(() => {
                 letter-spacing: -0.54px;
             }
         }
+
         .description {
             font-size: 16px;
             font-weight: 400;
