@@ -49,7 +49,7 @@ onMounted(() => {
             end: "+=800",  // 800px scroll distance
             // scrub: 1,
             // pin: true,
-            markers: true,
+            // markers: true,
           }
     });
     tl.from(split1.words, {

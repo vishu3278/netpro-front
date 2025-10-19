@@ -9,8 +9,8 @@ import { ref } from 'vue'
 // const count = ref(0)
 </script>
 <template>
-    <header class="fixed z-50 px-4">
-        <nav class="flex justify-between items-center">
+    <header class="fixed z-50 flex justify-center ">
+        <nav class="flex justify-between items-center px-4">
             <router-link class="nav-link logo shrink-0" to="/"><img src="/logo.svg" alt="NetProphets Cyberworks"></router-link>
             <router-link class="nav-link" to="/about">Who we are</router-link>
             <router-link class="nav-link" to="/sector">Sector Impact</router-link>
@@ -21,13 +21,13 @@ import { ref } from 'vue'
 </template>
 <style lang="scss" scoped>
 header {
-    border-radius: 18px;
-    background: $grey1;
-    border: 1px solid $grey2;
     top: 30px;
-    left: 50%; 
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     nav {
+        border: 1px solid $grey2;
+        background: $grey1;
+        border-radius: 18px;
         height: 65px;
     }
     @media screen and (min-width: 80rem) {
@@ -35,10 +35,7 @@ header {
     }
 
     @media screen and (max-width: 40rem) {
-        .footer-section2 {
-            margin-top: 3rem;
-            line-height: normal;
-        }
+        
     }
 }
 

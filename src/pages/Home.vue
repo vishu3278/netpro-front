@@ -80,20 +80,20 @@
                 </h4>
                 <p>Digital infrastructure across India</p>
             </div>
-            <div class="grid lg:grid-cols-5 gap-6 mt-16">
-                <div class="col-start-1 col-end-3 ">
+            <div class="grid lg:grid-cols-5  gap-6 mt-16">
+                <div class="lg:col-start-1 lg:col-end-3 ">
                     <div class="card-green relative">
                         <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
                             <source src="/home/motion-2.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
-                <div class="col-start-3 col-end-6">
+                <div class="lg:col-start-3 lg:col-end-6">
                     <div class="card-white">
                         <p>Delivering Excellence State-by-State Across India</p>
                     </div>
                 </div>
-                <div class="col-start-1 col-end-4">
+                <div class="lg:col-start-1 lg:col-end-4">
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
                         <div class="grid grid-cols-3 gap-10 px-20 py-16 place-items-center">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-start-4 col-end-6">
+                <div class="lg:col-start-4 lg:col-end-6">
                     <div class="card-dark">
                         <p>Certified Excellence Our Trusted Credentials</p>
                         <div class="grid grid-cols-3 gap-10 my-24 px-10">
@@ -168,22 +168,12 @@
             </div>
         </div>
     </section>
-    <section class="testimonials py-16">
-        <div class="container mx-auto px-4 md:px-0">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3">
-                <div class="col-start-3 col-end-4">
-                    <div class="wrapper py-12 px-16">
-                        <h5 class="uppercase">Our Testimonials</h5>
-                        <blockquote>
-                            <p>NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.</p>
-                            <small>Keith Norman, Director, GTI System</small>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+    <!-- testimonials -->
+    <Testimonial />
+
     <olive-section />
+    <!-- cliets section -->
     <section id="clientsection">
         <div class="container mx-auto py-8 overflow-auto">
             <div class="flex items-center gap-16">
@@ -201,6 +191,7 @@
 </template>
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
+import Testimonial from '@/components/Testimonial.vue'
 import { ref, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
@@ -297,7 +288,7 @@ onMounted(() => {
                     trigger: "#aboutsection",
                     start: "top 70%",
                     id: "aboutsection",
-                    markers: true,
+                    // markers: true,
                     toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
 
                 }
@@ -305,13 +296,23 @@ onMounted(() => {
         }
     })
 
-    /*let abouttl = gsap.timeline();
-    abouttl.from(abouttitle.lines, {
+
+    let abouttl = gsap.timeline({
+        delay: 0.75,
+        scrollTrigger: {
+            trigger: "#aboutsection",
+            start: "top center",
+            toggleActions: "play none none reverse"
+        }
+    });
+    abouttl.from("#aboutsection p", {
         autoAlpha: 0,
         y: 100,
-        stagger: 0.05,
+        stagger: 0.1,
+        ease: "back.out(2)",
     })
-    let aboutst = ScrollTrigger.create({
+    abouttl.fromTo("#aboutsection a.button", { opacity: 0, y: 100, }, { opacity: 1, visibility: "visible", y: 0, ease: "back.out(2)",})
+    /*let aboutst = ScrollTrigger.create({
         trigger: "#aboutsection",
         start: "top 80%",
         end: "bottom 20%",
@@ -354,7 +355,7 @@ onMounted(() => {
         end: "+=200",
         id: "techsection",
         // once: false,
-        markers: true,
+        // markers: true,
         animation: techtl,
     });
 
@@ -564,40 +565,6 @@ onMounted(() => {
             letter-spacing: -0.48px;
             max-height: 0;
             opacity: 0;
-        }
-    }
-}
-
-.testimonials {
-    background: url(../home/swastik-arora-unsplash.jpg) no-repeat center / cover;
-
-    .wrapper {
-        border-radius: 10px;
-        background: rgba(17, 17, 17, 0.65);
-        backdrop-filter: blur(10px);
-        font-size: 1rem;
-        line-height: 30px;
-        color: #fff;
-        letter-spacing: -0.5px;
-    }
-
-    h5 {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 30px;
-        letter-spacing: -0.4px;
-    }
-
-    blockquote {
-        font-size: 30px;
-        font-weight: 100;
-        line-height: 45px;
-        letter-spacing: -0.8px;
-
-        small {
-            font-size: 16px;
-            line-height: 30px;
-            font-weight: 400;
         }
     }
 }
