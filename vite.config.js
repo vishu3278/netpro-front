@@ -13,7 +13,7 @@ export default defineConfig({
         additionalData: `
           @use "@/scss/variables" as *;
           @use "sass:color";
-          @import "@/scss/mixins";
+          @use "@/scss/mixins" as *;
         `
       }
     }

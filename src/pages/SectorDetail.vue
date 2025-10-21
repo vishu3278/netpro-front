@@ -1,31 +1,26 @@
 <template>
-    <section id="hero" class="hero flex items-center justify-center" data-speed="1.1">
+    <section id="hero" class="hero flex items-center justify-center" >
         <h1 class="text-center">Across every sector we touch, we build brands that move industries forward and make a difference in people’s lives.</h1>
     </section>
-    <section v-for="(sec, index) in sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
-        <figure class="layer-img absolute inset-0 bg-no-repeat bg-cover bg-center" :style="{'background-image': `url(${sec.img})`}" :data-speed="sec.speed"></figure>
-        <div class="title relative">{{sec.title}}</div>
-        <div class="count absolute">0{{index+1}}</div>
-    </section>
+    
     <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
 </template>
 <script setup>
 // import ParallaxSection from "@/components/ParallaxSection.vue"
 import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
+
+const router = useRouter()
+const route = useRoute()
 
 onMounted(() => {
-    ScrollSmoother.create({
-        smooth: 1.5, // how long (in seconds) it takes to "catch up" to the native scroll position
-        effects: true, // looks for data-speed and data-lag attributes on elements
-        // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-    });
 
     SplitText.create("#hero h1", {
         type: "words",
@@ -49,17 +44,6 @@ onMounted(() => {
     })
 })
 
-const sectors = [
-    { id: "educat01", img: "sectors/education.jpg", title: "Education", speed: 0.85 },
-    { id: "health01", img: "sectors/healthcare.jpg", title: "Healthcare", speed: 0.75 },
-    { id: "sports01", img: "sectors/sports.jpg", title: "Sports", speed: 0.65 },
-    { id: "transp01", img: "sectors/transport.jpg", title: "Transportation", speed: 0.75 },
-    { id: "telecom01", img: "sectors/telecom.jpg", title: "Telecom", speed: 0.9 },
-    { id: "culture01", img: "sectors/culture.jpg", title: "Culture", speed: 0.75 },
-    { id: "pblcsrv01", img: "sectors/public-service.jpg", title: "Public Service", speed: 0.85 },
-    { id: "skiling01", img: "sectors/skilling.jpg", title: "Skilling", speed: 0.55 },
-    { id: "ecomm01", img: "sectors/ecommerce.jpg", title: "E-Commerce", speed: 0.65 },
-]
 </script>
 <style lang="scss" scoped>
 .hero {
