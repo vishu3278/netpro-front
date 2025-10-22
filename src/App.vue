@@ -21,11 +21,11 @@ onMounted(() => {
     <div id="smooth-wrapper" class="app-wrapper">
         <div id="smooth-content">
             <site-header></site-header>
-            <nav>
+            <!-- <nav>
                 <router-link to="/">Home</router-link> |
                 <router-link to="/about">About</router-link> |
                 <router-link to="/contact">Contact</router-link>
-            </nav>
+            </nav> -->
             <router-view></router-view>
             <site-footer></site-footer>
         </div>
