@@ -30,7 +30,7 @@
       </div>
 
       <div class="about-banner py-8">
-        <img src="/public/about/about-banner.jpg" alt="" class="max-w-full rounded-2xl">
+        <img src="/about/about-banner.jpg" alt="" class="max-w-full rounded-2xl">
       </div>
 
     </div>
@@ -50,7 +50,7 @@
     <div class="flex flex-col gap-6 md:flex-row md:gap-8 justify-center items-start">
       <!-- Card 1 -->
       <div class="overflow-hidden w-full md:w-1/5">
-        <img src="/public/about/school-children.jpg" alt="Education" class="w-full h-48 object-cover rounded-2xl">
+        <img src="/about/school-children.jpg" alt="Education" class="w-full h-48 object-cover rounded-2xl">
         <div class=" py-4">
           <p>
             To track and prevent student drop out and enable policy action to identify literacy trends.
@@ -60,7 +60,7 @@
 
       <!-- Card 2 -->
       <div class="overflow-hidden w-full md:w-1/5">
-        <img src="/public/about/heath-education.jpg" alt="Health" class="w-full h-48 object-cover rounded-2xl">
+        <img src="/about/heath-education.jpg" alt="Health" class="w-full h-48 object-cover rounded-2xl">
         <div class=" py-4">
           <p>
             Enabling skilled and providing accessible health education in remote areas.
@@ -70,7 +70,7 @@
 
       <!-- Card 3 -->
       <div class="overflow-hidden w-full md:w-1/5">
-        <img src="/public/about/sporting.jpg" alt="Sports" class="w-full h-48 object-cover rounded-2xl">
+        <img src="/about/sporting.jpg" alt="Sports" class="w-full h-48 object-cover rounded-2xl">
         <div class=" py-4">
           <p>
             Bringing transparency to sporting information, allowing sportspersons to focus on performance.
@@ -80,7 +80,7 @@
 
       <!-- Card 4 -->
       <div class="overflow-hidden w-full md:w-1/5">
-        <img src="/public/about/driving.jpg" alt="Transport" class="w-full h-48 object-cover rounded-2xl">
+        <img src="/about/driving.jpg" alt="Transport" class="w-full h-48 object-cover rounded-2xl">
         <div class=" py-4">
           <p>
             Delivering driving licenses without queues and bureaucratic hurdles.
@@ -90,7 +90,7 @@
 
       <!-- Card 5 -->
       <div class="overflow-hidden w-full md:w-1/5">
-        <img src="/public/about/helping-decision.jpg" alt="Workplace" class="w-full h-48 object-cover rounded-2xl">
+        <img src="/about/helping-decision.jpg" alt="Workplace" class="w-full h-48 object-cover rounded-2xl">
         <div class="py-4">
           <p>
             Enhancing outcomes and helping decision makers in the workplace.
@@ -106,7 +106,7 @@
 
       <!-- Left Image -->
       <div class="frameimg md:w-1/3 flex justify-center">
-        <img src="/public/frame-bg.svg" alt="Frame background" class="max-w-full object-cover">
+        <img src="/frame-bg.svg" alt="Frame background" class="max-w-full object-cover">
       </div>
 
       <!-- Right Content -->
@@ -171,7 +171,7 @@
           <p class="">We guide careers with care—through coaching, not control.</p>
         </div>
         <div class="md:w-1/2 mt-8 md:mt-0">
-          <img src="/public/about/Managers.jpg" alt="Mentoring" class="max-w-full">
+          <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full">
         </div>
       </div>
 
@@ -183,7 +183,7 @@
           <p class="">Skill-building isn’t optional here—it’s part of <br> how we work and grow.</p>
         </div>
         <div class="md:w-1/2 mt-8 md:mt-0">
-          <!-- <img src="/public/about/Managers.jpg" alt="Mentoring" class="max-w-full"> -->
+          <!-- <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full"> -->
         </div>
       </div>
 
@@ -194,7 +194,7 @@
           <p class="">People here don’t get stuck—they lead, learn, and grow across teams and challenges.</p>
         </div>
         <div class="md:w-1/2 mt-8 md:mt-0">
-          <!-- <img src="/public/about/Managers.jpg" alt="Mentoring" class="max-w-full"> -->
+          <!-- <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full"> -->
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@
 
         <!-- Leader Card (Repeat for each person) -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Amithabh Vira" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Amithabh Vira" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Amithabh Vira</span>
@@ -223,7 +223,7 @@
 
         <!-- Leader 2 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Saurabh Rajpal" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Saurabh Rajpal" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Saurabh Rajpal</span>
@@ -236,7 +236,7 @@
 
         <!-- Leader 3 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Aditya Kandukuri" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Aditya Kandukuri" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Aditya Kandukuri</span>
@@ -249,7 +249,7 @@
 
         <!-- Leader 4 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Dipesh Tiwari" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Dipesh Tiwari" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Dipesh Tiwari</span>
@@ -262,7 +262,7 @@
 
         <!-- Leader 5 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Gaurav Arora" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Gaurav Arora" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Gaurav Arora</span>
@@ -275,7 +275,7 @@
 
         <!-- Leader 6 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Ashish Chauhan" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Ashish Chauhan" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Ashish Chauhan</span>
@@ -288,7 +288,7 @@
 
         <!-- Leader 7 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Dipesh Tiwari" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Dipesh Tiwari" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Dipesh Tiwari</span>
@@ -301,7 +301,7 @@
 
         <!-- Leader 8 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Gaurav Arora" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Gaurav Arora" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Gaurav Arora</span>
@@ -314,7 +314,7 @@
 
         <!-- Leader 9 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/public/about/saurabh-rajpal.png" alt="Ashish Chauhan" class="w-full h-56 object-cover">
+          <img src="/about/saurabh-rajpal.png" alt="Ashish Chauhan" class="w-full h-56 object-cover">
           <div class="p-8">
             <h5 class="">
               <span>Ashish Chauhan</span>

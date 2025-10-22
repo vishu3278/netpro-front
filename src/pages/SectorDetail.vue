@@ -1,5 +1,5 @@
 <template>
-	<h1>Contact page</h1>
+	<h1>Sector detail page</h1>
 </template>
 
 <script setup>

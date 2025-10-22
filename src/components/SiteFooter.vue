@@ -21,7 +21,9 @@ import { motion } from 'motion-v'
                 </div>
                 <div class="flex flex-col md:flex-row main-links">
                     <ul class="md:grow">
-                        <li><a href="#">Education</a></li>
+                        <li>
+                            <a href="#">Education</a>
+                        </li>
                         <li>
                             <a href="#">Healthcare</a>
                         </li>
@@ -46,19 +48,23 @@ import { motion } from 'motion-v'
                     </ul>
                     <ul class="md:grow">
                         <li>
-                            <a href="#">About</a>
+                            <!-- <a href="#">About</a> -->
+                            <router-link to="/about">About</router-link>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <!-- <a href="#">Services</a> -->
+                            <router-link to="/services">Services</router-link>
                         </li>
                         <li>
                             <a href="#">Careers</a>
                         </li>
                         <li>
-                            <a href="#">Blog</a>
+                            <!-- <a href="#">Blog</a> -->
+                            <router-link to="/blog">Blog</router-link>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <!-- <a href="#">Contact</a> -->
+                            <router-link to="/contact">Contact</router-link>
                         </li>
                     </ul>
                     <ul class="md:grow">
