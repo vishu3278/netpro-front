@@ -109,7 +109,8 @@ onMounted(() => {
                             <a href="#">Blog</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <!-- <a href="#">Contact</a> -->
+                            <router-link to="/contact">Contact</router-link>
                         </li>
                     </ul>
                     <ul class="md:grow">

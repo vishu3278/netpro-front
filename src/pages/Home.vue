@@ -42,7 +42,7 @@
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="col">
-                    <h4 class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
+                    <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
                     <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
                     <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p>
                     <router-link class="button button-dark" to="/about">Know the company</router-link>
@@ -275,26 +275,30 @@ onMounted(() => {
         toggleActions: "play none none reset",
         onEnter: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
     })*/
-    SplitText.create("#aboutsection h4", {
-        type: "lines",
-        autoSplit: true,
-        mask: "lines",
-        onSplit: function(self) {
-            return gsap.from(self.lines, {
-                autoAlpha: 0,
-                y: 100,
-                stagger: 0.15,
-                scrollTrigger: {
-                    trigger: "#aboutsection",
-                    start: "top 70%",
-                    id: "aboutsection",
-                    // markers: true,
-                    toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
+    const abouttitle = document.querySelector('#abouttitle');
+    console.info(abouttitle)
+    if (abouttitle) {
+        SplitText.create(abouttitle, {
+            type: "lines",
+            autoSplit: true,
+            mask: "lines",
+            onSplit: function(self) {
+                return gsap.from(self.lines, {
+                    autoAlpha: 0,
+                    y: 100,
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: "#aboutsection",
+                        start: "top 70%",
+                        // id: "aboutsection",
+                        // markers: true,
+                        toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
 
-                }
-            })
-        }
-    })
+                    }
+                })
+            }
+        })
+    }
 
 
     let abouttl = gsap.timeline({
