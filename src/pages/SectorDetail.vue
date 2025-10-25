@@ -314,12 +314,6 @@ import { ref } from 'vue'
 
 
 
-
-
-
-
-
-
 h1,
 h4 {
 	color: #FFF;

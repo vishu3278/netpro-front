@@ -15,7 +15,7 @@ import { motion } from 'motion-v'
             <router-link class="nav-link logo" to="/"><img src="/logo.svg" alt="NetProphets Cyberworks"></router-link>
             <router-link class="nav-link" to="/about">Who we are</router-link>
             <router-link class="nav-link" to="/sectordetail">Sector Impact</router-link>
-            <router-link class="nav-link" to="/service">Services we offer</router-link>
+            <router-link class="nav-link" to="/servicedetail">Services we offer</router-link>
             <router-link class="nav-link contact border rounded-full" to="/contact">Get in Touch</router-link>
         </nav>
     </header>
