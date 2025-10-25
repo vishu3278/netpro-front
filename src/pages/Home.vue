@@ -96,7 +96,7 @@
                 <div class="lg:col-start-1 lg:col-end-4">
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
-                        <div class="grid grid-cols-3 gap-10 px-20 py-16 place-items-center">
+                        <div class="grid grid-cols-3 gap-4 lg:gap-10 px-6 lg:px-20 py-16 place-items-center">
                             <figure><img src="/icons/gem.svg" alt=""></figure>
                             <figure><img src="/icons/cel.svg" alt=""></figure>
                             <figure><img src="/icons/updesco.svg" alt=""></figure>
