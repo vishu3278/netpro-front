@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { useRoute, onBeforeRouteUpdate} from 'vue-router'
+// import { useRoute, onBeforeRouteUpdate} from 'vue-router'
 import { motion } from 'motion-v'
 
 /*defineProps({
@@ -9,23 +9,22 @@ import { motion } from 'motion-v'
 
 const menu = ref(false)
 
-const route = useRoute()
+// const route = useRoute()
 
-watch(
+/*watch(
   () => route.params.id,
   (newId, oldId) => {
-    // react to route changes...
     console.log(newId)
   }
-)
-onBeforeRouteUpdate(async (to, from) => {
+)*/
+/*onBeforeRouteUpdate(async (to, from) => {
   // react to route changes...
   // userData.value = await fetchUser(to.params.id)
     console.log(to)
-})
+})*/
 </script>
 <template>
-    <header class="fixed z-50  ">
+    <header class="fixed z-50 ">
         <nav class="flex justify-between lg:justify-center items-center px-4 relative">
             <router-link class="nav-link logo shrink-0" to="/"><img src="/logo.svg" alt="NetProphets Cyberworks"></router-link>
             <button type="button" class="mobile-trigger" @click="() => menu = !menu">
@@ -35,7 +34,7 @@ onBeforeRouteUpdate(async (to, from) => {
                     <path d="M28.5938 8.62402H1.40625C1.03329 8.62402 0.675604 8.76901 0.411881 9.02709C0.148158 9.28516 0 9.63519 0 10.0002C0 10.3651 0.148158 10.7152 0.411881 10.9733C0.675604 11.2313 1.03329 11.3763 1.40625 11.3763H28.5938C28.9667 11.3763 29.3244 11.2313 29.5881 10.9733C29.8518 10.7152 30 10.3651 30 10.0002C30 9.63519 29.8518 9.28516 29.5881 9.02709C29.3244 8.76901 28.9667 8.62402 28.5938 8.62402Z" fill="#121212" />
                 </svg>
             </button>
-            <motion.div v-if="menu" key="menu" :initial="{ top: '10%', opacity: 0 }" :animate="{top:'98%', opacity: 1}" :exit="{ top: '10%', opacity: 0 }" :transition='{ type: "spring" }' class="links flex flex-col lg:flex-row">
+            <motion.div key="menu" class="links-wrap" :class="[menu ? 'flex':'hidden']" :initial="{ top: '10%', opacity: 0 }" :animate="{top:'90%', opacity: 1}" :exit="{ top: '10%', opacity: 0 }" :transition='{ type: "spring" }' >
                 <router-link class="nav-link" to="/about">Who we are</router-link>
                 <router-link class="nav-link" to="/sector">Sector Impact</router-link>
                 <router-link class="nav-link" to="/service">Services we offer</router-link>
@@ -50,15 +49,16 @@ header {
     left: 0;
     right: 0;
 
-    .links {
+    .links-wrap {
         /*display: none;*/
         position: absolute;
         background: $grey1;
         right: 0;
         top: 10%;
         padding: 1rem;
-        border-left: 1px solid $grey2;
-        border-bottom: 1px solid $grey2;
+        /*border-left: 1px solid $grey2;
+        border-bottom: 1px solid $grey2;*/
+        flex-direction: column;
     }
 
     nav {
@@ -78,7 +78,17 @@ header {
             border: 1px solid $grey2;
             background: $grey1;
             border-radius: 18px;
+            width: max-content;
             height: 65px;
+            margin-inline: auto;
+        }
+        .links-wrap {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: static;
+            padding: 0;
+            border: 0 none;
         }
     }
 
@@ -100,6 +110,9 @@ header {
     &.contact {
         font-weight: 600;
         border-color: $primary1;
+    }
+    &.router-link-active {
+        @include text-primary-gradient;
     }
 }
 </style>

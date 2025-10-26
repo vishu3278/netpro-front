@@ -45,7 +45,7 @@ onMounted(() => {
             // mask: 'lines',
             y: 50,
             autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-            stagger: 0.1,
+            stagger: 0.08,
             onComplete: () => split2.revert()
         })
 
@@ -72,44 +72,45 @@ onMounted(() => {
                 </div>
                 <div class="flex flex-col md:flex-row main-links">
                     <ul class="md:grow">
-                        <li><a href="#">Education</a></li>
                         <li>
-                            <a href="#">Healthcare</a>
+                            <router-link to="/sectordetail">Education</router-link>
                         </li>
                         <li>
-                            <a href="#">Culture</a>
+                            <router-link to="/sectordetail">Healthcare</router-link>
                         </li>
                         <li>
-                            <a href="#">Transport</a>
+                            <router-link to="/sectordetail">Culture</router-link>
                         </li>
                         <li>
-                            <a href="#">Skilling</a>
+                            <router-link to="/sectordetail">Transport</router-link>
                         </li>
                         <li>
-                            <a href="#">Telecom</a>
+                            <router-link to="/sectordetail">Skilling</router-link>
                         </li>
                         <li>
-                            <a href="#">Public Service</a>
+                            <router-link to="/sectordetail">Telecom</router-link>
                         </li>
                         <li>
-                            <a href="#">E-Commerce</a>
+                            <router-link to="/sectordetail">Public Service</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/sectordetail">E-Commerce</router-link>
                         </li>
                     </ul>
                     <ul class="md:grow">
                         <li>
-                            <a href="#">About</a>
+                            <router-link to="/about">About</router-link>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <router-link to="/service">Services</router-link>
                         </li>
                         <li>
-                            <a href="#">Careers</a>
+                            <router-link to="/contact">Careers</router-link>
                         </li>
                         <li>
-                            <a href="#">Blog</a>
+                            <router-link to="/blog">Blog</router-link>
                         </li>
                         <li>
-                            <!-- <a href="#">Contact</a> -->
                             <router-link to="/contact">Contact</router-link>
                         </li>
                     </ul>

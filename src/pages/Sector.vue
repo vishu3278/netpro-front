@@ -6,6 +6,7 @@
         <figure class="layer-img absolute inset-0 bg-no-repeat bg-cover bg-center" :style="{'background-image': `url(${sec.img})`}" :data-speed="sec.speed"></figure>
         <div class="title relative">{{sec.title}}</div>
         <div class="count absolute">0{{index+1}}</div>
+        <router-link to="/sectordetail" class="absolute inset-0 isolate z-10"></router-link>
     </section>
     <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
 </template>

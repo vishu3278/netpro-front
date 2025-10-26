@@ -7,11 +7,11 @@
             </div>
         </div>
     </section>
-    <ServiceSection title="Technology Consulting" :list="techConsult" image="/services/technology.jpg" :link="{text: 'Explore Technology Consulting', path: '/service'}" />
-    <ServiceSection title="Technology Solutions (Tech Lab)" :flip="true" :list="techConsult" image="/services/tech-solution.jpg" :link="{text: 'Explore Technology Solutions', path: '/service'}" />
-    <ServiceSection title="Product Engineering (Product Works)" :list="techConsult" image="/services/product-engg.jpg" :link="{text: 'Explore Product Engineering', path: '/service'}" />
-    <ServiceSection title="Digital Engine" :list="techConsult" :flip="true" image="/services/digital-engine.jpg" :link="{text: 'Explore Digital Engine', path: '/service'}" />
-    <ServiceSection title="Creative Works" :list="techConsult" image="/services/creative.jpg" :link="{text: 'Explore Creative Works', path: '/service'}" />
+    <ServiceSection title="Technology Consulting" :list="techConsult" image="/services/technology.jpg" :link="{text: 'Explore Technology Consulting', path: '/servicedetail'}" />
+    <ServiceSection title="Technology Solutions (Tech Lab)" :flip="true" :list="techConsult" image="/services/tech-solution.jpg" :link="{text: 'Explore Technology Solutions', path: '/servicedetail'}" />
+    <ServiceSection title="Product Engineering (Product Works)" :list="techConsult" image="/services/product-engg.jpg" :link="{text: 'Explore Product Engineering', path: '/servicedetail'}" />
+    <ServiceSection title="Digital Engine" :list="techConsult" :flip="true" image="/services/digital-engine.jpg" :link="{text: 'Explore Digital Engine', path: '/servicedetail'}" />
+    <ServiceSection title="Creative Works" :list="techConsult" image="/services/creative.jpg" :link="{text: 'Explore Creative Works', path: '/servicedetail'}" />
 </template>
 <script setup>
 import ServiceSection from "@/components/ServiceSection.vue"

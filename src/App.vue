@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue"
+import { watch, onMounted } from "vue"
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
 import { gsap } from "gsap";
@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+
+// import { useRoute, onBeforeRouteUpdate} from 'vue-router'
 
 onMounted(() => {
     // create the scrollSmoother before your scrollTriggers
@@ -16,11 +18,12 @@ onMounted(() => {
         // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
     });
 })
+
 </script>
 <template>
+    <site-header></site-header>
     <div id="smooth-wrapper" class="app-wrapper">
         <div id="smooth-content">
-            <site-header></site-header>
             <router-view></router-view>
             <site-footer></site-footer>
         </div>
