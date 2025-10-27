@@ -38,7 +38,7 @@
                     </p>
                 </div>
                 <div class="flex justify-end">
-                    <img src="/sectors/education.jpg" alt="education network" class="w-72 md:w-96">
+                    <img src="/sectors/education-network.png" alt="education network" class="w-72 md:w-96">
                 </div>
             </div>
             <!-- Stats Row -->
@@ -109,53 +109,53 @@
             <!-- Service Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-10  hover:border-[#d6d1d1] transition-all cursor-pointer">
+                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
                         <img src="/services/services-vector1.svg" alt="" class=""></img>
                     </div>
-                    <h3 class="!text-[#fff] text-sm  !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
+                    <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Public Digital Platforms</h3>
-                    <p class="!text-[#E5E5E5] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                    <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
                         We build digital products for online monitoring, student data, teacher tracking, and policy
                         compliance —
                         powering how education is planned and delivered.
                     </p>
                 </div>
                 <!-- Card 2 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-10  hover:border-[#d6d1d1] transition-all cursor-pointer">
+                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
                         <img src="/services/services-vector2.svg" alt="" class=""></img>
                     </div>
-                    <h3 class="!text-[#fff] text-sm  !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
+                    <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Product Engineering and Emerging Technology
                     </h3>
-                    <p class="!text-[#E5E5E5] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                    <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
                         From new digital content platforms to customer-facing technologies, we engineer scalable
                         solutions that support learning access and performance visibility.
                     </p>
                 </div>
                 <!-- Card 3 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-10  hover:border-[#d6d1d1] transition-all cursor-pointer">
+                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
                         <img src="/services/services-vector3.svg" alt="" class=""></img>
                     </div>
-                    <h3 class="!text-[#fff] text-sm  !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
+                    <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Digital Infrastructure and Managed Services
                     </h3>
-                    <p class="!text-[#E5E5E5] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                    <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
                         We manage technology — keeping school data systems secure, fast, and reliable.
                         Our support services power nationwide education needs.
                     </p>
                 </div>
                 <!-- Card 4 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-10  hover:border-[#d6d1d1] transition-all cursor-pointer">
+                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
                         <img src="/services/services-vector4.svg" alt="" class=""></img>
                     </div>
-                    <h3 class="!text-[#fff] text-sm  !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
+                    <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Strategy and Capability Building
                     </h3>
-                    <p class="!text-[#E5E5E5] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                    <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
                         We support government bodies with transformation consulting, data-backed insights,
                         and the tools to roll out policy at scale with confidence.
                     </p>
@@ -163,7 +163,7 @@
             </div>
         </div>
     </section>
-    <section class="testimonials py-16">
+    <!-- <section class="testimonials py-16">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid md:grid-cols-2 lg:grid-cols-3">
                 <div class="col-start-3 col-end-4">
@@ -179,7 +179,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+    <Testimonial bg-img="/sectors/nehal-patel.jpg" />
+
+    <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
     <section class="py-20">
         <div class="container mx-auto">
             <!-- Header -->
@@ -219,6 +222,8 @@
     </section>
 </template>
 <script setup>
+import Testimonial from '@/components/Testimonial.vue'
+import OliveSection from "@/components/OliveSection.vue"
 import { ref } from 'vue'
 </script>
 <style lang="scss" scoped>

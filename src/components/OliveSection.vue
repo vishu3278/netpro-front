@@ -5,9 +5,9 @@
                 <div class="col">
                     <div class="content">
                         <div class="title mb-6">
-                            Ready to create change together?
+                            {{title}}
                         </div>
-                        <router-link to="/contact" class="button button-dark">Get in Touch</router-link>
+                        <router-link :to="btnLink" class="button button-dark">{{btnText}}</router-link>
                     </div>
                 </div>
                 <div class="col">
@@ -96,7 +96,7 @@ onMounted(() => {
         font-size: 60px;
         line-height: 80px;
         letter-spacing: -1.8px;
-        max-width: 550px;
+        max-width: 560px;
     }
 }
 </style>

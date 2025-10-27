@@ -41,11 +41,11 @@ onMounted(() => {
             duration: 0.5,
             stagger: 0.25,
         })*/.from(split2.chars, {
-            duration: 0.5,
+            // duration: 0.5,
             // mask: 'lines',
             y: 50,
             autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-            stagger: 0.08,
+            stagger: 0.06,
             onComplete: () => split2.revert()
         })
 

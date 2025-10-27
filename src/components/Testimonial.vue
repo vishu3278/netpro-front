@@ -6,11 +6,11 @@
                     <div class="wrapper py-12 px-16">
                         <h5 class="uppercase">{{title}}</h5>
                         <Carousel v-bind="carouselConfig">
-                            <Slide v-for="slide in 3" :key="slide">
+                            <Slide v-for="(slide, index) in testimonials" :key="index">
                                 <div class="carousel__item">
                                     <blockquote>
-                                        <p>NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.</p>
-                                        <small>Keith Norman, Director, GTI System</small>
+                                        <p>{{slide.content}}</p>
+                                        <small>{{slide.meta}}</small>
                                     </blockquote>
                                 </div>
                             </Slide>
@@ -42,7 +42,7 @@ import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const carouselConfig = {
-    autoplay: 15500,
+    autoplay: 5500,
     // itemsToShow: 2.5,
     slideEffect: "fade",
     wrapAround: true
@@ -52,6 +52,13 @@ const props = defineProps({
     title: { type: String, default: "Our Testimonials" },
     bgImg: { type: String, default: "home/swastik-arora-unsplash.jpg" },
     // btnLink: String
+    testimonials: {type: Array, default: () => {
+            return [
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System"},
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students .', meta: "Keith Norman, Director, GTI System"},
+                { content: 'NetProphets has been crucial in helping us scale our education facilities and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System"}
+            ]
+        }}
 })
 
 
