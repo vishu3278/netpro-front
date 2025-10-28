@@ -58,9 +58,14 @@ import { motion } from 'motion-v'
                         <li>
                             <a href="#">Careers</a>
                         </li>
+                        
                         <li>
                             <!-- <a href="#">Blog</a> -->
                             <router-link to="/blog">Blog</router-link>
+                        </li>
+                        <li>
+                            
+                            <router-link to="/blogdetail">Blog Detail</router-link>
                         </li>
                         <li>
                             <!-- <a href="#">Contact</a> -->

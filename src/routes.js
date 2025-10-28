@@ -19,7 +19,7 @@ const routes = [
   { path: '/service', component: Service },
   { path: '/servicedetail', component: ServiceDetail },
   { path: '/blog', component: Blog },
-  { path: '/blog/:id', component: BlogDetail },
+  { path: '/blogdetail', component: BlogDetail },
 ]
 
 export const router = createRouter({
