@@ -1,17 +1,17 @@
 <template>
-    <section id="olivesection" class="olive2-bg">
-        <div class="container mx-auto px-4 md:px-0">
+    <section id="olivesection" class="olive2-bg pt-10 pb-20 md:py-0 relative overflow-clip">
+        <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 place-items-center">
                 <div class="col">
                     <div class="content">
-                        <div class="title mb-6">
+                        <div class="title  mb-6">
                             {{title}}
                         </div>
                         <router-link :to="btnLink" class="button button-dark">{{btnText}}</router-link>
                     </div>
                 </div>
-                <div class="col">
-                    <figure class="max-h-[670px] overflow-clip opacity-30">
+                <div class="col section-image absolute bottom-0 lg:static">
+                    <figure class="max-h-[670px] overflow-clip opacity-[15]">
                         <img src="/frame-bg.svg" class="max-w-full" alt="">
                     </figure>
                 </div>
@@ -90,13 +90,33 @@ onMounted(() => {
     background-color: $olive2;
     color: $rich-black;
 
-    .content {}
+    .content {
+        text-align: center;
+    }
 
     .title {
-        font-size: 60px;
-        line-height: 80px;
+        font-size: 34px;
+        line-height: 44px;
         letter-spacing: -1.8px;
         max-width: 560px;
+        text-wrap-style: balance;
+    }
+    .section-image {
+        max-height: 90%;
+        figure {
+            max-width: 90vw;
+        }
+    }
+    @media screen and (width >= 64rem){
+        .content {
+            text-align: left;
+        }
+        .title {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+            max-width: 560px;
+        }
     }
 }
 </style>

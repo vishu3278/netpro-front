@@ -1,15 +1,15 @@
 <template>
-    <section id="testimonials" class="testimonials py-16" :style="{backgroundImage: `url(${bgImg})`}">
-        <div class="container mx-auto px-4 md:px-0">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3">
-                <div class="col-start-3 col-end-4">
-                    <div class="wrapper py-12 px-16">
+    <section id="testimonials" class="testimonials py-4 lg:py-16 " :style="{backgroundImage: `url(${bgImg})`}">
+        <div class="container mx-auto px-4 ">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-96 md:mt-4">
+                <div class="lg:col-start-3 lg:col-end-4 md:col-start-2 md:col-end-3">
+                    <div class="wrapper p-8 lg:py-12 lg:px-16">
                         <h5 class="uppercase">{{title}}</h5>
                         <Carousel v-bind="carouselConfig">
                             <Slide v-for="(slide, index) in testimonials" :key="index">
                                 <div class="carousel__item">
                                     <blockquote>
-                                        <p>{{slide.content}}</p>
+                                        <p class="mb-3">{{slide.content}}</p>
                                         <small>{{slide.meta}}</small>
                                     </blockquote>
                                 </div>
@@ -107,15 +107,27 @@ onMounted(() => {
     }
 
     blockquote {
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 100;
-        line-height: 45px;
-        letter-spacing: -0.8px;
+        line-height: 30px;
+        letter-spacing: -0.6px;
 
         small {
-            font-size: 16px;
-            line-height: 30px;
+            font-size: 14px;
+            line-height: 20px;
             font-weight: 400;
+        }
+    }
+    @media screen and (width >= 64rem) {
+        blockquote {
+            font-size: 30px;
+            line-height: 45px;
+            letter-spacing: -0.8px;
+
+            small {
+                font-size: 16px;
+                line-height: 30px;
+            }
         }
     }
 }

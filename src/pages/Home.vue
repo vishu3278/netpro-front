@@ -3,8 +3,8 @@
         <video autoplay muted loop id="myVideo1" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video>
-        <div class="container mx-auto relative">
-            <div class="grid grid-cols-2 grid-rows-2 h-dvh place-items-end">
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 lg:grid-rows-2 h-dvh lg:place-items-end place-items-center">
                 <div class="col-start-1 col-end-2 row-start-2 row-end-3 ">
                     <div class="content pb-20">
                         Digital solutions that power India’s critical sectors and enable better public outcomes.
@@ -19,8 +19,8 @@
         <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video>
-        <div class="container mx-auto relative">
-            <div class="grid grid-cols-2 ">
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
                     <div class="content ">
                         <h2>
@@ -50,19 +50,19 @@
                 <div class="col">
                     <div class="stats">
                         <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.5}" class="item border-t pb-12">
-                            <div class="flex justify-between pt-12">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">500M</div>
                                 <div class="detail">Citizen Lives positively impacted worldwide</div>
                             </div>
                         </motion.div>
                         <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.75}" class="item border-t pb-12">
-                            <div class="flex justify-between pt-12">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
                             </div>
                         </motion.div>
                         <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 1}" class="item border-t ">
-                            <div class="flex justify-between pt-12">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
                             </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
     </section>
-    <section class="power py-24">
+    <section class="power py-12 lg:py-24">
         <div class="container mx-auto px-4 md:px-0">
             <div class="title text-center">
                 <h4>
@@ -80,7 +80,7 @@
                 </h4>
                 <p>Digital infrastructure across India</p>
             </div>
-            <div class="grid lg:grid-cols-5  gap-6 mt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-12 lg:mt-16">
                 <div class="lg:col-start-1 lg:col-end-3 ">
                     <div class="card-green relative">
                         <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
@@ -89,14 +89,20 @@
                     </div>
                 </div>
                 <div class="lg:col-start-3 lg:col-end-6">
-                    <div class="card-white">
-                        <p>Delivering Excellence State-by-State Across India</p>
+                    <div class="card-white states">
+                        <p class="px-16">Delivering Excellence State-by-State Across India</p>
+                        <div id="statesList" class="flex flex-wrap gap-x-10 gap-x-8 gap-y-6 lg:gap-x-20 lg:gap-y-12 justify-center py-8 states-list">
+                            <figure v-for="(state, index) in states" class="flex flex-col gap-3 justify-center">
+                                <img :src="state.img" :alt="state.name">
+                                <figcaption>{{state.name}}</figcaption>
+                            </figure>
+                        </div>
                     </div>
                 </div>
                 <div class="lg:col-start-1 lg:col-end-4">
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
-                        <div class="grid grid-cols-3 gap-4 lg:gap-10 px-6 lg:px-20 py-16 place-items-center">
+                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 px-6 lg:px-20 py-8 lg:py-16 place-items-center">
                             <figure><img src="/icons/gem.svg" alt=""></figure>
                             <figure><img src="/icons/cel.svg" alt=""></figure>
                             <figure><img src="/icons/updesco.svg" alt=""></figure>
@@ -109,7 +115,7 @@
                 <div class="lg:col-start-4 lg:col-end-6">
                     <div class="card-dark">
                         <p>Certified Excellence Our Trusted Credentials</p>
-                        <div class="grid grid-cols-3 gap-10 my-24 px-10">
+                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-10 my-8 lg:my-24 px-10">
                             <div v-for="item in certified" :key="item.id" class="flex flex-col">
                                 <figure class="h-20 mb-4">
                                     <img :src="`/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
@@ -174,9 +180,9 @@
 
     <olive-section />
     <!-- cliets section -->
-    <section id="clientsection">
-        <div class="container mx-auto py-8 overflow-auto">
-            <div class="flex items-center gap-16">
+    <section id="clientsection" class="client-section">
+        <div class="container mx-auto py-8 px-4 lg:overflow-auto">
+            <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between">
                 <figure><img src="/icons/fabindia.svg" alt=""></figure>
                 <figure><img src="/icons/forevermark.svg" alt=""></figure>
                 <figure><img src="/icons/symantec.svg" alt=""></figure>
@@ -202,6 +208,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
+const states = ref([
+    {id: "dl", name: "Delhi", img: "/home/delhi.png"},
+    {id: "cgh", name: "Chattisgarh", img: "/home/chattisgarh.png"},
+    {id: "ka", name: "Karnataka", img: "/home/karnataka.png"},
+    {id: "gj", name: "Gujarat", img: "/home/gujarat.png"},
+    {id: "up", name: "Uttar Pradesh", img: "/home/uttar-pradesh.png"},
+    {id: "rj", name: "Rajasthan", img: "/home/rajasthan.png"},
+    {id: "tlg", name: "Telangana", img: "/home/telangana.png"},
+    {id: "mpr", name: "Manipur", img: "/home/manipur.png"},
+    {id: "dl", name: "Delhi", img: "/home/delhi.png"},
+])
 const certified = ref([
     { id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5" },
     { id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5" },
@@ -380,13 +397,19 @@ onMounted(() => {
 <style lang="scss" scoped>
 .video1 {
     color: #FFF;
-    font-size: 60px;
+    font-size: 28px;
     font-weight: 100;
-    line-height: 80px;
-    letter-spacing: -1.8px;
+    line-height: 34px; 
+    letter-spacing: -0.84px;
 
-    .content {
-        width: 880px;
+    @media screen and (width >= 64rem) {        
+        font-size: 60px;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+        .content {
+            width: 880px;
+        }
+
     }
 }
 
@@ -395,41 +418,53 @@ onMounted(() => {
     padding-top: 240px;
 
     .content {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 100;
-        line-height: 38px;
-        letter-spacing: -0.7px;
+        line-height: 28px;
+        letter-spacing: -0.5px;
     }
 
     h2 {
-        font-size: 110px;
-        line-height: 100px;
+        font-size: 48px;
+        line-height: 44px;
         font-weight: 100;
         mix-blend-mode: overlay;
-        letter-spacing: -3.3px;
+        letter-spacing: -1px;
+    }
+    @media screen and (width >= 64rem) {
+        .content {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -1.5px;
+        }
+        h2 {
+            font-size: 110px;
+            line-height: 100px;
+            letter-spacing: -3px;
+        }
     }
 }
 
 .about {
     color: $rich-black;
     background-color: $grey1;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 30px;
-    letter-spacing: -0.48px;
+    line-height: 24px;
+    letter-spacing: -0.42px;
 
     h4 {
-        font-size: 40px;
+        font-size: 24px;
         font-weight: 100;
-        line-height: 60px;
-        letter-spacing: -1.2px;
+        line-height: 32px;
+        letter-spacing: -0.7px;
     }
 
     .stats {
         color: $rich-black;
-        font-size: 18px;
-        line-height: 30px;
+        font-size: 16px;
+        line-height: 24px;
 
         .item {
             border-color: $grey-cf;
@@ -437,15 +472,40 @@ onMounted(() => {
     }
 
     .count {
-        font-size: 100px;
-        line-height: 90px;
+        font-size: 60px;
+        line-height: 64px;
         font-weight: 100;
-        letter-spacing: -3px;
+        letter-spacing: -1.8px;
         @include text-primary-gradient;
+        width: 10rem;
+        flex-shrink: 0;
     }
 
     .detail {
-        /*font-weight: normal;*/
+        padding-left: 2rem;
+    }
+    @media screen and (width >= 64rem){
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: -0.48px;
+       h4 {
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        } 
+        .stats {
+            font-size: 18px;
+            line-height: 30px;
+        }
+        .count {
+            font-size: 100px;
+            line-height: 90px;
+            letter-spacing: -3px;
+            width: fit-content;
+        }
+        .detail {
+            padding-left: 0;
+        }
     }
 }
 
@@ -454,20 +514,20 @@ onMounted(() => {
     color: $rich-black;
 
     .title {
-        font-size: 60px;
-        line-height: 80px;
+        font-size: 34px;
+        line-height: 44px;
         letter-spacing: -1.8px;
 
         p {
-            font-size: 24px;
-            line-height: 38px;
-            letter-spacing: -0.72px;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: -0.48px;
         }
     }
 
     @mixin card() {
         border-radius: 20px;
-        height: 400px;
+        /*height: 400px;*/
         text-align: center;
         font-size: 1rem;
         line-height: 24px;
@@ -500,6 +560,8 @@ onMounted(() => {
         }
     }
 
+    .card-green { height: 400px;}
+
     .card-dark {
         .subgrid {}
 
@@ -512,23 +574,47 @@ onMounted(() => {
             letter-spacing: -0.26px;
         }
     }
+    .states-list {
+        figure {
+            img {
+                width: 65px;
+                height: 65px;
+                object-fit: contain;
+                margin: auto;
+            }
+        }
+    }
+    @media screen and (width >= 64rem) {
+        .title {
+            font-size: 60px;
+            line-height: 80px;
+
+            p {
+                font-size: 24px;
+                line-height: 38px;
+                letter-spacing: -0.72px;
+            }
+        }
+        .card { height: 400px; }
+    }
 }
 
 .technology {
     background-color: $grey1;
 
     .title {
-        font-size: 80px;
-        line-height: 90px;
-        letter-spacing: -2.4px;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: -1.2px;
         @include text-primary-gradient;
     }
 
     .logo-bg {
-        position: absolute;
+        /*position: absolute;
         bottom: 0;
         left: 0;
-        height: 60%;
+        height: 60%;*/
+        display: none;
     }
 
     .accordion {
@@ -571,5 +657,21 @@ onMounted(() => {
             opacity: 0;
         }
     }
+    @media screen and (width >= 64rem) {
+        .title {
+            font-size: 80px;
+            line-height: 90px;
+            letter-spacing: -2.4px;
+        }
+        .logo-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 60%;
+        }
+    }
+}
+.client-section {
+    figure { flex-basis: 28%;}
 }
 </style>

@@ -61,9 +61,9 @@ onMounted(() => {
 })
 </script>
 <template>
-    <footer class="pt-24 pb-20">
+    <footer class="py-12 lg:pt-24 lg:pb-20">
         <div class="container px-4 md:px-0 mx-auto">
-            <div id="footerSection1" class="grid md:grid-cols-2 footer-section1">
+            <div id="footerSection1" class="grid grid-cols-2 footer-section1">
                 <div class="pb-6 md:pb-1">
                     <div class="title">
                         <div id="footerh1" class="h1 mb-2 md:mb-8" :initial="{opacity: 0, y: 100}" :animate="{opacity: 1, y: 0}">Technology that drives meaningful change</div>
@@ -190,12 +190,12 @@ footer {
 }
 
 .title {
-    width: 550px;
+    //width: auto;
 
     .h1 {
-        font-size: 60px;
-        line-height: 80px;
-        letter-spacing: -1.8px;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.78px;
     }
 
     p {
@@ -205,13 +205,17 @@ footer {
         letter-spacing: -0.6px;
     }
 
-    @media screen and (max-width: 40rem) {
-        width: auto;
-
-        h1 {
+    @media screen and (width >= 64rem) {
+        width: 550px;
+        .h1 {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+        }
+        /*h1 {
             font-size: clamp(2rem, 36px, 3rem);
             line-height: normal;
-        }
+        }*/
     }
 }
 
