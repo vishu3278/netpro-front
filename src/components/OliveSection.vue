@@ -53,24 +53,26 @@ onMounted(() => {
           }
     });
     tl.from(split1.words, {
-        rotationX: -100,
-        transformOrigin: "50% 50%",
-        // opacity: 0,
+        // rotationX: -100,
+        // transformOrigin: "50% 50%",
+        opacity: 0,
+        y: 100,
         autoAlpha: 0,
         duration: 0.5,
-        ease: "power3. Out",
-        stagger: 0.5,
+        // ease: "power3.Out",
+        stagger: 0.25,
         mask: "lines",
         onComplete: () => split1.revert()
     }).from(".button", {
-        y: 100,
+        y: 50,
         opacity: 0,
         autoAlpha: 0,
         duration: 0.5,
-        ease: "back.out(2)",
+        // ease: "back.out(2)",
     }).from("#olivesection img", {
-        duration: 0.75,
-        x: -100, // animate from 100px below
+        opacity: 0,
+        duration: 0.5,
+        y: 100, // animate from 100px below
         autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
         ease: "power2.out",
         // stagger: 0.1,
@@ -78,8 +80,8 @@ onMounted(() => {
 
     let st = ScrollTrigger.create({
         trigger: "#olivesection",
-        start: "top 75%",
-        end: "bottom 25%",
+        start: "top center",
+        // end: "bottom 25%",
         // once: false,
         animation: tl,
     });

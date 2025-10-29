@@ -1,29 +1,40 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-// import logo from './NetProphetsCyberworks-mono.svg'
-import { motion } from 'motion-v'
+// import { motion } from 'motion-v'
 import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
+// import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(SplitText)
+// gsap.registerPlugin(SplitText)
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(() => {
-    document.fonts.ready.then(() => {
+    gsap.from(".title", {
+        y: 100,
+        autoAlpha: 0,
+        duration: 0.5,
+        stagger: 0.25,
+        scrollTrigger: {
+            trigger: "#footerSection1",
+            start: "top center",
+            // end: "+=200",
+            toggleActions: "play none none reset",
+        }
+    })
+    // document.fonts.ready.then(() => {
 
-        let split1 = SplitText.create("#footerh1", {
+        /*let split1 = SplitText.create("#footerh1", {
             type: "words",
             autoSplit: true,
             mask: 'lines',
-        });
+        });*/
 
-        let split2 = SplitText.create("#logoText", {
+        /*let split2 = SplitText.create("#logoText", {
             type: "chars",
-        });
+        });*/
 
-        let tl = gsap.timeline();
-        tl.from(split1.words, {
+        // let tl = gsap.timeline();
+        /*tl.from(split1.words, {
             rotationX: -100,
             transformOrigin: "50% 50%",
             // yPercent: 120,
@@ -34,29 +45,31 @@ onMounted(() => {
             stagger: 0.5,
             mask: "lines",
             onComplete: () => split1.revert()
-        })/*.from(".main-links ul", {
+        })*/
+        /*.from(".main-links ul", {
             y: 100,
             opacity: 0,
             autoAlpha: 0,
             duration: 0.5,
             stagger: 0.25,
-        })*/.from(split2.chars, {
-            // duration: 0.5,
-            // mask: 'lines',
-            y: 50,
-            autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-            stagger: 0.06,
-            onComplete: () => split2.revert()
-        })
+        })*/
+        /*.from(split2.chars, {
+                    // duration: 0.5,
+                    // mask: 'lines',
+                    y: 50,
+                    autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+                    stagger: 0.06,
+                    onComplete: () => split2.revert()
+                })*/
 
-        let st = ScrollTrigger.create({
+        /*let st = ScrollTrigger.create({
             trigger: "#footerSection1",
             start: "top center",
             // end: "+=200",
             // once: false,
             animation: tl,
-        });
-    })
+        });*/
+    // })
 
 })
 </script>
@@ -66,7 +79,7 @@ onMounted(() => {
             <div id="footerSection1" class="grid grid-cols-2 footer-section1">
                 <div class="pb-6 md:pb-1">
                     <div class="title">
-                        <div id="footerh1" class="h1 mb-2 md:mb-8" :initial="{opacity: 0, y: 100}" :animate="{opacity: 1, y: 0}">Technology that drives meaningful change</div>
+                        <div id="footerh1" class="h1 mb-2 md:mb-8" >Technology that drives meaningful change</div>
                         <p>New Business: <br>hello@netprophetsglobal.com</p>
                     </div>
                 </div>
@@ -129,15 +142,15 @@ onMounted(() => {
             </div>
             <div class="grid md:grid-cols-2 footer-section2">
                 <div class="flex gap-4 items-center ">
-                    <figure class="max-w-[30%]">
+                    <!-- <figure class="max-w-[30%]">
                         <img src="/logo-mono.svg" class="w-full" alt="">
-                    </figure>
-                    <!-- <figure class="max-w-[70%]">
-                        <img src="/NetProphetsCyberworks-mono.svg" class="w-full" alt="">
                     </figure> -->
-                    <div id="logoText" class="logo-text min-w-fit">
+                    <figure class="max-w-[70%]">
+                        <img src="/footer-logo.svg" class="w-full" alt="">
+                    </figure>
+                    <!-- <div id="logoText" class="logo-text min-w-fit">
                         NetProphets<br>Cyberworks
-                    </div>
+                    </div> -->
                 </div>
                 <div class="md:flex gap-16 items-end">
                     <div class="icons py-4 md:py-2">
@@ -205,13 +218,15 @@ footer {
         letter-spacing: -0.6px;
     }
 
-    @media screen and (width >= 64rem) {
+    @media screen and (width >=64rem) {
         width: 550px;
+
         .h1 {
             font-size: 60px;
             line-height: 80px;
             letter-spacing: -1.8px;
         }
+
         /*h1 {
             font-size: clamp(2rem, 36px, 3rem);
             line-height: normal;

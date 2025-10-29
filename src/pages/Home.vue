@@ -10,8 +10,7 @@
                         Digital solutions that power India’s critical sectors and enable better public outcomes.
                     </div>
                 </div>
-                <!-- Use a button to pause/play the video with JavaScript -->
-                <!-- <button id="myBtn" onclick="myFunction()">Pause</button> -->
+                
             </div>
         </div>
     </section>
@@ -28,8 +27,8 @@
                         </h2>
                         <p>Meaningful impact through citizen - First Governance Projects</p>
                         <div class="flex gap-4 flex-wrap mt-10">
-                            <router-link to="" class="button button-fill">View Sector</router-link>
-                            <router-link to="" class="button button-outline">View Services</router-link>
+                            <router-link to="/sectors" class="button button-fill">View Sector</router-link>
+                            <router-link to="/services" class="button button-outline">View Services</router-link>
                         </div>
                     </div>
                 </div>
@@ -140,7 +139,7 @@
             </div>
         </div>
     </section>
-    <section id="techsection" class="technology py-16 relative">
+    <section id="techsection" class="technology py-25 relative">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>
@@ -225,11 +224,11 @@ const certified = ref([
     { id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015" }
 ])
 const techFaq = ref([
-    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
-    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
-    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
-    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
-    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory" },
+    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
+    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
+    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
+    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
+    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
 ])
 const openIndexes = ref([])
 const toggle = (index) => {
@@ -254,34 +253,34 @@ const toggle = (index) => {
 // animation
 onMounted(() => {
     let video1title = SplitText.create("#video1 .content", {
-        type: "words",
+        type: "lines",
         autoSplit: true,
         mask: "lines",
         onSplit: function(self) {
-            return gsap.from(self.words, {
+            return gsap.from(self.lines, {
                 y: 80,
-                // opacity: 0,
-                autoAlpha: 0,
-                stagger: 0.15
+                opacity: 0,
+                // autoAlpha: 0,
+                stagger: 0.15,
+                ease: 'power.out'
             });
         }
     })
     SplitText.create("#video2 h2", {
-        type: "chars",
+        type: "words",
         autoSplit: true,
         smartWrap: true,
         mask: "lines",
         onSplit: function(self) {
-            return gsap.from(self.chars, {
-                x: 100,
-                // opacity: 0,
-                autoAlpha: 0,
-                stagger: 0.1,
+            return gsap.from(self.words, {
+                y: 90,
+                opacity: 0,
+                // autoAlpha: 0,
+                stagger: 0.15,
                 scrollTrigger: {
                     trigger: "#video2",
                     start: "top center",
                     toggleActions: "play none none reset",
-
                 }
             });
         }
@@ -293,7 +292,7 @@ onMounted(() => {
         onEnter: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
     })*/
     const abouttitle = document.querySelector('#abouttitle');
-    console.info(abouttitle)
+    // console.info(abouttitle)
     if (abouttitle) {
         SplitText.create(abouttitle, {
             type: "lines",
@@ -357,7 +356,7 @@ onMounted(() => {
         stagger: 0.25,
     })
     techtl.from(".logo-bg img", {
-        x: -200,
+        y: 200,
         opacity: 0,
         autoAlpha: 0,
         duration: 0.25,
@@ -381,9 +380,10 @@ onMounted(() => {
     });
 
     gsap.from("#clientsection img", {
-        x: 200,
+        y: 200,
+        opacity: 0,
         autoAlpha: 0,
-        duration: 0.5,
+        duration: 0.75,
         stagger: 0.25,
         scrollTrigger: {
             trigger: "#clientsection",
@@ -658,16 +658,21 @@ onMounted(() => {
         }
     }
     @media screen and (width >= 64rem) {
+        min-height: 1100px;
         .title {
             font-size: 80px;
             line-height: 90px;
             letter-spacing: -2.4px;
+            position: sticky;
+            top: 0;
         }
         .logo-bg {
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 60%;
+            width: 560px;
+            height: 700px;
+            display: block;
         }
     }
 }

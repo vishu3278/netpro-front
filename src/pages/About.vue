@@ -182,7 +182,7 @@
                 <!-- Leader Card (Repeat for each person) -->
                 
                     <div v-for="(lead, index) in leaders" :key="id" class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <img :src="lead.img" :alt="lead.name" class="w-full h-64 object-cover">
+                        <img :src="bUrl+lead.img" :alt="lead.name" class="w-full h-64 object-cover">
                         <div class="p-8">
                             <h5 class="">
                                 <span>{{lead.name}}</span>
@@ -224,9 +224,17 @@
 </template>
 <script setup>
 import OliveSection from "@/components/OliveSection.vue"
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+let bUrl = ref("")
+onMounted(() => {
+    console.log('About Base URL:', import.meta.env.VITE_APP_BASE_URL)
+    // bUrl.value = import.meta.env.VITE_APP_BASE_URL
+    bUrl.value = localStorage.getItem("base_url")
+})
+
 const leaders = ref([
-  {id: 1, name: "Amitabh Vira", position: "Chief Executive Officer, Founder and Director", img: `${import.meta.env.VITE_APP_BASE_URL}/about/saurabh-rajpal.png`},
+  {id: 1, name: "Amitabh Vira", position: "Chief Executive Officer, Founder and Director", img: "/about/saurabh-rajpal.png"},
   {id: 2, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "/about/saurabh-rajpal.png"},
   {id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "/about/saurabh-rajpal.png"},
   {id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "/about/saurabh-rajpal.png"},

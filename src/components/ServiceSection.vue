@@ -4,7 +4,7 @@
             <div class="flex flex-col lg:flex-row lg:gap-8 lg:justify-between ">
                 <div class="col " :class="{'order-last': flip}">
                     <div class="content">
-                        <motion.div class="title mb-2" :initial="{opacity: 0, y: 100 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
+                        <motion.div class="title mb-2" :initial="{opacity: 0, y: 80 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
                             {{title}}
                         </motion.div>
                         <ul class="tech-list my-12">
@@ -12,14 +12,14 @@
                                 <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: '10%'}" :whileInView="{opacity: 1, y: 0}" class="flex justify-between">{{li.text}} </motion.li>
                             </MotionConfig>
                         </ul>
-                        <motion.div :initial="{opacity: 0, x: '10%'}" :whileInView="{opacity: 1, x: 0, transition: { duration: 0.25, delay: 0.5}}">
+                        <motion.div :initial="{opacity: 0, y: '10%'}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 1}}">
                             <router-link :to="link.path"  class="tech-link inline-flex gap-4">{{link.text}} <img src="/icons/arrow-right-blue.svg" alt=""></router-link>
                         </motion.div>
                     </div>
                 </div>
                 <div class="col lg:w-1/2" :class="{'order-first': flip}">
-                    <motion.figure :initial="{x: '10%', opacity: 0}" :whileInView="{opacity: 1, x: 0}" class="max-w-[660px] overflow-clip ">
-                        <img :src="image" class="max-w-full" alt="">
+                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.75}}" class="max-w-[660px] overflow-clip ">
+                        <img :src="bUrl+image" class="max-w-full" alt="">
                     </motion.figure>
                 </div>
             </div>
@@ -49,9 +49,10 @@ const props = defineProps({
     flip: false
 })
 
+let bUrl = ref("")
 
 onMounted(() => {
-
+    bUrl.value = localStorage.getItem("base_url")
 })
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
     <!-- Hero Banner -->
-    <section class="relative h-[90vh] w-full bg-cover bg-center flex items-end pb-20" style="background-image: url('/sectors/education.jpg');">
+    <section class="relative h-[90vh] w-full bg-cover bg-center flex items-end pb-20" :style="{'background-image': `url('${bUrl}/sectors/education.jpg')`}">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/40"></div>
         <!-- Content -->
@@ -225,6 +225,12 @@
 import Testimonial from '@/components/Testimonial.vue'
 import OliveSection from "@/components/OliveSection.vue"
 import { ref } from 'vue'
+
+let bUrl = ref("")
+
+onMounted(() => {
+    bUrl.value = localStorage.getItem("base_url")
+})
 </script>
 <style lang="scss" scoped>
 .testimonials {
