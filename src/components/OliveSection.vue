@@ -12,7 +12,7 @@
                 </div>
                 <div class="col section-image absolute bottom-0 lg:static">
                     <figure class="max-h-[670px] overflow-clip opacity-[15]">
-                        <img src="/frame-bg.svg" class="max-w-full" alt="">
+                        <img src="/frame-bg.svg" class="max-w-full max-h-full object-contain" alt="">
                     </figure>
                 </div>
             </div>
@@ -31,7 +31,7 @@ gsap.registerPlugin(ScrollTrigger)
 const props = defineProps({
     title: { type: String, default: "Ready to create change together?" },
     btnText: { type: String, default: "Get in Touch" },
-    btnLink: String
+    btnLink: {type: String, default: "/contact" }
 })
 
 
@@ -118,6 +118,9 @@ onMounted(() => {
             line-height: 80px;
             letter-spacing: -1.8px;
             max-width: 560px;
+        }
+        .section-image {
+            max-height: none;
         }
     }
 }

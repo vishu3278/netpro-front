@@ -9,17 +9,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(() => {
-    gsap.from(".title", {
+    let tl = gsap.timeline({scrollTrigger: {
+                trigger: "#footerSection1",
+                start: "top 25%",
+                // end: "+=200",
+                toggleActions: "play none none reverse",
+            }});
+    tl.from(".title", {
         y: 100,
         autoAlpha: 0,
         duration: 0.5,
-        stagger: 0.25,
-        scrollTrigger: {
-            trigger: "#footerSection1",
-            start: "top center",
-            // end: "+=200",
-            toggleActions: "play none none reset",
-        }
+        stagger: 0.35,
+        
+    }).from("#logoText", {
+        y: 150,
+        opacity: 0,
+        duration: 0.5
     })
     // document.fonts.ready.then(() => {
 
@@ -145,7 +150,7 @@ onMounted(() => {
                     <!-- <figure class="max-w-[30%]">
                         <img src="/logo-mono.svg" class="w-full" alt="">
                     </figure> -->
-                    <figure class="max-w-[70%]">
+                    <figure id="logoText" class="max-w-[70%]">
                         <img src="/footer-logo.svg" class="w-full" alt="">
                     </figure>
                     <!-- <div id="logoText" class="logo-text min-w-fit">

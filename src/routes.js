@@ -17,7 +17,7 @@ const routes = [
   { path: '/sector', component: Sector },
   { path: '/sectordetail', component: SectorDetail },
   { path: '/service', component: Service },
-  { path: '/servicedetail', component: ServiceDetail },
+  { path: '/service/:id', component: ServiceDetail },
   { path: '/blog', component: Blog },
   { path: '/blogdetail', component: BlogDetail },
 ]

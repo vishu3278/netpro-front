@@ -27,8 +27,8 @@
                         </h2>
                         <p>Meaningful impact through citizen - First Governance Projects</p>
                         <div class="flex gap-4 flex-wrap mt-10">
-                            <router-link to="/sectors" class="button button-fill">View Sector</router-link>
-                            <router-link to="/services" class="button button-outline">View Services</router-link>
+                            <router-link to="/sector" class="button button-fill">View Sector</router-link>
+                            <router-link to="/service" class="button button-outline">View Services</router-link>
                         </div>
                     </div>
                 </div>
@@ -48,19 +48,19 @@
                 </div>
                 <div class="col">
                     <div class="stats">
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.5}" class="item border-t pb-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">500M</div>
                                 <div class="detail">Citizen Lives positively impacted worldwide</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.75}" class="item border-t pb-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 1}" class="item border-t ">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.9, ease: 'easeOut'}" class="item border-t ">
                             <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
@@ -177,11 +177,11 @@
     <!-- testimonials -->
     <Testimonial />
 
-    <olive-section />
+    <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">
         <div class="container mx-auto py-8 px-4 lg:overflow-auto">
-            <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between">
+            <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between overflow-clip">
                 <figure><img src="/icons/fabindia.svg" alt=""></figure>
                 <figure><img src="/icons/forevermark.svg" alt=""></figure>
                 <figure><img src="/icons/symantec.svg" alt=""></figure>
@@ -197,7 +197,7 @@
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
 import Testimonial from '@/components/Testimonial.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
 
@@ -262,7 +262,10 @@ onMounted(() => {
                 opacity: 0,
                 // autoAlpha: 0,
                 stagger: 0.15,
-                ease: 'power.out'
+                ease: 'power.out',
+                onComplete: () => {
+                    self.revert()
+                }
             });
         }
     })
@@ -281,6 +284,9 @@ onMounted(() => {
                     trigger: "#video2",
                     start: "top center",
                     toggleActions: "play none none reset",
+                },
+                onComplete: () => {
+                    self.revert()
                 }
             });
         }
@@ -310,6 +316,9 @@ onMounted(() => {
                         // markers: true,
                         toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
 
+                    },
+                    onComplete: () => {
+                        self.revert()
                     }
                 })
             }
@@ -326,20 +335,13 @@ onMounted(() => {
         }
     });
     abouttl.from("#aboutsection p", {
-        autoAlpha: 0,
-        y: 100,
-        stagger: 0.1,
-        ease: "back.out(2)",
+        // autoAlpha: 0,
+        opacity: 0,
+        y: 80,
+        stagger: 0.15,
+        ease: "slow",
     })
-    abouttl.fromTo("#aboutsection a.button", { opacity: 0, y: 100, }, { opacity: 1, visibility: "visible", y: 0, ease: "back.out(2)",})
-    /*let aboutst = ScrollTrigger.create({
-        trigger: "#aboutsection",
-        start: "top 80%",
-        end: "bottom 20%",
-        id: "aboutsection",
-        markers: true,
-        animation: abouttl,
-    });*/
+    // abouttl.fromTo("#aboutsection a.button", { opacity: 0, y: 50, }, { opacity: 1, visibility: "visible", y: 0, ease: "slow",})
 
     let techtitle = SplitText.create("#techsection .title", {
         type: "words",
@@ -379,18 +381,33 @@ onMounted(() => {
         animation: techtl,
     });
 
-    gsap.from("#clientsection img", {
+    let clientTween = gsap.from("#clientsection img", {
         y: 200,
         opacity: 0,
         autoAlpha: 0,
-        duration: 0.75,
-        stagger: 0.25,
+        duration: 1,
+        stagger: 0.15,
         scrollTrigger: {
             trigger: "#clientsection",
             start: "top bottom",
             // end: "+=200",
             toggleActions: "play none none reset",
         }
+    })
+
+    onBeforeUnmount(() => {
+      // ✅ Proper cleanup
+      if (abouttl) {
+        abouttl.kill() // kills timeline and its ScrollTrigger
+        abouttl = null
+      }
+      if (techtl) {
+        techtl.kill()
+        techtl = null
+      }
+      if (clientTween) {
+        clientTween.kill()
+      }
     })
 })
 </script>
@@ -677,6 +694,6 @@ onMounted(() => {
     }
 }
 .client-section {
-    figure { flex-basis: 28%;}
+    /*figure { flex-basis: 28%;}*/
 }
 </style>
