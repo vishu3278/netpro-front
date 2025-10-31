@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_transport.jpg",
+    "bannerTitle": "Powering India’s Mobility Through Technology",
+    "bannerText": "We develop scalable technology systems that simplify and strengthen India’s transport infrastructure. From digitizing vehicle registration and licensing to streamlining public service delivery, our platforms make mobility more accessible, transparent, and efficient for citizens and institutions across the nation.",
+    "statsImage": "sectors/topimageicon_transport.png",
+    "statsTitle": "Bridging the Gaps in Mobility",
+    "statsText": "For years, India’s vehicle and license management systems operated through manual, paper-heavy processes spread across thousands of regional transport offices. This created delays, inefficiencies, and limited access for citizens. Without a unified digital backbone, it was difficult to handle scale, ensure accuracy, and deliver services efficiently to millions.",
+    "stats": [
+        {"id":"01", "text": "2200+ RTOs connected through a unified digital ecosystem."},
+        {"id":"02", "text": "24x7 access to transport services enabled for citizens nationwide."},
+        {"id":"03", "text": "Significant reduction in physical visits, queues, and manual workflows."}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_transport.jpg",
+            "title": "eVahan and eSaarthi",
+            "description": "A national initiative that digitized and automated the entire lifecycle of vehicle registration and driver licensing."
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_transport",
+            "title": "Public Service Platforms",
+            "description": "Building nationwide transport systems that enable transparent, efficient, and accessible citizen services."
+        },
+        {
+            "icon": "sectors/v2_transport",
+            "title": "Infrastructure Optimization & Scale Engineering",
+            "description": "Delivering high-availability architecture and load management for mission-critical systems handling millions of transactions daily."
+        },
+        {
+            "icon": "sectors/v3_transport",
+            "title": "Workflow Automation Systems",
+            "description": "Digitizing document management, approval processes, and citizen workflows for faster, queue-free service delivery."
+        },
+        {
+            "icon": "sectors/v4_transport",
+            "title": "Strategic Consulting & Technical Advisory",
+            "description": "Advising ministries and departments on large-scale digital transformation, performance optimization, and public service digitization."
+        }
+    ],
+    "testimonialImage": "/sectors/test_transport.jpg"
+}

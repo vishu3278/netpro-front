@@ -1,58 +1,58 @@
 {
-    "banner-image": "/sectors/education.jpg",
-    "banner-title": "Empowering education through scalable technology",
-    "banner-text": "From real-time school monitoring to nationwide student databases—we build digital solutions that strengthen India’s education infrastructure and expand access to quality learning.",
-    "stats-image": "/sectors/education-network.png",
-    "stats-title": "Solving India’s Education Challenges at Scale",
-    "stats-text": "India’s education system serves the world’s largest student population—spread across diverse geographies, languages, and socio-economic backgrounds. Yet ensuring consistent access, transparency, and accountability across this vast network is an ongoing challenge. At NetProphets, we partner with central and state governments to address these gaps. Our goal: to help public education systems become more connected, data-driven, and equitable—so every child, teacher, and institution can thrive.",
+    "bannerImage": "sectors/topbanner_education.jpg",
+    "bannerTitle": "Empowering Education through Scalable Technology",
+    "bannerText": "We design and implement digital-first solutions that enable millions of students and educators to access quality learning resources, streamline administration, and build measurable impact at scale.",
+    "statsImage": "sectors/topimageicon_education.png",
+    "statsTitle": "India’s Education Challenges at Scale",
+    "statsText": "Despite progress, India’s school system still struggles with learning outcomes, access to digital infrastructure, and fragmented administrative processes. Without robust technology, reforms remain difficult to execute at scale.",
     "stats": [
-        {"id":01, "text": "24 Crore+ Students Impacted"},
-        {"id":02, "text": "1.5 Million+ Schools Digitised"},
-        {"id":03, "text": "80 Lakh+ Teachers Supported"}
+        {"id": "01", "text": "24 crore+ students impacted through national programs."},
+        {"id": "02", "text": "1.6 lakh schools digitized with learning and management solutions."},
+        {"id": "03", "text": "80 lakh+ teachers supported with training, curriculum, and data-driven insights."}
     ],
     "projects": [
         {
-            "img": "/sectors/project-1.jpg",
-            "title": "National Curriculum Framework (NCF)",
-            "description": "Built the digital backbone for consultations across stakeholders, helping shape India’s new school curriculum through structured, inclusive digital participation."
+            "img": "sectors/pro1_edu.jpg",
+            "title": "National Curriculum Framework(NCF)",
+            "description": "A unified digital system enabling schools and states to adopt the new curriculum seamlessly, ensuring consistency in pedagogy and assessment."
         },
         {
-            "img": "http://localhost:5173/sectors/project-2.jpg",
-            "title": "Student Database Management System (SDMS)",
-            "description": "Built the digital backbone for consultations across stakeholders, helping shape India’s new school curriculum through structured, inclusive digital participation."
+            "img": "sectors/pro2_edu.jpg",
+            "title": "Student Information Management System (SIMS)",
+            "description": "A robust platform for tracking student records, attendance, performance, and transfers across states."
         },
         {
-            "img": "http://localhost:5173/sectors/project-3.jpg",
+            "img": "sectors/pro3_edu.jpg",
             "title": "National Achievement Survey (NAS)",
-            "description": "Designed a secure, scalable system to collect and analyze learning outcomes nationwide—empowering data-driven decisions for improving education quality."
+            "description": "Conducted at scale to evaluate learning outcomes and provide actionable insights to policymakers and educators."
         },
         {
-            "img": "http://localhost:5173/sectors/project-1.jpg",
-            "title": "Shagun Monitoring Platform",
-            "description": "Unified planning, monitoring, and reporting under Samagra Shiksha—bringing real-time transparency and performance insights to the entire school ecosystem."
+            "img": "sectors/pro4_edu.jpg",
+            "title": "Digital Monitoring Platform",
+            "description": "A centralized dashboard that enables real-time monitoring of schools, teachers, and learning outcomes."
         }
     ],
     "services": [
         {
-            "icon": "",
+            "icon": "sectors/v1_edu.svg",
             "title": "Public Digital Platforms",
-            "description": "We build unified portals for school monitoring, student data, teacher tracking, and policy compliance—streamlining how education is planned and delivered."
+            "description": "Building large-scale platforms for education access, monitoring, and governance."
         },
         {
-            "icon": "",
-            "title": "Product Engineering and Emerging Technology",
-            "description": "From multilingual content platforms to outcome-tracking dashboards, we engineer scalable solutions that support learning access and performance visibility."
+            "icon": "sectors/v2_edu.svg",
+            "title": "Digital Content & Assessment Tools",
+            "description": "Interactive content, testing solutions, and learning management systems."
         },
         {
-            "icon": "",
-            "title": "Digital Infrastructure and Managed Services",
-            "description": "We manage the backend—keeping school data systems secure, fast, and available. Our support ensures uptime for nationwide education tech."
+            "icon": "sectors/v3_edu.svg",
+            "title": "School Data & MIS Platforms",
+            "description": "Consolidated systems to track, analyze, and improve performance metrics."
         },
         {
-            "icon": "",
-            "title": "Strategy and Capability Building",
-            "description": "We support government bodies with transformation consulting, data-backed insights, and the tools to roll out policy at scale with confidence."
+            "icon": "sectors/v4_edu.svg",
+            "title": "Strategic Consulting & Policy Enablement",
+            "description": "Supporting government and institutions in shaping digital transformation roadmaps."
         }
     ],
-    "testimonial-image": "/sectors/nehal-patel.jpg"
+    "testimonialImage": "sectors/test_edu.jpg"
 }

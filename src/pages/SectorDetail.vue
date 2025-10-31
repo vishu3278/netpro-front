@@ -1,79 +1,77 @@
 <template>
-    <!-- Hero Banner -->
-    <section class="relative h-[90vh] w-full bg-cover bg-center flex items-end pb-20" :style="{'background-image': `url('${bUrl}/sectors/education.jpg')`}">
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/40"></div>
-        <!-- Content -->
-        <div class="container mx-auto relative z-10">
-            <h1 class="">
-                Empowering education<br>
-                through scalable technology.
-            </h1>
-            <p class="">
-                From real-time school monitoring to nationwide student databases —<br>
-                we build digital solutions that strengthen India’s education<br>
-                infrastructure and expand access to quality learning.
-            </p>
-        </div>
-    </section>
-    <section class="education-section bg-black text-white px-6 md:px-20 py-20">
-        <div class="container mx-auto">
-            <div class="max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <!-- Left Text Content -->
-                <div class="space-y-6">
-                    <h2 class="">
-                        Solving India’s Education <br> Challenges at Scale
-                    </h2>
-                    <p>
-                        <span>India’s education system serves the world’s largest student population—
-                            spread across diverse geographies, languages, and socio-economic backgrounds.
-                            Yet ensuring consistent access, transparency, and accountability across the
-                            vast network is an ongoing challenge.</span>
-                    </p>
-                    <p class="">
+    <div v-if="loading" class="loading  fixed z-10 inset-0 bg-white flex gap-8 flex-col items-center justify-center">
+        <span class="spinner "><img src="/logo-bg.svg" alt="" class="w-48 h-48 object-contain"></span>
+        <p class="text-gray-500">Loading ...</p>
+    </div>
+    <div v-else-if="error" class="error-state">
+        <p>{{ error }}</p>
+    </div>
+    <template v-else-if="sector">
+        <section class="relative h-[90vh] w-full bg-cover bg-center flex items-end pb-20" :style="{'background-image': `url('${baseUrl}${sector.bannerImage}')`}">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- Content -->
+            <div class="container mx-auto relative z-10">
+                <h1 class="">
+                    {{sector.bannerTitle}}<br>
+                </h1>
+                <p class="">
+                    {{sector.bannerText}}
+                </p>
+            </div>
+        </section>
+        <section class="education-section bg-black text-white px-6 md:px-20 py-20">
+            <div class="container mx-auto">
+                <div class="max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <!-- Left Text Content -->
+                    <div class="space-y-6">
+                        <h2 class="">
+                            {{sector.statsTitle}}
+                        </h2>
+                        <p>
+                            <span>{{sector.statsText}}</span>
+                        </p>
+                        <!-- <p class="">
                         <span>At NetProphets, we partner with central and state governments to address these gaps.
                             Our goal is to help public education systems become more connected, data-driven, and
                             equitable —
                             so every child, teacher, and institution can thrive.</span>
-                    </p>
+                    </p> -->
+                    </div>
+                    <div class="flex justify-end">
+                        <img :src="`${baseUrl}${sector.statsImage}`" alt="education network" class="w-72 md:w-96">
+                    </div>
                 </div>
-                <div class="flex justify-end">
-                    <img src="/sectors/education-network.png" alt="education network" class="w-72 md:w-96">
-                </div>
-            </div>
-            <!-- Stats Row -->
-            <div class="pt-20 grid grid-cols-1 sm:grid-cols-3 gap-10">
-                <div class="space-y-2 border-l border-[#fff] py-5 pl-10">
-                    <p><span>[01]</span></p>
-                    <h3>24 Crore+ Students Impacted</h3>
-                </div>
-                <div class="space-y-2 border-l border-[#fff] py-5 pl-10">
+                <!-- Stats Row -->
+                <div class="pt-20 grid grid-cols-1 sm:grid-cols-3 gap-10">
+                    <div v-for="st in sector.stats" class="space-y-2 border-l border-[#fff] py-5 pl-10">
+                        <p><span>[{{st.id}}]</span></p>
+                        <h3>{{st.text}}</h3>
+                    </div>
+                    <!-- <div class="space-y-2 border-l border-[#fff] py-5 pl-10">
                     <p><span>[02]</span></p>
                     <h3>1.5 Million+ Schools Digitised</h3>
                 </div>
                 <div class="space-y-2 border-l border-[#fff] py-5 pl-10">
                     <p><span>[03]</span></p>
                     <h3>80 Lakh+ Teachers Supported</h3>
+                </div> -->
                 </div>
             </div>
-        </div>
-    </section>
-    <!---education-section-->
-    <section class="bg-white py-16 px-6 md:px-20">
-        <div class="max-w-7xl mx-auto">
-            <h4 class=" mb-12 text-center">Key Projects</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <!-- Project 1 -->
-                <div class="space-y-4 pt-30">
-                    <img src="/sectors/project-1.jpg" alt="" class="rounded-lg w-full">
-                    <h5 class="mb-2">National Digital Education Architecture (NDEAR)</h5>
-                    <p class="!text-[#5F5F5F] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
-                        Empowering India’s education ecosystem through an open digital architecture enabling
-                        collaboration and innovation at national scale.
-                    </p>
-                </div>
-                <!-- Project 2 -->
-                <div class="space-y-4">
+        </section>
+        <section class="bg-white py-16 px-6 md:px-20">
+            <div class="max-w-7xl mx-auto">
+                <h4 class=" mb-12 text-center">Key Projects</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Project 1 -->
+                    <div v-for="(pr, index) in sector.projects" class="space-y-4 " :class="[(index+1)%2 == 0 ? '':'pt-30']">
+                        <img :src="`${baseUrl}${pr.img}`" alt="" class="rounded-lg w-full">
+                        <h5 class="mb-2">{{pr.title}}</h5>
+                        <p class="!text-[#5F5F5F] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                            {{pr.description}}
+                        </p>
+                    </div>
+                    <!-- <div class="space-y-4">
                     <img src="/sectors/project-2.jpg" alt="" class="rounded-lg w-full">
                     <h5 class="mb-2">Student Lifecycle Management System (SLMS)</h5>
                     <p class="!text-[#5F5F5F] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
@@ -81,7 +79,7 @@
                         data insights for schools.
                     </p>
                 </div>
-                <!-- Project 3 -->
+                
                 <div class="space-y-4 pt-30">
                     <img src="/sectors/project-3.jpg" alt="" class="rounded-lg w-full">
                     <h5 class="mb-2">National Achievement Survey (NAS)</h5>
@@ -90,7 +88,7 @@
                         education across India.
                     </p>
                 </div>
-                <!-- Project 4 -->
+                
                 <div class="space-y-4">
                     <img src="/sectors/project-1.jpg" alt="" class="rounded-lg w-full">
                     <h5 class="mb-2">Unique Monitoring Platform</h5>
@@ -98,33 +96,27 @@
                         A centralized platform to monitor school performance, infrastructure, training, and classroom
                         accessibility metrics.
                     </p>
+                </div> -->
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="bg-black text-white py-20">
-        <div class="container mx-auto px-6">
-            <!-- Heading -->
-            <h1 class="font-medium mb-12">Services we offer</h1>
-            <!-- Service Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
-                    <div class="services-icon mb-10">
-                        <img src="/services/services-vector1.svg" alt="" class=""></img>
+        </section>
+        <section class="bg-black text-white py-20">
+            <div class="container mx-auto px-6">
+                <h1 class="font-medium mb-12">Services we offer</h1>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div v-for="(sr, index) in sector.services" class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
+                        <div class="services-icon mb-10">
+                            <img :src="`${baseUrl}${sr.icon}`" alt="" class="" />
+                        </div>
+                        <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
+                            {{sr.title}}</h3>
+                        <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
+                            {{sr.description}}
+                        </p>
                     </div>
-                    <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
-                        Public Digital Platforms</h3>
-                    <p class="!text-[#E5E5E5] !text-[16px] font-normal !leading-[26px] !tracking-[-0.54px]">
-                        We build digital products for online monitoring, student data, teacher tracking, and policy
-                        compliance —
-                        powering how education is planned and delivered.
-                    </p>
-                </div>
-                <!-- Card 2 -->
-                <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
+                    <!-- <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
-                        <img src="/services/services-vector2.svg" alt="" class=""></img>
+                        <img src="/services/services-vector2.svg" alt="" class="" />
                     </div>
                     <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Product Engineering and Emerging Technology
@@ -134,10 +126,10 @@
                         solutions that support learning access and performance visibility.
                     </p>
                 </div>
-                <!-- Card 3 -->
+                
                 <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
-                        <img src="/services/services-vector3.svg" alt="" class=""></img>
+                        <img src="/services/services-vector3.svg" alt="" class="" />
                     </div>
                     <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Digital Infrastructure and Managed Services
@@ -147,10 +139,10 @@
                         Our support services power nationwide education needs.
                     </p>
                 </div>
-                <!-- Card 4 -->
+                
                 <div class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                     <div class="services-icon mb-10">
-                        <img src="/services/services-vector4.svg" alt="" class=""></img>
+                        <img src="/services/services-vector4.svg" alt="" class="" />
                     </div>
                     <h3 class="!text-[#fff] !text-[20px] font-normal !leading-[30px] !tracking-[-0.6px] mb-5">
                         Strategy and Capability Building
@@ -159,11 +151,11 @@
                         We support government bodies with transformation consulting, data-backed insights,
                         and the tools to roll out policy at scale with confidence.
                     </p>
+                </div> -->
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- <section class="testimonials py-16">
+        </section>
+        <!-- <section class="testimonials py-16">
         <div class="container mx-auto px-4 md:px-0">
             <div class="grid md:grid-cols-2 lg:grid-cols-3">
                 <div class="col-start-3 col-end-4">
@@ -180,9 +172,12 @@
             </div>
         </div>
     </section> -->
-    <Testimonial bg-img="/sectors/nehal-patel.jpg" />
-
-    <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
+        <Testimonial :bg-img="baseUrl+sector.testimonialImage" />
+        <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
+    </template>
+    <div v-else class="py-80 container mx-auto px-10">
+      <p class="text-red-400">Product not found.</p>
+    </div>
     <section class="py-20">
         <div class="container mx-auto">
             <!-- Header -->
@@ -224,12 +219,27 @@
 <script setup>
 import Testimonial from '@/components/Testimonial.vue'
 import OliveSection from "@/components/OliveSection.vue"
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
-let bUrl = ref("")
+const route = useRoute()
+const sector = ref(null)
+let baseUrl = ref("")
+const loading = ref(true) // 👈 track loading state
+const error = ref(null)
 
-onMounted(() => {
-    bUrl.value = localStorage.getItem("base_url")
+onMounted(async () => {
+    baseUrl.value = localStorage.getItem("base_url")
+    try {
+        const res = await fetch(`${import.meta.env.BASE_URL}data/${route.params.id}.json`)
+        if (!res.ok) throw new Error('Failed to load data')
+        sector.value = await res.json()
+    } catch (err) {
+        error.value = err.message
+    } finally {
+        loading.value = false // 👈 stop loading
+    }
+    // product.value = products.find(p => p.id === parseInt(route.params.id))
 })
 </script>
 <style lang="scss" scoped>

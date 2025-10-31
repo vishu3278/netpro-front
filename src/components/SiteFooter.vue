@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 onMounted(() => {
     let tl = gsap.timeline({scrollTrigger: {
                 trigger: "#footerSection1",
-                start: "top 25%",
+                start: "top 75%",
                 // end: "+=200",
                 toggleActions: "play none none reverse",
             }});

@@ -92,7 +92,7 @@
                         <p class="px-16">Delivering Excellence State-by-State Across India</p>
                         <div id="statesList" class="flex flex-wrap gap-x-10 gap-x-8 gap-y-6 lg:gap-x-20 lg:gap-y-12 justify-center py-8 states-list">
                             <figure v-for="(state, index) in states" class="flex flex-col gap-3 justify-center">
-                                <img :src="state.img" :alt="state.name">
+                                <img :src="baseUrl+state.img" :alt="state.name">
                                 <figcaption>{{state.name}}</figcaption>
                             </figure>
                         </div>
@@ -117,7 +117,7 @@
                         <div class="grid grid-cols-2 lg:grid-cols-3 gap-10 my-8 lg:my-24 px-10">
                             <div v-for="item in certified" :key="item.id" class="flex flex-col">
                                 <figure class="h-20 mb-4">
-                                    <img :src="`/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
+                                    <img :src="baseUrl+item.icon" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
                                 <label>{{item.title}}</label>
                             </div>
@@ -207,21 +207,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
+let baseUrl = ref("")
+
 const states = ref([
-    {id: "dl", name: "Delhi", img: "/home/delhi.png"},
-    {id: "cgh", name: "Chattisgarh", img: "/home/chattisgarh.png"},
-    {id: "ka", name: "Karnataka", img: "/home/karnataka.png"},
-    {id: "gj", name: "Gujarat", img: "/home/gujarat.png"},
-    {id: "up", name: "Uttar Pradesh", img: "/home/uttar-pradesh.png"},
-    {id: "rj", name: "Rajasthan", img: "/home/rajasthan.png"},
-    {id: "tlg", name: "Telangana", img: "/home/telangana.png"},
-    {id: "mpr", name: "Manipur", img: "/home/manipur.png"},
-    {id: "dl", name: "Delhi", img: "/home/delhi.png"},
+    {id: "dl", name: "Delhi", img: "home/delhi.png"},
+    {id: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png"},
+    {id: "ka", name: "Karnataka", img: "home/karnataka.png"},
+    {id: "gj", name: "Gujarat", img: "home/gujarat.png"},
+    {id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png"},
+    {id: "rj", name: "Rajasthan", img: "home/rajasthan.png"},
+    {id: "tlg", name: "Telangana", img: "home/telangana.png"},
+    {id: "mpr", name: "Manipur", img: "home/manipur.png"},
+    {id: "dl", name: "Delhi", img: "home/delhi.png"},
 ])
 const certified = ref([
-    { id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5" },
-    { id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5" },
-    { id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015" }
+    { id: "abc1234", icon: "icons/cmmi5-color.svg", title: "CMMI Maturity Level-5" },
+    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "CMMI Maturity Level-5" },
+    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO 9001:2015" }
 ])
 const techFaq = ref([
     { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
@@ -252,6 +254,7 @@ const toggle = (index) => {
 
 // animation
 onMounted(() => {
+    baseUrl.value = localStorage.getItem("base_url")
     let video1title = SplitText.create("#video1 .content", {
         type: "lines",
         autoSplit: true,

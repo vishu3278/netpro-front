@@ -86,7 +86,7 @@
         <AboutCarousel />
     </section>
     <!--our-mission-->
-    <section class=" py-40 expertise">
+    <section class=" py-20 expertise">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
             <!-- Left Image -->
             <div class="frameimg md:w-1/3 flex justify-center">

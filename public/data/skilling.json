@@ -1,58 +1,61 @@
 {
-    "banner-image": "/sectors/education.jpg",
-    "banner-title": "Empowering education through scalable technology",
-    "banner-text": "From real-time school monitoring to nationwide student databases—we build digital solutions that strengthen India’s education infrastructure and expand access to quality learning.",
-    "stats-image": "/sectors/education-network.png",
-    "stats-title": "Solving India’s Education Challenges at Scale",
-    "stats-text": "India’s education system serves the world’s largest student population—spread across diverse geographies, languages, and socio-economic backgrounds. Yet ensuring consistent access, transparency, and accountability across this vast network is an ongoing challenge. At NetProphets, we partner with central and state governments to address these gaps. Our goal: to help public education systems become more connected, data-driven, and equitable—so every child, teacher, and institution can thrive.",
+    "bannerImage": "sectors/topbanner_skill.jpg",
+    "bannerTitle": "Building a Skilled Workforce for Tomorrow",
+    "bannerText": "We develop scalable platforms that enable training, certification, and continuous learning—helping India’s workforce prepare for evolving industry demands.",
+    "statsImage": "sectors/topimageicon_skill.png",
+    "statsTitle": "Skilling at the Scale of a Nation",
+    "statsText": "India’s workforce is its greatest strength, but to stay globally competitive, the country must skill and upskill millions every year. Despite numerous initiatives, most training programs still operate in isolation, with limited access, outdated infrastructure, and little visibility into outcomes. Many individuals struggle to find relevant opportunities, while institutions lack the data to measure real impact. The result is a fragmented skilling ecosystem that falls short of its potential. A connected, technology-driven approach is essential to bring scale, transparency, and accountability to India’s skilling mission, empowering citizens with the tools they need to thrive in a changing economy.",
     "stats": [
-        {"id":01, "text": "24 Crore+ Students Impacted"},
-        {"id":02, "text": "1.5 Million+ Schools Digitised"},
-        {"id":03, "text": "80 Lakh+ Teachers Supported"}
+        {"id":"01", "text": "1 crore+ learners trained through digital skilling programs"},
+        {"id":"02", "text": "500+ institutions onboarded onto unified platforms"},
+        {"id":"03", "text": "70% learner certification success rate across programs"}
     ],
     "projects": [
         {
-            "img": "/sectors/project-1.jpg",
-            "title": "National Curriculum Framework (NCF)",
-            "description": "Built the digital backbone for consultations across stakeholders, helping shape India’s new school curriculum through structured, inclusive digital participation."
+            "img": "sectors/pro1_skill.jpg",
+            "title": "DigiCampus Platform ",
+            "description": "Comprehensive LMS for schools and higher education."
         },
+
         {
-            "img": "http://localhost:5173/sectors/project-2.jpg",
-            "title": "Student Database Management System (SDMS)",
-            "description": "Built the digital backbone for consultations across stakeholders, helping shape India’s new school curriculum through structured, inclusive digital participation."
+            "img": "sectors/pro4_skill.jpg",
+            "title": "AI-Based Learning Analytics ",
+            "description": "Personalized insights for learners and trainers."
         },
-        {
-            "img": "http://localhost:5173/sectors/project-3.jpg",
-            "title": "National Achievement Survey (NAS)",
-            "description": "Designed a secure, scalable system to collect and analyze learning outcomes nationwide—empowering data-driven decisions for improving education quality."
+        
+         {
+            "img": "sectors/pro3_skill.jpg",
+            "title": "Employer-Skill Connect Platforms",
+            "description": "Linking industry demand with skilled workers."
         },
+
         {
-            "img": "http://localhost:5173/sectors/project-1.jpg",
-            "title": "Shagun Monitoring Platform",
-            "description": "Unified planning, monitoring, and reporting under Samagra Shiksha—bringing real-time transparency and performance insights to the entire school ecosystem."
+            "img": "sectors/pro2_skill.jpg",
+            "title": "Skill Development Mission Portals",
+            "description": "National platforms enabling access to training resources"
         }
     ],
     "services": [
         {
-            "icon": "",
-            "title": "Public Digital Platforms",
-            "description": "We build unified portals for school monitoring, student data, teacher tracking, and policy compliance—streamlining how education is planned and delivered."
+            "icon": "sectors/v1_skill.svg",
+            "title": "National & State Skilling Portals",
+            "description": "Designing unified digital ecosystems for account management, billing, and service access."
         },
         {
-            "icon": "",
-            "title": "Product Engineering and Emerging Technology",
-            "description": "From multilingual content platforms to outcome-tracking dashboards, we engineer scalable solutions that support learning access and performance visibility."
+            "icon": "sectors/v2_skill.svg",
+            "title": "Learning Management Systems(LMS)",
+            "description": "Developing responsive, mobile-first solutions that ensure scalability, speed, and usability across devices."
         },
         {
-            "icon": "",
-            "title": "Digital Infrastructure and Managed Services",
-            "description": "We manage the backend—keeping school data systems secure, fast, and available. Our support ensures uptime for nationwide education tech."
+            "icon": "sectors/v3_skill.svg",
+            "title": "Industry–Academia Connect Platforms",
+            "description": "Seamlessly connecting backend systems including billing, CRM, and data management for operational efficiency."
         },
         {
-            "icon": "",
-            "title": "Strategy and Capability Building",
-            "description": "We support government bodies with transformation consulting, data-backed insights, and the tools to roll out policy at scale with confidence."
+            "icon": "sectors/v4_skill.svg",
+            "title": "AI & Analytics for Skill Development",
+            "description": "Delivering user-centric design, journey mapping, and scalable digital foundations for global telecom providers."
         }
     ],
-    "testimonial-image": "/sectors/nehal-patel.jpg"
+    "testimonialImage": "sectors/test_skill.jpg"
 }

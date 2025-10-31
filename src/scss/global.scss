@@ -117,3 +117,13 @@ form,
         gap: 1rem;
     }
 }
+
+.loading {
+    color: gray;
+    .spinner {
+
+    }
+    p {
+        color: gray;
+    }
+}

@@ -6,7 +6,7 @@
         <figure class="layer-img absolute inset-0 bg-no-repeat bg-cover bg-center" :style="{'background-image': `url(${sec.img})`}" :data-speed="sec.speed"></figure>
         <div class="title relative">{{sec.title}}</div>
         <div class="count absolute">0{{index+1}}</div>
-        <router-link to="/sectordetail" class="absolute inset-0 isolate z-10"></router-link>
+        <router-link :to="sec.link" class="absolute inset-0 isolate z-10"></router-link>
     </section>
     <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
 </template>
@@ -48,18 +48,19 @@ onMounted(() => {
             });
         }
     })
+    
 })
 
 const sectors = [
-    { id: "educat01", img: "sectors/education.jpg", title: "Education", speed: 0.85 },
-    { id: "health01", img: "sectors/healthcare.jpg", title: "Healthcare", speed: 0.75 },
-    { id: "sports01", img: "sectors/sports.jpg", title: "Sports", speed: 0.65 },
-    { id: "transp01", img: "sectors/transport.jpg", title: "Transportation", speed: 0.75 },
-    { id: "telecom01", img: "sectors/telecom.jpg", title: "Telecom", speed: 0.9 },
-    { id: "culture01", img: "sectors/culture.jpg", title: "Culture", speed: 0.75 },
-    { id: "pblcsrv01", img: "sectors/public-service.jpg", title: "Public Service", speed: 0.85 },
-    { id: "skiling01", img: "sectors/skilling.jpg", title: "Skilling", speed: 0.55 },
-    { id: "ecomm01", img: "sectors/ecommerce.jpg", title: "E-Commerce", speed: 0.65 },
+    { id: "educat01", img: "sectors/education.jpg", title: "Education", link: "/sector/education", speed: 0.85 },
+    { id: "health01", img: "sectors/healthcare.jpg", title: "Healthcare", link: "/sector/healthcare", speed: 0.75 },
+    { id: "sports01", img: "sectors/sports.jpg", title: "Sports", link: "/sector/sports", speed: 0.65 },
+    { id: "transp01", img: "sectors/transport.jpg", title: "Transportation", link: "/sector/transport", speed: 0.75 },
+    { id: "telecom01", img: "sectors/telecom.jpg", title: "Telecom", link: "/sector/telecom", speed: 0.9 },
+    { id: "culture01", img: "sectors/culture.jpg", title: "Culture", link: "/sector/culture", speed: 0.75 },
+    { id: "pblcsrv01", img: "sectors/public-service.jpg", title: "Public Service", link: "/sector/publicservices", speed: 0.85 },
+    { id: "skiling01", img: "sectors/skilling.jpg", title: "Skilling", link: "/sector/skilling", speed: 0.55 },
+    // { id: "ecomm01", img: "sectors/ecommerce.jpg", title: "E-Commerce", link: "/sector/ecommerce", speed: 0.65 },
 ]
 </script>
 <style lang="scss" scoped>
