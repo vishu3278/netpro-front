@@ -20,7 +20,7 @@
     </section>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -45,8 +45,8 @@ onMounted(() => {
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: "#olivesection",
-            start: "top top",
-            end: "+=800",  // 800px scroll distance
+            start: "top center",
+            // end: "+=800",  // 800px scroll distance
             // scrub: 1,
             // pin: true,
             // markers: true,
@@ -63,7 +63,7 @@ onMounted(() => {
         stagger: 0.25,
         mask: "lines",
         onComplete: () => split1.revert()
-    }).from(".button", {
+    }).from("#olivesection .button", {
         y: 50,
         opacity: 0,
         autoAlpha: 0,
@@ -78,13 +78,32 @@ onMounted(() => {
         // stagger: 0.1,
     })
 
-    let st = ScrollTrigger.create({
+    /*let st = ScrollTrigger.create({
         trigger: "#olivesection",
         start: "top center",
         // end: "bottom 25%",
         // once: false,
         animation: tl,
-    });
+    });*/
+
+    onBeforeUnmount(() => {
+        // ✅ Proper cleanup
+        if (tl) {
+            tl.kill()
+            tl = null
+        }
+        /*if (abouttl) {
+            abouttl.kill() // kills timeline and its ScrollTrigger
+            abouttl = null
+        }
+        if (techtl) {
+            techtl.kill()
+            techtl = null
+        }
+        if (clientTween) {
+            clientTween.kill()
+        }*/
+    })
 })
 </script>
 <style lang="scss" scoped>

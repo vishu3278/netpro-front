@@ -1,0 +1,55 @@
+{
+    "bannerImage": "services/technology_consulting.jpg",
+    "bannerTitle": "Technology Consulting",
+    "pageName": "Technology Consulting",
+    "pageTitle": "Advisory-driven solutions for systems that scale and serve.",
+    "pageText": "We provide strategic technology consulting that aligns vision with execution. From process optimisation to architecture design and change management, our advisory-led approach enables organisations to scale efficiently while staying compliant, agile, and future-ready.",
+
+    "services": [
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Process Strategy & Optimisation",
+        "description": "Streamlining systems to enhance efficiency, scalability, and performance across operations."
+    },
+    {
+        "icon": "services/services-vector2.svg",
+        "title": "Enterprise Process Design",
+        "description": "Designing structured frameworks that simplify complex workflows and drive business outcomes."
+    },
+    {
+        "icon": "services/services-vector3.svg",
+        "title": "Business Process Transformation",
+        "description": "Redefining processes with data, automation, and digital-first implementation strategies."
+    },
+    {
+        "icon": "services/services-vector4.svg",
+        "title": "Solution Architecture & Design",
+        "description": "Engineering scalable, secure, and flexible architecture for modern enterprise ecosystems."
+    },
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Skills Development & Capacity Building",
+        "description": "Empowering teams with the knowledge and tools to adapt and innovate."
+    },
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Change Management Support",
+        "description": "Guiding organisations through transformation with minimal disruption and maximum adoption."
+    },
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Regulatory & Compliance advisory",
+        "description": "Ensuring every technology initiative aligns with evolving regulatory and data standards."
+    }],
+    "projects": [
+    {
+        "img": "sectors/pro1_education.jpg",
+        "title": "National Curriculum Framework (NCF)",
+        "description": "Built the digital backbone for consultations across stakeholders, helping shape India’s new school curriculum through structured, inclusive digital participation."
+    },
+    {
+        "img": "sectors/pro1_sports.jpg",
+        "title": "Play India – Sports Authority of India",
+        "description": "A national platform built to unify India’s sports ecosystem integrating athletes, coaches, training centers, and administrators within a single digital framew"
+    }]
+}

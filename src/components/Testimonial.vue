@@ -1,5 +1,5 @@
 <template>
-    <section id="testimonials" class="testimonials py-4 lg:py-16 " :style="{backgroundImage: `url(${bgImg})`}">
+    <section id="testimonials" class="testimonials py-8 lg:py-32 " :style="{backgroundImage: `url(${bgImg})`}">
         <div class="container mx-auto px-4 ">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-96 md:mt-4">
                 <div class="lg:col-start-3 lg:col-end-4 md:col-start-2 md:col-end-3">
@@ -31,20 +31,14 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
-// import { gsap } from "gsap";
-// import { SplitText } from "gsap/SplitText";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// gsap.registerPlugin(SplitText)
-// gsap.registerPlugin(ScrollTrigger)
-
-import 'vue3-carousel/carousel.css'
+// import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const carouselConfig = {
-    autoplay: 5500,
+    autoplay: 5000,
     // itemsToShow: 2.5,
-    slideEffect: "fade",
+    // slideEffect: "fade",
     wrapAround: true
 }
 
@@ -120,8 +114,8 @@ onMounted(() => {
     }
     @media screen and (width >= 64rem) {
         blockquote {
-            font-size: 30px;
-            line-height: 45px;
+            font-size: 24px;
+            line-height: 32px;
             letter-spacing: -0.8px;
 
             small {

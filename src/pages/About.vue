@@ -144,7 +144,7 @@
                     <p class="max-w-[500px]">We guide careers with care—through coaching, not control.</p>
                 </div>
                 <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
-                    <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full h-full object-contain">
+                    <img src="/about/mentorsnotmanagers.jpg" alt="mentor" class="max-w-full h-full object-contain">
                 </div>
                 <!-- <output class=" output absolute z-10 inset-1/2 w-max h-fit bg-lime-500 px-2 py-1 rounded-lg">mouse position</output> -->
             </div>
@@ -155,7 +155,7 @@
                     <p class="max-w-[500px]">Skill-building isn’t optional here—it’s part of <br> how we work and grow.</p>
                 </div>
                 <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
-                    <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full h-full object-contain">
+                    <img src="/about/growthbuiltin.jpg" alt="growth" class="max-w-full h-full object-contain">
                 </div>
             </div>
             <!-- Beyond Project Section -->
@@ -165,7 +165,7 @@
                     <p class="max-w-[500px]">People here don’t get stuck—they lead, learn, and grow across teams and challenges.</p>
                 </div>
                 <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
-                    <img src="/about/Managers.jpg" alt="Mentoring" class="max-w-full h-full object-contain">
+                    <img src="/about/beyondtheproject.jpg" alt="beyond project" class="max-w-full h-full object-contain">
                 </div>
             </div>
         </div>
@@ -178,7 +178,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <!-- Leader Card (Repeat for each person) -->
                 <div v-for="(lead, index) in leaders" :key="lead.id" class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img :src="bUrl+lead.img" :alt="lead.name" class="w-full h-64 object-cover">
+                    <img :src="bUrl+lead.img" :alt="lead.name" class="w-full h-64 object-cover" />
                     <div class="p-8">
                         <h5 class="">
                             <span>{{lead.name}}</span>
@@ -272,7 +272,7 @@ onMounted(() => {
                 // gsap.to(output, { x: moveX, y: moveY, duration: 0.6 })
             }
             const killMouseMove = (e) => {
-                console.info("mouse leave => remove event listener")
+                // console.info("mouse leave => remove event listener")
                 if (moveTween) moveTween.kill()
                 resetTween = gsap.to(image, { x: 0, y: 0, duration: 0.8, scale: 1.1, opacity: 0, ease: 'power2.out' })
                 hero.removeEventListener('mousemove', function() {
@@ -300,15 +300,15 @@ onMounted(() => {
 })
 
 const leaders = ref([
-    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer, Founder and Director", img: "/about/saurabh-rajpal.png" },
-    { id: 2, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "/about/saurabh-rajpal.png" },
-    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "/about/saurabh-rajpal.png" },
-    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "/about/saurabh-rajpal.png" },
-    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: "/about/saurabh-rajpal.png" },
-    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: "/about/saurabh-rajpal.png" },
-    { id: 7, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "/about/saurabh-rajpal.png" },
-    { id: 8, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "/about/saurabh-rajpal.png" },
-    { id: 9, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "/about/saurabh-rajpal.png" },
+    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer", img: "about/amitabh.jpg" },
+    { id: 2, name: "Saurabh Rajpal", position: "Chief Technology Officer", img: "about/saurabh.jpg" },
+    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/aditya.jpg" },
+    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/dipesh.jpg" },
+    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: "about/gaurav.jpg" },
+    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: "about/ashish.jpg" },
+    // { id: 7, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/saurabh-rajpal.png" },
+    // { id: 8, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/saurabh-rajpal.png" },
+    // { id: 9, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "about/saurabh-rajpal.png" },
 
 ])
 </script>

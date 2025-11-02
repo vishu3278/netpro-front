@@ -75,14 +75,8 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
-// import { gsap } from "gsap";
-// import { SplitText } from "gsap/SplitText";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// gsap.registerPlugin(SplitText)
-// gsap.registerPlugin(ScrollTrigger)
-
-import 'vue3-carousel/carousel.css'
+// import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const carouselConfig = {
@@ -159,11 +153,6 @@ onMounted(() => {
         margin-top: 1rem;
     }
     
-    &__next,
-    &__prev {
-        inset-block-start: 100%;
-        inset-inline: 80%;
-    }
 }
 
 </style>

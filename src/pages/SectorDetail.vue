@@ -178,9 +178,9 @@
     <div v-else class="py-80 container mx-auto px-10">
       <p class="text-red-400">Product not found.</p>
     </div>
-    <section class="py-20">
+    <!-- <section class="py-20">
         <div class="container mx-auto">
-            <!-- Header -->
+            
             <div class="flex justify-between items-center mb-6">
                 <h4 class="">Explore more sectors</h4>
                 <div class="flex space-x-2">
@@ -192,21 +192,18 @@
                     </button>
                 </div>
             </div>
-            <!-- Cards Grid -->
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
                 <div class="relative rounded-xl overflow-hidden group cursor-pointer">
                     <img src="/sectors/healthcare-small.jpg" alt="Healthcare" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div class="absolute bottom-4 left-4 text-white text-lg font-medium">Healthcare</div>
                 </div>
-                <!-- Card 2 -->
                 <div class="relative rounded-xl overflow-hidden group cursor-pointer">
                     <img src="/sectors/culture-small.jpg" alt="Culture" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div class="absolute bottom-4 left-4 text-white text-lg font-medium">Culture</div>
                 </div>
-                <!-- Card 3 -->
                 <div class="relative rounded-xl overflow-hidden group cursor-pointer">
                     <img src="/sectors/skilling-small.jpg" alt="Skilling" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -214,22 +211,38 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+    <SectorCarousel />
 </template>
 <script setup>
 import Testimonial from '@/components/Testimonial.vue'
 import OliveSection from "@/components/OliveSection.vue"
-import { ref, onMounted } from 'vue'
+import SectorCarousel from "@/components/SectorCarousel.vue"
+import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+let baseUrl = ref("/")
 const sector = ref(null)
-let baseUrl = ref("")
 const loading = ref(true) // 👈 track loading state
 const error = ref(null)
 
+watch(
+    () => route.params.id,
+    (newId, oldId) => {
+        if (route.path.includes("/sector/")) {
+            fetchData()
+        }
+    }
+)
+
 onMounted(async () => {
     baseUrl.value = localStorage.getItem("base_url")
+    
+    fetchData()
+    // product.value = products.find(p => p.id === parseInt(route.params.id))
+})
+const fetchData = async () => {
     try {
         const res = await fetch(`${import.meta.env.BASE_URL}data/${route.params.id}.json`)
         if (!res.ok) throw new Error('Failed to load data')
@@ -239,8 +252,7 @@ onMounted(async () => {
     } finally {
         loading.value = false // 👈 stop loading
     }
-    // product.value = products.find(p => p.id === parseInt(route.params.id))
-})
+}
 </script>
 <style lang="scss" scoped>
 .testimonials {

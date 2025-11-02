@@ -49,3 +49,49 @@ body {
     background-color: #ffffff;
   }
 }
+
+.about-carousel {
+  .carousel__next,
+  .carousel__prev {
+    inset-block-start: auto;
+    inset-block-end: -4rem;
+    transform: none;
+  }
+  .carousel__prev {
+    inset-inline-start: 50%;
+    transform: translateX(-110%);
+  }
+  .carousel__next{
+    inset-inline-end: 50%;
+    transform: translateX(110%);
+  }
+}
+
+.sector-carousel {
+  .carousel__next,
+  .carousel__prev {
+    inset-block-start: -4rem;
+  }
+  .carousel__prev {
+    inset-inline-start: auto;
+    inset-inline-end: 4rem;
+  }
+  .carousel__next{
+    /*inset-inline-end: auto;*/
+  }
+}
+
+
+.services-carousel {
+  .carousel__next,
+  .carousel__prev {
+    inset-block-start: calc(100% + 2rem);
+    transform: none;
+  }
+  .carousel__prev {
+    
+  }
+  .carousel__next{
+    inset-inline-end: calc(100% - 8rem);
+  }
+}

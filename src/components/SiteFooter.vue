@@ -1,80 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-// import { motion } from 'motion-v'
-import { gsap } from "gsap";
-// import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(SplitText)
-gsap.registerPlugin(ScrollTrigger)
+import { motion } from 'motion-v'
 
 onMounted(() => {
-    let tl = gsap.timeline({scrollTrigger: {
-                trigger: "#footerSection1",
-                start: "top 75%",
-                // end: "+=200",
-                toggleActions: "play none none reverse",
-            }});
-    tl.from(".title", {
-        y: 100,
-        autoAlpha: 0,
-        duration: 0.5,
-        stagger: 0.35,
-        
-    }).from("#logoText", {
-        y: 150,
-        opacity: 0,
-        duration: 0.5
-    })
-    // document.fonts.ready.then(() => {
-
-        /*let split1 = SplitText.create("#footerh1", {
-            type: "words",
-            autoSplit: true,
-            mask: 'lines',
-        });*/
-
-        /*let split2 = SplitText.create("#logoText", {
-            type: "chars",
-        });*/
-
-        // let tl = gsap.timeline();
-        /*tl.from(split1.words, {
-            rotationX: -100,
-            transformOrigin: "50% 50%",
-            // yPercent: 120,
-            // opacity: 0,
-            autoAlpha: 0,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.5,
-            mask: "lines",
-            onComplete: () => split1.revert()
-        })*/
-        /*.from(".main-links ul", {
-            y: 100,
-            opacity: 0,
-            autoAlpha: 0,
-            duration: 0.5,
-            stagger: 0.25,
-        })*/
-        /*.from(split2.chars, {
-                    // duration: 0.5,
-                    // mask: 'lines',
-                    y: 50,
-                    autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-                    stagger: 0.06,
-                    onComplete: () => split2.revert()
-                })*/
-
-        /*let st = ScrollTrigger.create({
-            trigger: "#footerSection1",
-            start: "top center",
-            // end: "+=200",
-            // once: false,
-            animation: tl,
-        });*/
-    // })
+    
 
 })
 </script>
@@ -84,8 +13,8 @@ onMounted(() => {
             <div id="footerSection1" class="grid grid-cols-2 footer-section1">
                 <div class="pb-6 md:pb-1">
                     <div class="title">
-                        <div id="footerh1" class="h1 mb-2 md:mb-8" >Technology that drives meaningful change</div>
-                        <p>New Business: <br>hello@netprophetsglobal.com</p>
+                        <motion.div :initial="{opacity:0, y:100}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 1}" id="footerh1" class="h1 mb-2 md:mb-8" >Technology that drives meaningful change</motion.div>
+                        <motion.p :initial="{opacity:0, y:80}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 0.75, delay: 0.25}">New Business: <br>hello@netprophetsglobal.com</motion.p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row main-links">
@@ -111,9 +40,9 @@ onMounted(() => {
                         <li>
                             <router-link to="/sectordetail">Public Service</router-link>
                         </li>
-                        <li>
+                        <!-- <li>
                             <router-link to="/sectordetail">E-Commerce</router-link>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="md:grow">
                         <li>
@@ -184,7 +113,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 footer {
-    background-color: #002;
+    background-color: #000;
     color: #fff;
 
     .footer-section2 {

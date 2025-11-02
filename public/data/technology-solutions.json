@@ -1,0 +1,44 @@
+{
+    "bannerImage": "services/techlab.jpg",
+    "bannerTitle": "Technology Solutions (Tech Lab)",
+    "pageName": "Technology Solutions (Tech Lab)",
+    "pageTitle": "Building reliable technologies for tomorrow’s enterprises.",
+    "pageText": "Our Tech Lab builds reliable, scalable, and intelligent systems that simplify complex business processes. We design enterprise-grade software, automate operations, and create integrated digital ecosystems that power seamless performance and long-term growth.",
+
+    "services": [
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Enterprise software development",
+        "description": "Building robust, customised software tailored to complex organisational needs."
+    },
+    {
+        "icon": "services/services-vector2.svg",
+        "title": "Process automation & digitisation",
+        "description": "Automating workflows to eliminate redundancies and enhance productivity."},
+    {
+        "icon": "services/services-vector3.svg",
+        "title": "System integration & data architecture",
+        "description": "Connecting diverse systems through unified data structures and scalable integrations."
+    },
+    {
+        "icon": "services/services-vector4.svg",
+        "title": "Web & mobile applications",
+        "description": "Creating responsive, user-focused applications for seamless experiences across devices."
+    },
+    {
+        "icon": "services/services-vector1.svg",
+        "title": "Product lifecycle management",
+        "description": "Managing the complete product journey from concept to optimisation."
+    }],
+    "projects": [
+    {
+        "img": "sectors/pro1_telcom.jpg",
+        "title": "Digicel Pacific – Telecom Experience Platform",
+        "description": "Empowering millions through connected, intuitive telecom platforms."
+    },
+    {
+        "img": "sectors/pro4__healthcare.jpg",
+        "title": "Public Health Monitoring Platform",
+        "description": "Tracks vaccination, outbreaks, and health campaigns."
+    }]
+}

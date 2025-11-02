@@ -44,28 +44,35 @@
                             <span>Yes, I do. I agree to the Terms of Service and Privacy Policy.</span>
                         </label>
                     </motion.div>
-                    <motion.button :initial="{opacity: 0, x: '150%'}" :whileInView="{opacity: 1, x: 0, transition: {delay: 0.5}}" class="button button-dark">Submit</motion.button>
+                    <motion.button :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0, transition: {duration: 0.5, ease: 'easeOut', delay: 0.5}}" class="button button-dark">Submit</motion.button>
                 </div>
                 <div>
-                    <motion.div :initial="{opacity: 0, y: '110%'}" :whileInView="{opacity: 1, y: 0, transition: {delay: 0.7}}" class="mt-16 lg:mt-52">
+                    <motion.div :initial="{opacity: 0, y: '110%'}" :whileInView="{opacity: 1, y: 0, transition: {duration: 1, delay: 0.5}}" class="mt-16 lg:mt-52">
                         <h2>Get in touch</h2>
                     </motion.div>
                 </div>
                 <div>
-                    <div class="mt-4 lg:mt-52">
-                        <motion.address :initial="{opacity: 0, y: '110%', rotate: -15}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.8}}" class="pb-4 lg:pb-10">
+                    <div class="grid grid-cols-2 mt-4 lg:mt-52">
+                        <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.4, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pb-10">
                             New Business.<br>
                             info@npglobal.in
+                        </motion.address>
+                        <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.6, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pb-10">
+                            Join the Team. <br>
+                            jobs@npglobal.in
                         </motion.address>
                     </div>
                 </div>
                 <div class="border-t border-gray-300"></div>
-                <div class="border-t border-gray-300">
-                    <motion.address :initial="{opacity: 0, y: '110%', rotate: 15}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.9}}" class="pt-4 lg:pt-10">
+                <div class="border-t border-gray-300 grid grid-cols-2">
+                    <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.8, duration: 1, ease: 'easeOut'}}" class="pt-4 lg:pt-10">
                         6th Floor, C-56 A/12,<br>
                         Sector 62, Noida,<br>
                         Uttar Pradesh 201301
                     </motion.address>
+                    <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 1, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pt-10">
+                            0120-4784-999<br>
+                        </motion.address>
                 </div>
             </div>
         </div>
@@ -76,7 +83,7 @@ import { ref } from 'vue'
 import { motion, MotionConfig } from "motion-v"
 
 const name = ref("")
-const email = ref("email@domain.com")
+const email = ref("")
 const contact = ref("")
 </script>
 <style lang="scss" scoped>

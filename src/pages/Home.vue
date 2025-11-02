@@ -1,5 +1,5 @@
 <template>
-    <section id="video1" class="video1 h-dvh relative overflow-clip">
+    <!-- <section id="video1" class="video1 h-dvh relative overflow-clip">
         <video autoplay muted loop id="myVideo1" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video>
@@ -13,7 +13,7 @@
                 
             </div>
         </div>
-    </section>
+    </section> -->
     <section id="video2" class="video2 h-dvh relative overflow-clip">
         <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
@@ -26,6 +26,27 @@
                             Driving Change
                         </h2>
                         <p>Meaningful impact through citizen - First Governance Projects</p>
+                        <div class="flex gap-4 flex-wrap mt-10">
+                            <router-link to="/sector" class="button button-fill">View Sector</router-link>
+                            <router-link to="/service" class="button button-outline">View Services</router-link>
+                        </div>
+                    </div>
+                </div>
+                <!-- Use a button to pause/play the video with JavaScript -->
+                <!-- <button id="myBtn" onclick="myFunction()">Pause</button> -->
+            </div>
+        </div>
+    </section>
+    <section id="video3" class="video2 h-dvh relative overflow-clip">
+        <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
+            <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
+        </video>
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 ">
+                <div class="col-start-2 col-end-3 ">
+                    <div class="content ">
+                        <h3>Building Economy</h3>
+                        <p>Transforming Business Potential Into Sustainable Digital Success</p>
                         <div class="flex gap-4 flex-wrap mt-10">
                             <router-link to="/sector" class="button button-fill">View Sector</router-link>
                             <router-link to="/service" class="button button-outline">View Services</router-link>
@@ -72,14 +93,14 @@
         </div>
     </section>
     <section class="power py-12 lg:py-24">
-        <div class="container mx-auto px-4 md:px-0">
+        <div class="container mx-auto px-4 ">
             <div class="title text-center">
                 <h4>
                     Powering India
                 </h4>
                 <p>Digital infrastructure across India</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-12 lg:mt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-12 lg:mt-16 md:px-20">
                 <div class="lg:col-start-1 lg:col-end-3 ">
                     <div class="card-green relative">
                         <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
@@ -90,11 +111,25 @@
                 <div class="lg:col-start-3 lg:col-end-6">
                     <div class="card-white states">
                         <p class="px-16">Delivering Excellence State-by-State Across India</p>
-                        <div id="statesList" class="flex flex-wrap gap-x-10 gap-x-8 gap-y-6 lg:gap-x-20 lg:gap-y-12 justify-center py-8 states-list">
-                            <figure v-for="(state, index) in states" class="flex flex-col gap-3 justify-center">
-                                <img :src="baseUrl+state.img" :alt="state.name">
-                                <figcaption>{{state.name}}</figcaption>
-                            </figure>
+                        <div class="pt-12 pb-5 pr-16 states-list">
+                            <Carousel :items-to-show="4.8" dir="rtl" :wrap-around="true" :snapAlign="end" :autoplay="2500" :transition="300">
+                                <Slide v-for="(state, index) in states1" :key="state.id">
+                                    <figure class="carousel__item flex flex-col gap-3 justify-center">
+                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <figcaption>{{state.name}}</figcaption>
+                                    </figure>
+                                </Slide>
+                            </Carousel>
+                        </div>
+                        <div class="py-5 pl-16 states-list">
+                            <Carousel :items-to-show="4.8" dir="ltr" :wrap-around="true" :snapAlign="start" :autoplay="2500" :transition="300">
+                                <Slide v-for="(state, index) in states2" :key="state.id">
+                                    <figure class="carousel__item flex flex-col gap-3 justify-center">
+                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <figcaption>{{state.name}}</figcaption>
+                                    </figure>
+                                </Slide>
+                            </Carousel>
                         </div>
                     </div>
                 </div>
@@ -102,12 +137,12 @@
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
                         <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 px-6 lg:px-20 py-8 lg:py-16 place-items-center">
-                            <figure><img src="/icons/gem.svg" alt=""></figure>
-                            <figure><img src="/icons/cel.svg" alt=""></figure>
-                            <figure><img src="/icons/updesco.svg" alt=""></figure>
-                            <figure><img src="/icons/ddu-gky.svg" alt=""></figure>
-                            <figure><img src="/icons/becil.svg" alt=""></figure>
-                            <figure><img src="/icons/railtel.svg" alt=""></figure>
+                            <figure><img src="/icons/gem.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                            <figure><img src="/icons/cel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                            <figure><img src="/icons/updesco.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                            <figure><img src="/icons/ddu-gky.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                            <figure><img src="/icons/becil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                            <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
                         </div>
                     </div>
                 </div>
@@ -173,10 +208,8 @@
             </div>
         </div>
     </section>
-
     <!-- testimonials -->
     <Testimonial />
-
     <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">
@@ -207,30 +240,40 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
 let baseUrl = ref("")
 
-const states = ref([
-    {id: "dl", name: "Delhi", img: "home/delhi.png"},
-    {id: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png"},
-    {id: "ka", name: "Karnataka", img: "home/karnataka.png"},
-    {id: "gj", name: "Gujarat", img: "home/gujarat.png"},
-    {id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png"},
-    {id: "rj", name: "Rajasthan", img: "home/rajasthan.png"},
+const states1 = ref([
+    { id: "hp", name: "Himachal Pradesh", img: "home/himachal.png" },
+    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
+    { id: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png" },
+    { id: "ka", name: "Karnataka", img: "home/karnataka.png" },
+    { id: "gj", name: "Gujarat", img: "home/gujarat.png" },
+    // {id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png"},
+    /*{id: "rj", name: "Rajasthan", img: "home/rajasthan.png"},
     {id: "tlg", name: "Telangana", img: "home/telangana.png"},
     {id: "mpr", name: "Manipur", img: "home/manipur.png"},
-    {id: "dl", name: "Delhi", img: "home/delhi.png"},
+    {id: "dl", name: "Delhi", img: "home/delhi.png"},*/
+])
+const states2 = ref([
+    { id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png" },
+    { id: "rj", name: "Rajasthan", img: "home/rajasthan.png" },
+    { id: "tlg", name: "Telangana", img: "home/telangana.png" },
+    { id: "mpr", name: "Manipur", img: "home/manipur.png" },
+    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
 ])
 const certified = ref([
-    { id: "abc1234", icon: "icons/cmmi5-color.svg", title: "CMMI Maturity Level-5" },
-    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "CMMI Maturity Level-5" },
-    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO 9001:2015" }
+    { id: "abc1234", icon: "icons/cmmi3.svg", title: "CMMI Maturity Level-3" },
+    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO 9001:2015" },
+    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "CMMI Maturity Level-5" }
 ])
 const techFaq = ref([
-    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
-    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
-    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
-    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
-    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes <br>Process Strategy & Optimisation <br>Enterprise Process Design <br>Business Process Transformation <br>Solution Architecture & Design <br>Skills Development & Capacity Building <br>Change Management support <br>Regulatory & Compliance advisory" },
+    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Process Strategy & Optimisation <br>Enterprise Process Design<br>Business Process Transformation<br>Solution Architecture & Design<br>Skills Development & Capacity Building<br>Change Management support<br>Regulatory & Compliance advisory" },
+    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Enterprise software development<br>Process automation & digitisation<br>System integration & data architecture<br>Web & mobile applications<br>Product lifecycle management" },
+    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customised products that streamline processes, empower institutions, and enhance operational efficiency.", description: "ERP- Enterprise Resource Planning (ERP)<br>Ed-Tech Solutions (LMIS)<br>School Management System (SMS)<br>eOffice & Document Management System<br>Epilepsy Management Platform" },
+    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Commerce Platform Development<br>Performance Marketing<br>Media Planning and Buying<br>Organic Marketing<br>Immersive and projection mapping experiences<br>Digital Infrastructure & Managed Services" },
+    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories Branding and creative strategy", description: "UI/UX design<br>AR/VR storytelling<br>Video and Visual Production" },
 ])
 const openIndexes = ref([])
 const toggle = (index) => {
@@ -255,7 +298,7 @@ const toggle = (index) => {
 // animation
 onMounted(() => {
     baseUrl.value = localStorage.getItem("base_url")
-    let video1title = SplitText.create("#video1 .content", {
+    /*let video1title = SplitText.create("#video1 .content", {
         type: "lines",
         autoSplit: true,
         mask: "lines",
@@ -271,20 +314,20 @@ onMounted(() => {
                 }
             });
         }
-    })
-    SplitText.create("#video2 h2", {
-        type: "words",
+    })*/
+    let videotitle = SplitText.create("#video3 h4", {
+        type: "lines",
         autoSplit: true,
         smartWrap: true,
         mask: "lines",
         onSplit: function(self) {
-            return gsap.from(self.words, {
+            return gsap.from(self.lines, {
                 y: 90,
                 opacity: 0,
                 // autoAlpha: 0,
                 stagger: 0.15,
                 scrollTrigger: {
-                    trigger: "#video2",
+                    trigger: "#video3",
                     start: "top center",
                     toggleActions: "play none none reset",
                 },
@@ -295,11 +338,7 @@ onMounted(() => {
         }
     })
 
-    /*let video2trigger = ScrollTrigger.create({
-        trigger: "#video2",
-        toggleActions: "play none none reset",
-        onEnter: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
-    })*/
+
     const abouttitle = document.querySelector('#abouttitle');
     // console.info(abouttitle)
     if (abouttitle) {
@@ -344,45 +383,35 @@ onMounted(() => {
         stagger: 0.15,
         ease: "slow",
     })
-    // abouttl.fromTo("#aboutsection a.button", { opacity: 0, y: 50, }, { opacity: 1, visibility: "visible", y: 0, ease: "slow",})
 
-    let techtitle = SplitText.create("#techsection .title", {
-        type: "words",
-        autoSplit: true,
-        mask: 'lines'
+    let techtl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#techsection",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+        }
     });
-
-    let techtl = gsap.timeline();
-    techtl.from(techtitle.words, {
-        rotationX: -100,
-        transformOrigin: "50% 50%",
-        autoAlpha: 0,
-        duration: 0.75,
-        stagger: 0.25,
+    techtl.from("#techsection .title", {
+        y: 100,
+        opacity: 0,
+        // autoAlpha: 0,
+        duration: 0.5,
+        delay: 0.2,
+        // stagger: 0.25,
     })
     techtl.from(".logo-bg img", {
         y: 200,
         opacity: 0,
-        autoAlpha: 0,
+        // autoAlpha: 0,
         duration: 0.25,
     })
     techtl.from("#accordion .item", {
         y: 100,
         opacity: 0,
-        autoAlpha: 0,
+        // autoAlpha: 0,
         duration: 0.5,
         stagger: 0.25
     })
-
-    let st = ScrollTrigger.create({
-        trigger: "#techsection",
-        start: "top 80%",
-        end: "+=200",
-        id: "techsection",
-        // once: false,
-        // markers: true,
-        animation: techtl,
-    });
 
     let clientTween = gsap.from("#clientsection img", {
         y: 200,
@@ -399,18 +428,18 @@ onMounted(() => {
     })
 
     onBeforeUnmount(() => {
-      // ✅ Proper cleanup
-      if (abouttl) {
-        abouttl.kill() // kills timeline and its ScrollTrigger
-        abouttl = null
-      }
-      if (techtl) {
-        techtl.kill()
-        techtl = null
-      }
-      if (clientTween) {
-        clientTween.kill()
-      }
+        // ✅ Proper cleanup
+        if (abouttl) {
+            abouttl.kill() // kills timeline and its ScrollTrigger
+            abouttl = null
+        }
+        if (techtl) {
+            techtl.kill()
+            techtl = null
+        }
+        if (clientTween) {
+            clientTween.kill()
+        }
     })
 })
 </script>
@@ -419,13 +448,14 @@ onMounted(() => {
     color: #FFF;
     font-size: 28px;
     font-weight: 100;
-    line-height: 34px; 
+    line-height: 34px;
     letter-spacing: -0.84px;
 
-    @media screen and (width >= 64rem) {        
+    @media screen and (width >=64rem) {
         font-size: 60px;
         line-height: 80px;
         letter-spacing: -1.8px;
+
         .content {
             width: 880px;
         }
@@ -444,24 +474,31 @@ onMounted(() => {
         letter-spacing: -0.5px;
     }
 
-    h2 {
+    h2, h3 {
         font-size: 48px;
         line-height: 44px;
         font-weight: 100;
         mix-blend-mode: overlay;
         letter-spacing: -1px;
     }
-    @media screen and (width >= 64rem) {
+
+    h3 {
+        mix-blend-mode: normal;
+    }
+
+    @media screen and (width >=64rem) {
         .content {
             font-size: 24px;
             line-height: 38px;
-            letter-spacing: -1.5px;
+            letter-spacing: -0.72px;
         }
-        h2 {
+
+        h2, h3 {
             font-size: 110px;
             line-height: 100px;
             letter-spacing: -3px;
         }
+
     }
 }
 
@@ -504,25 +541,30 @@ onMounted(() => {
     .detail {
         padding-left: 2rem;
     }
-    @media screen and (width >= 64rem){
+
+    @media screen and (width >=64rem) {
         font-size: 16px;
         line-height: 30px;
         letter-spacing: -0.48px;
-       h4 {
+
+        h4 {
             font-size: 40px;
             line-height: 60px;
             letter-spacing: -1.2px;
-        } 
+        }
+
         .stats {
             font-size: 18px;
             line-height: 30px;
         }
+
         .count {
             font-size: 100px;
             line-height: 90px;
             letter-spacing: -3px;
             width: fit-content;
         }
+
         .detail {
             padding-left: 0;
         }
@@ -547,7 +589,7 @@ onMounted(() => {
 
     @mixin card() {
         border-radius: 20px;
-        /*height: 400px;*/
+        height: 100%;
         text-align: center;
         font-size: 1rem;
         line-height: 24px;
@@ -580,7 +622,9 @@ onMounted(() => {
         }
     }
 
-    .card-green { height: 400px;}
+    .card-green {
+        height: 400px;
+    }
 
     .card-dark {
         .subgrid {}
@@ -594,8 +638,11 @@ onMounted(() => {
             letter-spacing: -0.26px;
         }
     }
+
     .states-list {
         figure {
+            min-width: 150px;
+
             img {
                 width: 65px;
                 height: 65px;
@@ -604,7 +651,8 @@ onMounted(() => {
             }
         }
     }
-    @media screen and (width >= 64rem) {
+
+    @media screen and (width >=64rem) {
         .title {
             font-size: 60px;
             line-height: 80px;
@@ -615,7 +663,10 @@ onMounted(() => {
                 letter-spacing: -0.72px;
             }
         }
-        .card { height: 400px; }
+
+        .card {
+            height: 400px;
+        }
     }
 }
 
@@ -677,8 +728,10 @@ onMounted(() => {
             opacity: 0;
         }
     }
-    @media screen and (width >= 64rem) {
+
+    @media screen and (width >=64rem) {
         min-height: 1100px;
+
         .title {
             font-size: 80px;
             line-height: 90px;
@@ -686,6 +739,7 @@ onMounted(() => {
             position: sticky;
             top: 0;
         }
+
         .logo-bg {
             position: absolute;
             bottom: 0;
@@ -696,6 +750,7 @@ onMounted(() => {
         }
     }
 }
+
 .client-section {
     /*figure { flex-basis: 28%;}*/
 }

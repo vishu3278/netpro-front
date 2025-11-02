@@ -12,12 +12,12 @@ import BlogDetail from './pages/BlogDetail.vue'
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/about', component: About },
-  { path: '/contact', component: Contact },
-  { path: '/sector', component: Sector },
-  { path: '/sector/:id', component: SectorDetail },
-  { path: '/service', component: Service },
-  { path: '/service/:id', component: ServiceDetail },
+  { path: '/about', name: "about", component: About },
+  { path: '/contact', name: "contact", component: Contact },
+  { path: '/sector', name: "sector", component: () => import('@/pages/Sector.vue'), },
+  { path: '/sector/:id', name: "sector-detail", component: () => import('@/pages/SectorDetail.vue') },
+  { path: '/service', name: "service", component: () => import('@/pages/Services.vue'), },
+  { path: '/service/:id', name: "service-detail", component: () => import('@/pages/ServiceDetail.vue'), },
   { path: '/blog', component: Blog },
   { path: '/blogdetail', component: BlogDetail },
 ]

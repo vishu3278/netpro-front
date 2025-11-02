@@ -4,15 +4,15 @@
             <div class="flex flex-col lg:flex-row lg:gap-8 lg:justify-between ">
                 <div class="col " :class="{'order-last': flip}">
                     <div class="content">
-                        <motion.div class="title mb-2" :initial="{opacity: 0, y: 80 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
+                        <motion.div class="title mb-2" :initial="{opacity: 0, y: 100 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
                             {{title}}
                         </motion.div>
                         <ul class="tech-list my-12">
-                            <MotionConfig :transition="{ duration: 1, delay: 0.5 }">
-                                <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: '10%'}" :whileInView="{opacity: 1, y: 0}" class="flex justify-between">{{li.text}} </motion.li>
+                            <MotionConfig :transition="{ duration: 1, delay: 0.75 }">
+                                <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0}" class="flex justify-between">{{li}} </motion.li>
                             </MotionConfig>
                         </ul>
-                        <motion.div :initial="{opacity: 0, y: '10%'}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 1}}">
+                        <motion.div :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 1}}">
                             <router-link :to="link.path"  class="tech-link inline-flex gap-4">{{link.text}} <img src="/icons/arrow-right-blue.svg" alt=""></router-link>
                         </motion.div>
                     </div>
@@ -37,7 +37,7 @@ const props = defineProps({
     list: {
         type: Array,
         default: () => {
-            return [{ text: "item1" }]
+            return ["item1" ]
         }
     },
     link: {
