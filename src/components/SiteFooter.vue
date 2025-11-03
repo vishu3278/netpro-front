@@ -9,8 +9,8 @@ onMounted(() => {
 </script>
 <template>
     <footer class="py-12 lg:pt-24 lg:pb-20">
-        <div class="container px-4 md:px-0 mx-auto">
-            <div id="footerSection1" class="grid grid-cols-2 footer-section1">
+        <div class="container px-4 mx-auto">
+            <div id="footerSection1" class="grid md:grid-cols-2 footer-section1">
                 <div class="pb-6 md:pb-1">
                     <div class="title">
                         <motion.div :initial="{opacity:0, y:100}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 1}" id="footerh1" class="h1 mb-2 md:mb-8" >Technology that drives meaningful change</motion.div>
@@ -79,16 +79,16 @@ onMounted(() => {
                     <!-- <figure class="max-w-[30%]">
                         <img src="/logo-mono.svg" class="w-full" alt="">
                     </figure> -->
-                    <figure id="logoText" class="max-w-[70%]">
+                    <figure id="logoText" class="lg:max-w-[70%] md:max-w-[80%]">
                         <img src="/footer-logo.svg" class="w-full" alt="">
                     </figure>
                     <!-- <div id="logoText" class="logo-text min-w-fit">
                         NetProphets<br>Cyberworks
                     </div> -->
                 </div>
-                <div class="md:flex gap-16 items-end">
+                <div class="md:flex md:gap-8 lg:gap-16 items-end">
                     <div class="icons py-4 md:py-2">
-                        <div class="flex items-center gap-4">
+                        <div class="flex md:flex-col lg:flex-row items-center gap-4">
                             <div class="max-w-[72px]">
                                 <img src="/icons/cmmi5.svg" class="w-full" alt="">
                             </div>
@@ -97,9 +97,9 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                    <div class="copy grow">
-                        <p class="mb-4 md:mb-1">© 2025 Zypsy, Inc. All rights reserved</p>
-                        <ul class="flex gap-2 md:justify-between flex-wrap md:flex-nowrap">
+                    <div class="copy pb-2 grow">
+                        <p class="mb-4  leading-normal">© 2025 NetProphets Cyberworks Private Limited, Inc. All rights reserved</p>
+                        <ul class="flex gap-2  lg:justify-between flex-wrap lg:flex-nowrap">
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms of Service</a></li>
                             <li><a href="#">IT Policy</a></li>
@@ -119,7 +119,7 @@ footer {
     .footer-section2 {
         margin-top: 300px;
         font-size: 14px;
-        line-height: 42px;
+        /*line-height: 42px;*/
         color: $grey3;
         font-weight: normal;
 

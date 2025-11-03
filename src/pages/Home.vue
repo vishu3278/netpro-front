@@ -15,9 +15,10 @@
         </div>
     </section> -->
     <section id="video2" class="video2 h-dvh relative overflow-clip">
-        <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
+        <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
-        </video>
+        </video> -->
+        <MediaLoader src="/home/silhouette-engineer-and-inspector.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -38,9 +39,11 @@
         </div>
     </section>
     <section id="video3" class="video2 h-dvh relative overflow-clip">
-        <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
+        <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
-        </video>
+        </video> -->
+        <MediaLoader src="/home/silhouette-of-a-sports-girl.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -59,7 +62,7 @@
         </div>
     </section>
     <section id="aboutsection" class="about py-20">
-        <div class="container mx-auto px-4 md:px-0">
+        <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="col">
                     <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
@@ -112,7 +115,7 @@
                     <div class="card-white states">
                         <p class="px-16">Delivering Excellence State-by-State Across India</p>
                         <div class="pt-12 pb-5 pr-16 states-list">
-                            <Carousel :items-to-show="4.8" dir="rtl" :wrap-around="true" :snapAlign="end" :autoplay="2500" :transition="300">
+                            <Carousel v-bind:="stateCarousel1">
                                 <Slide v-for="(state, index) in states1" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
                                         <img :src="baseUrl+state.img" :alt="state.name">
@@ -122,7 +125,7 @@
                             </Carousel>
                         </div>
                         <div class="py-5 pl-16 states-list">
-                            <Carousel :items-to-show="4.8" dir="ltr" :wrap-around="true" :snapAlign="start" :autoplay="2500" :transition="300">
+                            <Carousel v-bind="stateCarousel2">
                                 <Slide v-for="(state, index) in states2" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
                                         <img :src="baseUrl+state.img" :alt="state.name">
@@ -136,14 +139,31 @@
                 <div class="lg:col-start-1 lg:col-end-4">
                     <div class="card-grey">
                         <p>Trusted Partnership that Makes an Impact</p>
-                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 px-6 lg:px-20 py-8 lg:py-16 place-items-center">
-                            <figure><img src="/icons/gem.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                            <figure><img src="/icons/cel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                            <figure><img src="/icons/updesco.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                            <figure><img src="/icons/ddu-gky.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                            <figure><img src="/icons/becil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                            <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
-                        </div>
+                        <Carousel :autoplay="3500" :wrapAround="true" slideEffect="fade" :transition="800">
+                            <Slide>
+                                <div class="grid grid-cols-2 w-full lg:grid-cols-3 gap-6 lg:gap-10 px-2 lg:px-10 py-8 lg:py-16 place-items-center">
+                                    <figure><img src="/icons/gem.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/cel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/updesco.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/ddu-gky.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/becil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                </div>
+                            </Slide>
+                            <Slide>
+                                <div class="grid grid-cols-2 w-full lg:grid-cols-3 gap-6 lg:gap-10 px-2 lg:px-10 py-8 lg:py-16 place-items-center">
+                                    <figure><img src="/icons/chips.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/hpelectric.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/mpsedc.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/nicsi.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/tcil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <!-- <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure> -->
+                                </div>
+                            </Slide>
+                            <!-- <template #addons>
+                                <Navigation />
+                            </template> -->
+                        </Carousel>
                     </div>
                 </div>
                 <div class="lg:col-start-4 lg:col-end-6">
@@ -156,18 +176,6 @@
                                 </figure>
                                 <label>{{item.title}}</label>
                             </div>
-                            <!-- <figure>
-                                <img src="/icons/cmmi5-color.svg" alt="">
-                                <figcaption>CMMI Maturity Level-5</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="/icons/iso-color.svg" alt="">
-                                <figcaption>ISO 9001:2015</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="/icons/pci-dss-color.svg" alt="">
-                                <figcaption>CMMI Maturity Level-5</figcaption>
-                            </figure> -->
                         </div>
                     </div>
                 </div>
@@ -175,7 +183,7 @@
         </div>
     </section>
     <section id="techsection" class="technology py-25 relative">
-        <div class="container mx-auto px-4 md:px-0">
+        <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>
                     <div class="title">Technology for change</div>
@@ -213,8 +221,8 @@
     <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">
-        <div class="container mx-auto py-8 px-4 lg:overflow-auto">
-            <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between overflow-clip">
+        <div class="container mx-auto py-8 px-4 ">
+            <!-- <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between overflow-clip">
                 <figure><img src="/icons/fabindia.svg" alt=""></figure>
                 <figure><img src="/icons/forevermark.svg" alt=""></figure>
                 <figure><img src="/icons/symantec.svg" alt=""></figure>
@@ -223,13 +231,23 @@
                 <figure><img src="/icons/sai.svg" alt=""></figure>
                 <figure><img src="/icons/nicsi.svg" alt=""></figure>
                 <figure><img src="/icons/satyamev.svg" alt=""></figure>
-            </div>
+            </div> -->
+            <Carousel v-bind="logosConfig">
+                <Slide v-for="n in 43" :key="n">
+                    <img :src="baseUrl + 'logos/'+n+'.png'" alt="image" />
+                </Slide>
+                <!-- <template #addons>
+                    <Pagination />
+                    <Navigation />
+                </template> -->
+            </Carousel>
         </div>
     </section>
 </template>
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
 import Testimonial from '@/components/Testimonial.vue'
+import MediaLoader from '@/components/MediaLoader.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
@@ -292,6 +310,66 @@ const toggle = (index) => {
         openIndexes.value.push(index)
         gsap.fromTo("#acc-" + index, { maxHeight: 0, opacity: 0, margin: 0 }, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
         gsap.to("#accicon-" + index, { rotation: 90, duration: 1 })
+    }
+}
+
+const breakpoints = {
+    // 300px and up
+    300: {
+        itemsToShow: 2,
+    },
+    // 400px and up
+    600: {
+        itemsToShow: 3,
+    },
+    // 500px and up
+    1100: {
+        itemsToShow: 4,
+    },
+}
+
+const stateCarousel1 = {
+    itemsToShow: 4.5,
+    dir: "rtl",
+    wrapAround: true,
+    snapAlign: "end",
+    autoplay: 2500,
+    transition: 300,
+    breakpoints: breakpoints
+}
+
+const stateCarousel2 = {
+    itemsToShow: 4.5,
+    dir: "ltr",
+    wrapAround: true,
+    snapAlign: "end",
+    autoplay: 2500,
+    transition: 300,
+    breakpoints: breakpoints
+}
+
+const logosConfig = {
+    // height: 200,
+    itemsToShow: 7,
+    autoplay: 2500,
+    gap: 10,
+    wrapAround: true,
+    breakpoints: {
+        // 300px and up
+        300: {
+            itemsToShow: 2,
+        },
+        // 400px and up
+        600: {
+            itemsToShow: 3,
+        },
+        // 500px and up
+        1100: {
+            itemsToShow: 5,
+        },
+        1400: {
+            itemsToShow: 7
+        }
     }
 }
 
@@ -413,7 +491,7 @@ onMounted(() => {
         stagger: 0.25
     })
 
-    let clientTween = gsap.from("#clientsection img", {
+    /*let clientTween = gsap.from("#clientsection img", {
         y: 200,
         opacity: 0,
         autoAlpha: 0,
@@ -425,7 +503,7 @@ onMounted(() => {
             // end: "+=200",
             toggleActions: "play none none reset",
         }
-    })
+    })*/
 
     onBeforeUnmount(() => {
         // ✅ Proper cleanup
@@ -437,9 +515,9 @@ onMounted(() => {
             techtl.kill()
             techtl = null
         }
-        if (clientTween) {
+        /*if (clientTween) {
             clientTween.kill()
-        }
+        }*/
     })
 })
 </script>
@@ -474,7 +552,8 @@ onMounted(() => {
         letter-spacing: -0.5px;
     }
 
-    h2, h3 {
+    h2,
+    h3 {
         font-size: 48px;
         line-height: 44px;
         font-weight: 100;
@@ -493,7 +572,8 @@ onMounted(() => {
             letter-spacing: -0.72px;
         }
 
-        h2, h3 {
+        h2,
+        h3 {
             font-size: 110px;
             line-height: 100px;
             letter-spacing: -3px;
@@ -751,7 +831,5 @@ onMounted(() => {
     }
 }
 
-.client-section {
-    /*figure { flex-basis: 28%;}*/
-}
+.client-section {}
 </style>
