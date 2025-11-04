@@ -1,11 +1,133 @@
 <template>
-	<h1>Sector page</h1>
+    <section id="hero" class="hero pt-32 lg:pt-48 pb-6 px-4 flex items-center justify-center" >
+        <h1 class="text-center" >Across every sector we touch, we build brands that move industries forward and make a difference in people’s lives.</h1>
+    </section>
+    <section v-for="(sec, index) in sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
+        <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${sec.img})`}" :data-speed="sec.speed"></figure>
+        <div class="title ">{{sec.title}}</div>
+        <div class="count ">0{{index+1}}</div>
+        <router-link :to="sec.link" class="absolute inset-0 isolate z-10"></router-link>
+    </section>
+    <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
 </template>
-
 <script setup>
+// import ParallaxSection from "@/components/ParallaxSection.vue"
 import { ref, onMounted } from 'vue'
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
+gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger)
+
+onMounted(() => {
+    ScrollSmoother.create({
+        smooth: 1.5, // how long (in seconds) it takes to "catch up" to the native scroll position
+        effects: true, // looks for data-speed and data-lag attributes on elements
+        // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+    });
+
+    SplitText.create("#hero h1", {
+        type: "lines",
+        autoSplit: true,
+        smartWrap: true,
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.lines, {
+                duration: 0.8,
+                y: 100,
+                // opacity: 0,
+                autoAlpha: 0,
+                stagger: 0.15,
+                /*scrollTrigger: {
+                    trigger: "#hero",
+                    start: "top center",
+                    toggleActions: "play none none reset",
+                },*/
+                onComplete: () => self.revert()
+
+            });
+        },
+    })
+
+})
+
+const sectors = [
+    { id: "educat01", img: "sectors/education.jpg", title: "Education", link: "/sector/education", speed: 0.85 },
+    { id: "health01", img: "sectors/healthcare.jpg", title: "Healthcare", link: "/sector/healthcare", speed: 0.75 },
+    { id: "sports01", img: "sectors/sports.jpg", title: "Sports", link: "/sector/sports", speed: 0.65 },
+    { id: "transp01", img: "sectors/transport.jpg", title: "Transportation", link: "/sector/transport", speed: 0.75 },
+    { id: "telecom01", img: "sectors/telecom.jpg", title: "Telecom", link: "/sector/telecom", speed: 0.9 },
+    { id: "culture01", img: "sectors/culture.jpg", title: "Culture", link: "/sector/culture", speed: 0.75 },
+    { id: "pblcsrv01", img: "sectors/public-service.jpg", title: "Public Service", link: "/sector/publicservices", speed: 0.85 },
+    { id: "skiling01", img: "sectors/skilling.jpg", title: "Skilling", link: "/sector/skilling", speed: 0.55 },
+    // { id: "ecomm01", img: "sectors/ecommerce.jpg", title: "E-Commerce", link: "/sector/ecommerce", speed: 0.65 },
+]
 </script>
+<style lang="scss" scoped>
+.hero {
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 44px;
+    letter-spacing: -1.02px;
 
-<style lang="css" scoped>
+    h1 {
+        max-width: 1230px;
+    }
+}
+
+.sector {
+    height: 60vh;
+    color: #fff;
+
+    .layer-img {}
+
+    .title, .count {
+        position: absolute;
+        bottom: 1.5rem;
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: -0.48px;
+    }
+    .title {
+        left: 2.5rem;
+    }
+
+    .count {
+        right: 2.5rem;
+        text-align: right;        
+    }
+}
+
+@media screen and (width >=64rem) {
+    .hero {
+        font-size: 60px;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+    }
+
+    .sector {
+        height: 100vh;
+
+        .title {
+            font-size: 60px;
+            font-weight: 400;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-underline-position: from-font;
+            position: relative;
+        }
+        .count {
+            right: 9.375rem;
+            bottom: 4rem;
+
+        }
+    }
+}
 </style>

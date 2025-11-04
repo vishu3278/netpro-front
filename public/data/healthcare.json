@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_health.jpg",
+    "bannerTitle": "Transforming Healthcare Delivery with Digital Solutions",
+    "bannerText": "We create platforms that bring healthcare access, patient management, and public health monitoring into a unified digital ecosystem—empowering hospitals, doctors, and citizens alike.",
+    "statsImage": "sectors/topimageicon_health.png",
+    "statsTitle": "Technology for Equitable Healthcare",
+    "statsText": "India’s healthcare landscape is vast and diverse and yet access remains uneven, particularly across rural and underserved regions. Patient records are often fragmented across multiple systems, making continuity of care a challenge. Public health monitoring still relies heavily on manual reporting, delaying insights that could save lives.   These gaps don’t stem from intent, but from infrastructure. To truly strengthen healthcare delivery, India needs scalable digital systems that connect citizens, institutions, and data  ensuring that every patient, regardless of where they live, can access timely, reliable, and quality care.",
+    "stats": [
+        {"id": "01", "text": "5 crore+ citizens reached through public health platforms"},
+        {"id": "02", "text": "1,000+ hospitals digitized with patient management systems"},
+        {"id": "03", "text": "20% reduction in service delays through streamlined digital workflows"}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_healthcare.jpg",
+            "title": "National Health Registry",
+            "description": "Centralized citizen health records"
+        },
+        {
+            "img": "sectors/pro2_healthcare.jpg",
+            "title": "Hospital Management System",
+            "description": "Improves patient care and operational efficiency."
+        },
+        {
+            "img": "sectors/pro3_healthcare.jpg",
+            "title": "Telemedicine Integration",
+            "description": "Enables remote consultations for rural populations."
+        },
+        {
+            "img": "sectors/pro4_healthcare.jpg",
+            "title": "Public Health Monitoring Platform",
+            "description": "Tracks vaccination, outbreaks, and health campaigns."
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_health.svg",
+            "title": "Patient Data & Hospital Systems",
+            "description": "Building integrated platforms for secure, efficient, and unified patient and hospital data management."
+        },
+        {
+            "icon": "sectors/v2_health.svg",
+            "title": "Telemedicine & Remote Care Platforms",
+            "description": "Enabling accessible, real-time healthcare through secure virtual consultation and monitoring systems."
+        },
+        {
+            "icon": "sectors/v3_health.svg",
+            "title": "Public Health Monitoring Dashboards",
+            "description": "Providing data-driven insights for policymakers through real-time health tracking and reporting dashboards."
+        },
+        {
+            "icon": "sectors/v4_health.svg",
+            "title": "AI-Driven Predictive Analytics for Healthcare",
+            "description": "Leveraging AI to forecast health trends, optimize resources, and improve clinical decision-making."
+        }
+    ],
+    "testimonialImage": "sectors/test_health.jpg"
+}

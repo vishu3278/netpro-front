@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_culture.jpg",
+    "bannerTitle": "Preserving Culture through Digital Innovation",
+    "bannerText": "From immersive digital experiences to large-scale cultural documentation, we help institutions preserve, promote, and make heritage accessible to all.",
+    "statsImage": "sectors/topimageicon_culture.png",
+    "statsTitle": "Safeguarding Heritage Through Technology",
+    "statsText": "India’s cultural heritage is one of the richest in the world, yet much of it had long remained under-documented and inaccessible. We worked to change that by developing scalable digital systems that preserve, catalogue, and showcase the country’s diverse cultural assets. Through technology, we made centuries of art, manuscripts, and traditions accessible beyond physical boundaries, connecting museums, institutions, and citizens to a shared national legacy. Our work not only safeguarded these invaluable records but also ensured that India’s cultural identity continues to inspire future generations.",
+    "stats": [
+        {"id":"01", "text": "200+ heritage sites digitally mapped"},
+        {"id":"02", "text": "50 lakh+ visitors engaged through immersive experiences"},
+        {"id":"03", "text": "3,000+ years of history archived with modern tools"}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_culture.jpg",
+            "title": "MahaKumbh 2024 Digital Experience",
+            "description": "Blending tradition with cutting-edge technology."
+        },
+        {
+            "img": "sectors/pro2_culture.jpg",
+            "title": "Digital Museum Platforms",
+            "description": "Making heritage accessible online and in immersive formats"
+        },
+        {
+            "img": "sectors/pro3_culture.jpg",
+            "title": "AR/VR Heritage Tours",
+            "description": "Virtual access to cultural landmarks."
+        },
+        {
+            "img": "sectors/pro4_culture.jpg",
+            "title": "Heritage Data Archiving",
+            "description": "Consolidating cultural records into unified digital repositories."
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_cul.svg",
+            "title": "Immersive AR/VR Experiences",
+            "description": "Creating virtual environments that bring culture, history, and learning to life through interactive storytelling."
+        },
+        {
+            "icon": "sectors/v2_cul.svg",
+            "title": "Digital Archiving & Documentation",
+            "description": "Digitally preserving heritage, art, and knowledge through structured repositories and secure, accessible databases."
+        },
+        {
+            "icon": "sectors/v3_cul.svg",
+            "title": "Event & Festival Technology Solutions",
+            "description": "Delivering scalable platforms for seamless event management, audience engagement, and real-time analytics."
+        },
+        {
+            "icon": "sectors/v4_cul.svg",
+            "title": "Global Cultural Outreach Platforms",
+            "description": "Building digital ecosystems that connect India’s cultural heritage with global audiences and institutions."
+        }
+    ],
+    "testimonialImage": "sectors/test_cul.jpg"
+}

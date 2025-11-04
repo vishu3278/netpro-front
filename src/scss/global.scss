@@ -1,3 +1,24 @@
+@font-face {
+   font-family: 'PPMori';
+   src: url('/fonts/PPMori-Regular.otf') format('otf'),
+        url('/fonts/PPMori-Regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'PPMori';
+   src: url('/fonts/PPMori-Extralight.otf') format('otf'),
+        url('/fonts/PPMori-Extralight.woff') format('woff');
+   font-weight: 100;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'PPMori';
+   src: url('/fonts/PPMori-SemiBold.otf') format('otf'),
+        url('/fonts/PPMori-SemiBold.woff') format('woff');
+   font-weight: 600;
+   font-style: normal;
+}
 
 .button {
     display: inline-block;
@@ -12,16 +33,97 @@
     letter-spacing: -0.5px;
     transition: color;
 
-      &:hover {
+    &:hover {
         /*mix-blend-mode: lighten;*/
-        
-      }
 
-    &-fill { background-color: #fff; color: $rich-black; }
-    &-outline { background-color: transparent; color: #fff; }
-    &-dark { background-color: $rich-black; border-color: $rich-black; color: #fff;
-      &:hover {
-        background-color: color.adjust($rich-black, $lightness: 10%);
-      }
+    }
+
+    &-fill {
+        background-color: #fff;
+        color: $rich-black;
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    &-dark {
+        background-color: $rich-black;
+        border-color: $rich-black;
+        color: #fff;
+
+        &:hover {
+            background-color: color.adjust($rich-black, $lightness: 10%);
+        }
+    }
+}
+
+form,
+.form {}
+
+.field-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+
+    input,
+    textarea {
+        width: 100%;
+        padding-top: 2rem;
+        border-bottom: 1px solid $border1;
+        font-size: 24px;
+
+        &:focus,
+        &:not([value=""]) {
+            border-color: $olive;
+
+            ~label {
+                color: $grey3;
+                top: 0;
+            }
+        }
+
+    }
+
+    label {
+        color: $grey-text;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 38px;
+        letter-spacing: -0.72px;
+        position: absolute;
+        top: 25%;
+        left: 0;
+        pointer-events: none;
+        transition: all 300ms ease-out;
+    }
+}
+
+.checkbox,
+.radio {
+  
+  input {
+    width: 28px; height: 28px; border-color: $grey3;
+  }
+    label {
+        color: $grey-text;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -0.48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+.loading {
+    color: gray;
+    .spinner {
+
+    }
+    p {
+        color: gray;
     }
 }

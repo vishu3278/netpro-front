@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_sports.jpg",
+    "bannerTitle": "Driving Sports Excellence Through Technology",
+    "bannerText": "We build systems that empower India’s sporting ecosystem, from athletes and coaches to administrators and scientists. By digitising infrastructure, tracking performance, and integrating sports science data, we enable transparency, efficiency, and measurable progress across every level of India’s sports landscape.",
+    "statsImage": "sectors/topimageicon_sports.png",
+    "statsTitle": "India’s Sports Development Challenges at Scale",
+    "statsText": "India’s sports ecosystem has grown rapidly, yet it remains fragmented. Athlete records are scattered, academy operations lack digital coordination, and sports science data is often lost between systems. Without a unified digital foundation, tracking performance, identifying talent, and driving outcomes at scale become complex and inefficient.",
+    "stats": [
+        {"id":"01", "text": "2.46 lakh+ athletes tracked through a unified digital platform."},
+        {"id":"02", "text": "39,000+ coaches supported with performance dashboards and analytics."},
+        {"id":"03", "text": "5,000+ sports centers digitally connected through a central MIS system."}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_sports.jpg",
+            "title": "Play India – Sports Authority of India",
+            "description": "A national platform built to unify India’s sports ecosystem integrating athletes, coaches, training centers, and administrators within a single digital framework"
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_spo.svg",
+            "title": " Public Infrastructure Platforms",
+            "description": "Building national-scale systems that unify athlete data, academy operations, and public sports infrastructure."
+        },
+        {
+            "icon": "sectors/v2_spo.svg",
+            "title": "Performance Tracking Systems",
+            "description": "Developing integrated platforms for athlete monitoring, data analytics, and performance optimization."
+        },
+        {
+            "icon": "sectors/v3_spo.svg",
+            "title": "Sports Science & Analytics Tools",
+            "description": "Enabling data-backed insights through integration with sports science parameters and performance metrics."
+        },
+        {
+            "icon": "sectors/v4_spo.svg",
+            "title": " Strategic Consulting & Policy Enablement",
+            "description": "Partnering with government and sports institutions to digitize policy implementation and strengthen data-led decision-making."
+        }
+    ],
+    "testimonialImage": "sectors/test_spo.jpg"
+}

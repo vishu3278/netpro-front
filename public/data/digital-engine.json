@@ -1,0 +1,54 @@
+{
+    "bannerImage": "services/digitalengine.jpg",
+    "bannerTitle": "Digital Engine",
+    "pageName": "Digital Engine",
+    "pageTitle": "Driving digital growth through data, design, and innovation.",
+    "pageText": "Digital Engine drives visibility, performance, and engagement through data and creativity. We craft platforms, campaigns, and immersive experiences that enhance customer journeys, strengthen brand presence, and deliver measurable digital outcomes.",
+    
+    "services": [
+        {
+            "icon": "services/services-vector1.svg",
+            "title": "Commerce Platform Development",
+            "description": "Building scalable e-commerce ecosystems that enhance transactions and user experience."
+        },
+        {
+            "icon": "services/services-vector2.svg",
+            "title": "Performance Marketing",
+            "description": "Driving measurable growth through data-backed digital campaigns and conversion strategies."
+        },
+        {
+            "icon": "services/services-vector3.svg",
+            "title": "Media Planning and Buying",
+            "description": "Optimising media spend to maximise audience reach and impact."
+        },
+        {
+            "icon": "services/services-vector4.svg",
+            "title": "Organic Marketing",
+            "description": "Enhancing brand authority through authentic, content-driven engagement."
+        },
+        {
+            "icon": "services/services-vector1.svg",
+            "title": "Immersive and projection mapping experiences",
+            "description": "Creating interactive environments that connect audiences through visual storytelling."
+        }
+,
+        {
+            "icon": "services/services-vector1.svg",
+            "title": " Digital Infrastructure & Managed Services",
+            "description": "Providing end-to-end maintenance and performance management for digital systems."
+        }
+        
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_culture.jpg",
+            "title": "MahaKumbh 2024 Digital Experience",
+            "description": "Blending tradition with cutting-edge technology"
+        },
+        {
+            "img": "sectors/pro2_culture.jpg",
+            "title": "Digital Museum Platforms",
+            "description": "Making heritage accessible online and in immersive formats"
+        }
+    ]
+}

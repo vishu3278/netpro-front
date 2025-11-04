@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_skill.jpg",
+    "bannerTitle": "Powering Digital-First Telco Experiences",
+    "bannerText": "We build scalable, secure, and intuitive platforms that enable telecom providers to serve millions of customers seamlessly. From billing and recharge workflows to multilingual self-service experiences, our solutions help telcos operate efficiently, enhance customer satisfaction, and drive digital adoption across emerging markets.",
+    "statsImage": "sectors/topimageicon_telcom.png",
+    "statsTitle": "Challenges in Modern Telecom Experience",
+    "statsText": "Telecom operators often face complex challenges — fragmented systems, inconsistent user interfaces, and limited transparency in billing and usage. Without a unified digital experience, customers struggle with accessibility and engagement, while providers encounter higher support costs and reduced retention. The need for agile, customer-centric platforms has never been greater.",
+    "stats": [
+        {"id":"01", "text": "40% increase in user engagement after implementation."},
+        {"id":"02", "text": "50% reduction in customer support queries through self-service systems."},
+        {"id":"03", "text": "35% faster load times and improved app retention across markets."}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_telcom.jpg",
+            "title": "Digicel Pacific – Telecom Experience Platform",
+            "description": "Empowering millions through connected, intuitive telecom platforms."
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_telcom",
+            "title": "Customer Experience Platforms",
+            "description": "Designing unified digital ecosystems for account management, billing, and service access."
+        },
+        {
+            "icon": "sectors/v2_telcom",
+            "title": "Mobile and Web Applications",
+            "description": "Developing responsive, mobile-first solutions that ensure scalability, speed, and usability across devices."
+        },
+        {
+            "icon": "sectors/v3_telcom",
+            "title": "API and System Integration",
+            "description": "Seamlessly connecting backend systems including billing, CRM, and data management for operational efficiency."
+        },
+        {
+            "icon": "sectors/v4_telcom",
+            "title": "UX Strategy and Digital Transformation",
+            "description": "Delivering user-centric design, journey mapping, and scalable digital foundations for global telecom providers."
+        }
+    ],
+    "testimonialImage": "sectors/test_telcoms.jpg"
+}

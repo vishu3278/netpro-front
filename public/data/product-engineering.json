@@ -1,0 +1,47 @@
+{
+    "bannerImage": "services/product_works.jpg",
+    "bannerTitle": "Product Engineering (Product Works)",
+    "pageName": "Product Engineering (Product Works)",
+    "pageTitle": "Engineering purpose-built products for real-world performance.",
+    "pageText": "We engineer intelligent, purpose-driven products that solve real challenges. From ERP systems to education and healthcare platforms, our solutions combine domain expertise, innovation, and robust architecture to deliver measurable business impact.",
+    
+    "services": [
+        {
+            "icon": "services/services-vector1.svg",
+            "title": "ERP- Enterprise Resource Planning (ERP)",
+            "description": "Integrating business operations into a unified, data-driven management system."
+        },
+        {
+            "icon": "services/services-vector2.svg",
+            "title": "Ed-Tech Solutions (LMIS)",
+            "description": "Designing scalable learning systems that enable digital education at scale."
+        },
+        {
+            "icon": "services/services-vector3.svg",
+            "title": "School Management System (SMS)",
+            "description": "Simplifying academic, administrative, and operational management for schools."
+        },
+        {
+            "icon": "services/services-vector4.svg",
+            "title": "eOffice & Document Management System",
+            "description": "Digitising documentation and workflow for paperless, efficient office operations."
+        },
+        {
+            "icon": "services/services-vector1.svg",
+            "title": "Epilepsy Management Platform",
+            "description": "Developing healthcare solutions that empower patient tracking and clinical insights."
+        }
+    ],
+    "projects": [
+        {
+            "img": "sectors/prowork1.jpg",
+            "title": "InstructoHub",
+            "description": "Your hub for practical learning, expert guidance, and career-ready skills."
+        },
+        {
+            "img": "sectors/prowork2.jpg",
+            "title": "Magic Marks",
+            "description": "Making technical learning easier with rich animations and visual explanations."
+        }
+    ]
+}

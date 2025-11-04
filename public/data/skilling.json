@@ -1,0 +1,61 @@
+{
+    "bannerImage": "sectors/topbanner_skill.jpg",
+    "bannerTitle": "Building a Skilled Workforce for Tomorrow",
+    "bannerText": "We develop scalable platforms that enable training, certification, and continuous learning—helping India’s workforce prepare for evolving industry demands.",
+    "statsImage": "sectors/topimageicon_skill.png",
+    "statsTitle": "Skilling at the Scale of a Nation",
+    "statsText": "India’s workforce is its greatest strength, but to stay globally competitive, the country must skill and upskill millions every year. Despite numerous initiatives, most training programs still operate in isolation, with limited access, outdated infrastructure, and little visibility into outcomes. Many individuals struggle to find relevant opportunities, while institutions lack the data to measure real impact. The result is a fragmented skilling ecosystem that falls short of its potential. A connected, technology-driven approach is essential to bring scale, transparency, and accountability to India’s skilling mission, empowering citizens with the tools they need to thrive in a changing economy.",
+    "stats": [
+        {"id":"01", "text": "1 crore+ learners trained through digital skilling programs"},
+        {"id":"02", "text": "500+ institutions onboarded onto unified platforms"},
+        {"id":"03", "text": "70% learner certification success rate across programs"}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_skill.jpg",
+            "title": "DigiCampus Platform ",
+            "description": "Comprehensive LMS for schools and higher education."
+        },
+
+        {
+            "img": "sectors/pro4_skill.jpg",
+            "title": "AI-Based Learning Analytics ",
+            "description": "Personalized insights for learners and trainers."
+        },
+        
+         {
+            "img": "sectors/pro3_skill.jpg",
+            "title": "Employer-Skill Connect Platforms",
+            "description": "Linking industry demand with skilled workers."
+        },
+
+        {
+            "img": "sectors/pro2_skill.jpg",
+            "title": "Skill Development Mission Portals",
+            "description": "National platforms enabling access to training resources"
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_skill.svg",
+            "title": "National & State Skilling Portals",
+            "description": "Designing unified digital ecosystems for account management, billing, and service access."
+        },
+        {
+            "icon": "sectors/v2_skill.svg",
+            "title": "Learning Management Systems(LMS)",
+            "description": "Developing responsive, mobile-first solutions that ensure scalability, speed, and usability across devices."
+        },
+        {
+            "icon": "sectors/v3_skill.svg",
+            "title": "Industry–Academia Connect Platforms",
+            "description": "Seamlessly connecting backend systems including billing, CRM, and data management for operational efficiency."
+        },
+        {
+            "icon": "sectors/v4_skill.svg",
+            "title": "AI & Analytics for Skill Development",
+            "description": "Delivering user-centric design, journey mapping, and scalable digital foundations for global telecom providers."
+        }
+    ],
+    "testimonialImage": "sectors/test_skill.jpg"
+}

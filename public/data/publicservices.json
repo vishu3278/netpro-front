@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_ps.jpg",
+    "bannerTitle": "Transforming Citizen Services Through Technology",
+    "bannerText": "We design and deploy systems that make governance efficient, transparent, and people-centric. Our work bridges the gap between citizens and institutions through platforms that simplify processes, ensure accountability, and deliver services seamlessly. From driving license automation to grant management and skill empowerment, we enable technology to serve the public good at scale.",
+    "statsImage": "sectors/topimageicon_ps.png",
+    "statsTitle": "The Challenge of Citizen-Centric Governance",
+    "statsText": "Public service delivery in India has traditionally relied on manual, paper-heavy processes that are difficult to scale and track. Fragmented systems lead to long queues, limited transparency, and delays in implementation. To meet the expectations of a growing digital nation, government services need scalable, data-driven technology that puts citizens at the center of every interaction.",
+    "stats": [
+        {"id":"01", "text": "100+ government institutions empowered with scalable citizen service platforms."},
+        {"id":"02", "text": "Millions of transactions digitized and streamlined across departments."},
+        {"id":"03", "text": "Significant reduction in manual workflows, delays, and administrative overhead."}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_ps.jpg",
+            "title": "eVahan and eSaarthi",
+            "description": "A nationwide transport initiative digitizing license and vehicle registration services across 2,200+ RTOs. The system automated end-to-end workflows, reduced queues, and enhanced citizen convenience through 24x7 access and paperless operations."
+        },
+        {
+            "img": "sectors/pro2_ps.jpg",
+            "title": "Jan Shikshan Sansthan (JSS) – Grant and Skill Training Platform",
+            "description": "A central platform built for the Ministry of Skill Development and Entrepreneurship to digitize grant allocation and training operations. The system enables transparent fund flow, digital attendance tracking, and geo-tagged evidence collection for community-level programs."
+        },
+        {
+            "img": "sectors/pro3_ps.jpg",
+            "title": "Sports Authority of India – Play India Platform",
+            "description": "An integrated platform connecting athletes, coaches, and sports centers nationwide. It enables performance tracking, data analytics, and sports science integration — improving transparency and accountability in athlete development programs."
+        },
+        {
+            "img": "",
+            "title": "",
+            "description": ""
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_ps.svg",
+            "title": "Citizen Service Platforms",
+            "description": "Developing large-scale systems that simplify public access to essential services and reduce administrative complexity."
+        },
+        {
+            "icon": "sectors/v2_ps.svg",
+            "title": "Workflow Automation Systems",
+            "description": "Digitizing manual processes for faster approvals, transparent monitoring, and better accountability across departments."
+        },
+        {
+            "icon": "sectors/v3_ps.svg",
+            "title": "Infrastructure & Performance Engineering",
+            "description": "Building high-availability systems capable of handling millions of concurrent users with reliability and speed."
+        },
+        {
+            "icon": "sectors/v4_ps.svg",
+            "title": "Strategic Advisory for Governance",
+            "description": "Helping ministries and public institutions define digital transformation roadmaps and implement scalable, citizen-first solutions."
+        }
+    ],
+    "testimonialImage": "sectors/test_ps.jpg"
+}

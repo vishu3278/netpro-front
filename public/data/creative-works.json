@@ -1,0 +1,43 @@
+{
+    "bannerImage": "services/creativeworks.jpg",
+    "bannerTitle": "Creative Works",
+    "pageName": "Creative Works",
+    "pageTitle": "Where strategy, design, and storytelling create impact.",
+    "pageText": "We combine strategy, design, and storytelling to create brands that resonate. From visual identity to digital experiences, we craft narratives that engage audiences, inspire trust, and translate creativity into measurable business impact.",
+    
+    "services": [
+        {
+            "icon": "services/services-vector1.svg",
+            "title": "Branding and creative strategy",
+            "description": "Defining brand purpose, identity, and positioning through strategic storytelling."
+        },
+        {
+            "icon": "services/services-vector2.svg",
+            "title": "UI/UX design",
+            "description": "Designing intuitive, human-centered interfaces for seamless digital experiences."
+        },
+        {
+            "icon": "services/services-vector3.svg",
+            "title": "AR/VR storytelling",
+            "description": "Blending creativity and technology to craft immersive brand narratives."
+        },
+        {
+            "icon": "services/services-vector4.svg",
+            "title": "Video and Visual Production",
+            "description": "Producing impactful visual content that communicates stories with clarity and emotion"
+        }
+        
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_telcom.jpg",
+            "title": "Digicel Pacific – Telecom Experience Platform",
+            "description": "Empowering millions through connected, intuitive telecom platforms."
+        },
+        {
+            "img": "sectors/pro1_culture.jpg",
+            "title": "MahaKumbh 2024 Digital Experience",
+            "description": "Blending tradition with cutting-edge technology"
+        }
+    ]
+}

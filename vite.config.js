@@ -6,6 +6,8 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // process.env = {...process.env, ...loadEnv(mode, process.cwd())},
+  base: process.env.VITE_APP_BASE_URL || "/",
   plugins: [vue(), tailwindcss()],
   css: {
     preprocessorOptions: {
@@ -13,7 +15,7 @@ export default defineConfig({
         additionalData: `
           @use "@/scss/variables" as *;
           @use "sass:color";
-          @import "@/scss/mixins";
+          @use "@/scss/mixins" as *;
         `
       }
     }

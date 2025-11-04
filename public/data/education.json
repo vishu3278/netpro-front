@@ -1,0 +1,58 @@
+{
+    "bannerImage": "sectors/topbanner_education.jpg",
+    "bannerTitle": "Empowering Education through Scalable Technology",
+    "bannerText": "We design and implement digital-first solutions that enable millions of students and educators to access quality learning resources, streamline administration, and build measurable impact at scale.",
+    "statsImage": "sectors/topimageicon_education.png",
+    "statsTitle": "India’s Education Challenges at Scale",
+    "statsText": "Despite progress, India’s school system still struggles with learning outcomes, access to digital infrastructure, and fragmented administrative processes. Without robust technology, reforms remain difficult to execute at scale.",
+    "stats": [
+        {"id": "01", "text": "24 crore+ students impacted through national programs."},
+        {"id": "02", "text": "1.6 lakh schools digitized with learning and management solutions."},
+        {"id": "03", "text": "80 lakh+ teachers supported with training, curriculum, and data-driven insights."}
+    ],
+    "projects": [
+        {
+            "img": "sectors/pro1_edu.jpg",
+            "title": "National Curriculum Framework(NCF)",
+            "description": "A unified digital system enabling schools and states to adopt the new curriculum seamlessly, ensuring consistency in pedagogy and assessment."
+        },
+        {
+            "img": "sectors/pro2_edu.jpg",
+            "title": "Student Information Management System (SIMS)",
+            "description": "A robust platform for tracking student records, attendance, performance, and transfers across states."
+        },
+        {
+            "img": "sectors/pro3_edu.jpg",
+            "title": "National Achievement Survey (NAS)",
+            "description": "Conducted at scale to evaluate learning outcomes and provide actionable insights to policymakers and educators."
+        },
+        {
+            "img": "sectors/pro4_edu.jpg",
+            "title": "Digital Monitoring Platform",
+            "description": "A centralized dashboard that enables real-time monitoring of schools, teachers, and learning outcomes."
+        }
+    ],
+    "services": [
+        {
+            "icon": "sectors/v1_edu.svg",
+            "title": "Public Digital Platforms",
+            "description": "Building large-scale platforms for education access, monitoring, and governance."
+        },
+        {
+            "icon": "sectors/v2_edu.svg",
+            "title": "Digital Content & Assessment Tools",
+            "description": "Interactive content, testing solutions, and learning management systems."
+        },
+        {
+            "icon": "sectors/v3_edu.svg",
+            "title": "School Data & MIS Platforms",
+            "description": "Consolidated systems to track, analyze, and improve performance metrics."
+        },
+        {
+            "icon": "sectors/v4_edu.svg",
+            "title": "Strategic Consulting & Policy Enablement",
+            "description": "Supporting government and institutions in shaping digital transformation roadmaps."
+        }
+    ],
+    "testimonialImage": "sectors/test_edu.jpg"
+}

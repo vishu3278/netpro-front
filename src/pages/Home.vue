@@ -1,26 +1,26 @@
 <template>
-    <section class="video1 h-dvh relative overflow-clip">
+    <!-- <section id="video1" class="video1 h-dvh relative overflow-clip">
         <video autoplay muted loop id="myVideo1" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video>
-        <div class="container mx-auto relative">
-            <div class="grid grid-cols-2 grid-rows-2 h-dvh place-items-end">
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 lg:grid-rows-2 h-dvh lg:place-items-end place-items-center">
                 <div class="col-start-1 col-end-2 row-start-2 row-end-3 ">
                     <div class="content pb-20">
                         Digital solutions that power India’s critical sectors and enable better public outcomes.
                     </div>
                 </div>
-                <!-- Use a button to pause/play the video with JavaScript -->
-                <!-- <button id="myBtn" onclick="myFunction()">Pause</button> -->
+                
             </div>
         </div>
-    </section>
-    <section class="video2 h-dvh relative overflow-clip">
-        <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
+    </section> -->
+    <section id="video2" class="video2 h-dvh relative overflow-clip">
+        <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
-        </video>
-        <div class="container mx-auto relative">
-            <div class="grid grid-cols-2 ">
+        </video> -->
+        <MediaLoader src="/home/silhouette-engineer-and-inspector.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
                     <div class="content ">
                         <h2>
@@ -28,8 +28,31 @@
                         </h2>
                         <p>Meaningful impact through citizen - First Governance Projects</p>
                         <div class="flex gap-4 flex-wrap mt-10">
-                            <router-link to="" class="button button-fill">View Sector</router-link>
-                            <router-link to="" class="button button-outline">View Services</router-link>
+                            <router-link to="/sector" class="button button-fill">View Sector</router-link>
+                            <router-link to="/service" class="button button-outline">View Services</router-link>
+                        </div>
+                    </div>
+                </div>
+                <!-- Use a button to pause/play the video with JavaScript -->
+                <!-- <button id="myBtn" onclick="myFunction()">Pause</button> -->
+            </div>
+        </div>
+    </section>
+    <section id="video3" class="video2 h-dvh relative overflow-clip">
+        <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
+            <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
+        </video> -->
+        <MediaLoader src="/home/silhouette-of-a-sports-girl.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="grid lg:grid-cols-2 ">
+                <div class="col-start-2 col-end-3 ">
+                    <div class="content ">
+                        <h3>Building Economy</h3>
+                        <p>Transforming Business Potential Into Sustainable Digital Success</p>
+                        <div class="flex gap-4 flex-wrap mt-10">
+                            <router-link to="/sector" class="button button-fill">View Sector</router-link>
+                            <router-link to="/service" class="button button-outline">View Services</router-link>
                         </div>
                     </div>
                 </div>
@@ -39,30 +62,30 @@
         </div>
     </section>
     <section id="aboutsection" class="about py-20">
-        <div class="container mx-auto px-4 md:px-0">
+        <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="col">
-                    <h4 class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
+                    <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
                     <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
                     <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p>
                     <router-link class="button button-dark" to="/about">Know the company</router-link>
                 </div>
                 <div class="col">
                     <div class="stats">
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.5}" class="item border-t pb-12">
-                            <div class="flex justify-between pt-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">500M</div>
                                 <div class="detail">Citizen Lives positively impacted worldwide</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.75}" class="item border-t pb-12">
-                            <div class="flex justify-between pt-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 1}" class="item border-t ">
-                            <div class="flex justify-between pt-12">
+                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.9, ease: 'easeOut'}" class="item border-t ">
+                            <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
                             </div>
@@ -72,70 +95,95 @@
             </div>
         </div>
     </section>
-    <section class="power py-24">
-        <div class="container mx-auto px-4 md:px-0">
+    <section class="power py-12 lg:py-24">
+        <div class="container mx-auto px-4 ">
             <div class="title text-center">
                 <h4>
                     Powering India
                 </h4>
                 <p>Digital infrastructure across India</p>
             </div>
-            <div class="grid lg:grid-cols-5 gap-6 mt-16">
-                <div class="col-start-1 col-end-3 ">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-12 lg:mt-16 md:px-20">
+                <div class="lg:col-start-1 lg:col-end-3 ">
                     <div class="card-green relative">
                         <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
                             <source src="/home/motion-2.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
-                <div class="col-start-3 col-end-6">
-                    <div class="card-white">
-                        <p>Delivering Excellence State-by-State Across India</p>
-                    </div>
-                </div>
-                <div class="col-start-1 col-end-4">
-                    <div class="card-grey">
-                        <p>Trusted Partnership that Makes an Impact</p>
-                        <div class="grid grid-cols-3 gap-10 px-20 py-16 place-items-center">
-                            <figure><img src="/icons/gem.svg" alt=""></figure>
-                            <figure><img src="/icons/cel.svg" alt=""></figure>
-                            <figure><img src="/icons/updesco.svg" alt=""></figure>
-                            <figure><img src="/icons/ddu-gky.svg" alt=""></figure>
-                            <figure><img src="/icons/becil.svg" alt=""></figure>
-                            <figure><img src="/icons/railtel.svg" alt=""></figure>
+                <div class="lg:col-start-3 lg:col-end-6">
+                    <div class="card-white states">
+                        <p class="px-16">Delivering Excellence State-by-State Across India</p>
+                        <div class="pt-12 pb-5 pr-16 states-list">
+                            <Carousel v-bind:="stateCarousel1">
+                                <Slide v-for="(state, index) in states1" :key="state.id">
+                                    <figure class="carousel__item flex flex-col gap-3 justify-center">
+                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <figcaption>{{state.name}}</figcaption>
+                                    </figure>
+                                </Slide>
+                            </Carousel>
+                        </div>
+                        <div class="py-5 pl-16 states-list">
+                            <Carousel v-bind="stateCarousel2">
+                                <Slide v-for="(state, index) in states2" :key="state.id">
+                                    <figure class="carousel__item flex flex-col gap-3 justify-center">
+                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <figcaption>{{state.name}}</figcaption>
+                                    </figure>
+                                </Slide>
+                            </Carousel>
                         </div>
                     </div>
                 </div>
-                <div class="col-start-4 col-end-6">
+                <div class="lg:col-start-1 lg:col-end-4">
+                    <div class="card-grey">
+                        <p>Trusted Partnership that Makes an Impact</p>
+                        <Carousel :autoplay="3500" :wrapAround="true" slideEffect="fade" :transition="800">
+                            <Slide>
+                                <div class="grid grid-cols-2 w-full lg:grid-cols-3 gap-6 lg:gap-10 px-2 lg:px-10 py-8 lg:py-16 place-items-center">
+                                    <figure><img src="/icons/gem.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/cel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/updesco.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/ddu-gky.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/becil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                </div>
+                            </Slide>
+                            <Slide>
+                                <div class="grid grid-cols-2 w-full lg:grid-cols-3 gap-6 lg:gap-10 px-2 lg:px-10 py-8 lg:py-16 place-items-center">
+                                    <figure><img src="/icons/chips.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/hpelectric.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/mpsedc.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/nicsi.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <figure><img src="/icons/tcil.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure>
+                                    <!-- <figure><img src="/icons/railtel.svg" alt="" class="grayscale hover:grayscale-0 transition"></figure> -->
+                                </div>
+                            </Slide>
+                            <!-- <template #addons>
+                                <Navigation />
+                            </template> -->
+                        </Carousel>
+                    </div>
+                </div>
+                <div class="lg:col-start-4 lg:col-end-6">
                     <div class="card-dark">
                         <p>Certified Excellence Our Trusted Credentials</p>
-                        <div class="grid grid-cols-3 gap-10 my-24 px-10">
-                            <div v-for="item in certified" :key="item.id" class="flex flex-col" >
+                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-10 my-8 lg:my-24 px-10">
+                            <div v-for="item in certified" :key="item.id" class="flex flex-col">
                                 <figure class="h-20 mb-4">
-                                    <img :src="`/icons/${item.icon}`" class="mx-auto h-20 object-scale-down object-center" alt="">
+                                    <img :src="baseUrl+item.icon" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
                                 <label>{{item.title}}</label>
                             </div>
-                            <!-- <figure>
-                                <img src="/icons/cmmi5-color.svg" alt="">
-                                <figcaption>CMMI Maturity Level-5</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="/icons/iso-color.svg" alt="">
-                                <figcaption>ISO 9001:2015</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="/icons/pci-dss-color.svg" alt="">
-                                <figcaption>CMMI Maturity Level-5</figcaption>
-                            </figure> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="techsection" class="technology py-16 relative">
-        <div class="container mx-auto px-4 md:px-0">
+    <section id="techsection" class="technology py-25 relative">
+        <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>
                     <div class="title">Technology for change</div>
@@ -150,16 +198,16 @@
                                 <span class="count pt-2 basis-10 shrink-0">({{item.id}})</span>
                                 <div class="ques grow">{{item.title}} <br><small>{{item.subtitle}}</small> </div>
                                 <div><svg xmlns="http://www.w3.org/2000/svg" :id="`accicon-${index}`" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                  <g clip-path="url(#clip0_329_2)">
-                                    <path d="M10 0V20" stroke="black" stroke-width="2"/>
-                                    <path d="M0 10H20" stroke="black" stroke-width="2"/>
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_329_2">
-                                      <rect width="20" height="20" fill="white"/>
-                                    </clipPath>
-                                  </defs>
-                                </svg></div>
+                                        <g clip-path="url(#clip0_329_2)">
+                                            <path d="M10 0V20" stroke="black" stroke-width="2" />
+                                            <path d="M0 10H20" stroke="black" stroke-width="2" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_329_2">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg></div>
                             </div>
                             <div :id="`acc-${index}`" class="description overflow-clip px-10" v-html="item.description"></div>
                         </div>
@@ -168,25 +216,13 @@
             </div>
         </div>
     </section>
-    <section class="testimonials py-16">
-        <div class="container mx-auto px-4 md:px-0">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3">
-                <div class="col-start-3 col-end-4">
-                    <div class="wrapper py-12 px-16">
-                        <h5 class="uppercase">Our Testimonials</h5>
-                        <blockquote>
-                            <p>NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.</p>
-                            <small>Keith Norman, Director, GTI System</small>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <olive-section />
-    <section id="clientsection">
-        <div class="container mx-auto py-8 overflow-auto">
-            <div class="flex items-center gap-16">
+    <!-- testimonials -->
+    <Testimonial />
+    <olive-section btn-link="/contact" />
+    <!-- cliets section -->
+    <section id="clientsection" class="client-section">
+        <div class="container mx-auto py-8 px-4 ">
+            <!-- <div class="flex items-center gap-6 md:gap-8 flex-wrap lg:flex-nowrap lg:justify-between overflow-clip">
                 <figure><img src="/icons/fabindia.svg" alt=""></figure>
                 <figure><img src="/icons/forevermark.svg" alt=""></figure>
                 <figure><img src="/icons/symantec.svg" alt=""></figure>
@@ -195,37 +231,71 @@
                 <figure><img src="/icons/sai.svg" alt=""></figure>
                 <figure><img src="/icons/nicsi.svg" alt=""></figure>
                 <figure><img src="/icons/satyamev.svg" alt=""></figure>
-            </div>
+            </div> -->
+            <Carousel v-bind="logosConfig">
+                <Slide v-for="n in 43" :key="n">
+                    <img :src="baseUrl + 'logos/'+n+'.png'" alt="image" />
+                </Slide>
+                <!-- <template #addons>
+                    <Pagination />
+                    <Navigation />
+                </template> -->
+            </Carousel>
         </div>
     </section>
 </template>
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
-import { ref, onMounted } from 'vue'
+import Testimonial from '@/components/Testimonial.vue'
+import MediaLoader from '@/components/MediaLoader.vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
-    
+
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
+let baseUrl = ref("")
+
+const states1 = ref([
+    { id: "hp", name: "Himachal Pradesh", img: "home/himachal.png" },
+    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
+    { id: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png" },
+    { id: "ka", name: "Karnataka", img: "home/karnataka.png" },
+    { id: "gj", name: "Gujarat", img: "home/gujarat.png" },
+    // {id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png"},
+    /*{id: "rj", name: "Rajasthan", img: "home/rajasthan.png"},
+    {id: "tlg", name: "Telangana", img: "home/telangana.png"},
+    {id: "mpr", name: "Manipur", img: "home/manipur.png"},
+    {id: "dl", name: "Delhi", img: "home/delhi.png"},*/
+])
+const states2 = ref([
+    { id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png" },
+    { id: "rj", name: "Rajasthan", img: "home/rajasthan.png" },
+    { id: "tlg", name: "Telangana", img: "home/telangana.png" },
+    { id: "mpr", name: "Manipur", img: "home/manipur.png" },
+    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
+])
 const certified = ref([
-    {id: "abc1234", icon: "cmmi5-color.svg", title: "CMMI Maturity Level-5"},
-    {id: "pqr1234", icon: "pci-dss-color.svg", title: "CMMI Maturity Level-5"},
-    {id: "zyx1234", icon: "iso-color.svg", title: "ISO 9001:2015"}
+    { id: "abc1234", icon: "icons/cmmi3.svg", title: "CMMI Maturity Level-3" },
+    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO 9001:2015" },
+    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "CMMI Maturity Level-5" }
 ])
 const techFaq = ref([
-    {id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customized products that streamline processes, empower institutions, and enhance operational efficiency.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
-    {id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories", description: "Service Includes /nProcess Strategy & Optimisation /nEnterprise Process Design /nBusiness Process Transformation /nSolution Architecture & Design /nSkills Development & Capacity Building /nChange Management support /nRegulatory & Compliance advisory"},
+    { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Process Strategy & Optimisation <br>Enterprise Process Design<br>Business Process Transformation<br>Solution Architecture & Design<br>Skills Development & Capacity Building<br>Change Management support<br>Regulatory & Compliance advisory" },
+    { id: "02", title: "Technology Solutions (Tech Lab)", subtitle: "Building secure, scalable ecosystems that transform service delivery and strengthen governance.", description: "Enterprise software development<br>Process automation & digitisation<br>System integration & data architecture<br>Web & mobile applications<br>Product lifecycle management" },
+    { id: "03", title: "Product Engineering (Product Works)", subtitle: "Engineering scalable, customised products that streamline processes, empower institutions, and enhance operational efficiency.", description: "ERP- Enterprise Resource Planning (ERP)<br>Ed-Tech Solutions (LMIS)<br>School Management System (SMS)<br>eOffice & Document Management System<br>Epilepsy Management Platform" },
+    { id: "04", title: "Digital Engine", subtitle: "Building powerful platforms, immersive digital experiences and targeted marketing to power engagement.", description: "Commerce Platform Development<br>Performance Marketing<br>Media Planning and Buying<br>Organic Marketing<br>Immersive and projection mapping experiences<br>Digital Infrastructure & Managed Services" },
+    { id: "05", title: "Creative Works", subtitle: "Designing strategic identities, intuitive interfaces and visually engaging stories Branding and creative strategy", description: "UI/UX design<br>AR/VR storytelling<br>Video and Visual Production" },
 ])
 const openIndexes = ref([])
 const toggle = (index) => {
-    
+
     /*const tl = gsap.timeline()
     tl.to("#accicon-"+index, { rotation: 90, duration: 0.5, ease: "elastic" })
     tl.to("#acc-"+index, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 1 })*/
@@ -233,88 +303,241 @@ const toggle = (index) => {
     if (openIndexes.value.includes(index)) {
         openIndexes.value = openIndexes.value.filter(i => i !== index)
         // console.log(openIndexes.value)
-        gsap.to("#acc-"+index, { maxHeight: 0, opacity: 0, margin: 0, duration: 1 })
-        gsap.to("#accicon-"+index, { rotation: -90, duration: 1 })
-        
+        gsap.to("#acc-" + index, { maxHeight: 0, opacity: 0, margin: 0, duration: 1 })
+        gsap.to("#accicon-" + index, { rotation: -90, duration: 1 })
+
     } else {
         openIndexes.value.push(index)
-        gsap.fromTo("#acc-"+index, {maxHeight: 0, opacity: 0, margin: 0}, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
-        gsap.to("#accicon-"+index, { rotation: 90, duration: 1 })
+        gsap.fromTo("#acc-" + index, { maxHeight: 0, opacity: 0, margin: 0 }, { maxHeight: "99rem", opacity: 1, marginTop: 32, duration: 2 })
+        gsap.to("#accicon-" + index, { rotation: 90, duration: 1 })
+    }
+}
+
+const breakpoints = {
+    // 300px and up
+    300: {
+        itemsToShow: 2,
+    },
+    // 400px and up
+    600: {
+        itemsToShow: 3,
+    },
+    // 500px and up
+    1100: {
+        itemsToShow: 4,
+    },
+}
+
+const stateCarousel1 = {
+    itemsToShow: 4.5,
+    dir: "rtl",
+    wrapAround: true,
+    snapAlign: "end",
+    autoplay: 2500,
+    transition: 300,
+    breakpoints: breakpoints
+}
+
+const stateCarousel2 = {
+    itemsToShow: 4.5,
+    dir: "ltr",
+    wrapAround: true,
+    snapAlign: "end",
+    autoplay: 2500,
+    transition: 300,
+    breakpoints: breakpoints
+}
+
+const logosConfig = {
+    // height: 200,
+    itemsToShow: 7,
+    autoplay: 2500,
+    gap: 10,
+    wrapAround: true,
+    breakpoints: {
+        // 300px and up
+        300: {
+            itemsToShow: 2,
+        },
+        // 400px and up
+        600: {
+            itemsToShow: 3,
+        },
+        // 500px and up
+        1100: {
+            itemsToShow: 5,
+        },
+        1400: {
+            itemsToShow: 7
+        }
     }
 }
 
 // animation
 onMounted(() => {
-    let abouttitle = SplitText.create("#aboutsection h4", {
+    baseUrl.value = localStorage.getItem("base_url")
+    /*let video1title = SplitText.create("#video1 .content", {
         type: "lines",
         autoSplit: true,
-        mask: "lines"
-    })
-
-    let abouttl = gsap.timeline();
-    abouttl.from(abouttitle.lines, {
-        autoAlpha: 0,
-        y: 100,
-        stagger: 0.05,
-    })
-    let aboutst = ScrollTrigger.create({
-        trigger: "#aboutsection",
-        start: "top 80%",
-        end: "bottom 20%",
-        id: "aboutsection",
-        markers: true,
-        animation: abouttl,
-    });
-
-    let techtitle = SplitText.create("#techsection .title", {
-        type: "words",
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.lines, {
+                y: 80,
+                opacity: 0,
+                // autoAlpha: 0,
+                stagger: 0.15,
+                ease: 'power.out',
+                onComplete: () => {
+                    self.revert()
+                }
+            });
+        }
+    })*/
+    let videotitle = SplitText.create("#video3 h4", {
+        type: "lines",
         autoSplit: true,
-        mask: 'lines',
-    });
+        smartWrap: true,
+        mask: "lines",
+        onSplit: function(self) {
+            return gsap.from(self.lines, {
+                y: 90,
+                opacity: 0,
+                // autoAlpha: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: "#video3",
+                    start: "top center",
+                    toggleActions: "play none none reset",
+                },
+                onComplete: () => {
+                    self.revert()
+                }
+            });
+        }
+    })
 
-    let techtl = gsap.timeline();
-    techtl.from(techtitle.words, {
-        rotationX: -100,
-        transformOrigin: "50% 50%",
-        autoAlpha: 0,
-        duration: 0.75,
-        stagger: 0.25,
+
+    const abouttitle = document.querySelector('#abouttitle');
+    // console.info(abouttitle)
+    if (abouttitle) {
+        SplitText.create(abouttitle, {
+            type: "lines",
+            autoSplit: true,
+            mask: "lines",
+            onSplit: function(self) {
+                return gsap.from(self.lines, {
+                    autoAlpha: 0,
+                    y: 100,
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: "#aboutsection",
+                        start: "top 70%",
+                        // id: "aboutsection",
+                        // markers: true,
+                        toggleActions: "play none none reverse", //actions => onEnter, onLeave, onEnterBack, onLeaveBack. Values => "play", "pause", "resume", "reset", "restart", "complete", "reverse", and "none"
+
+                    },
+                    onComplete: () => {
+                        self.revert()
+                    }
+                })
+            }
+        })
+    }
+
+
+    let abouttl = gsap.timeline({
+        delay: 0.75,
+        scrollTrigger: {
+            trigger: "#aboutsection",
+            start: "top center",
+            toggleActions: "play none none reverse"
+        }
+    });
+    abouttl.from("#aboutsection p", {
+        // autoAlpha: 0,
+        opacity: 0,
+        y: 80,
+        stagger: 0.15,
+        ease: "slow",
+    })
+
+    let techtl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#techsection",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+        }
+    });
+    techtl.from("#techsection .title", {
+        y: 100,
+        opacity: 0,
+        // autoAlpha: 0,
+        duration: 0.5,
+        delay: 0.2,
+        // stagger: 0.25,
     })
     techtl.from(".logo-bg img", {
-        x: -200,
+        y: 200,
         opacity: 0,
-        autoAlpha: 0,
+        // autoAlpha: 0,
         duration: 0.25,
     })
     techtl.from("#accordion .item", {
         y: 100,
         opacity: 0,
-        autoAlpha: 0,
+        // autoAlpha: 0,
         duration: 0.5,
         stagger: 0.25
     })
 
-    let st = ScrollTrigger.create({
-        trigger: "#techsection",
-        start: "top 80%",
-        end: "+=200",
-        id: "techsection",
-        // once: false,
-        markers: true,
-        animation: techtl,
-    });
+    /*let clientTween = gsap.from("#clientsection img", {
+        y: 200,
+        opacity: 0,
+        autoAlpha: 0,
+        duration: 1,
+        stagger: 0.15,
+        scrollTrigger: {
+            trigger: "#clientsection",
+            start: "top bottom",
+            // end: "+=200",
+            toggleActions: "play none none reset",
+        }
+    })*/
+
+    onBeforeUnmount(() => {
+        // ✅ Proper cleanup
+        if (abouttl) {
+            abouttl.kill() // kills timeline and its ScrollTrigger
+            abouttl = null
+        }
+        if (techtl) {
+            techtl.kill()
+            techtl = null
+        }
+        /*if (clientTween) {
+            clientTween.kill()
+        }*/
+    })
 })
 </script>
 <style lang="scss" scoped>
 .video1 {
     color: #FFF;
-    font-size: 60px;
+    font-size: 28px;
     font-weight: 100;
-    line-height: 80px;
-    letter-spacing: -1.8px;
+    line-height: 34px;
+    letter-spacing: -0.84px;
 
-    .content {
-        width: 880px;
+    @media screen and (width >=64rem) {
+        font-size: 60px;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+
+        .content {
+            width: 880px;
+        }
+
     }
 }
 
@@ -323,41 +546,62 @@ onMounted(() => {
     padding-top: 240px;
 
     .content {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 100;
-        line-height: 38px;
-        letter-spacing: -0.7px;
+        line-height: 28px;
+        letter-spacing: -0.5px;
     }
 
-    h2 {
-        font-size: 110px;
-        line-height: 100px;
+    h2,
+    h3 {
+        font-size: 48px;
+        line-height: 44px;
         font-weight: 100;
         mix-blend-mode: overlay;
-        letter-spacing: -3.3px;
+        letter-spacing: -1px;
+    }
+
+    h3 {
+        mix-blend-mode: normal;
+    }
+
+    @media screen and (width >=64rem) {
+        .content {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+        }
+
+        h2,
+        h3 {
+            font-size: 110px;
+            line-height: 100px;
+            letter-spacing: -3px;
+        }
+
     }
 }
 
 .about {
     color: $rich-black;
     background-color: $grey1;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 30px;
-    letter-spacing: -0.48px;
+    line-height: 24px;
+    letter-spacing: -0.42px;
 
     h4 {
-        font-size: 40px;
+        font-size: 24px;
         font-weight: 100;
-        line-height: 60px;
-        letter-spacing: -1.2px;
+        line-height: 32px;
+        letter-spacing: -0.7px;
     }
 
     .stats {
         color: $rich-black;
-        font-size: 18px;
-        line-height: 30px;
+        font-size: 16px;
+        line-height: 24px;
 
         .item {
             border-color: $grey-cf;
@@ -365,15 +609,45 @@ onMounted(() => {
     }
 
     .count {
-        font-size: 100px;
-        line-height: 90px;
+        font-size: 60px;
+        line-height: 64px;
         font-weight: 100;
-        letter-spacing: -3px;
+        letter-spacing: -1.8px;
         @include text-primary-gradient;
+        width: 10rem;
+        flex-shrink: 0;
     }
 
     .detail {
-        /*font-weight: normal;*/
+        padding-left: 2rem;
+    }
+
+    @media screen and (width >=64rem) {
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: -0.48px;
+
+        h4 {
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
+
+        .stats {
+            font-size: 18px;
+            line-height: 30px;
+        }
+
+        .count {
+            font-size: 100px;
+            line-height: 90px;
+            letter-spacing: -3px;
+            width: fit-content;
+        }
+
+        .detail {
+            padding-left: 0;
+        }
     }
 }
 
@@ -382,20 +656,20 @@ onMounted(() => {
     color: $rich-black;
 
     .title {
-        font-size: 60px;
-        line-height: 80px;
+        font-size: 34px;
+        line-height: 44px;
         letter-spacing: -1.8px;
 
         p {
-            font-size: 24px;
-            line-height: 38px;
-            letter-spacing: -0.72px;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: -0.48px;
         }
     }
 
     @mixin card() {
         border-radius: 20px;
-        height: 400px;
+        height: 100%;
         text-align: center;
         font-size: 1rem;
         line-height: 24px;
@@ -408,29 +682,35 @@ onMounted(() => {
 
     $card-colors: ("green": $olive2, "white": #fff, "grey": $grey1, "dark": $rich-black);
 
-    @each $card, $color in $card-colors {
+    @each $card,
+    $color in $card-colors {
         .card-#{$card} {
             @include card();
             background-color: $color;
 
-            @if $color == #fff {
+            @if $color==#fff {
                 border-color: $grey2;
-            } @else {
+            }
+
+            @else {
                 border-color: $color;
             }
 
-            @if $card == dark {
+            @if $card==dark {
                 color: #fff;
             }
         }
     }
 
+    .card-green {
+        height: 400px;
+    }
+
     .card-dark {
-        .subgrid {
-        }
-        figure {            
-            
-        }
+        .subgrid {}
+
+        figure {}
+
         label {
             font-size: 13px;
             font-weight: 400;
@@ -438,40 +718,78 @@ onMounted(() => {
             letter-spacing: -0.26px;
         }
     }
+
+    .states-list {
+        figure {
+            min-width: 150px;
+
+            img {
+                width: 65px;
+                height: 65px;
+                object-fit: contain;
+                margin: auto;
+            }
+        }
+    }
+
+    @media screen and (width >=64rem) {
+        .title {
+            font-size: 60px;
+            line-height: 80px;
+
+            p {
+                font-size: 24px;
+                line-height: 38px;
+                letter-spacing: -0.72px;
+            }
+        }
+
+        .card {
+            height: 400px;
+        }
+    }
 }
 
 .technology {
     background-color: $grey1;
+
     .title {
-        font-size: 80px;
-        line-height: 90px;
-        letter-spacing: -2.4px;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: -1.2px;
         @include text-primary-gradient;
     }
+
     .logo-bg {
-        position: absolute;
+        /*position: absolute;
         bottom: 0;
         left: 0;
-        height: 60%;
+        height: 60%;*/
+        display: none;
     }
+
     .accordion {
         .item {
             border-bottom: 1px solid $grey2;
+
             &:last-child {
                 border-color: transparent;
             }
         }
+
         .count {
             font-size: 16px;
             font-weight: 400;
             line-height: 100%;
             letter-spacing: -0.48px;
         }
+
         .ques {
             font-size: 20px;
             font-weight: 600;
             line-height: 30px;
             letter-spacing: -0.6px;
+
             small {
                 color: $grey-text;
                 font-size: 18px;
@@ -480,6 +798,7 @@ onMounted(() => {
                 letter-spacing: -0.54px;
             }
         }
+
         .description {
             font-size: 16px;
             font-weight: 400;
@@ -489,39 +808,28 @@ onMounted(() => {
             opacity: 0;
         }
     }
-}
 
-.testimonials {
-    background: url(../home/swastik-arora-unsplash.jpg) no-repeat center / cover;
+    @media screen and (width >=64rem) {
+        min-height: 1100px;
 
-    .wrapper {
-        border-radius: 10px;
-        background: rgba(17, 17, 17, 0.65);
-        backdrop-filter: blur(10px);
-        font-size: 1rem;
-        line-height: 30px;
-        color: #fff;
-        letter-spacing: -0.5px;
-    }
+        .title {
+            font-size: 80px;
+            line-height: 90px;
+            letter-spacing: -2.4px;
+            position: sticky;
+            top: 0;
+        }
 
-    h5 {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 30px;
-        letter-spacing: -0.4px;
-    }
-
-    blockquote {
-        font-size: 30px;
-        font-weight: 100;
-        line-height: 45px;
-        letter-spacing: -0.8px;
-
-        small {
-            font-size: 16px;
-            line-height: 30px;
-            font-weight: 400;
+        .logo-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 560px;
+            height: 700px;
+            display: block;
         }
     }
 }
+
+.client-section {}
 </style>
