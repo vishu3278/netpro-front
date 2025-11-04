@@ -1,7 +1,7 @@
 <template>
-    <section class="about-section pt-60 pb-10 w-full bg-white">
-        <div class="container mx-auto relative">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+    <section class="about-section pt-24 pb-6 lg:pt-60 lg:pb-10 w-full bg-white">
+        <div class="container mx-auto px-4 relative">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 lg:gap-12">
                 <!-- Left: Heading -->
                 <div class="md:w-1/2">
                     <h2>
@@ -26,19 +26,19 @@
                     </p>
                 </div>
             </div>
-            <div class="about-banner py-8">
+            <div class="about-banner py-4 md:py-8">
                 <img src="/about/about-banner.jpg" alt="" class="max-w-full rounded-2xl">
             </div>
         </div>
     </section>
-    <!---about-section-->
+    
     <section class="our-mission pb-20">
         <div class="container mx-auto relative">
-            <div class="our-heading text-center mb-10">
+            <div class="our-heading text-center mb-4 mb:mb-10 ">
                 <h6>Our Mission</h6>
-                <h3 class="max-w-[998px] mx-auto">
+                <p class="max-w-[320px] lg:max-w-[998px] mx-auto">
                     At the heart of what we do is a belief technology must serve people, not just systems.
-                </h3>
+                </p>
             </div>
         </div>
         <!-- <div class="flex flex-col gap-6 md:flex-row md:gap-8 justify-center items-start">
@@ -85,53 +85,53 @@
         </div> -->
         <AboutCarousel />
     </section>
-    <!--our-mission-->
-    <section class=" py-20 expertise">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-            <!-- Left Image -->
-            <div class="frameimg md:w-1/3 flex justify-center">
-                <img src="/frame-bg.svg" alt="Frame background" class="max-w-full object-cover">
-            </div>
-            <!-- Right Content -->
-            <div class="md:w-1/2 space-y-8 pr-60">
-                <!-- Why we do it -->
-                <div>
-                    <h5 class=" mb-2">Why we do it</h5>
-                    <p class="leading-relaxed">
-                        To create digital infrastructure that empowers governments, enables institutions, and improves everyday
-                        lives. Because when technology works for citizens, society moves forward.
-                    </p>
+    <section class="py-12 lg:py-20 expertise">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+                <!-- Left Image -->
+                <div class="frameimg absolute md:static bottom-0 right-0 max-w-[180px] md:max-w-none opacity-30 md:w-1/3 flex justify-center">
+                    <img src="/frame-bg.svg" alt="Frame background" class="max-w-full object-cover">
                 </div>
-                <hr class="border border-[#BEE66A]">
-                <!-- How we do it -->
-                <div>
-                    <h5 class=" mb-2">How we do it</h5>
-                    <p class="leading-relaxed">
-                        With deep expertise, agile systems, and the scale to solve for India. Every product we build carries public
-                        purpose at its core—designed to be secure, scalable, and meaningful.
-                    </p>
-                </div>
-                <hr class="border border-[#BEE66A]">
-                <!-- What Keeps Us Going -->
-                <div>
-                    <h5 class=" mb-2">What Keeps Us Going</h5>
-                    <p class="leading-relaxed">
-                        Seeing a student get access to learning. Watching a citizen solve a need without friction. Knowing our work
-                        makes lives easier—that’s what drives us.
-                    </p>
-                </div>
-                <!-- Button -->
-                <div>
-                    <router-link to="/service" class="button button-dark"> View our Services</router-link>
+                <!-- Right Content -->
+                <div class="md:w-1/2 space-y-8 lg:pr-60">
+                    <!-- Why we do it -->
+                    <div>
+                        <h5 class=" mb-2">Why we do it</h5>
+                        <p class="leading-relaxed">
+                            To create digital infrastructure that empowers governments, enables institutions, and improves everyday
+                            lives. Because when technology works for citizens, society moves forward.
+                        </p>
+                    </div>
+                    <hr class="border border-[#BEE66A]">
+                    <!-- How we do it -->
+                    <div>
+                        <h5 class=" mb-2">How we do it</h5>
+                        <p class="leading-relaxed">
+                            With deep expertise, agile systems, and the scale to solve for India. Every product we build carries public
+                            purpose at its core—designed to be secure, scalable, and meaningful.
+                        </p>
+                    </div>
+                    <hr class="border border-[#BEE66A]">
+                    <!-- What Keeps Us Going -->
+                    <div>
+                        <h5 class=" mb-2">What Keeps Us Going</h5>
+                        <p class="leading-relaxed">
+                            Seeing a student get access to learning. Watching a citizen solve a need without friction. Knowing our work
+                            makes lives easier—that’s what drives us.
+                        </p>
+                    </div>
+                    <!-- Button -->
+                    <div>
+                        <router-link to="/service" class="button button-dark"> View our Services</router-link>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--expertise-->
-    <section class="py-40 impactful">
-        <div class="container mx-auto">
+    <section class="py-12 lg:py-40 impactful">
+        <div class="container mx-auto px-4">
             <!-- Heading Section -->
-            <div class="mb-12">
+            <div class="mb-6 md:mb-12">
                 <h2 class="">How do we achieve such impactful results?</h2>
                 <p class="max-w-[940px]">Real impact begins with the people who build it. At NetProphets, we seek out
                     talent with purpose, grow them over time, and create space for them to thrive—because strong systems are built
@@ -139,7 +139,7 @@
             </div>
             <!-- Mentors Section -->
             <div class="image-move flex flex-col md:flex-row items-center justify-between border-t border-b border-[#D7D7D7] relative overflow-clip">
-                <div class="md:w-1/2 text-center md:text-left py-12">
+                <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Mentors, Not Managers</h3>
                     <p class="max-w-[500px]">We guide careers with care—through coaching, not control.</p>
                 </div>
@@ -150,9 +150,9 @@
             </div>
             <!-- Growth Section -->
             <div class="image-move flex flex-col md:flex-row items-center justify-between border-b border-[#D7D7D7] relative overflow-clip">
-                <div class="md:w-1/2 text-center md:text-left py-12">
+                <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Growth, Built In</h3>
-                    <p class="max-w-[500px]">Skill-building isn’t optional here—it’s part of <br> how we work and grow.</p>
+                    <p class="max-w-[500px]">Skill-building isn’t optional here—it’s part of how we work and grow.</p>
                 </div>
                 <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
                     <img src="/about/growthbuiltin.jpg" alt="growth" class="max-w-full h-full object-contain">
@@ -160,7 +160,7 @@
             </div>
             <!-- Beyond Project Section -->
             <div class="image-move flex flex-col md:flex-row items-center justify-between border-b border-[#D7D7D7] relative overflow-clip">
-                <div class="md:w-1/2 text-center md:text-left py-12">
+                <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Beyond the Project</h3>
                     <p class="max-w-[500px]">People here don’t get stuck—they lead, learn, and grow across teams and challenges.</p>
                 </div>
@@ -170,10 +170,9 @@
             </div>
         </div>
     </section>
-    <!---impactful-->
-    <section class="our-leadership py-30 bg-[#121212]">
-        <div class="container mx-auto px-38">
-            <h2 class="mb-8 text-center "><span class="text-white">Our Leadership</span> </h2>
+    <section class="leadership py-12 md:py-30 bg-[#121212]">
+        <div class="container mx-auto px-6 lg:px-38">
+            <h2 class="mb-8 text-center text-white">Our Leadership</h2>
             <!-- Leadership Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <!-- Leader Card (Repeat for each person) -->
@@ -191,11 +190,11 @@
             </div>
         </div>
     </section>
-    <section class="pt-24 pb-20 partnering">
+    <section class="py-6 md:pt-24 md:pb-20 partnering">
         <div class="container mx-auto px-4">
             <div class=" ">
-                <h4 class="text-center mb-14">Partnering With Visionaries Across Continents</h4>
-                <div class="grid grid-cols-8 gap-8 items-center place-items-center">
+                <h4 class="text-center mb-6 md:mb-14">Partnering With Visionaries Across Continents</h4>
+                <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center place-items-center">
                     <figure><img src="/icons/forevermark.svg" alt="forevermark"></figure>
                     <figure><img src="/icons/symantec.svg" alt="symantec"></figure>
                     <figure><img src="/icons/rtah.svg" alt="Road Transport and Highways"></figure>
@@ -216,7 +215,7 @@
             </div>
         </div>
     </section>
-    <olive-section title="Let’s Build Something That Matters" btn-text="Let’s Talk" btn-link="/contact" />
+    <olive-section title="Ready to create change together?" btn-text="Get in Touch" btn-link="/contact" />
 </template>
 <script setup>
 import OliveSection from "@/components/OliveSection.vue"
@@ -235,56 +234,56 @@ onMounted(() => {
     bUrl.value = localStorage.getItem("base_url")
 
     // const hero = heroRef.value
-    
+
 
     /*const handleMouseEnter = (e) => {
         console.info("mouse enter")
     }*/
 
     // ctx = gsap.context(() => {
-        const heros = document.querySelectorAll(".impactful .image-move")
+    const heros = document.querySelectorAll(".impactful .image-move")
 
-        heros.forEach(hero => {
-            // console.log(hero)
-            const image = hero.querySelector('.image')
-            // const output = document.querySelector('.output')
+    heros.forEach(hero => {
+        // console.log(hero)
+        const image = hero.querySelector('.image')
+        // const output = document.querySelector('.output')
 
-            let moveTween = null
-            let resetTween = null
+        let moveTween = null
+        let resetTween = null
 
 
-            const handleMouseMove = (e) => {
-                const rect = hero.getBoundingClientRect()
-                // console.info(rect, e.clientX, e.clientY)
-                const x = e.clientX - rect.left
-                const y = e.clientY - rect.top
-                const centerX = rect.width / 2
-                const centerY = rect.height / 2
-                const moveX = (x - centerX) / 2
-                const moveY = (y - centerY) / 2
+        const handleMouseMove = (e) => {
+            const rect = hero.getBoundingClientRect()
+            // console.info(rect, e.clientX, e.clientY)
+            const x = e.clientX - rect.left
+            const y = e.clientY - rect.top
+            const centerX = rect.width / 2
+            const centerY = rect.height / 2
+            const moveX = (x - centerX) / 2
+            const moveY = (y - centerY) / 2
 
-                // output.textContent = `${rect} -> ${moveX} - ${moveY}`
+            // output.textContent = `${rect} -> ${moveX} - ${moveY}`
 
-                if (moveTween) moveTween.kill()
-                if (resetTween) resetTween.kill()
+            if (moveTween) moveTween.kill()
+            if (resetTween) resetTween.kill()
 
-                moveTween = gsap.to(image, { x: moveX * 1.25, y: moveY / 5, duration: 1.2, scale: 1.5, opacity: 1, ease: 'power3.out' })
-                // gsap.to(output, { x: moveX, y: moveY, duration: 0.6 })
-            }
-            const killMouseMove = (e) => {
-                // console.info("mouse leave => remove event listener")
-                if (moveTween) moveTween.kill()
-                resetTween = gsap.to(image, { x: 0, y: 0, duration: 0.8, scale: 1.1, opacity: 0, ease: 'power2.out' })
-                hero.removeEventListener('mousemove', function() {
-                    console.info("mouse leave => remove event listener")
-                })
-                // ctx && ctx.revert()
-            }
-            
-            hero.addEventListener('mousemove', handleMouseMove)
-            hero.addEventListener("mouseleave", killMouseMove)
-            // hero.addEventListener("mouseenter", handleMouseEnter)
-        })
+            moveTween = gsap.to(image, { x: moveX * 1.25, y: moveY / 5, duration: 1.2, scale: 1.5, opacity: 1, ease: 'power3.out' })
+            // gsap.to(output, { x: moveX, y: moveY, duration: 0.6 })
+        }
+        const killMouseMove = (e) => {
+            // console.info("mouse leave => remove event listener")
+            if (moveTween) moveTween.kill()
+            resetTween = gsap.to(image, { x: 0, y: 0, duration: 0.8, scale: 1.1, opacity: 0, ease: 'power2.out' })
+            hero.removeEventListener('mousemove', function() {
+                console.info("mouse leave => remove event listener")
+            })
+            // ctx && ctx.revert()
+        }
+
+        hero.addEventListener('mousemove', handleMouseMove)
+        hero.addEventListener("mouseleave", killMouseMove)
+        // hero.addEventListener("mouseenter", handleMouseEnter)
+    })
 
     // }, heroRef)
 
@@ -315,31 +314,31 @@ const leaders = ref([
 <style lang="scss" scoped>
 h2,
 h3 {
-    color: $rich-black;
-    font-size: 60px;
     font-weight: 100;
-    line-height: 80px;
-    letter-spacing: -1.8px;
+    font-size: 34px;
+    line-height: 44px;
+    letter-spacing: -1.02px;
 }
 
 h6 {
-    /*background: var(--Highlight-Stroke, linear-gradient(98deg, #171EEC 7.56%, #7000D9 93.65%));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
-    @include text-primary-gradient;
+
+    @include text-secondary-gradient;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 38px;
-    letter-spacing: -3%;
+    line-height: 32px;
+    letter-spacing: -0.48px;
+    text-transform: uppercase;
 }
 
 p {
     color: $rich-black;
-    font-size: 16px;
+
+    font-size: 14px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.48px;
+    line-height: 22px;
+    letter-spacing: -0.42px;
 }
 
 
@@ -365,9 +364,30 @@ h4 {
 
 }
 
+.our-mission {
+
+    &,
+    p {
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 32px;
+        letter-spacing: -0.72px;
+    }
+}
+
 .expertise {
     background: $olive2;
     backdrop-filter: blur(30px);
+
+    h5 {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: -0.72px;
+    }
 
     p {
         font-size: 18px;
@@ -379,20 +399,130 @@ h4 {
 }
 
 .impactful {
-    p {
-        font-size: 24px;
+    h2 {
+        font-size: 34px;
         font-style: normal;
         font-weight: 100;
-        line-height: 38px;
-        letter-spacing: -0.72px;
+        line-height: 44px;
+        letter-spacing: -1.02px;
 
     }
+
+    h3 {
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 44px;
+        letter-spacing: -1.02px;
+    }
+
+    p {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 30px;
+        letter-spacing: -0.6px;
+    }
+
     .image {
         /*top: 0;
         bottom: 0;
         right: 0;*/
         inset-inline: 50%;
         height: 120%;
+    }
+}
+
+.leadership {
+    h2 {
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 44px;
+        letter-spacing: -1.02px;
+    }
+}
+
+.partnering {
+    h4 {
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 30px;
+        letter-spacing: -0.66px;
+    }
+}
+
+@media screen and (width >=64rem) {
+    h2 {
+        font-size: 60px;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+
+    }
+
+    h6 {
+        font-size: 24px;
+        line-height: 38px;
+        letter-spacing: -3%;
+    }
+
+    p {
+
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: -0.48px;
+    }
+
+    .expertise {
+        h5 {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 30px;
+            letter-spacing: -0.54px;
+        }
+    }
+
+    .impactful {
+        h2 {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+        }
+
+        h3 {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+
+        }
+    }
+
+    .leadership {
+        h2 {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+        }
+    }
+
+    .partnering {
+        h4 {
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
     }
 }
 </style>

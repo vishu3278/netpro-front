@@ -1,6 +1,6 @@
 <template>
-    <section id="sectorCarousel" class="py-20">
-        <div class="container mx-auto">
+    <section id="sectorCarousel" class="py-8 lg:py-20">
+        <div class="container mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
                 <h4 class="title">Explore more sectors</h4>
                 <!-- <div class="flex space-x-2">
@@ -70,6 +70,18 @@ const carouselConfig = {
     // slideEffect: "fade",
     wrapAround: true,
     gap: 20,
+    snapAlign: 'start',
+    breakpoints: {
+        300: {
+            itemsToShow: 1.5,
+        },
+        600: {
+            itemsToShow: 2.25
+        },
+        1100: {
+            itemsToShow: 3
+        }
+    }
 }
 
 const sectors = ref([
@@ -101,20 +113,35 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .title {
-    font-size: 60px;
+    font-size: 34px;
     font-style: normal;
     font-weight: 100;
-    line-height: 80px;
-    letter-spacing: -1.8px;
+    line-height: 44px;
+    letter-spacing: -1.02px;
 }
 
 .sector-carousel {
-    font-size: 40px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 100;
-    line-height: 60px;
-    letter-spacing: -1.2px;
+    line-height: 32px;
+    letter-spacing: -0.72px;
+}
 
+@media screen and (width >=64rem) {
+    .title {
+        font-size: 60px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+    }
+
+    .sector-carousel {
+        font-size: 40px;
+        line-height: 60px;
+        letter-spacing: -1.2px;
+    }
 }
 
 .carousel {

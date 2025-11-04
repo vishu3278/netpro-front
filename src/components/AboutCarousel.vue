@@ -85,6 +85,17 @@ const carouselConfig = {
     // slideEffect: "fade",
     wrapAround: true,
     gap: 20,
+    breakpoints: {
+        300: {
+            itemsToShow: 1.5,
+        },
+        600: {
+            itemsToShow: 2.5
+        },
+        1100: {
+            itemsToShow: 4.5
+        }
+    }
 }
 
 const props = defineProps({
@@ -117,12 +128,12 @@ onMounted(() => {
     font-weight: 400;
     line-height: 26px;
     letter-spacing: -0.48px;
+    text-align: left;
 
     @media screen and (width >=64rem) {
         font-size: 16px;
         line-height: 26px;
         letter-spacing: -0.48px;
-
     }
 }
 

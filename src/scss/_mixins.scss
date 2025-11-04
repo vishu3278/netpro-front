@@ -10,3 +10,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+@mixin text-secondary-gradient {
+  background: linear-gradient(98deg, #171EEC 7.56%, #7000D9 93.65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
