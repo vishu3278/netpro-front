@@ -9,7 +9,7 @@
         <!-- IMAGE -->
         <img v-if="isImage && isVisible" v-show="loaded" :src="src" :alt="alt" @load="onLoad" @error="onError" class="media" />
         <!-- VIDEO -->
-        <video v-else-if="isVisible" v-show="loaded" :src="src" :poster="poster" autoplay muted loop @loadeddata="onLoad" @error="onError" class="media w-full h-full object-cover object-center" controls></video>
+        <video v-else-if="isVisible" v-show="loaded" :src="src" :poster="poster" autoplay muted loop  @loadeddata="onLoad" @error="onError" class="media w-full h-full object-cover object-center" ></video>
         <!-- ERROR FALLBACK -->
         <div v-if="error" class="error-fallback">
             <img src="/frame-bg.svg" alt="Unavailable" />

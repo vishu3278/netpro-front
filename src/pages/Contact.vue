@@ -71,8 +71,8 @@
                         Uttar Pradesh 201301
                     </motion.address>
                     <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 1, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pt-10">
-                            0120-4784-999<br>
-                        </motion.address>
+                        0120-4784-999<br>
+                    </motion.address>
                 </div>
             </div>
         </div>
@@ -127,12 +127,21 @@ const contact = ref("")
     }
 
     address {
-
-        font-size: 24px;
+        font-size: 14px;
         font-style: normal;
-        font-weight: 100;
-        line-height: 38px;
-        letter-spacing: -0.72px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.42px;
+    }
+
+    @media screen and (width >=64rem) {
+        address {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+
+        }
+
     }
 }
 </style>

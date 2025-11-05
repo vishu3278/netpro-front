@@ -67,9 +67,9 @@
             </div>
         </section>
         <section class="services bg-black text-white py-12 lg:py-20">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4">
                 <h4 class="font-medium mb-8 lg:mb-12 text-center lg:text-left">Services we offer</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div v-for="(sr, index) in sector.services" class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
                         <div class="services-icon mb-10">
                             <img :src="`${baseUrl}${sr.icon}`" alt="" class="" />
@@ -80,6 +80,31 @@
                             {{sr.description}}
                         </p>
                     </div>
+                </div> -->
+                <div class="services-carousel">
+                    <Carousel v-bind="carouselConfig">
+                        <!-- Card 1 -->
+                        <Slide v-for="(serv, index) in sector.services" :key="index">
+                            <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
+                                <figure class="services-icon mb-auto">
+                                    <img :src="baseUrl+serv.icon" :alt="serv.title" class="" />
+                                </figure>
+                                <h3 class="mt-5 mb-5">{{serv.title}}</h3>
+                                <p>{{serv.description}}</p>
+                            </div>
+                        </Slide>
+                        <template #addons>
+                            <Navigation>
+                                <template #prev>
+                                    <img src="/white-arrow-left.svg" alt="">
+                                </template>
+                                <template #next>
+                                    <img src="/white-arrow-right.svg" alt="">
+                                </template>
+                            </Navigation>
+                            <!-- <Pagination /> -->
+                        </template>
+                    </Carousel>
                 </div>
             </div>
         </section>
@@ -98,12 +123,35 @@ import OliveSection from "@/components/OliveSection.vue"
 import SectorCarousel from "@/components/SectorCarousel.vue"
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 const route = useRoute()
 let baseUrl = ref("/")
 const sector = ref(null)
 const loading = ref(true) // 👈 track loading state
 const error = ref(null)
+
+
+const carouselConfig = {
+    autoplay: 7500,
+    itemsToShow: 4,
+    // slideEffect: "fade",
+    wrapAround: true,
+    gap: 20,
+    snapAlign: 'start',
+    breakpoints: {
+        300: {
+            itemsToShow: 1.2,
+            snapAlign: 'center'
+        },
+        700: {
+            itemsToShow: 2.5
+        },
+        1100: {
+            itemsToShow: 4.2
+        }
+    }
+}
 
 watch(
     () => route.params.id,
@@ -233,6 +281,65 @@ const fetchData = async () => {
         font-weight: 400;
         line-height: 20px;
         letter-spacing: -0.48px;
+    }
+}
+
+.services-carousel {
+    color: white;
+    padding-bottom: 6rem;
+
+    &,
+    p {
+        color: $grey-text5;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 100;
+        line-height: 25px;
+        letter-spacing: -0.48px;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.48px;
+        text-transform: capitalize;
+    }
+
+    .carousel {
+        --vc-nav-background: rgba(0, 0, 0, 0);
+        --vc-nav-color: white;
+        --vc-nav-color-hover: white;
+        --vc-nav-border-radius: 50%;
+        --vc-nav-width: 50px;
+        --vc-nav-height: 50px;
+
+        &__slide {
+            align-items: stretch;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (width >=64rem) {
+
+        &,
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: -0.32px;
+        }
+
+        h3 {
+            font-size: 24px;
+            line-height: 34px;
+            letter-spacing: -0.72px;
+
+        }
     }
 }
 

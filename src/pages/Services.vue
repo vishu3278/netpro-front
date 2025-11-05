@@ -1,5 +1,5 @@
 <template>
-    <section class="hero relative bg-no-repeat bg-cover bg-center">
+    <section class="hero relative bg-no-repeat bg-cover bg-center overflow-clip">
         <motion.figure :initial="{opacity: 0.5, scale: 1.1}" :animate="{opacity: 1, scale: 1}" :transition="{duration: 1}" class="layer-bg absolute inset-0 "></motion.figure>
         <div class="container mx-auto px-4">
             <div class="content flex items-end">
@@ -63,9 +63,11 @@ const creativeWorks = ref([
 </script>
 <style lang="scss" scoped>
 .hero {
-    padding-top: 100px;
+    padding-top: 0;
     background-image: url('/services/hero-banner.jpg');
     color: #fff;
+    margin-bottom: -10rem;
+    z-index: -1;
 
     .layer-bg {
 
@@ -74,16 +76,36 @@ const creativeWorks = ref([
     }
 
     .content {
-        height: 400px;
-        padding-bottom: 80px;
+        padding-top: 135px;
+        padding-bottom: 200px;
     }
 
     h1 {
-
-        font-size: 60px;
+        font-size: 34px;
+        font-style: normal;
         font-weight: 100;
+        line-height: 44px;
+        letter-spacing: -1.02px;
+    }
+}
+
+@media screen and (width >=64rem) {
+    .hero {
+        padding-top: 100px;
+        margin-bottom: 0;
+    }
+    .content {
+        padding-top: 0;
+        padding-bottom: 80px;
+        height: 400px;
+
+    }
+
+    h1 {
+        font-size: 60px;
         line-height: 80px;
         letter-spacing: -1.8px;
+
     }
 }
 </style>

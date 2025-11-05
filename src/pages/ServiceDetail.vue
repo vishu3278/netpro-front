@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loading" class="loading  fixed z-10 inset-0 bg-white flex gap-8 flex-col items-center justify-center">
+    <div v-if="loading" class="loading fixed z-10 inset-0 bg-white flex gap-8 flex-col items-center justify-center">
         <span class="spinner "><img src="/logo-bg.svg" alt="" class="w-48 h-48 object-contain"></span>
         <p class="text-gray-500">Loading ...</p>
     </div>
@@ -7,16 +7,16 @@
         <p>{{ error }}</p>
     </div>
     <template v-else-if="service">
-        <section class="relative h-[60vh] w-full bg-cover bg-center flex items-end pb-20" :style="{'background-image': `url('${baseUrl}${service.bannerImage}')`}">
+        <section class="relative lg:h-[60vh] w-full bg-cover bg-center flex items-end pt-42 pb-16 lg:pt-0 lg:pb-20" :style="{'background-image': `url('${baseUrl}${service.bannerImage}')`}">
             <!-- Content -->
-            <div class="container mx-auto relative z-10">
+            <div class="container mx-auto px-4 relative z-10">
                 <h1 class="">
                     {{service.bannerTitle}}
                 </h1>
             </div>
         </section>
-        <section class="w-full bg-white py-32">
-            <div class="container mx-auto relative z-10">
+        <section class="w-full bg-white py-12 lg:py-32">
+            <div class="container mx-auto px-4 relative z-10">
                 <div class="max-w-2xl mx-auto">
                     <!-- Small Heading -->
                     <h6 class="mb-4">
@@ -34,19 +34,18 @@
                     <!-- <button type="button" class="text-sm hover:bg-gray-100 transition btn">
                     Get in Touch
                 </button> -->
-                    <router-link to="/contact" class="button button-dark">Get in Touch</router-link>
+                    <router-link to="/contact" class="button button-outline">Get in Touch</router-link>
                 </div>
             </div>
         </section>
-        <section class="bg-black text-white py-20 pl-25 slidersection">
-            <!-- Heading -->
-            <h3 class="font-medium mb-12">Services we offer in {{service.pageName}}</h3>
+        <section class="bg-black text-white px-4 py-12 lg:py-20 lg:pl-25 slidersection">
+            <h3 class="slider-title mb-12">Services we offer in {{service.pageName}}</h3>
             <!-- Service Cards -->
             <div class="services-carousel">
                 <Carousel v-bind="carouselConfig">
                     <!-- Card 1 -->
                     <Slide v-for="(serv, index) in service.services" :key="index">
-                        <div class="rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
+                        <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
                             <figure class="services-icon mb-auto">
                                 <img :src="baseUrl+serv.icon" :alt="serv.title" class="" />
                             </figure>
@@ -54,61 +53,6 @@
                             <p>{{serv.description}}</p>
                         </div>
                     </Slide>
-                    <!-- <Slide>
-                        <div class="rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
-                            <figure class="services-icon mb-auto">
-                                <img src="/services/services-vector2.svg" alt="" class="" />
-                            </figure>
-                            <h3 class="mt-12 mb-5">
-                                Enterprise Process Design
-                            </h3>
-                            <p>
-                                From multilingual content platforms to outcome-tracking dashboards, we engineer scalable
-                                solutions that support learning access and performance visibility.
-                            </p>
-                        </div>
-                    </Slide>
-                    <Slide>
-                        <div class="rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
-                            <figure class="services-icon mb-auto">
-                                <img src="/services/services-vector3.svg" alt="" class="" />
-                            </figure>
-                            <h3 class="mt-12 mb-5">
-                                Business Process Transformation
-                            </h3>
-                            <p>
-                                We manage the backend—keeping school data systems secure, fast, and available. Our support
-                                ensures uptime for nationwide education tech.
-                            </p>
-                        </div>
-                    </Slide>
-                    <Slide>
-                        <div class="rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
-                            <figure class="services-icon mb-auto">
-                                <img src="/services/services-vector4.svg" alt="" class="" />
-                            </figure>
-                            <h3 class="mt-12 mb-5">
-                                Solution Architecture & Design
-                            </h3>
-                            <p>
-                                We support government bodies with transformation consulting, data-backed insights, and the tools
-                                to roll out policy at scale with confidence.
-                            </p>
-                        </div>
-                    </Slide>
-                    <Slide>
-                        <div class="rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
-                            <figure class="services-icon mb-auto">
-                                <img src="/services/services-vector1.svg" alt="" class="" />
-                            </figure>
-                            <h3 class="mt-12 mb-5">
-                                Skills Development & Capacity Building</h3>
-                            <p>
-                                We build unified portals for school monitoring, student data, teacher tracking, and policy
-                                compliance—streamlining how education is planned and delivered.
-                            </p>
-                        </div>
-                    </Slide> -->
                     <template #addons>
                         <Navigation>
                             <template #prev>
@@ -131,12 +75,12 @@
             </button>
         </div> -->
         </section>
-        <section class="bg-white py-20  md:px-20 keyprojects">
-            <div class="max-w-7xl mx-auto">
-                <h4 class=" mb-12 text-center">Key Projects</h4>
+        <section class="bg-white py-12 lg:py-20 md:px-20 keyprojects">
+            <div class="max-w-6xl mx-auto px-4">
+                <h4 class="mb-8 lg:mb-12 text-center">Key Projects</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <!-- Project 1 -->
-                    <div v-for="(proj, index) in service.projects" :class="{'pt-30': (index+1)%2!=0}" class="space-y-4 ">
+                    <div v-for="(proj, index) in service.projects" :class="{'lg:pt-30': (index+1)%2!=0}" class="space-y-4 mb-4">
                         <img :src="baseUrl+proj.img" alt="" class="rounded-lg w-full">
                         <h5 class="mb-2">{{proj.title}}</h5>
                         <p>
@@ -165,7 +109,6 @@ import { ref, onMounted, watch } from 'vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { useRoute } from 'vue-router'
 
-
 const carouselConfig = {
     autoplay: 7500,
     itemsToShow: 4.5,
@@ -173,6 +116,12 @@ const carouselConfig = {
     wrapAround: true,
     gap: 20,
     snapAlign: 'start',
+    breakpoints: {
+        300: {
+            itemsToShow: 1.2,
+            snapAlign: 'center'
+        },
+    }
 }
 let baseUrl = ref("/")
 const route = useRoute()
@@ -237,21 +186,32 @@ const fetchData = async () => {
 <style lang="scss" scoped>
 h1 {
     color: #FFF;
-    font-size: 60px;
+    font-size: 34px;
+    font-style: normal;
     font-weight: 100;
-    line-height: 80px;
-    letter-spacing: -1.8px;
+    line-height: 44px;
+    letter-spacing: -1.0px;
+
 }
 
-h2,
-h3,
-h4 {
-    color: $rich-black;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 50px;
-    letter-spacing: -1.2px;
+h2 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 32px;
+    letter-spacing: -0.72px;
 }
+
+h4 {
+
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 44px;
+    letter-spacing: -1.02px;
+
+}
+
 
 h5 {
     color: $rich-black;
@@ -261,54 +221,30 @@ h5 {
     letter-spacing: -0.6px;
 }
 
-
-h4 {
-    font-weight: 100;
-}
-
-h3 {
-    color: #fff;
-    font-weight: 100;
-}
-
-p {
-    //color: $rich-black;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: -0.48px;
-}
-
-button.btn {
-    color: $rich-black;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: -0.54px;
-    border-radius: 55px;
-    border: 1px solid var(--New, #2033D5);
-    display: inline-flex;
-    height: 55px;
-    padding: 6px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-button {
-    cursor: pointer;
-}
-
 h6 {
-    font-size: 14px;
+    font-size: 16px;
+    font-style: normal;
     font-weight: 600;
     line-height: 30px;
     text-transform: uppercase;
-    background: var(--Highlight-Stroke, linear-gradient(98deg, #171EEC 7.56%, #7000D9 93.65%));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include text-secondary-gradient;
+
+}
+
+p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.42px;
+}
+
+.slider-title {
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 44px;
+    letter-spacing: -1.02px;
 }
 
 .services-carousel {
@@ -317,19 +253,20 @@ h6 {
 
     &,
     p {
+        color: $grey-text5;
         font-size: 16px;
         font-style: normal;
-        font-weight: 400;
-        line-height: 26px;
-        letter-spacing: -0.32px;
+        font-weight: 100;
+        line-height: 25px;
+        letter-spacing: -0.48px;
     }
 
     h3 {
-        font-size: 24px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 34px;
-        letter-spacing: -0.72px;
+        line-height: 20px;
+        letter-spacing: -0.48px;
         text-transform: capitalize;
     }
 
@@ -351,24 +288,90 @@ h6 {
         }
     }
 
+    @media screen and (width >=64rem) {
+
+        &,
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            letter-spacing: -0.32px;
+        }
+
+        h3 {
+            font-size: 24px;
+            line-height: 34px;
+            letter-spacing: -0.72px;
+
+        }
+    }
 }
 
 .keyprojects {
     h5 {
-        font-size: 20px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 30px;
-        letter-spacing: -0.6px;
+        line-height: 24px;
+        letter-spacing: -0.48px;
+
     }
 
     p {
         color: $grey-text;
-        font-size: 18px;
+
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 26px;
-        letter-spacing: -0.54px;
+        line-height: 24px;
+        letter-spacing: -0.42px;
+    }
+}
+
+@media screen and (width >=64rem) {
+    h1 {
+        font-size: 60px;
+        font-weight: 100;
+        line-height: 80px;
+        letter-spacing: -1.8px;
+    }
+
+    h2 {
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: -1.2px;
+    }
+
+    h4 {
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: -1.2px;
+    }
+
+    h6 {
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: -0.48px;
+    }
+
+    .keyprojects {
+        h5 {
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: -0.6px;
+
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 26px;
+            letter-spacing: -0.54px;
+
+        }
     }
 }
 </style>
