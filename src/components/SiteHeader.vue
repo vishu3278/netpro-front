@@ -62,8 +62,9 @@ header {
     }
 
     nav {
-        border-bottom: 1px solid $grey2;
-        background: $grey1;
+        //border-bottom: 1px solid $grey2;
+        //background: $grey1;
+        background: #fff;
         height: 70px;
     }
 

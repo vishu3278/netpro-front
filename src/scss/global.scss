@@ -31,7 +31,7 @@
     font-weight: normal;
     line-height: 40px;
     letter-spacing: -0.5px;
-    transition: color;
+    transition: all;
 
     &:hover {
         /*mix-blend-mode: lighten;*/
@@ -44,8 +44,14 @@
     }
 
     &-outline {
+        border-color: #2033D5;
         background-color: transparent;
-        color: #fff;
+        color: $rich-black;
+        &:hover {
+            //background-color: #2033D5;
+            @include text-primary-gradient;
+            color: #fff;
+        }
     }
 
     &-dark {

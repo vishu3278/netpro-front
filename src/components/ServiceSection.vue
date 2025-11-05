@@ -1,24 +1,24 @@
 <template>
-    <section class="service-section py-20 overflow-clip">
+    <section class="service-section py-8 lg:py-20 overflow-clip">
         <div class="container mx-auto px-4 ">
             <div class="flex flex-col lg:flex-row lg:gap-8 lg:justify-between ">
-                <div class="col " :class="{'order-last': flip}">
+                <div class="col order-last lg:order-first" :class="{'lg:order-last': flip}">
                     <div class="content">
                         <motion.div class="title mb-2" :initial="{opacity: 0, y: 100 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
                             {{title}}
                         </motion.div>
-                        <ul class="tech-list my-12">
+                        <ul class="tech-list my-4 lg:my-12">
                             <MotionConfig :transition="{ duration: 1, delay: 0.75 }">
                                 <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0}" class="flex justify-between">{{li}} </motion.li>
                             </MotionConfig>
                         </ul>
-                        <motion.div :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 1}}">
-                            <router-link :to="link.path"  class="tech-link inline-flex gap-4">{{link.text}} <img src="/icons/arrow-right-blue.svg" alt=""></router-link>
+                        <motion.div :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 1}}" class="mt-6 ">
+                            <router-link :to="link.path" class="tech-link inline-flex gap-4">{{link.text}} <img src="/icons/arrow-right-blue.svg" alt=""></router-link>
                         </motion.div>
                     </div>
                 </div>
-                <div class="col lg:w-1/2" :class="{'order-first': flip}">
-                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.75}}" class="max-w-[660px] overflow-clip ">
+                <div class="col lg:w-1/2  " >
+                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.75}}" class="max-w-[660px] rounded-xl overflow-clip mb-10 lg:mb-4">
                         <img :src="bUrl+image" class="max-w-full" alt="">
                     </motion.figure>
                 </div>
@@ -37,7 +37,7 @@ const props = defineProps({
     list: {
         type: Array,
         default: () => {
-            return ["item1" ]
+            return ["item1"]
         }
     },
     link: {
@@ -64,18 +64,22 @@ onMounted(() => {
     }
 
     .title {
-        font-size: 40px;
+        font-size: 24px;
+        font-style: normal;
         font-weight: 100;
-        line-height: 60px;
-        letter-spacing: -1.2px;
+        line-height: 32px;
+        letter-spacing: -0.72px;
+
     }
 
     .tech-list {
-        color: var(--Rich-Black, #121212);
-        font-size: 20px;
+        color: $rich-black;
+
+        font-size: 16px;
+        font-style: normal;
         font-weight: 600;
-        line-height: 80px;
-        letter-spacing: -0.6px;
+        line-height: 60px;
+        letter-spacing: -0.48px;
 
         li {
 
@@ -83,20 +87,21 @@ onMounted(() => {
 
             &::after {
                 content: url('/icons/arrow-right-blue.svg');
-                opacity: 0;
+                opacity: 1;
                 transition: opacity 400ms ease-in;
             }
 
-            &:hover {
-
-                &::after {
-                    opacity: 1;
-                }
-            }
         }
     }
 
     .tech-link {
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.42px;
+
         background: linear-gradient(98deg, #171EEC 7.56%, #7000D9 93.65%);
         background-clip: text;
         -webkit-background-clip: text;
@@ -110,6 +115,40 @@ onMounted(() => {
             img {
                 margin-left: 1rem;
             }
+        }
+    }
+
+    @media screen and (width >=64rem) {
+        .title {
+
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
+
+        .tech-list {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 80px;
+            letter-spacing: -0.6px;
+
+            li {
+                &::after {
+                    opacity: 0;
+                }
+
+                &:hover {
+
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+
+            }
+        }
+        .tech-link {
+            font-size: 16px;
+            line-height: 30px;
         }
     }
 }

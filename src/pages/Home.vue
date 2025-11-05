@@ -18,7 +18,7 @@
         <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader src="/home/silhouette-engineer-and-inspector.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader :src="baseUrl+'home/silhouette-engineer-and-inspector.mp4'" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -38,11 +38,11 @@
             </div>
         </div>
     </section>
-    <section id="video3" class="video2 h-dvh relative overflow-clip">
+    <section id="video3" class="video2 h-dvh relative overflow-clip" style="background: hsla(45, 25%, 91%, 1); background: radial-gradient(circle, hsla(45, 25%, 91%, 1) 0%, hsla(52, 18%, 65%, 1) 78%, hsla(66, 9%, 48%, 1) 100%);">
         <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader src="/home/silhouette-of-a-sports-girl.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader :src="baseUrl+'home/silhouette-of-a-sports-girl.mp4'" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
         
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
@@ -544,6 +544,8 @@ onMounted(() => {
 .video2 {
     color: #fff;
     padding-top: 240px;
+    background: #FFF3E7;
+    background: radial-gradient(circle, rgba(255, 243, 231, 1) 0%, rgba(217, 127, 64, 1) 29%, rgba(83, 47, 23, 1) 100%);
 
     .content {
         font-size: 20px;
