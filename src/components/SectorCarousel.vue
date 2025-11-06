@@ -73,7 +73,7 @@ const carouselConfig = {
     snapAlign: 'start',
     breakpoints: {
         300: {
-            itemsToShow: 1.5,
+            itemsToShow: 1.25,
         },
         600: {
             itemsToShow: 2.25

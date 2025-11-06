@@ -121,6 +121,12 @@ const carouselConfig = {
             itemsToShow: 1.2,
             snapAlign: 'center'
         },
+        700: {
+            itemsToShow: 2.5
+        },
+        1100: {
+            itemsToShow: 4.7
+        }
     }
 }
 let baseUrl = ref("/")

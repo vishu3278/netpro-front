@@ -38,8 +38,8 @@ onMounted(() => {
 watch(() => route.fullPath,
     (newPath, oldPath) => {
         console.log('Route changed!');
-        console.log('Old path:', oldPath);
-        console.log('New path:', newPath);
+        // console.log('Old path:', oldPath);
+        // console.log('New path:', newPath);
         // You can perform any actions here based on the route change
         // For example, update a global state, fetch data, or trigger animations.
         // Use ScrollSmoother's scrollTo method to smoothly scroll to the top

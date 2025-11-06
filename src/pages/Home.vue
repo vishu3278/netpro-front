@@ -167,11 +167,11 @@
                     </div>
                 </div>
                 <div class="lg:col-start-4 lg:col-end-6">
-                    <div class="card-dark">
-                        <p>Certified Excellence Our Trusted Credentials</p>
-                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-10 my-8 lg:my-24 px-10">
+                    <div class="card-dark px-4 lg:px-10">
+                        <p class="text-balance">Certified Excellence Our Trusted Credentials</p>
+                        <div class="grid grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 mb-2 mt-8 lg:my-8 lg:my-24 ">
                             <div v-for="item in certified" :key="item.id" class="flex flex-col">
-                                <figure class="h-20 mb-4">
+                                <figure class="h-20 mb-2 lg:mb-4">
                                     <img :src="baseUrl+item.icon" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
                                 <label>{{item.title}}</label>
@@ -182,7 +182,7 @@
             </div>
         </div>
     </section>
-    <section id="techsection" class="technology py-25 relative">
+    <section id="techsection" class="technology py-8 lg:py-25 relative">
         <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>

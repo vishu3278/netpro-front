@@ -1,7 +1,7 @@
 <template>
     <section id="testimonials" class="testimonials py-8 lg:py-32 " :style="{backgroundImage: `url(${bgImg})`}">
         <div class="container mx-auto px-4 ">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-96 md:mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-72 md:mt-4">
                 <div class="lg:col-start-3 lg:col-end-4 md:col-start-2 md:col-end-3">
                     <div class="wrapper p-8 lg:py-12 lg:px-16">
                         <h5 class="uppercase">{{title}}</h5>

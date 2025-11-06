@@ -2,10 +2,10 @@
     <section class="contact pt-32 pb-16 lg:pt-46 lg:pb-36">
         <div class="container px-4 mx-auto">
             <div class="grid lg:grid-cols-2">
-                <div>
+                <div class="mb-12 lg:mb-0">
                     <h1 class="title">Let’s Connect</h1>
                     <p class="subtitle">Tell us more about what you’re building and how we can help.</p>
-                    <figure class="max-w-[600px] mt-16 mb-16">
+                    <figure class="hidden lg:block max-w-[600px] mt-16 mb-16">
                         <img src="/logo-bg.svg" class="max-w-full" alt="">
                     </figure>
                 </div>
@@ -48,18 +48,18 @@
                 </div>
                 <div>
                     <motion.div :initial="{opacity: 0, y: '110%'}" :whileInView="{opacity: 1, y: 0, transition: {duration: 1, delay: 0.5}}" class="mt-16 lg:mt-52">
-                        <h2>Get in touch</h2>
+                        <h2 class="address-title">Get in touch</h2>
                     </motion.div>
                 </div>
                 <div>
                     <div class="grid grid-cols-2 mt-4 lg:mt-52">
                         <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.4, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pb-10">
                             New Business.<br>
-                            info@npglobal.in
+                            <strong>info@npglobal.in</strong>
                         </motion.address>
                         <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 0.6, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pb-10">
                             Join the Team. <br>
-                            jobs@npglobal.in
+                            <strong>jobs@npglobal.in</strong>
                         </motion.address>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         Sector 62, Noida,<br>
                         Uttar Pradesh 201301
                     </motion.address>
-                    <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 1, duration: 1, ease: 'easeOut'}}" class="pb-4 lg:pt-10">
+                    <motion.address :initial="{opacity: 0, y: '110%', rotate: -5}" :whileInView="{opacity: 1, y: 0, rotate: 0, transition: {delay: 1, duration: 1, ease: 'easeOut'}}" class="pt-4 lg:pt-10">
                         0120-4784-999<br>
                     </motion.address>
                 </div>
@@ -92,16 +92,20 @@ const contact = ref("")
 
     h1,
     .title {
-        font-size: 80px;
+        font-size: 34px;
+        font-style: normal;
         font-weight: 100;
-        line-height: 90px;
-        letter-spacing: -2.4px;
+        line-height: 44px;
+        letter-spacing: -1.02px;
+
     }
 
-    .subtitle {
+    .subtitle,
+    .address-title {
         font-size: 24px;
+        font-style: normal;
         font-weight: 100;
-        line-height: 38px;
+        line-height: 32px;
         letter-spacing: -0.72px;
     }
 
@@ -111,11 +115,11 @@ const contact = ref("")
     }
 
     legend {
-        font-size: 40px;
+        font-size: 24px;
         font-style: normal;
         font-weight: 100;
-        line-height: 60px;
-        letter-spacing: -1.2px;
+        line-height: 32px;
+        letter-spacing: -0.72px;
     }
 
     h2 {
@@ -135,11 +139,38 @@ const contact = ref("")
     }
 
     @media screen and (width >=64rem) {
+        .title {
+            font-size: 80px;
+            line-height: 90px;
+            letter-spacing: -2.4px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            font-weight: 100;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+        }
+
+        .address-title {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 100;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
+
+        legend {
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
+
         address {
             font-size: 24px;
             line-height: 38px;
             letter-spacing: -0.72px;
-
+            font-weight: 100;
         }
 
     }

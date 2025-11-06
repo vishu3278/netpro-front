@@ -1,22 +1,23 @@
 <script setup>
-import { ref, watch } from 'vue'
-// import { useRoute, onBeforeRouteUpdate} from 'vue-router'
+    import { ref, watch } from 'vue'
+import { useRoute, onBeforeRouteUpdate} from 'vue-router'
 import { motion } from 'motion-v'
 
 /*defineProps({
-    msg: String,
+    mobileMenu: false,
 })*/
 
 const menu = ref(false)
+const route = useRoute()
+const closeMenu = () => (menu.value = false)
 
-// const route = useRoute()
-
-/*watch(
+watch(
   () => route.params.id,
   (newId, oldId) => {
     console.log(newId)
+    menu.value = false
   }
-)*/
+)
 /*onBeforeRouteUpdate(async (to, from) => {
   // react to route changes...
   // userData.value = await fetchUser(to.params.id)
@@ -34,16 +35,28 @@ const menu = ref(false)
                     <path d="M28.5938 8.62402H1.40625C1.03329 8.62402 0.675604 8.76901 0.411881 9.02709C0.148158 9.28516 0 9.63519 0 10.0002C0 10.3651 0.148158 10.7152 0.411881 10.9733C0.675604 11.2313 1.03329 11.3763 1.40625 11.3763H28.5938C28.9667 11.3763 29.3244 11.2313 29.5881 10.9733C29.8518 10.7152 30 10.3651 30 10.0002C30 9.63519 29.8518 9.28516 29.5881 9.02709C29.3244 8.76901 28.9667 8.62402 28.5938 8.62402Z" fill="#121212" />
                 </svg>
             </button>
-            <motion.div key="menu" class="links-wrap" :class="[menu ? 'flex':'hidden']" :initial="{ top: '10%', opacity: 0 }" :animate="{top:'90%', opacity: 1}" :exit="{ top: '10%', opacity: 0 }" :transition='{ type: "spring" }' >
-                <router-link class="nav-link" to="/about">Who we are</router-link>
-                <router-link class="nav-link" to="/sector">Sector Impact</router-link>
-                <router-link class="nav-link" to="/service">Services we offer</router-link>
-                <router-link class="nav-link contact border rounded-full" to="/contact">Get in Touch</router-link>
-            </motion.div>
+            <transition name="slide">
+                <div class="links-wrap" :class="[menu ? 'flex':'hidden']">
+                    <router-link class="nav-link" to="/about" @click="closeMenu">Who we are</router-link>
+                    <router-link class="nav-link" to="/sector" @click="closeMenu">Sector Impact</router-link>
+                    <router-link class="nav-link" to="/service" @click="closeMenu">Services we offer</router-link>
+                    <router-link class="nav-link contact border rounded-full" to="/contact" @click="closeMenu">Get in Touch</router-link>
+                </div>
+            </transition>
         </nav>
     </header>
 </template>
 <style lang="scss" scoped>
+.slide-enter-active,
+.slide-leave-active {
+    transition: transform 0.3s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    transform: translateY(-100%);
+}
+
 header {
     top: 0;
     left: 0;
@@ -52,9 +65,9 @@ header {
     .links-wrap {
         /*display: none;*/
         position: absolute;
-        background: $grey1;
+        background: #fff;
         right: 0;
-        top: 10%;
+        top: 100%;
         padding: 1rem;
         /*border-left: 1px solid $grey2;
         border-bottom: 1px solid $grey2;*/
@@ -83,6 +96,7 @@ header {
             height: 65px;
             margin-inline: auto;
         }
+
         .links-wrap {
             display: flex;
             flex-direction: row;
@@ -90,6 +104,7 @@ header {
             position: static;
             padding: 0;
             border: 0 none;
+            background: none transparent;
         }
     }
 
@@ -112,6 +127,7 @@ header {
         font-weight: 600;
         border-color: $primary1;
     }
+
     &.router-link-active {
         @include text-primary-gradient;
     }
