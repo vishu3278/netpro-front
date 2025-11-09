@@ -1,5 +1,5 @@
 <template>
-    <section id="testimonials" class="testimonials py-8 lg:py-32 " :style="{backgroundImage: `url(${bgImg})`}">
+    <section id="testimonials" class="testimonials py-8 lg:py-32 " :style="{backgroundImage: `url(${background})`}">
         <div class="container mx-auto px-4 ">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-72 md:mt-4">
                 <div class="lg:col-start-3 lg:col-end-4 md:col-start-2 md:col-end-3">
@@ -30,7 +30,8 @@
     </section>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { viewport } from '@/composables/useBreakpoints'
 
 // import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
@@ -44,40 +45,33 @@ const carouselConfig = {
 
 const props = defineProps({
     title: { type: String, default: "Our Testimonials" },
-    bgImg: { type: String, default: "home/swastik-arora-unsplash.jpg" },
-    // btnLink: String
-    testimonials: {type: Array, default: () => {
+    bgImg: { type: String, default: "logo-bg.svg" },
+    bgImgMobile: { type: String, },
+    testimonials: {
+        type: Array,
+        default: () => {
             return [
-                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System"},
-                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students .', meta: "Keith Norman, Director, GTI System"},
-                { content: 'NetProphets has been crucial in helping us scale our education facilities and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System"}
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System" },
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students .', meta: "Keith Norman, Director, GTI System" },
+                { content: 'NetProphets has been crucial in helping us scale our education facilities and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System" }
             ]
-        }}
+        }
+    }
 })
 
+const background = computed(() => {
+    if (viewport.isMobile) {
+        return props.bgImgMobile ? props.bgImgMobile : props.bgImg
+    } else {
+        return props.bgImg
+    }
+})
 
 onMounted(() => {
 
 })
 </script>
 <style lang="scss" scoped>
-/*:root {
-
-    --vc-clr-primary: #000;
-    --vc-clr-secondary: #090f207f;
-    --vc-clr-white: #ffffff;
-
-    --vc-pgn-active-color: var(--vc-clr-primary);
-    --vc-pgn-background-color: var(--vc-clr-secondary);
-    --vc-pgn-border-radius: 0;
-    --vc-pgn-gap: 6px;
-    --vc-pgn-height: 4px;
-    --vc-png-bottom: 10px;
-    --vc-png-left: auto;
-    --vc-png-right: 10px;
-    --vc-pgn-width: 16px;
-}*/
-
 .testimonials {
     background-repeat: no-repeat;
     background-size: cover;
@@ -112,7 +106,8 @@ onMounted(() => {
             font-weight: 400;
         }
     }
-    @media screen and (width >= 64rem) {
+
+    @media screen and (width >=64rem) {
         blockquote {
             font-size: 24px;
             line-height: 32px;
@@ -127,19 +122,24 @@ onMounted(() => {
 }
 
 .carousel {
-    --vc-pgn-width: 10px;
-    --vc-pgn-height: 10px;
-    --vc-pgn-background-color: #454545;
-    --vc-pgn-active-color: #d9d9d9;
-    --vc-pgn-gap: 10px;
-    --vc-pgn-border-radius: 10px;
-    
+
     &__pagination {
         position: relative;
         left: 0;
         justify-content: start;
         transform: none;
-        margin-top: 1rem;
+    }
+
+    @media screen and (width >=64rem) {
+        --vc-pgn-width: 10px;
+        --vc-pgn-height: 10px;
+        --vc-pgn-background-color: #454545;
+        --vc-pgn-active-color: #d9d9d9;
+        --vc-pgn-gap: 10px;
+        --vc-pgn-border-radius: 10px;
+        &__pagination {
+            margin-top: 1rem;
+        }
     }
 }
 </style>

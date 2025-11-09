@@ -1,5 +1,5 @@
 <template>
-    <section class="service-section py-8 lg:py-20 overflow-clip">
+    <section class="service-section py-12 lg:py-20 overflow-clip">
         <div class="container mx-auto px-4 ">
             <div class="flex flex-col lg:flex-row lg:gap-8 lg:justify-between ">
                 <div class="col order-last lg:order-first" :class="{'lg:order-last': flip}">
@@ -7,7 +7,7 @@
                         <motion.div class="title mb-2" :initial="{opacity: 0, y: 100 }" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5} }">
                             {{title}}
                         </motion.div>
-                        <ul class="tech-list my-4 lg:my-12">
+                        <ul class="tech-list my-2 lg:my-12">
                             <MotionConfig :transition="{ duration: 1, delay: 0.75 }">
                                 <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0}" class="flex justify-between">{{li}} </motion.li>
                             </MotionConfig>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col lg:w-1/2  " >
-                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.75}}" class="max-w-[660px] rounded-xl overflow-clip mb-10 lg:mb-4">
+                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.75}}" class="max-w-[660px] rounded-xl overflow-clip mb-8 lg:mb-4">
                         <img :src="bUrl+image" class="max-w-full" alt="">
                     </motion.figure>
                 </div>
@@ -87,7 +87,7 @@ onMounted(() => {
 
             &::after {
                 content: url('/icons/arrow-right-blue.svg');
-                opacity: 1;
+                opacity: 0;
                 transition: opacity 400ms ease-in;
             }
 

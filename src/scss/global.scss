@@ -51,10 +51,15 @@
         color: $rich-black;
 
         &:hover {
-            //background-color: #2033D5;
             @include text-primary-gradient;
             color: #fff;
         }
+    }
+
+    &-white-outline {
+        border-color: #fff;
+        background-color: transparent;
+        color: #fff;
     }
 
     &-dark {

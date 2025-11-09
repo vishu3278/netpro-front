@@ -31,32 +31,26 @@
                         <p>
                             <span>{{sector.statsText}}</span>
                         </p>
-                        <!-- <p class="">
-                        <span>At NetProphets, we partner with central and state governments to address these gaps.
-                            Our goal is to help public education systems become more connected, data-driven, and
-                            equitable —
-                            so every child, teacher, and institution can thrive.</span>
-                    </p> -->
                     </div>
-                    <div class="flex justify-end">
-                        <img :src="`${baseUrl}${sector.statsImage}`" alt="education network" class="w-72 md:w-96">
+                    <div class="md:flex hidden justify-end">
+                        <img :src="`${baseUrl}${sector.statsImage}`" alt="education network" class="w-72 lg:w-96">
                     </div>
                 </div>
                 <!-- Stats Row -->
-                <div class="stats pt-20 grid grid-cols-1 sm:grid-cols-3 gap-10">
-                    <div v-for="st in sector.stats" class="flex gap-4 lg:space-y-2 border-l border-white py-5 pl-6 lg:pl-10">
+                <div class="stats pt-10 lg:pt-20 grid grid-cols-1 sm:grid-cols-3 md:gap-4 lg:gap-10">
+                    <div v-for="st in sector.stats" class="flex gap-4 lg:space-y-2 md:border-l md:border-white py-5 md:pl-5 lg:pl-10">
                         <p><span class="text-gray-700">[{{st.id}}]</span></p>
                         <h3>{{st.text}}</h3>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="projects bg-white pt-12 pb-6 lg:py-16 px-4 md:px-20">
+        <section class="projects bg-white py-12 lg:py-16 px-4 md:px-20">
             <div class="max-w-7xl mx-auto">
                 <h4 class="heading mb-8 lg:mb-12 text-center">Key Projects</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
                     <!-- Project 1 -->
-                    <div v-for="(pr, index) in sector.projects" class="space-y-4 mb-4" :class="[(index+1)%2 == 0 ? '':'lg:pt-30']">
+                    <div v-for="(pr, index) in sector.projects" class="space-y-4 " :class="[(index+1)%2 == 0 ? '':'lg:pt-30']">
                         <img :src="`${baseUrl}${pr.img}`" :alt="pr.title" class="rounded-lg w-full">
                         <h5 class="mb-2">{{pr.title}}</h5>
                         <p class="">
@@ -69,18 +63,7 @@
         <section class="services bg-black text-white py-12 lg:py-20">
             <div class="container mx-auto px-4">
                 <h4 class="font-medium mb-8 lg:mb-12 text-center lg:text-left">Services we offer</h4>
-                <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div v-for="(sr, index) in sector.services" class="rounded-[20px] border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8 hover:border-[#d6d1d1] transition-all cursor-pointer">
-                        <div class="services-icon mb-10">
-                            <img :src="`${baseUrl}${sr.icon}`" alt="" class="" />
-                        </div>
-                        <h5 class="mb-5">
-                            {{sr.title}}</h5>
-                        <p class="">
-                            {{sr.description}}
-                        </p>
-                    </div>
-                </div> -->
+                
                 <div class="services-carousel">
                     <Carousel v-bind="carouselConfig">
                         <!-- Card 1 -->
@@ -102,19 +85,18 @@
                                     <img src="/white-arrow-right.svg" alt="">
                                 </template>
                             </Navigation>
-                            <!-- <Pagination /> -->
+                            <Pagination />
                         </template>
                     </Carousel>
                 </div>
             </div>
         </section>
-        <Testimonial :bg-img="baseUrl+sector.testimonialImage" />
-        <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
+        <Testimonial :bgImg="baseUrl+sector.testimonialImage" ></Testimonial>
     </template>
     <div v-else class="py-80 container mx-auto px-10">
         <p class="text-red-400">Product not found.</p>
     </div>
-    
+    <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
     <SectorCarousel />
 </template>
 <script setup>
@@ -286,8 +268,7 @@ const fetchData = async () => {
 
 .services-carousel {
     color: white;
-    padding-bottom: 6rem;
-
+    padding-bottom: 2rem;
     &,
     p {
         color: $grey-text5;
@@ -326,7 +307,7 @@ const fetchData = async () => {
     }
 
     @media screen and (width >=64rem) {
-
+        padding-bottom: 6rem;
         &,
         p {
             font-size: 16px;
@@ -344,6 +325,45 @@ const fetchData = async () => {
 }
 
 @media screen and (width >=64rem) {
-    
+    .hero {
+        p {
+            font-size: 24px;
+            line-height: 38px;
+            letter-spacing: -0.72px;
+        }
+
+        h1 {
+            font-size: 60px;
+            line-height: 80px;
+            letter-spacing: -1.8px;
+        }
+    }
+
+    .education {
+        font-size: 16px;
+        font-style: normal;
+        letter-spacing: -0.48px;
+
+        h2 {
+            font-size: 40px;
+            line-height: 60px;
+            letter-spacing: -1.2px;
+        }
+    }
+
+    .stats {
+        p {
+            color: #FFF;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: -0.48px;
+        }
+
+        h3 {
+            font-size: 24px;
+            line-height: 33px;
+            letter-spacing: -0.72px;
+        }
+    }
 }
 </style>

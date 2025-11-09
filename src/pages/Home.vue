@@ -14,7 +14,8 @@
             </div>
         </div>
     </section> -->
-    <section id="video2" class="video2 h-dvh relative overflow-clip">
+    <VideoCarousel v-if="isMobile" :slide1="{video: baseUrl+'home/silhouette-engineer-and-inspector.mp4', title: '', text: 'Digital solutions that power India’s critical sectors and enable better public outcomes.'}" :slide2="{video: baseUrl+'home/silhouette-of-a-sports-girl.mp4', title: '', text: 'Meaningful impact through citizen - First Governance Projects'}" />
+    <section v-if="!isMobile" id="video2" class="video2 hidden md:block h-dvh relative overflow-clip">
         <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video> -->
@@ -29,7 +30,7 @@
                         <p>Meaningful impact through citizen - First Governance Projects</p>
                         <div class="flex gap-4 flex-wrap mt-10">
                             <router-link to="/sector" class="button button-fill">View Sector</router-link>
-                            <router-link to="/service" class="button button-outline">View Services</router-link>
+                            <router-link to="/service" class="button button-white-outline">View Services</router-link>
                         </div>
                     </div>
                 </div>
@@ -38,12 +39,11 @@
             </div>
         </div>
     </section>
-    <section id="video3" class="video2 h-dvh relative overflow-clip" style="background: hsla(45, 25%, 91%, 1); background: radial-gradient(circle, hsla(45, 25%, 91%, 1) 0%, hsla(52, 18%, 65%, 1) 78%, hsla(66, 9%, 48%, 1) 100%);">
+    <section v-if="!isMobile" id="video3" class="video2 hidden md:block h-dvh relative overflow-clip" style="background: hsla(45, 25%, 91%, 1); background: radial-gradient(circle, hsla(45, 25%, 91%, 1) 0%, hsla(52, 18%, 65%, 1) 78%, hsla(66, 9%, 48%, 1) 100%);">
         <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video> -->
         <MediaLoader :src="baseUrl+'home/silhouette-of-a-sports-girl.mp4'" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
-        
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -52,7 +52,7 @@
                         <p>Transforming Business Potential Into Sustainable Digital Success</p>
                         <div class="flex gap-4 flex-wrap mt-10">
                             <router-link to="/sector" class="button button-fill">View Sector</router-link>
-                            <router-link to="/service" class="button button-outline">View Services</router-link>
+                            <router-link to="/service" class="button button-white-outline">View Services</router-link>
                         </div>
                     </div>
                 </div>
@@ -61,9 +61,9 @@
             </div>
         </div>
     </section>
-    <section id="aboutsection" class="about py-20">
+    <section id="aboutsection" class="about py-12 lg:py-20">
         <div class="container mx-auto px-4 ">
-            <div class="grid lg:grid-cols-2 gap-16">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
                 <div class="col">
                     <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
                     <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
@@ -105,16 +105,33 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-12 lg:mt-16 md:px-20">
                 <div class="lg:col-start-1 lg:col-end-3 ">
-                    <div class="card-green relative">
-                        <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
+                    <div class="card-green ministry">
+                        <p class="px-16 text-balance">Empowering India's Ministries through Innovative Solutions</p>
+                        <figure class="text-center mt-12 mb-8">
+                            <img src="/icons/satyamev-lg.svg" class="inline-block " alt="">
+                        </figure>
+                        <p class="text-lg uppercase">Ministry of</p>
+                        <Carousel :items-to-show="1.35" :gap="5" :autoplay="5000" :wrap-around="true" :transition="800" transitionEasing="ease-in-out">
+                            <Slide>
+                                <div class="carousel__item uppercase text-lg">Youth Affairs and Sports</div>
+                            </Slide>
+                            <Slide>
+                                <div class="carousel__item uppercase text-lg">Human Resource Development</div>
+                            </Slide>
+                            <Slide>
+                                <div class="carousel__item uppercase text-lg">Road Transport and Highways</div>
+                            </Slide>
+                            
+                        </Carousel>
+                        <!-- <video autoplay muted loop id="motion2" class="absolute inset-0 w-full h-full object-cover object-center">
                             <source src="/home/motion-2.mp4" type="video/mp4">
-                        </video>
+                        </video> -->
                     </div>
                 </div>
                 <div class="lg:col-start-3 lg:col-end-6">
                     <div class="card-white states">
                         <p class="px-16">Delivering Excellence State-by-State Across India</p>
-                        <div class="pt-12 pb-5 pr-16 states-list">
+                        <div class="pt-12 pb-5 pr-8 md:pr-16 states-list">
                             <Carousel v-bind:="stateCarousel1">
                                 <Slide v-for="(state, index) in states1" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
@@ -124,7 +141,7 @@
                                 </Slide>
                             </Carousel>
                         </div>
-                        <div class="py-5 pl-16 states-list">
+                        <div class="py-5 pl-8 md:pl-16 states-list">
                             <Carousel v-bind="stateCarousel2">
                                 <Slide v-for="(state, index) in states2" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
@@ -138,7 +155,7 @@
                 </div>
                 <div class="lg:col-start-1 lg:col-end-4">
                     <div class="card-grey">
-                        <p>Trusted Partnership that Makes an Impact</p>
+                        <p class="text-balance">Trusted Partnership that Makes an Impact</p>
                         <Carousel :autoplay="3500" :wrapAround="true" slideEffect="fade" :transition="800">
                             <Slide>
                                 <div class="grid grid-cols-2 w-full lg:grid-cols-3 gap-6 lg:gap-10 px-2 lg:px-10 py-8 lg:py-16 place-items-center">
@@ -182,7 +199,7 @@
             </div>
         </div>
     </section>
-    <section id="techsection" class="technology py-8 lg:py-25 relative">
+    <section id="techsection" class="technology py-12 lg:py-24 relative">
         <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-8">
                 <div>
@@ -217,7 +234,7 @@
         </div>
     </section>
     <!-- testimonials -->
-    <Testimonial />
+    <Testimonial :bgImg="baseUrl+'home/swastik-arora-unsplash.jpg'" :bgImgMobile="baseUrl+'home/swastik-arora-mobile.jpg'"></Testimonial>
     <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">
@@ -247,8 +264,10 @@
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
 import Testimonial from '@/components/Testimonial.vue'
+import VideoCarousel from '@/components/VideoCarousel.vue'
 import MediaLoader from '@/components/MediaLoader.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { viewport } from '@/composables/useBreakpoints'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
 
@@ -261,30 +280,81 @@ gsap.registerPlugin(ScrollTrigger)
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 let baseUrl = ref("")
+const { isMobile, activeBreakpoint } = viewport
 
+const allStates = [
+    { "code": "AN", "name": "Andaman and Nicobar Islands" },
+    { "code": "AP", "name": "Andhra Pradesh" },
+    { "code": "AR", "name": "Arunachal Pradesh" },
+    { "code": "AS", "name": "Assam" },
+    { "code": "BR", "name": "Bihar" },
+    { "code": "CG", "name": "Chandigarh" },
+    { "code": "CH", "name": "Chhattisgarh" },
+    { "code": "DH", "name": "Dadra and Nagar Haveli" },
+    { "code": "DD", "name": "Daman and Diu" },
+    { "code": "DL", "name": "Delhi" },
+    { "code": "GA", "name": "Goa" },
+    { "code": "GJ", "name": "Gujarat" },
+    { "code": "HR", "name": "Haryana" },
+    { "code": "HP", "name": "Himachal Pradesh" },
+    { "code": "JK", "name": "Jammu and Kashmir" },
+    { "code": "JH", "name": "Jharkhand" },
+    { "code": "KA", "name": "Karnataka" },
+    { "code": "KL", "name": "Kerala" },
+    { "code": "LD", "name": "Lakshadweep" },
+    { "code": "MP", "name": "Madhya Pradesh" },
+    { "code": "MH", "name": "Maharashtra" },
+    { "code": "MN", "name": "Manipur" },
+    { "code": "ML", "name": "Meghalaya" },
+    { "code": "MZ", "name": "Mizoram" },
+    { "code": "NL", "name": "Nagaland" },
+    { "code": "OR", "name": "Odisha" },
+    { "code": "PY", "name": "Puducherry" },
+    { "code": "PB", "name": "Punjab" },
+    { "code": "RJ", "name": "Rajasthan" },
+    { "code": "SK", "name": "Sikkim" },
+    { "code": "TN", "name": "Tamil Nadu" },
+    { "code": "TS", "name": "Telangana" },
+    { "code": "TR", "name": "Tripura" },
+    { "code": "UK", "name": "Uttarakhand" },
+    { "code": "UP", "name": "Uttar Pradesh" },
+    { "code": "WB", "name": "West Bengal" }
+]
 const states1 = ref([
-    { id: "hp", name: "Himachal Pradesh", img: "home/himachal.png" },
-    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
-    { id: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png" },
-    { id: "ka", name: "Karnataka", img: "home/karnataka.png" },
-    { id: "gj", name: "Gujarat", img: "home/gujarat.png" },
-    // {id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png"},
-    /*{id: "rj", name: "Rajasthan", img: "home/rajasthan.png"},
-    {id: "tlg", name: "Telangana", img: "home/telangana.png"},
-    {id: "mpr", name: "Manipur", img: "home/manipur.png"},
-    {id: "dl", name: "Delhi", img: "home/delhi.png"},*/
+    { code: "hp", name: "Himachal Pradesh", img: "home/himachal.png" },
+    { code: "dl", name: "New Delhi", img: "home/delhi.png" },
+    { code: "PB", name: "Punjab", img: "home/punjab.png" },
+    { code: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png" },
+    { code: "ka", name: "Karnataka", img: "home/karnataka.png" },
+    { code: "gj", name: "Gujarat", img: "home/gujarat.png" },
+    { code: "ap", name: "Andhra Pradesh", img: "home/andhra-pradesh.png" },
+    { code: "ar", name: "Arunachal Pradesh", img: "home/arunachal-pradesh.png" },
+    { code: "as", name: "Assam", img: "home/assam.png" },
+    { code: "bh", name: "Bihar", img: "home/bihar.png" },
+    { code: "ga", name: "Goa", img: "home/goa.png" },
+    { code: "UK", name: "Uttarakhand", img:"home/uttarakhand.png" },
+    { code: "WB", name: "West Bengal", img:"home/west-bengal.png" }
 ])
 const states2 = ref([
-    { id: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png" },
-    { id: "rj", name: "Rajasthan", img: "home/rajasthan.png" },
-    { id: "tlg", name: "Telangana", img: "home/telangana.png" },
-    { id: "mpr", name: "Manipur", img: "home/manipur.png" },
-    { id: "dl", name: "New Delhi", img: "home/delhi.png" },
+    { code: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png" },
+    { code: "rj", name: "Rajasthan", img: "home/rajasthan.png" },
+    { code: "tlg", name: "Telangana", img: "home/telangana.png" },
+    { code: "mpr", name: "Manipur", img: "home/manipur.png" },
+    { code: "ML", name: "Meghalaya", img: "home/meghalaya.png" },
+    { code: "MZ", name: "Mizoram", img: "home/mizoram.png" },
+    { code: "OR", name: "Odisha", img: "home/odisha.png" },
+    { code: "HR", name: "Haryana", img: "home/haryana.png" },
+    { code: "JH", name: "Jharkhand", img: "home/jharkhand.png" },
+    { code: "KL", name: "Kerala", img: "home/kerala.png" },
+    { code: "MH", name: "Maharashtra", img: "home/maharashtra.png" },
+    { code: "SK", name: "Sikkim", img:"home/sikkim.png" },
+    { code: "TN", name: "Tamil Nadu", img:"home/tamilnadu.png" },
+    { code: "TR", name: "Tripura", img:"home/tripura.png" },
 ])
 const certified = ref([
-    { id: "abc1234", icon: "icons/cmmi3.svg", title: "CMMI Maturity Level-3" },
-    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO 9001:2015" },
-    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "CMMI Maturity Level-5" }
+    { id: "abc1234", icon: "icons/cmmi3.svg", title: "ISO 9001:2015" },
+    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO/IEC 27001:2022" },
+    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "ISO/IEC 20000-1:2018" }
 ])
 const techFaq = ref([
     { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Process Strategy & Optimisation <br>Enterprise Process Design<br>Business Process Transformation<br>Solution Architecture & Design<br>Skills Development & Capacity Building<br>Change Management support<br>Regulatory & Compliance advisory" },
@@ -316,10 +386,10 @@ const toggle = (index) => {
 const breakpoints = {
     // 300px and up
     300: {
-        itemsToShow: 2,
+        itemsToShow: 3,
     },
     // 400px and up
-    600: {
+    640: {
         itemsToShow: 3,
     },
     // 500px and up
@@ -393,29 +463,31 @@ onMounted(() => {
             });
         }
     })*/
-    let videotitle = SplitText.create("#video3 h4", {
-        type: "lines",
-        autoSplit: true,
-        smartWrap: true,
-        mask: "lines",
-        onSplit: function(self) {
-            return gsap.from(self.lines, {
-                y: 90,
-                opacity: 0,
-                // autoAlpha: 0,
-                stagger: 0.15,
-                scrollTrigger: {
-                    trigger: "#video3",
-                    start: "top center",
-                    toggleActions: "play none none reset",
-                },
-                onComplete: () => {
-                    self.revert()
-                }
-            });
-        }
-    })
-
+    let videosection = document.querySelector("#video3")
+    if (videosection) {
+        let videotitle = SplitText.create("#video3 h4", {
+            type: "lines",
+            autoSplit: true,
+            smartWrap: true,
+            mask: "lines",
+            onSplit: function(self) {
+                return gsap.from(self.lines, {
+                    y: 90,
+                    opacity: 0,
+                    // autoAlpha: 0,
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: "#video3",
+                        start: "top center",
+                        toggleActions: "play none none reset",
+                    },
+                    onComplete: () => {
+                        self.revert()
+                    }
+                });
+            }
+        })
+    }
 
     const abouttitle = document.querySelector('#abouttitle');
     // console.info(abouttitle)
@@ -720,8 +792,17 @@ onMounted(() => {
             letter-spacing: -0.26px;
         }
     }
+    .ministry {
+        /*.carousel {
+            --carousel-opacity-inactive: 0.75;
+            --carousel-opacity-active: 1;
+        }*/
+        
+    }
 
     .states-list {
+        font-size: 14px;
+
         figure {
             min-width: 150px;
 
@@ -787,24 +868,25 @@ onMounted(() => {
         }
 
         .ques {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 600;
             line-height: 30px;
-            letter-spacing: -0.6px;
+            letter-spacing: -0.48px;
 
             small {
+                display: inline-block;
                 color: $grey-text;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
-                line-height: 26px;
-                letter-spacing: -0.54px;
+                line-height: 24px;
+                letter-spacing: -0.42px;
             }
         }
 
         .description {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
-            line-height: 30px;
+            line-height: 24px;
             letter-spacing: -0.48px;
             max-height: 0;
             opacity: 0;
@@ -829,6 +911,25 @@ onMounted(() => {
             width: 560px;
             height: 700px;
             display: block;
+        }
+
+        .accordion {
+            .ques {
+                font-size: 20px;
+                letter-spacing: -0.6px;
+
+                small {
+                    font-size: 18px;
+                    line-height: 26px;
+                    letter-spacing: -0.54px;
+                }
+            }
+
+            .description {
+                font-size: 16px;
+                line-height: 30px;
+
+            }
         }
     }
 }

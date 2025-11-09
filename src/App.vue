@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from "vue"
+import { ref, shallowRef, watch, onMounted } from "vue"
 import { useRoute } from 'vue-router';
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
@@ -31,7 +31,8 @@ onMounted(() => {
 
     console.log('Base URL:',
         import.meta.env.VITE_APP_BASE_URL)
-    localStorage.setItem("base_url", import.meta.env.VITE_APP_BASE_URL)
+    localStorage.setItem("base_url",
+        import.meta.env.VITE_APP_BASE_URL)
 })
 
 
