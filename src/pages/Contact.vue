@@ -13,19 +13,22 @@
                     <motion.legend :initial="{opacity: 0, y: '110%'}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut'}" class="mb-11">Your info</motion.legend>
                     <div class="form">
                         <!-- <MotionConfig :transition="{ duration: 0.5, delay: 0.25, ease: 'easeOut' }"> -->
-                            <div class="field-wrapper">
-                                <input type="text" required :value="name" @input="event => name = event.target.value">
-                                <label>Full name*</label>
-                            </div>
-                            <div class="field-wrapper">
-                                <input type="email" required :value="email" @input="event => email = event.target.value">
-                                <label>Your email*</label>
-                            </div>
-                            <div class="field-wrapper">
-                                <input type="text" required :value="contact" @input="event => contact = event.target.value">
-                                <label>Contact number*</label>
-                            </div>
-                            <!-- <div class="field-wrapper">
+                        <div class="field-wrapper">
+                            <input type="text" required v-model="form.name">
+                            <label>Full name*</label>
+                            <p v-if="errors.name" class="text-red-600 text-sm mt-1">{{ errors.name }}</p>
+                        </div>
+                        <div class="field-wrapper">
+                            <input type="email" required v-model="form.email">
+                            <label>Your email*</label>
+                            <p v-if="errors.email" class="text-red-600 text-sm mt-1">{{ errors.email }}</p>
+                        </div>
+                        <div class="field-wrapper">
+                            <input type="text" required v-model="form.contact">
+                            <label>Contact number*</label>
+                            <p v-if="errors.contact" class="text-red-600 text-sm mt-1">{{ errors.contact }}</p>
+                        </div>
+                        <!-- <div class="field-wrapper">
                             <input type="email" required  >
                             <label>Your email*</label>
                         </div> -->
@@ -33,17 +36,20 @@
                     </div>
                     <motion.legend :initial="{opacity: 0, y: '110%'}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut'}" class="mb-11">How can we help?</motion.legend>
                     <div class="field-wrapper">
-                        <textarea name="" id="" rows="6" v-model="query"> </textarea>
+                        <textarea name="" id="" rows="6" v-model="form.query"> </textarea>
                         <label>
                             Tell us your design needs in detail
                         </label>
+                        <p v-if="errors.query" class="text-red-600 text-sm mt-1">{{ errors.query }}</p>
                     </div>
                     <div class="checkbox mt-8 mb-8 lg:mb-16">
                         <label>
-                            <input type="checkbox" name="" id="" v-model="agree">
+                            <input type="checkbox" name="" id="" v-model="form.agree">
                             <span>Yes, I do. I agree to the Terms of Service and Privacy Policy.</span>
                         </label>
+                        <p v-if="errors.agree" class="text-red-600 text-sm mt-1">{{ errors.agree }}</p>
                     </div>
+                    <div v-show="loading" class="my-8"><img src="/spinner.svg" class="animate-spin" alt=""></div>
                     <div v-show="error" class="bg-rose-100 px-4 py-2 my-8 rounded-lg">{{error}}</div>
                     <div v-show="success" class="bg-teal-100 px-4 py-2 my-8 rounded-lg">Form submitted successfully</div>
                     <button class="button button-dark" @click="submitForm">Submit</button>
@@ -81,35 +87,110 @@
     </section>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { motion, MotionConfig } from "motion-v"
 
-const name = ref("")
-const email = ref("")
-const contact = ref("")
-const query = ref("")
+const form = ref({
+    name: '',
+    email: '',
+    contact: '',
+    query: '',
+    agree: false
+})
+const errors = ref({})
+
 const agree = ref(false)
 
+const loading = ref(false)
 const error = ref(false)
 const success = ref(false)
+const apiurl = ref("")
 
-const submitForm = () => {
-    console.info({name: name.value, email: email.value, contact: contact.value, query: query.value})
-    // {name: "name", email: "email@domain.in", contact: "98764310", query: " multiline textarea query by client"}
-    if (name.value && email.value && contact.value && query.value && agree.value) {
-        success.value = true
-        error.value = false
-        name.value = ""
-        email.value = "" 
-        contact.value = "" 
-        query.value = "" 
-        agree.value = false
+// --- Validation rules ---
+function validate() {
+    errors.value = {} // reset errors
+
+    // Name: required, at least 2 characters
+    if (!form.value.name.trim()) {
+        errors.value.name = 'Name is required.'
+    } else if (form.value.name.length < 2) {
+        errors.value.name = 'Name must be at least 2 characters.'
+    }
+
+    // Email: required and valid format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!form.value.email.trim()) {
+        errors.value.email = 'Email is required.'
+    } else if (!emailRegex.test(form.value.email)) {
+        errors.value.email = 'Please enter a valid email address.'
+    }
+
+    // Age: required, must be a number and >= 18
+    const contact = Number(form.value.contact)
+    if (!form.value.contact) {
+        errors.value.contact = 'contact is required.'
+    } else if (isNaN(contact)) {
+        errors.value.contact = 'contact must be a number.'
+    } else if (form.value.contact.length < 10) {
+        errors.value.contact = 'contact must be 10 digits.'
+    }
+
+    // Query
+    if (form.value.query.length < 10) {
+        errors.value.query = "Query should be more than 10 characters"
+    }
+
+    // Agree
+    if (!form.value.agree) {
+        errors.value.agree = "Agree to terms and conditions"
+    }
+
+    // If no errors, return true
+    return Object.keys(errors.value).length === 0
+}
+
+const submitForm = async () => {
+    
+    if (validate()) {
+        // alert('Form submitted successfully!')
+        console.log(form.value)
+
+        // let formbody = { name: name.value, email: email.value, contact: contact.value, query: query.value }
+        try {
+            loading.value = true
+            const res = await fetch(apiurl.value + '/contact', {
+                method: "POST",
+                headers: {
+                    'Content-type': "application/json"
+                },
+                body: JSON.stringify(form.value)
+            })
+            console.log(res)
+            if (!res.ok) throw new Error('Failed to submit form')
+            success.value = await res.json()
+            form.value = {
+                name: '',
+                email: '',
+                contact: '',
+                query: '',
+                agree: false
+            }
+            errors.value = {}
+        } catch (err) {
+            error.value = err.message
+        } finally {
+            loading.value = false
+        }
     } else {
         success.value = false
-        error.value = "Fields value missing"
+        // error.value = "Required values missing"
     }
 }
 
+onMounted(() => {
+    apiurl.value =
+        import.meta.env.VITE_API_BASE_URL
+})
 </script>
 <style lang="scss" scoped>
 .contact {
