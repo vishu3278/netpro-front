@@ -1,0 +1,25 @@
+{
+  "main": {"heading":"string", "content":"multi-line string"},
+  "banner": "img.jpg",
+  "mission": "string",
+  "carousel": [
+    {"img":"img.jpg", "detail": "string"},
+    {"img":"img.jpg+", "detail": "string"},
+    {"img":"img.jpg+", "detail": "string"}
+  ],
+  "expertise": [
+    { "title":"string", "subtitle": "string", "content":"string"},
+    { "title":"string", "subtitle": "string", "content":"string"},
+    { "title":"string", "subtitle": "string", "content":"string"}
+  ],
+  "impact": [
+    { "title":"string", "subtitle": "string", "img":"img.jpg"},
+    { "title":"string", "subtitle": "string", "img":"img.jpg"},
+    { "title":"string", "subtitle": "string", "img":"img.jpg"}
+  ],
+  "leader": [
+    {"name":"string", "designation": "string", "img": "img.jpg"},
+    {"name":"string", "designation": "string", "img": "img.jpg"},
+    {"name":"string", "designation": "string", "img": "img.jpg"}
+  ]
+}

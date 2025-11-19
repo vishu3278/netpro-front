@@ -33,6 +33,7 @@ onMounted(() => {
         import.meta.env.VITE_APP_BASE_URL)
     localStorage.setItem("base_url",
         import.meta.env.VITE_APP_BASE_URL)
+    localStorage.setItem("media_url", import.meta.env.VITE_API_MEDIA_URL)
 })
 
 

@@ -1,0 +1,18 @@
+{
+  "knowthecompany": {"heading":"string", "content":"multi-line string"},
+  "stats": [
+    {"count":"500M", "detail": "string"},
+    {"count":"1B+", "detail": "string"},
+    {"count":"1000+", "detail": "string"}
+  ],
+  "technology4change": [
+    {"index":"01", "title":"string", "subtitle": "string", "content":"html string"},
+    {"index":"02", "title":"string", "subtitle": "string", "content":"html string"},
+    {"index":"03", "title":"string", "subtitle": "string", "content":"html string"}
+  ],
+  "testimonial": [
+    {"id":215, "content": "string", "author": "string"},
+    {"id":210, "content": "string", "author": "string"},
+    {"id":205, "content": "string", "author": "string"}
+  ]
+}
