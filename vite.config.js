@@ -7,7 +7,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   // process.env = {...process.env, ...loadEnv(mode, process.cwd())},
-  base: '/np/',
+  base: process.env.VITE_APP_BASE_URL || '/',
   plugins: [vue(), tailwindcss()],
   css: {
     preprocessorOptions: {

@@ -89,6 +89,29 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { motion, MotionConfig } from "motion-v"
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Contact Us | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the contact page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact Us'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more contact our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
 
 const form = ref({
     name: '',
