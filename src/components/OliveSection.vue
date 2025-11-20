@@ -1,16 +1,16 @@
 <template>
-    <section id="olivesection" class="olive2-bg pt-10 pb-20 md:py-0 relative overflow-clip">
+    <section id="olivesection" class="olive2-bg pt-12 pb-24 relative overflow-clip">
         <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 place-items-center">
                 <div class="col">
-                    <div class="content">
-                        <div class="title  mb-6">
+                    <div class="content relative z-2">
+                        <div class="title mb-6">
                             {{title}}
                         </div>
                         <router-link :to="btnLink" class="button button-dark">{{btnText}}</router-link>
                     </div>
                 </div>
-                <div class="col section-image absolute bottom-0 lg:static">
+                <div class="col section-image absolute bottom-0 z-0 lg:static">
                     <figure class="max-h-[670px] overflow-clip opacity-[15]">
                         <img src="/frame-bg.svg" class="max-w-full max-h-full object-contain" alt="">
                     </figure>

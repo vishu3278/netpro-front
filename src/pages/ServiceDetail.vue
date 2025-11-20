@@ -27,7 +27,7 @@
                         {{service.pageTitle}}
                     </h2>
                     <!-- Paragraph -->
-                    <p class=" mb-10">
+                    <p class="mb-8">
                         {{service.pageText}}
                     </p>
                     <!-- Button -->
@@ -39,9 +39,9 @@
             </div>
         </section>
         <section class="bg-black text-white px-4 py-12 lg:py-20 lg:pl-25 slidersection">
-            <h3 class="slider-title mb-12">Services we offer in {{service.pageName}}</h3>
+            <h3 class="slider-title mb-8">Services we offer in {{service.pageName}}</h3>
             <!-- Service Cards -->
-            <div class="services-carousel">
+            <div class="services-carousel pb-8 lg:pb-20">
                 <Carousel v-bind="carouselConfig">
                     <!-- Card 1 -->
                     <Slide v-for="(serv, index) in service.services" :key="index">
@@ -62,7 +62,7 @@
                                 <img src="/white-arrow-right.svg" alt="">
                             </template>
                         </Navigation>
-                        <!-- <Pagination /> -->
+                        <Pagination />
                     </template>
                 </Carousel>
             </div>
@@ -78,7 +78,7 @@
         <section class="bg-white py-12 lg:py-20 md:px-20 keyprojects">
             <div class="max-w-6xl mx-auto px-4">
                 <h4 class="mb-8 lg:mb-12 text-center">Key Projects</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
                     <!-- Project 1 -->
                     <div v-for="(proj, index) in service.projects" :class="{'lg:pt-30': (index+1)%2!=0}" class="space-y-4 mb-4">
                         <img :src="baseUrl+proj.img" alt="" class="rounded-lg w-full">
@@ -87,15 +87,6 @@
                             {{proj.description}}
                         </p>
                     </div>
-                    <!-- Project 2 -->
-                    <!-- <div class="space-y-4">
-                        <img src="/sectors/project-2.jpg" alt="" class="rounded-lg w-full">
-                        <h5 class="mb-2">Student Database Management System (SDMS)</h5>
-                        <p class="!text-[#5F5F5F] text-sm  !text-[18px] font-normal !leading-[26px] !tracking-[-0.54px]">
-                            Built the digital backbone for consultations across stakeholders, helping shape India’s new
-                            school curriculum through structured, inclusive digital participation.
-                        </p>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -121,6 +112,12 @@ const carouselConfig = {
             itemsToShow: 1.2,
             snapAlign: 'center'
         },
+        700: {
+            itemsToShow: 2.5
+        },
+        1100: {
+            itemsToShow: 4.7
+        }
     }
 }
 let baseUrl = ref("/")
@@ -249,7 +246,6 @@ p {
 
 .services-carousel {
     color: white;
-    padding-bottom: 6rem;
 
     &,
     p {

@@ -1,5 +1,5 @@
 <template>
-    <section class="about-section pt-24 pb-6 lg:pt-60 lg:pb-10 w-full bg-white">
+    <section class="about-section pt-24 pb-12 lg:pt-60 lg:pb-10 w-full bg-white">
         <div class="container mx-auto px-4 relative">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 lg:gap-12">
                 <!-- Left: Heading -->
@@ -27,12 +27,11 @@
                 </div>
             </div>
             <div class="about-banner py-4 md:py-8">
-                <img src="/about/about-banner.jpg" alt="" class="max-w-full rounded-2xl">
+                <img src="/about/about-banner.jpg" alt="" class="w-full h-[345px] object-cover rounded-2xl">
             </div>
         </div>
     </section>
-    
-    <section class="our-mission pb-20">
+    <section class="our-mission pb-12 lg:pb-20">
         <div class="container mx-auto relative">
             <div class="our-heading text-center mb-4 mb:mb-10 ">
                 <h6>Our Mission</h6>
@@ -41,48 +40,6 @@
                 </p>
             </div>
         </div>
-        <!-- <div class="flex flex-col gap-6 md:flex-row md:gap-8 justify-center items-start">
-            <div class="overflow-hidden w-full md:w-1/5">
-                <img src="/about/school-children.jpg" alt="Education" class="w-full h-48 object-cover rounded-2xl">
-                <div class=" py-4">
-                    <p>
-                        To track and prevent student drop out and enable policy action to identify literacy trends.
-                    </p>
-                </div>
-            </div>
-            <div class="overflow-hidden w-full md:w-1/5">
-                <img src="/about/heath-education.jpg" alt="Health" class="w-full h-48 object-cover rounded-2xl">
-                <div class=" py-4">
-                    <p>
-                        Enabling skilled and providing accessible health education in remote areas.
-                    </p>
-                </div>
-            </div>
-            <div class="overflow-hidden w-full md:w-1/5">
-                <img src="/about/sporting.jpg" alt="Sports" class="w-full h-48 object-cover rounded-2xl">
-                <div class=" py-4">
-                    <p>
-                        Bringing transparency to sporting information, allowing sportspersons to focus on performance.
-                    </p>
-                </div>
-            </div>
-            <div class="overflow-hidden w-full md:w-1/5">
-                <img src="/about/driving.jpg" alt="Transport" class="w-full h-48 object-cover rounded-2xl">
-                <div class=" py-4">
-                    <p>
-                        Delivering driving licenses without queues and bureaucratic hurdles.
-                    </p>
-                </div>
-            </div>
-            <div class="overflow-hidden w-full md:w-1/5">
-                <img src="/about/helping-decision.jpg" alt="Workplace" class="w-full h-48 object-cover rounded-2xl">
-                <div class="py-4">
-                    <p>
-                        Enhancing outcomes and helping decision makers in the workplace.
-                    </p>
-                </div>
-            </div>
-        </div> -->
         <AboutCarousel />
     </section>
     <section class="py-12 lg:py-20 expertise">
@@ -138,7 +95,7 @@
                     by stronger teams.</p>
             </div>
             <!-- Mentors Section -->
-            <div class="image-move flex flex-col md:flex-row items-center justify-between border-t border-b border-[#D7D7D7] relative overflow-clip">
+            <div class="image-move flex flex-col md:flex-row justify-between border-t border-b border-[#D7D7D7] relative overflow-clip">
                 <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Mentors, Not Managers</h3>
                     <p class="max-w-[500px]">We guide careers with care—through coaching, not control.</p>
@@ -149,7 +106,7 @@
                 <!-- <output class=" output absolute z-10 inset-1/2 w-max h-fit bg-lime-500 px-2 py-1 rounded-lg">mouse position</output> -->
             </div>
             <!-- Growth Section -->
-            <div class="image-move flex flex-col md:flex-row items-center justify-between border-b border-[#D7D7D7] relative overflow-clip">
+            <div class="image-move flex flex-col md:flex-row justify-between border-b border-[#D7D7D7] relative overflow-clip">
                 <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Growth, Built In</h3>
                     <p class="max-w-[500px]">Skill-building isn’t optional here—it’s part of how we work and grow.</p>
@@ -159,7 +116,7 @@
                 </div>
             </div>
             <!-- Beyond Project Section -->
-            <div class="image-move flex flex-col md:flex-row items-center justify-between border-b border-[#D7D7D7] relative overflow-clip">
+            <div class="image-move flex flex-col md:flex-row justify-between border-b border-[#D7D7D7] relative overflow-clip">
                 <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Beyond the Project</h3>
                     <p class="max-w-[500px]">People here don’t get stuck—they lead, learn, and grow across teams and challenges.</p>
@@ -171,13 +128,13 @@
         </div>
     </section>
     <section class="leadership py-12 md:py-30 bg-[#121212]">
-        <div class="container mx-auto px-6 lg:px-38">
+        <div class="container mx-auto md:px-8 lg:px-38">
             <h2 class="mb-8 text-center text-white">Our Leadership</h2>
             <!-- Leadership Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <!-- Leader Card (Repeat for each person) -->
+            <LeadershipCarousel v-if="isMobile" key="lead" :data="leaders" ></LeadershipCarousel>
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div v-for="(lead, index) in leaders" :key="lead.id" class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img :src="bUrl+lead.img" :alt="lead.name" class="w-full h-64 object-cover" />
+                    <img :src="lead.img" :alt="lead.name" class="w-full h-64 object-cover" />
                     <div class="p-8">
                         <h5 class="">
                             <span>{{lead.name}}</span>
@@ -190,10 +147,10 @@
             </div>
         </div>
     </section>
-    <section class="py-6 md:pt-24 md:pb-20 partnering">
+    <section class="py-12 md:pt-24 md:pb-20 partnering">
         <div class="container mx-auto px-4">
             <div class=" ">
-                <h4 class="text-center mb-6 md:mb-14">Partnering With Visionaries Across Continents</h4>
+                <h4 class="text-center mb-8 md:mb-14">Partnering With Visionaries Across Continents</h4>
                 <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center place-items-center">
                     <figure><img src="/icons/forevermark.svg" alt="forevermark"></figure>
                     <figure><img src="/icons/symantec.svg" alt="symantec"></figure>
@@ -220,12 +177,16 @@
 <script setup>
 import OliveSection from "@/components/OliveSection.vue"
 import AboutCarousel from "@/components/AboutCarousel.vue"
+import LeadershipCarousel from "@/components/LeadershipCarousel.vue"
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import { viewport } from '@/composables/useBreakpoints'
+
 import { gsap } from 'gsap'
 
 let bUrl = ref("")
 // const heroRef = ref(null)
-let ctx
+const { isMobile, activeBreakpoint } = viewport
 
 onMounted(() => {
     console.log('About Base URL:',
@@ -233,14 +194,6 @@ onMounted(() => {
     // bUrl.value = import.meta.env.VITE_APP_BASE_URL
     bUrl.value = localStorage.getItem("base_url")
 
-    // const hero = heroRef.value
-
-
-    /*const handleMouseEnter = (e) => {
-        console.info("mouse enter")
-    }*/
-
-    // ctx = gsap.context(() => {
     const heros = document.querySelectorAll(".impactful .image-move")
 
     heros.forEach(hero => {
@@ -277,15 +230,12 @@ onMounted(() => {
             hero.removeEventListener('mousemove', function() {
                 console.info("mouse leave => remove event listener")
             })
-            // ctx && ctx.revert()
         }
 
         hero.addEventListener('mousemove', handleMouseMove)
         hero.addEventListener("mouseleave", killMouseMove)
         // hero.addEventListener("mouseenter", handleMouseEnter)
     })
-
-    // }, heroRef)
 
     onBeforeUnmount(() => {
         // hero.removeEventListener('mousemove', handleMouseMove)
@@ -299,12 +249,12 @@ onMounted(() => {
 })
 
 const leaders = ref([
-    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer", img: "about/amitabh.jpg" },
-    { id: 2, name: "Saurabh Rajpal", position: "Chief Technology Officer", img: "about/saurabh.jpg" },
-    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/aditya.jpg" },
-    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/dipesh.jpg" },
-    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: "about/gaurav.jpg" },
-    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: "about/ashish.jpg" },
+    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer", img: bUrl.value+"about/amitabh.jpg" },
+    { id: 2, name: "Saurabh Rajpal", position: "Chief Technology Officer", img: bUrl.value+"about/saurabh.jpg" },
+    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: bUrl.value+"about/aditya.jpg" },
+    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: bUrl.value+"about/dipesh.jpg" },
+    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: bUrl.value+"about/gaurav.jpg" },
+    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: bUrl.value+"about/ashish.jpg" },
     // { id: 7, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/saurabh-rajpal.png" },
     // { id: 8, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/saurabh-rajpal.png" },
     // { id: 9, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "about/saurabh-rajpal.png" },
@@ -390,38 +340,38 @@ h4 {
     }
 
     p {
-        font-size: 18px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 30px;
-        letter-spacing: -0.54px;
+        line-height: 24px;
+        letter-spacing: -0.48px;
     }
 }
 
 .impactful {
     h2 {
-        font-size: 34px;
+        font-size: 28px;
         font-style: normal;
         font-weight: 100;
-        line-height: 44px;
-        letter-spacing: -1.02px;
+        line-height: 36px;
+        letter-spacing: -0.72px;
 
     }
 
     h3 {
-        font-size: 34px;
+        font-size: 28px;
         font-style: normal;
         font-weight: 100;
-        line-height: 44px;
-        letter-spacing: -1.02px;
+        line-height: 36px;
+        letter-spacing: -0.72px;
     }
 
     p {
-        font-size: 20px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 100;
-        line-height: 30px;
-        letter-spacing: -0.6px;
+        line-height: 24px;
+        letter-spacing: -0.48px;
     }
 
     .image {

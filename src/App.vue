@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from "vue"
+import { ref, shallowRef, watch, onMounted } from "vue"
 import { useRoute } from 'vue-router';
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
@@ -31,15 +31,17 @@ onMounted(() => {
 
     console.log('Base URL:',
         import.meta.env.VITE_APP_BASE_URL)
-    localStorage.setItem("base_url", import.meta.env.VITE_APP_BASE_URL)
+    localStorage.setItem("base_url",
+        import.meta.env.VITE_APP_BASE_URL)
+    localStorage.setItem("media_url", import.meta.env.VITE_API_MEDIA_URL)
 })
 
 
 watch(() => route.fullPath,
     (newPath, oldPath) => {
         console.log('Route changed!');
-        console.log('Old path:', oldPath);
-        console.log('New path:', newPath);
+        // console.log('Old path:', oldPath);
+        // console.log('New path:', newPath);
         // You can perform any actions here based on the route change
         // For example, update a global state, fetch data, or trigger animations.
         // Use ScrollSmoother's scrollTo method to smoothly scroll to the top

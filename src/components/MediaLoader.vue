@@ -67,7 +67,6 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 
 .media-loader {
-    //background-color: #f2f2f2;
 
     .loader {
         position: absolute;
@@ -75,7 +74,7 @@ onBeforeUnmount(() => {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #fafafa;
+        background-color: rgba(250 250 250 / 0.1);
 
         img {
             width: 40px;

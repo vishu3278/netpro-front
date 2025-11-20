@@ -44,10 +44,10 @@ body {
     inset-inline-end: 50%;
     transform: translateX(110%);
   }
+
 }
 
 .sector-carousel {
-  padding-bottom: 6rem;
   .carousel__next,
   .carousel__prev {
     inset-block-start: calc(100% + 3rem);
@@ -76,6 +76,11 @@ body {
   }
 }
 
+.ministry {
+    .carousel__slide { opacity: 0.5; }
+    .carousel__slide--active { opacity: 1; }
+}
+
 @media screen and (width >= 64rem) {
   .sector-carousel {
     padding-bottom: 0;
@@ -91,5 +96,36 @@ body {
       inset-inline-start: calc(100% - 3rem);
       inset-inline-end: 100%;
     }
+  }
+}
+
+@media screen and (width <64rem){
+  .carousel {
+    --vc-png-bottom: -1rem;
+    --vc-pgn-width: 12px;
+    --vc-pgn-height: 2px;
+    --vc-pgn-background-color: #d9d9d9;
+    --vc-pgn-active-color: #d9d9d9;
+    --vc-pgn-gap: 10px;
+    --vc-pgn-border-radius: 2px;
+
+    --vc-nav-background: rgba(0, 0, 0, 0);
+    --vc-nav-color: white;
+    --vc-nav-color-hover: #e5e5e5;
+    --vc-nav-border-radius: 50%;
+    --vc-nav-width: 40px;
+    --vc-nav-height: 40px;
+
+    .carousel__pagination-button { width: 12px; transition: width 300ms ease-out; }
+    .carousel__pagination-button--active { width: 24px; }
+
+  
+    .carousel__next,
+    .carousel__prev {
+      display: none;
+      visibility: hidden;
+    }
+  
+
   }
 }

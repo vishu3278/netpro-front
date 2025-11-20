@@ -1,7 +1,7 @@
 <template>
-    <section id="sectorCarousel" class="py-8 lg:py-20">
+    <section id="sectorCarousel" class="py-12 lg:py-20">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-8">
                 <h4 class="title">Explore more sectors</h4>
                 <!-- <div class="flex space-x-2">
                     <button class="">
@@ -13,7 +13,7 @@
                 </div> -->
             </div>
             <!-- Cards Grid -->
-            <div class="sector-carousel">
+            <div class="sector-carousel mb-6 md:mb-0">
                 <Carousel v-bind="carouselConfig">
                     <Slide v-for="(slide, index) in sectors" :key="slide.id">
                         <div class="relative rounded-xl overflow-hidden group cursor-pointer">
@@ -31,7 +31,7 @@
                                 <img src="/right-arrow.svg" alt="">
                             </template>
                         </CarouselNavigation>
-                        <!-- <Pagination /> -->
+                        <Pagination />
                     </template>
                 </Carousel>
                 <!-- <div class="relative rounded-xl overflow-hidden group cursor-pointer">
@@ -73,7 +73,7 @@ const carouselConfig = {
     snapAlign: 'start',
     breakpoints: {
         300: {
-            itemsToShow: 1.5,
+            itemsToShow: 1.25,
         },
         600: {
             itemsToShow: 2.25

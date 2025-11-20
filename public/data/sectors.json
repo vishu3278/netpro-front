@@ -1,0 +1,12 @@
+{
+  "main": {"heading":"string", "subheading":"multi-line string"},
+  
+  "sectors": [
+    {"name":"string", "index": "01", "img": "img.jpg", "link":"string"},
+    {"name":"string", "index": "02", "img": "img.jpg", "link":"string"},
+    {"name":"string", "index": "02", "img": "img.jpg", "link":"string"},
+    {"name":"string", "index": "02", "img": "img.jpg", "link":"string"},
+    {"name":"string", "index": "02", "img": "img.jpg", "link":"string"},
+    {"name":"string", "index": "03", "img": "img.jpg", "link":"string"}
+  ]
+}

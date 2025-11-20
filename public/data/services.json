@@ -1,0 +1,12 @@
+{
+  "main": {"heading":"string", "subheading":"multi-line string"},
+  "banner": "img.jpg",
+  "services": [
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"},
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"},
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"},
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"},
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"},
+    {"name":"string", "child": ["string", "string", "string"], "img": "img.jpg", "link":"string"}
+  ]
+}

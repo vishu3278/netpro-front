@@ -1,5 +1,6 @@
 <template>
     <section id="aboutCarousel" class="about-carousel py-4 lg:py-16 ">
+        
         <Carousel v-bind="carouselConfig">
             <!-- <Slide v-for="(slide, index) in testimonials" :key="index">
                 <div class="carousel__item">
@@ -11,8 +12,8 @@
             </Slide> -->
             <Slide>
                 <div class="carousel__item overflow-hidden w-full ">
-                    <img src="/about/school-children.jpg" alt="Education" class="w-full h-48 object-cover rounded-2xl">
-                    <div class=" py-4">
+                    <img src="/about/school-children.jpg" alt="Education" class="w-full h-45 md:h-50 lg:h-60 object-cover rounded-2xl">
+                    <div class=" py-2 md:py-4">
                         <p>
                             To track and prevent student drop out and enable policy action to identify literacy trends.
                         </p>
@@ -21,8 +22,8 @@
             </Slide>
             <Slide>
                 <div class="carousel__item overflow-hidden w-full ">
-                    <img src="/about/heath-education.jpg" alt="Health" class="w-full h-48 object-cover rounded-2xl">
-                    <div class=" py-4">
+                    <img src="/about/heath-education.jpg" alt="Health" class="w-full h-45 md:h-50 lg:h-60 object-cover rounded-2xl">
+                    <div class=" py-2 md:py-4">
                         <p>
                             Enabling skilled and providing accessible health education in remote areas.
                         </p>
@@ -31,8 +32,8 @@
             </Slide>
             <Slide>
                 <div class="carousel__item overflow-hidden w-full ">
-                    <img src="/about/sporting.jpg" alt="Sports" class="w-full h-48 object-cover rounded-2xl">
-                    <div class=" py-4">
+                    <img src="/about/sporting.jpg" alt="Sports" class="w-full h-45 md:h-50 lg:h-60 object-cover rounded-2xl">
+                    <div class=" py-2 md:py-4">
                         <p>
                             Bringing transparency to sporting information, allowing sportspersons to focus on performance.
                         </p>
@@ -41,8 +42,8 @@
             </Slide>
             <Slide>
                 <div class="carousel__item overflow-hidden w-full ">
-                    <img src="/about/driving.jpg" alt="Transport" class="w-full h-48 object-cover rounded-2xl">
-                    <div class=" py-4">
+                    <img src="/about/driving.jpg" alt="Transport" class="w-full h-45 md:h-50 lg:h-60 object-cover rounded-2xl">
+                    <div class=" py-2 md:py-4">
                         <p>
                             Delivering driving licenses without queues and bureaucratic hurdles.
                         </p>
@@ -51,8 +52,8 @@
             </Slide>
             <Slide>
                 <div class="carousel__item overflow-hidden w-full ">
-                    <img src="/about/helping-decision.jpg" alt="Workplace" class="w-full h-48 object-cover rounded-2xl">
-                    <div class="py-4">
+                    <img src="/about/helping-decision.jpg" alt="Workplace" class="w-full h-45 md:h-50 lg:h-60 object-cover rounded-2xl">
+                    <div class="py-2 md:py-4">
                         <p>
                             Enhancing outcomes and helping decision makers in the workplace.
                         </p>
@@ -68,13 +69,14 @@
                         <img src="/right-arrow.svg" alt="">
                     </template>
                 </Navigation>
-                <!-- <Pagination /> -->
+                <Pagination />
             </template>
         </Carousel>
     </section>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
+// import { viewport } from '@/composables/useBreakpoints'
 
 // import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
@@ -87,13 +89,13 @@ const carouselConfig = {
     gap: 20,
     breakpoints: {
         300: {
-            itemsToShow: 1.5,
+            itemsToShow: 1.8,
         },
-        600: {
-            itemsToShow: 2.5
+        640: {
+            itemsToShow: 3
         },
         1100: {
-            itemsToShow: 4.5
+            itemsToShow: 4.6
         }
     }
 }
@@ -123,11 +125,11 @@ onMounted(() => {
 
 .about-carousel {
 
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.48px;
+    line-height: 24px;
+    letter-spacing: -0.42px;
     text-align: left;
 
     @media screen and (width >=64rem) {
@@ -137,13 +139,7 @@ onMounted(() => {
     }
 }
 
-.carousel {
-    --vc-pgn-width: 10px;
-    --vc-pgn-height: 10px;
-    --vc-pgn-background-color: #454545;
-    --vc-pgn-active-color: #d9d9d9;
-    --vc-pgn-gap: 10px;
-    --vc-pgn-border-radius: 10px;
+.carousel {    
 
     --vc-nav-background: rgba(0, 0, 0, 0);
     --vc-nav-color: white;
@@ -156,12 +152,11 @@ onMounted(() => {
         align-items: stretch;
     }
 
-    &__pagination {
-        position: relative;
-        left: 0;
-        justify-content: start;
-        transform: none;
-        margin-top: 1rem;
+    @media screen and (width >=64rem) {
+        &__pagination {
+            display: none;
+            visibility: hidden;
+        }
     }
     
 }
