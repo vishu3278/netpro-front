@@ -178,7 +178,7 @@
 import OliveSection from "@/components/OliveSection.vue"
 import AboutCarousel from "@/components/AboutCarousel.vue"
 import LeadershipCarousel from "@/components/LeadershipCarousel.vue"
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { viewport } from '@/composables/useBreakpoints'
 
@@ -188,9 +188,53 @@ let bUrl = ref("")
 // const heroRef = ref(null)
 const { isMobile, activeBreakpoint } = viewport
 
+const loading = ref(false)
+const about = ref({})
+const error = ref(false)
+const apiurl = ref("")
+const mediaurl = ref("")
+
+const emit = defineEmits(['loading'])
+
+onBeforeMount(async () => {
+
+    apiurl.value = import.meta.env.VITE_API_BASE_URL;
+    mediaurl.value = localStorage.getItem("media_url");
+
+    try {
+        loading.value = true
+        emit('loading', true)
+        const res = await fetch(apiurl.value + '/about', {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        about.value = apidata.data
+
+        for (var i = 0; i < 10; i++) {
+            about.value.sectors[i]
+            let n = Math.random() * (1.0 - 0.5) + 0.5;
+            speed.value.push(n.toFixed(2))
+        }
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+        emit('loading', false)
+    }
+})
+
 onMounted(() => {
-    console.log('About Base URL:',
-        import.meta.env.VITE_APP_BASE_URL)
+    // console.log('About Base URL:', import.meta.env.VITE_APP_BASE_URL)
     // bUrl.value = import.meta.env.VITE_APP_BASE_URL
     bUrl.value = localStorage.getItem("base_url")
 

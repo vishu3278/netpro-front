@@ -120,6 +120,7 @@ const form = ref({
     query: '',
     agree: false
 })
+
 const errors = ref({})
 
 const agree = ref(false)

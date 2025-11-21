@@ -1,17 +1,14 @@
 <template>
-    <div v-if="loading" class="loading fixed z-10 inset-0 bg-white flex gap-8 flex-col items-center justify-center">
-        <span class="spinner "><img src="/logo-bg.svg" alt="" class="w-48 h-48 object-contain"></span>
-        <p class="text-gray-500">Loading ...</p>
-    </div>
-    <div v-else-if="error" class="error-state">
+    
+    <div v-if="error" class="error-state">
         <p>{{ error }}</p>
     </div>
     <template v-else-if="service">
-        <section class="relative lg:h-[60vh] w-full bg-cover bg-center flex items-end pt-42 pb-16 lg:pt-0 lg:pb-20" :style="{'background-image': `url('${baseUrl}${service.bannerImage}')`}">
+        <section class="relative lg:h-[60vh] w-full bg-cover bg-center flex items-end pt-42 pb-16 lg:pt-0 lg:pb-20" :style="{'background-image': `url('${baseUrl}${pageData.bannerImage}')`}">
             <!-- Content -->
             <div class="container mx-auto px-4 relative z-10">
                 <h1 class="">
-                    {{service.bannerTitle}}
+                    {{pageData.bannerTitle}}
                 </h1>
             </div>
         </section>
@@ -20,15 +17,15 @@
                 <div class="max-w-2xl mx-auto">
                     <!-- Small Heading -->
                     <h6 class="mb-4">
-                        {{service.pageName}}
+                        {{pageData.pageName}}
                     </h6>
                     <!-- Main Heading -->
                     <h2 class="mb-6">
-                        {{service.pageTitle}}
+                        {{pageData.pageTitle}}
                     </h2>
                     <!-- Paragraph -->
                     <p class="mb-8">
-                        {{service.pageText}}
+                        {{pageData.pageText}}
                     </p>
                     <!-- Button -->
                     <!-- <button type="button" class="text-sm hover:bg-gray-100 transition btn">
@@ -39,12 +36,12 @@
             </div>
         </section>
         <section class="bg-black text-white px-4 py-12 lg:py-20 lg:pl-25 slidersection">
-            <h3 class="slider-title mb-8">Services we offer in {{service.pageName}}</h3>
+            <h3 class="slider-title mb-8">Services we offer in {{pageData.pageName}}</h3>
             <!-- Service Cards -->
             <div class="services-carousel pb-8 lg:pb-20">
                 <Carousel v-bind="carouselConfig">
                     <!-- Card 1 -->
-                    <Slide v-for="(serv, index) in service.services" :key="index">
+                    <Slide v-for="(serv, index) in pageData.services" :key="index">
                         <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
                             <figure class="services-icon mb-auto">
                                 <img :src="baseUrl+serv.icon" :alt="serv.title" class="" />
@@ -80,7 +77,7 @@
                 <h4 class="mb-8 lg:mb-12 text-center">Key Projects</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
                     <!-- Project 1 -->
-                    <div v-for="(proj, index) in service.projects" :class="{'lg:pt-30': (index+1)%2!=0}" class="space-y-4 mb-4">
+                    <div v-for="(proj, index) in pageData.projects" :class="{'lg:pt-30': (index+1)%2!=0}" class="space-y-4 mb-4">
                         <img :src="baseUrl+proj.img" alt="" class="rounded-lg w-full">
                         <h5 class="mb-2">{{proj.title}}</h5>
                         <p>
@@ -99,6 +96,29 @@
 import { ref, onMounted, watch } from 'vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Sector detail | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the contact page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact Us'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more contact our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
 
 const carouselConfig = {
     autoplay: 7500,
@@ -120,28 +140,70 @@ const carouselConfig = {
         }
     }
 }
-let baseUrl = ref("/")
+
 const route = useRoute()
-const service = ref(null)
+let baseUrl = ref("/")
+const apiurl = ref("")
+const mediaurl = ref("")
+// const sector = ref(null)
+const pageData = ref({})
 const loading = ref(true) // 👈 track loading state
 const error = ref(null)
+
+const emit = defineEmits(['loading'])
 
 watch(
     () => route.params.id,
     (newId, oldId) => {
         if (route.path.includes("/service/")) {
-            fetchData()
+            // apiurl.value = import.meta.env.VITE_API_BASE_URL + "/services/" + newId
+            // fetchData()
         }
     }
 )
 
 onMounted(async () => {
     baseUrl.value = localStorage.getItem("base_url")
+    apiurl.value = import.meta.env.VITE_API_BASE_URL + "/services/" + route.params.id
+    mediaurl.value = localStorage.getItem("media_url");
 
     fetchData()
     // product.value = products.find(p => p.id === parseInt(route.params.id))
 })
+
 const fetchData = async () => {
+
+    // apiurl.value = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+        loading.value = true
+        emit('loading', true)
+
+        const res = await fetch(apiurl.value, {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log('sector detail',apidata)
+        pageData.value = apidata
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+        emit('loading', false)
+
+    }
+}
+
+/*const fetchData = async () => {
     let jsonfile
     switch (route.params.id) {
         case "technology-solutions":
@@ -178,7 +240,7 @@ const fetchData = async () => {
     } finally {
         loading.value = false // 👈 stop loading
     }
-}
+}*/
 </script>
 <style lang="scss" scoped>
 h1 {

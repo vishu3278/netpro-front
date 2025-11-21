@@ -4,16 +4,18 @@
         <h1 class="text-center">{{sectors?.main?.heading}}</h1>
     </section>
     <section v-for="(sec, index) in sectors.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
-        <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${mediaurl}${sec.img})`}" :data-speed="speed[index]"></figure>
+        <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${sec.img})`}" :data-speed="speed[index]"></figure>
         <div class="title ">{{sec.name}}</div>
         <div class="count ">0{{index+1}}</div>
-        <router-link :to="sec.link" class="absolute inset-0 isolate z-10"></router-link>
+        <router-link :to="'sector/'+sec.link" class="absolute inset-0 isolate z-10"></router-link>
     </section>
     <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
+    <PageLoading :show="loading" />
 </template>
 <script setup>
 // import ParallaxSection from "@/components/ParallaxSection.vue"
 import { ref, onBeforeMount, onMounted } from 'vue'
+import PageLoading from "@/components/PageLoading.vue"
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -30,6 +32,8 @@ const mediaurl = ref("")
 
 const speed = ref([])
 
+const emit = defineEmits(['loading'])
+
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
@@ -37,6 +41,8 @@ onBeforeMount(async () => {
 
     try {
         loading.value = true
+        emit('loading', true)
+
         const res = await fetch(apiurl.value + '/sectors', {
             method: "GET",
             headers: {
@@ -62,6 +68,8 @@ onBeforeMount(async () => {
     }
     finally {
         loading.value = false
+        emit('loading', false)
+
     }
 })
 

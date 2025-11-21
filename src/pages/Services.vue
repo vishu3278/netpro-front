@@ -16,11 +16,38 @@
     <ServiceSection title="Product Engineering (Product Works)" :list="prodEngg" image="services/product-engg.jpg" :link="{text: 'Explore Product Engineering', path: '/service/product-engineering'}" />
     <ServiceSection title="Digital Engine" :list="digitalEngine" :flip="true" image="services/digital-engine.jpg" :link="{text: 'Explore Digital Engine', path: '/service/digital-engine'}" />
     <ServiceSection title="Creative Works" :list="creativeWorks" image="services/creative.jpg" :link="{text: 'Explore Creative Works', path: '/service/creative-works'}" /> -->
+
 </template>
 <script setup>
 import ServiceSection from "@/components/ServiceSection.vue"
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion } from "motion-v"
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Sector detail | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the contact page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact Us'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more contact our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
+const emit = defineEmits(['loading'])
+
 const techConsult = ref([
     "Process Strategy & Optimisation",
     "Enterprise Process Design",
@@ -72,6 +99,7 @@ onBeforeMount(async () => {
 
     try {
         loading.value = true
+        emit('loading', true)
 
         const res = await fetch(apiurl.value + '/services', {
             method: "GET",
@@ -92,6 +120,8 @@ onBeforeMount(async () => {
     }
     finally {
         loading.value = false
+        emit('loading', false)
+
     }
 })
 
