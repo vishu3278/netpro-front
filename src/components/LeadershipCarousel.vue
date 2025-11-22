@@ -3,13 +3,13 @@
         <Carousel v-bind="carouselConfig">
             <Slide v-for="(lead, index) in data" :key="lead.id">
                 <div class="bg-white w-full carousel__item rounded-lg shadow-lg overflow-hidden">
-                    <img :src="lead.img" :alt="lead.name" class="w-full h-64 object-cover" />
+                    <img :src="lead.image" :alt="lead.name" class="w-full h-64 object-cover" />
                     <div class="p-8">
                         <h5 class="">
                             <span>{{lead.name}}</span>
                         </h5>
                         <p class="">
-                            <span>{{lead.position}}</span>
+                            <span>{{lead.designation}}</span>
                         </p>
                     </div>
                 </div>

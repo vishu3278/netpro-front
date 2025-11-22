@@ -1,16 +1,15 @@
 <template>
-    <section class="hero relative bg-no-repeat bg-cover bg-center overflow-clip" :style="{'background-image': `url(${service?.banner})`}">
+    <section class="hero relative bg-no-repeat bg-cover bg-center overflow-clip" :style="{'background-image': `url(${pageData?.banner})`}">
         <motion.figure :initial="{opacity: 0.5, scale: 1.1}" :animate="{opacity: 1, scale: 1}" :transition="{duration: 1}" class="layer-bg absolute inset-0 "></motion.figure>
         <div class="container mx-auto px-4">
             <div class="content flex items-end">
                 <!-- <h1>Our Services</h1> -->
-                <h1>{{service?.main.heading}}</h1>
+                <h1>{{pageData.main.heading}}</h1>
             </div>
         </div>
     </section>
-    <template v-for="(serv, index) in service.services">
-        <!-- {{serv.name}} -->
-        <ServiceSection :title="serv.name" :list="serv.child" :image="mediaurl+serv.img" :flip="index%2!=0" :link="{text: `Explore ${serv.name}`, path: `/service/${serv.link}`}" />
+    <template v-for="(serv, index) in pageData.services">
+        <ServiceSection :title="serv.name" :list="serv.child" :image="serv.img" :flip="index%2!=0" :link="{text: `Explore ${serv.name}`, path: `/service/${serv.link}`}" />
     </template>
     <!-- <ServiceSection title="Technology Solutions (Tech Lab)" :flip="true" :list="techSolution" image="services/tech-solution.jpg" :link="{text: 'Explore Technology Solutions', path: '/service/technology-solutions'}" />
     <ServiceSection title="Product Engineering (Product Works)" :list="prodEngg" image="services/product-engg.jpg" :link="{text: 'Explore Product Engineering', path: '/service/product-engineering'}" />
@@ -87,7 +86,7 @@ const creativeWorks = ref([
 ])
 
 const loading = ref(false)
-const service = ref({})
+const pageData = ref({})
 const error = ref(false)
 const apiurl = ref("")
 const mediaurl = ref("")
@@ -111,7 +110,7 @@ onBeforeMount(async () => {
         if (!res.ok) throw new Error('Failed to fetch page data')
         let apidata = await res.json()
         console.log(apidata.data)
-        service.value = apidata.data
+        pageData.value = apidata.data
 
     }
     catch (err) {

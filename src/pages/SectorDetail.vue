@@ -1,5 +1,4 @@
 <template>
-    
     <div v-if="error" class="error-state">
         <p>{{ error }}</p>
     </div>
@@ -30,7 +29,7 @@
                         </p>
                     </div>
                     <div class="md:flex hidden justify-end">
-                        <img :src="`${pageData.statsImage}`" alt="education network" class="w-72 lg:w-96">
+                        <img :src="pageData.statsImage" :alt="pageData.title" class="w-72 lg:w-96">
                     </div>
                 </div>
                 <!-- Stats Row -->

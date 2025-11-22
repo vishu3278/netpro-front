@@ -3,8 +3,8 @@
     <div v-if="error" class="error-state">
         <p>{{ error }}</p>
     </div>
-    <template v-else-if="service">
-        <section class="relative lg:h-[60vh] w-full bg-cover bg-center flex items-end pt-42 pb-16 lg:pt-0 lg:pb-20" :style="{'background-image': `url('${baseUrl}${pageData.bannerImage}')`}">
+    <template v-else-if="pageData">
+        <section class="relative lg:h-[60vh] w-full bg-cover bg-center flex items-end pt-42 pb-16 lg:pt-0 lg:pb-20" :style="{'background-image': `url('${pageData.bannerImage}')`}">
             <!-- Content -->
             <div class="container mx-auto px-4 relative z-10">
                 <h1 class="">
@@ -44,7 +44,7 @@
                     <Slide v-for="(serv, index) in pageData.services" :key="index">
                         <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
                             <figure class="services-icon mb-auto">
-                                <img :src="baseUrl+serv.icon" :alt="serv.title" class="" />
+                                <img :src="serv.icon" :alt="serv.title" class="" />
                             </figure>
                             <h3 class="mt-5 mb-5">{{serv.title}}</h3>
                             <p>{{serv.description}}</p>
@@ -78,7 +78,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
                     <!-- Project 1 -->
                     <div v-for="(proj, index) in pageData.projects" :class="{'lg:pt-30': (index+1)%2!=0}" class="space-y-4 mb-4">
-                        <img :src="baseUrl+proj.img" alt="" class="rounded-lg w-full">
+                        <img :src="proj.image" :alt="proj.title" class="rounded-lg w-full">
                         <h5 class="mb-2">{{proj.title}}</h5>
                         <p>
                             {{proj.description}}
@@ -99,19 +99,19 @@ import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Sector detail | NetProphets',
+  title: 'Service detail | NetProphets',
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: 'This is the Service page of my website.'
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: 'Service detail'
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: 'Learn more about our services.'
     },
     {
       property: 'og:image',
@@ -142,9 +142,9 @@ const carouselConfig = {
 }
 
 const route = useRoute()
-let baseUrl = ref("/")
+// let baseUrl = ref("/")
 const apiurl = ref("")
-const mediaurl = ref("")
+// const mediaurl = ref("")
 // const sector = ref(null)
 const pageData = ref({})
 const loading = ref(true) // 👈 track loading state
@@ -163,9 +163,9 @@ watch(
 )
 
 onMounted(async () => {
-    baseUrl.value = localStorage.getItem("base_url")
+    // baseUrl.value = localStorage.getItem("base_url")
     apiurl.value = import.meta.env.VITE_API_BASE_URL + "/services/" + route.params.id
-    mediaurl.value = localStorage.getItem("media_url");
+    // mediaurl.value = localStorage.getItem("media_url");
 
     fetchData()
     // product.value = products.find(p => p.id === parseInt(route.params.id))

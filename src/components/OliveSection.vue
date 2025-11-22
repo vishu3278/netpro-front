@@ -37,7 +37,7 @@ const props = defineProps({
 
 onMounted(() => {
     let split1 = SplitText.create("#olivesection .title", {
-        type: "words",
+        type: "lines",
         autoSplit: true,
         mask: 'lines',
     });
@@ -52,7 +52,7 @@ onMounted(() => {
             // markers: true,
           }
     });
-    tl.from(split1.words, {
+    tl.from(split1.lines, {
         // rotationX: -100,
         // transformOrigin: "50% 50%",
         opacity: 0,
