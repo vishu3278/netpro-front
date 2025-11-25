@@ -260,13 +260,14 @@
             </Carousel>
         </div>
     </section>
+
 </template>
 <script setup>
 import OliveSection from '@/components/OliveSection.vue'
 import Testimonial from '@/components/Testimonial.vue'
 import VideoCarousel from '@/components/VideoCarousel.vue'
 import MediaLoader from '@/components/MediaLoader.vue'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 import { viewport } from '@/composables/useBreakpoints'
 import { motion } from "motion-v"
 import { gsap } from "gsap";
@@ -279,7 +280,76 @@ gsap.registerPlugin(ScrollTrigger)
 
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
-let baseUrl = ref("")
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Home | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the home page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Home'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more about our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
+const emit = defineEmits(['loading'])
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+const mediaurl = ref("")
+const baseUrl = ref("")
+
+onBeforeMount(async () => {
+
+    apiurl.value = import.meta.env.VITE_API_BASE_URL;
+    mediaurl.value = localStorage.getItem("media_url");
+
+    try {
+        loading.value = true
+        emit('loading', true)
+        const res = await fetch(apiurl.value + '/home', {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        pageData.value = apidata.data
+
+        for (var i = 0; i < 10; i++) {
+            pageData.value.sectors[i]
+            let n = Math.random() * (1.0 - 0.5) + 0.5;
+            speed.value.push(n.toFixed(2))
+        }
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+        emit('loading', false)
+    }
+})
+
 const { isMobile, activeBreakpoint } = viewport
 
 const allStates = [

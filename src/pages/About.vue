@@ -4,30 +4,29 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 lg:gap-12">
                 <!-- Left: Heading -->
                 <div class="md:w-1/2">
-                    <h2>
+                    <!-- <h2>
                         Building technology that
                         transforms India and improves
                         the everyday lives of the citizens
-                    </h2>
+                    </h2> -->
+                    <h2>{{pageData.heading}}</h2>
                 </div>
                 <!-- Right: Paragraphs -->
                 <div class="md:w-1/3">
-                    <p>
+                    <!-- <p>
                         For over 25 years, we’ve been building technology that quietly powers lives—helping
                         students learn, citizens access services, and public systems work better. Our journey
                         has taken us across five continents, working with governments, global institutions, and
                         changemakers. Through it all, one belief keeps us grounded: innovation means nothing
                         unless it uplifts people.
-                    </p>
+                    </p> -->
                     <p>
-                        With 850+ dedicated minds behind us, we don’t just create digital solutions—we stand beside
-                        our partners to solve real problems, shape better futures, and build systems that serve
-                        society with purpose.
+                        {{pageData.content}}
                     </p>
                 </div>
             </div>
             <div class="about-banner py-4 md:py-8">
-                <img src="/about/about-banner.jpg" alt="" class="w-full h-[345px] object-cover rounded-2xl">
+                <img :src="pageData.bannerImage" alt="" class="w-full h-[345px] object-cover rounded-2xl">
             </div>
         </div>
     </section>
@@ -36,7 +35,8 @@
             <div class="our-heading text-center mb-4 mb:mb-10 ">
                 <h6>Our Mission</h6>
                 <p class="max-w-[320px] lg:max-w-[998px] mx-auto">
-                    At the heart of what we do is a belief technology must serve people, not just systems.
+                    <!-- At the heart of what we do is a belief technology must serve people, not just systems. -->
+                    {{pageData.mission}}
                 </p>
             </div>
         </div>
@@ -49,10 +49,10 @@
                 <div class="frameimg absolute md:static bottom-0 right-0 max-w-[180px] md:max-w-none opacity-30 md:w-1/3 flex justify-center">
                     <img src="/frame-bg.svg" alt="Frame background" class="max-w-full object-cover">
                 </div>
-                <!-- Right Content -->
+                
                 <div class="md:w-1/2 space-y-8 lg:pr-60">
-                    <!-- Why we do it -->
-                    <div>
+                    
+                    <!-- <div>
                         <h5 class=" mb-2">Why we do it</h5>
                         <p class="leading-relaxed">
                             To create digital infrastructure that empowers governments, enables institutions, and improves everyday
@@ -60,23 +60,24 @@
                         </p>
                     </div>
                     <hr class="border border-[#BEE66A]">
-                    <!-- How we do it -->
+                    
                     <div>
                         <h5 class=" mb-2">How we do it</h5>
                         <p class="leading-relaxed">
                             With deep expertise, agile systems, and the scale to solve for India. Every product we build carries public
                             purpose at its core—designed to be secure, scalable, and meaningful.
                         </p>
-                    </div>
-                    <hr class="border border-[#BEE66A]">
-                    <!-- What Keeps Us Going -->
-                    <div>
-                        <h5 class=" mb-2">What Keeps Us Going</h5>
-                        <p class="leading-relaxed">
-                            Seeing a student get access to learning. Watching a citizen solve a need without friction. Knowing our work
-                            makes lives easier—that’s what drives us.
-                        </p>
-                    </div>
+                    </div> -->
+                        
+                    <template v-for="(exp, index) in pageData.expertise">
+                        <motion.div :initial="{opacity: 0, y:50}" :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5, delay: 0.25 }" :inViewOptions="{ once: true }">
+                            <h5 class=" mb-2">{{exp.title}}</h5>
+                            <p class="leading-relaxed">
+                                {{exp.content}}
+                            </p>
+                        </motion.div>
+                        <hr v-if="index != pageData.expertise.length-1" class="border border-[#BEE66A]">
+                    </template>
                     <!-- Button -->
                     <div>
                         <router-link to="/service" class="button button-dark"> View our Services</router-link>
@@ -85,28 +86,26 @@
             </div>
         </div>
     </section>
-    <section class="py-12 lg:py-40 impactful">
+
+    <section id="impactful" class="py-12 lg:py-40 impactful">
         <div class="container mx-auto px-4">
-            <!-- Heading Section -->
-            <div class="mb-6 md:mb-12">
-                <h2 class="">How do we achieve such impactful results?</h2>
-                <p class="max-w-[940px]">Real impact begins with the people who build it. At NetProphets, we seek out
-                    talent with purpose, grow them over time, and create space for them to thrive—because strong systems are built
-                    by stronger teams.</p>
-            </div>
-            <!-- Mentors Section -->
-            <div class="image-move flex flex-col md:flex-row justify-between border-t border-b border-[#D7D7D7] relative overflow-clip">
-                <div class="md:w-1/2  py-6 md:py-12">
-                    <h3 class="">Mentors, Not Managers</h3>
-                    <p class="max-w-[500px]">We guide careers with care—through coaching, not control.</p>
+            <template v-for="(item, index) in pageData.impact">
+                <div v-if="index == 0" class="mb-6 md:mb-12">
+                    <h2 class="">{{item.title}}</h2>
+                    <p class="max-w-[940px]">{{item.subtitle}}</p>
                 </div>
-                <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
-                    <img src="/about/mentorsnotmanagers.jpg" alt="mentor" class="max-w-full h-full object-contain">
+                
+                <div v-else class="image-move flex flex-col md:flex-row justify-between border-t border-b border-[#D7D7D7] relative overflow-clip">
+                    <div class="md:w-1/2  py-6 md:py-12">
+                        <h3 class="">{{item.title}}</h3>
+                        <p class="max-w-[500px]">{{item.subtitle}}</p>
+                    </div>
+                    <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
+                        <img :src="item.image" alt="mentor" class="max-w-full h-full object-contain">
+                    </div>
                 </div>
-                <!-- <output class=" output absolute z-10 inset-1/2 w-max h-fit bg-lime-500 px-2 py-1 rounded-lg">mouse position</output> -->
-            </div>
-            <!-- Growth Section -->
-            <div class="image-move flex flex-col md:flex-row justify-between border-b border-[#D7D7D7] relative overflow-clip">
+            </template>
+            <!-- <div class="image-move flex flex-col md:flex-row justify-between border-b border-[#D7D7D7] relative overflow-clip">
                 <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Growth, Built In</h3>
                     <p class="max-w-[500px]">Skill-building isn’t optional here—it’s part of how we work and grow.</p>
@@ -115,7 +114,6 @@
                     <img src="/about/growthbuiltin.jpg" alt="growth" class="max-w-full h-full object-contain">
                 </div>
             </div>
-            <!-- Beyond Project Section -->
             <div class="image-move flex flex-col md:flex-row justify-between border-b border-[#D7D7D7] relative overflow-clip">
                 <div class="md:w-1/2  py-6 md:py-12">
                     <h3 class="">Beyond the Project</h3>
@@ -124,23 +122,24 @@
                 <div class=" opacity-0 absolute image w-1/3 h-full scale-110">
                     <img src="/about/beyondtheproject.jpg" alt="beyond project" class="max-w-full h-full object-contain">
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
+
     <section class="leadership py-12 md:py-30 bg-[#121212]">
         <div class="container mx-auto md:px-8 lg:px-38">
             <h2 class="mb-8 text-center text-white">Our Leadership</h2>
             <!-- Leadership Grid -->
-            <LeadershipCarousel v-if="isMobile" key="lead" :data="leaders" ></LeadershipCarousel>
+            <LeadershipCarousel v-if="isMobile" key="lead" :data="pageData.leader" ></LeadershipCarousel>
             <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div v-for="(lead, index) in leaders" :key="lead.id" class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img :src="lead.img" :alt="lead.name" class="w-full h-64 object-cover" />
+                <div v-for="(lead, index) in pageData.leader" :key="lead.id" class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <motion.img :src="lead.image" :initial="{opacity: 0 }" :whileInView="{ opacity: 1 }" :transition="{delay: 0.3, duration: 0.75, ease: 'easeOut'}" :alt="lead.name" class="w-full h-64 object-cover" />
                     <div class="p-8">
                         <h5 class="">
                             <span>{{lead.name}}</span>
                         </h5>
                         <p class="">
-                            <span>{{lead.position}}</span>
+                            <span>{{lead.designation}}</span>
                         </p>
                     </div>
                 </div>
@@ -178,26 +177,93 @@
 import OliveSection from "@/components/OliveSection.vue"
 import AboutCarousel from "@/components/AboutCarousel.vue"
 import LeadershipCarousel from "@/components/LeadershipCarousel.vue"
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onBeforeMount, onMounted, onUpdated, onBeforeUnmount } from 'vue'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { viewport } from '@/composables/useBreakpoints'
+import { motion } from "motion-v"
 
 import { gsap } from 'gsap'
+import { useHead } from '@unhead/vue'
 
-let bUrl = ref("")
-// const heroRef = ref(null)
+useHead({
+  title: 'About | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the Service page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Service detail'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more about our services.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
+// let bUrl = ref("")
 const { isMobile, activeBreakpoint } = viewport
 
-onMounted(() => {
-    console.log('About Base URL:',
-        import.meta.env.VITE_APP_BASE_URL)
-    // bUrl.value = import.meta.env.VITE_APP_BASE_URL
-    bUrl.value = localStorage.getItem("base_url")
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+// const mediaurl = ref("")
 
-    const heros = document.querySelectorAll(".impactful .image-move")
+const emit = defineEmits(['loading'])
+
+onBeforeMount(async () => {
+
+    apiurl.value = import.meta.env.VITE_API_BASE_URL;
+    // mediaurl.value = localStorage.getItem("media_url");
+
+    try {
+        loading.value = true
+        emit('loading', true)
+        const res = await fetch(apiurl.value + '/about', {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        pageData.value = apidata.data
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+        emit('loading', false)
+    }
+})
+
+onMounted(() => {
+    // console.log('About Base URL:', import.meta.env.VITE_APP_BASE_URL)
+    // bUrl.value = import.meta.env.VITE_APP_BASE_URL
+    // bUrl.value = localStorage.getItem("base_url")
+
+    onBeforeUnmount(() => {
+        console.info("before unmount")
+    })
+})
+
+onUpdated(() => {
+    const heros = document.querySelectorAll("#impactful .image-move")
 
     heros.forEach(hero => {
-        // console.log(hero)
+        console.log(hero)
         const image = hero.querySelector('.image')
         // const output = document.querySelector('.output')
 
@@ -214,8 +280,6 @@ onMounted(() => {
             const centerY = rect.height / 2
             const moveX = (x - centerX) / 2
             const moveY = (y - centerY) / 2
-
-            // output.textContent = `${rect} -> ${moveX} - ${moveY}`
 
             if (moveTween) moveTween.kill()
             if (resetTween) resetTween.kill()
@@ -236,25 +300,16 @@ onMounted(() => {
         hero.addEventListener("mouseleave", killMouseMove)
         // hero.addEventListener("mouseenter", handleMouseEnter)
     })
-
-    onBeforeUnmount(() => {
-        // hero.removeEventListener('mousemove', handleMouseMove)
-        // ctx && ctx.revert()
-        // hero.removeEventListener('mousemove', handleMove)
-        // hero.removeEventListener('mouseleave', handleLeave)
-        // if (moveTween) moveTween.kill()
-        // if (resetTween) resetTween.kill()
-        console.info("before unmount")
-    })
+  
 })
 
 const leaders = ref([
-    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer", img: bUrl.value+"about/amitabh.jpg" },
-    { id: 2, name: "Saurabh Rajpal", position: "Chief Technology Officer", img: bUrl.value+"about/saurabh.jpg" },
-    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: bUrl.value+"about/aditya.jpg" },
-    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: bUrl.value+"about/dipesh.jpg" },
-    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: bUrl.value+"about/gaurav.jpg" },
-    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: bUrl.value+"about/ashish.jpg" },
+    { id: 1, name: "Amitabh Vira", position: "Chief Executive Officer", img: "about/amitabh.jpg" },
+    { id: 2, name: "Saurabh Rajpal", position: "Chief Technology Officer", img: "about/saurabh.jpg" },
+    { id: 3, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/aditya.jpg" },
+    { id: 4, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/dipesh.jpg" },
+    { id: 5, name: "Gaurav Arora", position: "Vice President Enterprise Business Services", img: "about/gaurav.jpg" },
+    { id: 6, name: "Ashish Chauhan", position: "Vice President Government Sector", img: "about/ashish.jpg" },
     // { id: 7, name: "Aditya Kandukuri", position: "Chief Operating Officer", img: "about/saurabh-rajpal.png" },
     // { id: 8, name: "Dipesh Tiwari", position: "Vice President Digital Services", img: "about/saurabh-rajpal.png" },
     // { id: 9, name: "Saurabh Rajpal", position: "Chief Executive Officer, Co-Founder and Director", img: "about/saurabh-rajpal.png" },

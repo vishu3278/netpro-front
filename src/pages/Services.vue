@@ -1,26 +1,52 @@
 <template>
-    <section class="hero relative bg-no-repeat bg-cover bg-center overflow-clip" :style="{'background-image': `url(${service?.banner})`}">
+    <section class="hero relative bg-no-repeat bg-cover bg-center overflow-clip" :style="{'background-image': `url(${pageData?.banner})`}">
         <motion.figure :initial="{opacity: 0.5, scale: 1.1}" :animate="{opacity: 1, scale: 1}" :transition="{duration: 1}" class="layer-bg absolute inset-0 "></motion.figure>
         <div class="container mx-auto px-4">
             <div class="content flex items-end">
                 <!-- <h1>Our Services</h1> -->
-                <h1>{{service?.main.heading}}</h1>
+                <h1>{{pageData.main.heading}}</h1>
             </div>
         </div>
     </section>
-    <template v-for="(serv, index) in service.services">
-        <!-- {{serv.name}} -->
-        <ServiceSection :title="serv.name" :list="serv.child" :image="mediaurl+serv.img" :flip="index%2!=0" :link="{text: `Explore ${serv.name}`, path: `/service/${serv.link}`}" />
+    <template v-for="(serv, index) in pageData.services">
+        <ServiceSection :title="serv.name" :list="serv.child" :image="serv.img" :flip="index%2!=0" :link="{text: `Explore ${serv.name}`, path: `/service/${serv.link}`}" />
     </template>
     <!-- <ServiceSection title="Technology Solutions (Tech Lab)" :flip="true" :list="techSolution" image="services/tech-solution.jpg" :link="{text: 'Explore Technology Solutions', path: '/service/technology-solutions'}" />
     <ServiceSection title="Product Engineering (Product Works)" :list="prodEngg" image="services/product-engg.jpg" :link="{text: 'Explore Product Engineering', path: '/service/product-engineering'}" />
     <ServiceSection title="Digital Engine" :list="digitalEngine" :flip="true" image="services/digital-engine.jpg" :link="{text: 'Explore Digital Engine', path: '/service/digital-engine'}" />
     <ServiceSection title="Creative Works" :list="creativeWorks" image="services/creative.jpg" :link="{text: 'Explore Creative Works', path: '/service/creative-works'}" /> -->
+
 </template>
 <script setup>
 import ServiceSection from "@/components/ServiceSection.vue"
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion } from "motion-v"
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Sector detail | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the contact page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact Us'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more contact our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
+const emit = defineEmits(['loading'])
+
 const techConsult = ref([
     "Process Strategy & Optimisation",
     "Enterprise Process Design",
@@ -60,7 +86,7 @@ const creativeWorks = ref([
 ])
 
 const loading = ref(false)
-const service = ref({})
+const pageData = ref({})
 const error = ref(false)
 const apiurl = ref("")
 const mediaurl = ref("")
@@ -72,6 +98,7 @@ onBeforeMount(async () => {
 
     try {
         loading.value = true
+        emit('loading', true)
 
         const res = await fetch(apiurl.value + '/services', {
             method: "GET",
@@ -83,7 +110,7 @@ onBeforeMount(async () => {
         if (!res.ok) throw new Error('Failed to fetch page data')
         let apidata = await res.json()
         console.log(apidata.data)
-        service.value = apidata.data
+        pageData.value = apidata.data
 
     }
     catch (err) {
@@ -92,6 +119,8 @@ onBeforeMount(async () => {
     }
     finally {
         loading.value = false
+        emit('loading', false)
+
     }
 })
 

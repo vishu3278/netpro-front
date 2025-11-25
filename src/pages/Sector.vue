@@ -1,19 +1,19 @@
 <template>
     <section id="hero" class="hero pt-32 lg:pt-48 pb-6 px-4 flex items-center justify-center">
         <!-- <h1 class="text-center">Across every sector we touch, we build brands that move industries forward and make a difference in people’s lives.</h1> -->
-        <h1 class="text-center">{{sectors?.main?.heading}}</h1>
+        <h1 class="text-center">{{pageData.main.heading}}</h1>
     </section>
-    <section v-for="(sec, index) in sectors.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
-        <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${mediaurl}${sec.img})`}" :data-speed="speed[index]"></figure>
+    <section v-for="(sec, index) in pageData.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
+        <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${sec.img})`}" :data-speed="speed[index]"></figure>
         <div class="title ">{{sec.name}}</div>
         <div class="count ">0{{index+1}}</div>
-        <router-link :to="sec.link" class="absolute inset-0 isolate z-10"></router-link>
+        <router-link :to="'sector/'+sec.link" class="absolute inset-0 isolate z-10"></router-link>
     </section>
     <!-- <ParallaxSection v-for="(item, index) in sectors" :key="index" :bg="item.img" :title="item.title" :speed="item.speed" /> -->
 </template>
 <script setup>
 // import ParallaxSection from "@/components/ParallaxSection.vue"
-import { ref, onBeforeMount, onMounted } from 'vue'
+import { ref, onBeforeMount, onMounted, onUpdated } from 'vue'
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,13 +22,39 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Service detail | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the Service page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Service detail'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more about our services.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
 const loading = ref(false)
-const sectors = ref({})
+const pageData = ref({})
 const error = ref(false)
 const apiurl = ref("")
 const mediaurl = ref("")
 
 const speed = ref([])
+
+const emit = defineEmits(['loading'])
 
 onBeforeMount(async () => {
 
@@ -37,6 +63,8 @@ onBeforeMount(async () => {
 
     try {
         loading.value = true
+        emit('loading', true)
+
         const res = await fetch(apiurl.value + '/sectors', {
             method: "GET",
             headers: {
@@ -47,31 +75,28 @@ onBeforeMount(async () => {
         if (!res.ok) throw new Error('Failed to fetch page data')
         let apidata = await res.json()
         // console.log(apidata.data)
-        sectors.value = apidata.data
+        pageData.value = apidata.data
 
         for (var i = 0; i < 10; i++) {
-            sectors.value.sectors[i]
-            let n = Math.random() * (1.0 - 0.5) + 0.5;
+            pageData.value.sectors[i]
+            let n = Math.random() * (1.0 - 0.4) + 0.5;
             speed.value.push(n.toFixed(2))
         }
 
     }
     catch (err) {
         error.value = err.message
-        sectors.value.sectors = default_sectors
+        pageData.value.sectors = default_sectors
     }
     finally {
         loading.value = false
+        emit('loading', false)
+
     }
 })
 
 onMounted( () => {
 
-    ScrollSmoother.create({
-        smooth: 1.5, // how long (in seconds) it takes to "catch up" to the native scroll position
-        effects: true, // looks for data-speed and data-lag attributes on elements
-        // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-    });
 
     SplitText.create("#hero h1", {
         type: "lines",
@@ -96,6 +121,14 @@ onMounted( () => {
         },
     })
 
+})
+
+onUpdated(() => {
+    ScrollSmoother.create({
+        smooth: 1.5, // how long (in seconds) it takes to "catch up" to the native scroll position
+        effects: true, // looks for data-speed and data-lag attributes on elements
+        // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+    });
 })
 
 const default_sectors = [

@@ -1,22 +1,18 @@
 <template>
-    <div v-if="loading" class="loading  fixed z-10 inset-0 bg-white flex gap-8 flex-col items-center justify-center">
-        <span class="spinner "><img src="/logo-bg.svg" alt="" class="w-48 h-48 object-contain"></span>
-        <p class="text-gray-500">Loading ...</p>
-    </div>
-    <div v-else-if="error" class="error-state">
+    <div v-if="error" class="error-state">
         <p>{{ error }}</p>
     </div>
-    <template v-else-if="sector">
-        <section class="hero relative lg:h-[100vh] w-full bg-cover bg-center flex items-end pb-12 pt-[580px]" :style="{'background-image': `url('${baseUrl}${sector.bannerImage}')`}">
+    <template v-else-if="pageData">
+        <section class="hero relative lg:h-[100vh] w-full bg-cover bg-center flex items-end pb-12 pt-[580px]" :style="{'background-image': `url('${pageData.bannerImage}')`}">
             <!-- Overlay -->
             <div class="absolute inset-0 bgoverlay"></div>
             <!-- Content -->
             <div class="container mx-auto relative px-4 z-10">
                 <h1 class="mb-4">
-                    {{sector.bannerTitle}}<br>
+                    {{pageData.bannerTitle}}<br>
                 </h1>
                 <p class="">
-                    {{sector.bannerText}}
+                    {{pageData.bannerText}}
                 </p>
             </div>
         </section>
@@ -26,19 +22,19 @@
                     <!-- Left Text Content -->
                     <div class="space-y-6">
                         <h2 class="">
-                            {{sector.statsTitle}}
+                            {{pageData.statsTitle}}
                         </h2>
                         <p>
-                            <span>{{sector.statsText}}</span>
+                            <span>{{pageData.statsText}}</span>
                         </p>
                     </div>
                     <div class="md:flex hidden justify-end">
-                        <img :src="`${baseUrl}${sector.statsImage}`" alt="education network" class="w-72 lg:w-96">
+                        <img :src="pageData.statsImage" :alt="pageData.title" class="w-72 lg:w-96">
                     </div>
                 </div>
                 <!-- Stats Row -->
                 <div class="stats pt-10 lg:pt-20 grid grid-cols-1 sm:grid-cols-3 md:gap-4 lg:gap-10">
-                    <div v-for="st in sector.stats" class="flex gap-4 lg:space-y-2 md:border-l md:border-white py-5 md:pl-5 lg:pl-10">
+                    <div v-for="st in pageData.stats" class="flex gap-4 lg:space-y-2 md:border-l md:border-white py-5 md:pl-5 lg:pl-10">
                         <p><span class="text-gray-700">[{{st.id}}]</span></p>
                         <h3>{{st.text}}</h3>
                     </div>
@@ -50,8 +46,8 @@
                 <h4 class="heading mb-8 lg:mb-12 text-center">Key Projects</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
                     <!-- Project 1 -->
-                    <div v-for="(pr, index) in sector.projects" class="space-y-4 " :class="[(index+1)%2 == 0 ? '':'lg:pt-30']">
-                        <img :src="`${baseUrl}${pr.img}`" :alt="pr.title" class="rounded-lg w-full">
+                    <div v-for="(pr, index) in pageData.projects" class="space-y-4 " :class="[(index+1)%2 == 0 ? '':'lg:pt-30']">
+                        <img :src="`${pr.img}`" :alt="pr.title" class="rounded-lg w-full">
                         <h5 class="mb-2">{{pr.title}}</h5>
                         <p class="">
                             {{pr.description}}
@@ -67,10 +63,10 @@
                 <div class="services-carousel">
                     <Carousel v-bind="carouselConfig">
                         <!-- Card 1 -->
-                        <Slide v-for="(serv, index) in sector.services" :key="index">
+                        <Slide v-for="(serv, index) in pageData.services" :key="index">
                             <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
                                 <figure class="services-icon mb-auto">
-                                    <img :src="baseUrl+serv.icon" :alt="serv.title" class="" />
+                                    <img :src="serv.icon" :alt="serv.title" class="" />
                                 </figure>
                                 <h3 class="mt-5 mb-5">{{serv.title}}</h3>
                                 <p>{{serv.description}}</p>
@@ -91,7 +87,7 @@
                 </div>
             </div>
         </section>
-        <Testimonial :bgImg="baseUrl+sector.testimonialImage" ></Testimonial>
+        <Testimonial :bgImg="pageData.testimonialImage" ></Testimonial>
     </template>
     <div v-else class="py-80 container mx-auto px-10">
         <p class="text-red-400">Product not found.</p>
@@ -103,16 +99,43 @@
 import Testimonial from '@/components/Testimonial.vue'
 import OliveSection from "@/components/OliveSection.vue"
 import SectorCarousel from "@/components/SectorCarousel.vue"
-import { ref, onMounted, watch } from 'vue'
+import { ref, onBeforeMount, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Sector detail | NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is the contact page of my website.'
+    },
+    {
+      property: 'og:title',
+      content: 'Contact Us'
+    },
+    {
+      property: 'og:description',
+      content: 'Learn more contact our services and team.'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
 
 const route = useRoute()
 let baseUrl = ref("/")
+const apiurl = ref("")
+const mediaurl = ref("")
 const sector = ref(null)
+const pageData = ref({})
 const loading = ref(true) // 👈 track loading state
 const error = ref(null)
 
+const emit = defineEmits(['loading'])
 
 const carouselConfig = {
     autoplay: 7500,
@@ -139,18 +162,54 @@ watch(
     () => route.params.id,
     (newId, oldId) => {
         if (route.path.includes("/sector/")) {
-            fetchData()
+            // apiurl.value = import.meta.env.VITE_API_BASE_URL + "/sectors/" + newId
+            // fetchData()
         }
     }
 )
 
 onMounted(async () => {
     baseUrl.value = localStorage.getItem("base_url")
+    apiurl.value = import.meta.env.VITE_API_BASE_URL + "/sectors/" + route.params.id
+    mediaurl.value = localStorage.getItem("media_url");
 
     fetchData()
     // product.value = products.find(p => p.id === parseInt(route.params.id))
 })
+
 const fetchData = async () => {
+
+    // apiurl.value = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+        loading.value = true
+        emit('loading', true)
+
+        const res = await fetch(apiurl.value, {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log('sector detail',apidata)
+        pageData.value = apidata
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+                emit('loading', false)
+
+    }
+}
+
+/*const fetchData = async () => {
     try {
         const res = await fetch(`${import.meta.env.BASE_URL}data/${route.params.id}.json`)
         if (!res.ok) throw new Error('Failed to load data')
@@ -160,7 +219,7 @@ const fetchData = async () => {
     } finally {
         loading.value = false // 👈 stop loading
     }
-}
+}*/
 </script>
 <style lang="scss" scoped>
 .hero {

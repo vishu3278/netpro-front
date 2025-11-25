@@ -1,8 +1,19 @@
+<template>
+    <site-header></site-header>
+    <div id="smooth-wrapper" class="app-wrapper">
+        <div id="smooth-content">
+            <router-view @loading="loadingIndicate"></router-view>
+            <site-footer></site-footer>
+        </div>
+        <PageLoading :show="loading" />
+    </div>
+</template>
 <script setup>
 import { ref, shallowRef, watch, onMounted } from "vue"
 import { useRoute } from 'vue-router';
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
+import PageLoading from "@/components/PageLoading.vue"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -12,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 // import { useRoute, onBeforeRouteUpdate} from 'vue-router'
 const route = useRoute();
 const smoother = ref(null)
+const loading = ref(false)
 
 onMounted(() => {
     // create the scrollSmoother before your scrollTriggers
@@ -50,16 +62,12 @@ watch(() => route.fullPath,
         }
     }
 );
+
+const loadingIndicate = (payload) => {
+    loading.value = payload
+}
+
 </script>
-<template>
-    <site-header></site-header>
-    <div id="smooth-wrapper" class="app-wrapper">
-        <div id="smooth-content">
-            <router-view></router-view>
-            <site-footer></site-footer>
-        </div>
-    </div>
-</template>
 <style lang="scss" scoped>
 body,
 html {
