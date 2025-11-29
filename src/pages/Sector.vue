@@ -79,7 +79,7 @@ onBeforeMount(async () => {
 
         for (var i = 0; i < 10; i++) {
             pageData.value.sectors[i]
-            let n = Math.random() * (1.0 - 0.4) + 0.5;
+            let n = Math.random() * (1.0 - 0.5) + 0.5;
             speed.value.push(n.toFixed(2))
         }
 

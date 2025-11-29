@@ -104,8 +104,19 @@ import { useRoute } from 'vue-router'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { useHead } from '@unhead/vue'
 
+const route = useRoute()
+let baseUrl = ref("/")
+const apiurl = ref("")
+const mediaurl = ref("")
+const sector = ref(null)
+const pageData = ref({})
+const loading = ref(true) // 👈 track loading state
+const error = ref(null)
+
+const emit = defineEmits(['loading'])
+
 useHead({
-  title: 'Sector detail | NetProphets',
+  title: () => pageData.value?.title || 'Sector detail | NetProphets',
   meta: [
     {
       name: 'description',
@@ -125,17 +136,6 @@ useHead({
     }
   ]
 })
-
-const route = useRoute()
-let baseUrl = ref("/")
-const apiurl = ref("")
-const mediaurl = ref("")
-const sector = ref(null)
-const pageData = ref({})
-const loading = ref(true) // 👈 track loading state
-const error = ref(null)
-
-const emit = defineEmits(['loading'])
 
 const carouselConfig = {
     autoplay: 7500,

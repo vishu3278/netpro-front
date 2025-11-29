@@ -99,14 +99,15 @@ onBeforeUnmount(() => {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #eee;
+        /*background: #eee;*/
         color: #666;
         font-size: 0.9rem;
 
         img {
-            max-width: 50%;
-            margin-bottom: 8px;
-            opacity: 0.6;
+            max-width: 16rem;
+            margin-bottom: 1rem;
+            opacity: 0.75;
+            mix-blend-mode: multiply;
         }
     }
 }

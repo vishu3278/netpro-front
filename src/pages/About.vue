@@ -185,8 +185,17 @@ import { motion } from "motion-v"
 import { gsap } from 'gsap'
 import { useHead } from '@unhead/vue'
 
+const { isMobile, activeBreakpoint } = viewport
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+
+const emit = defineEmits(['loading'])
+
 useHead({
-  title: 'About | NetProphets',
+  title: () => pageData.value?.title || 'About | NetProphets',
   meta: [
     {
       name: 'description',
@@ -207,16 +216,6 @@ useHead({
   ]
 })
 
-// let bUrl = ref("")
-const { isMobile, activeBreakpoint } = viewport
-
-const loading = ref(false)
-const pageData = ref({})
-const error = ref(false)
-const apiurl = ref("")
-// const mediaurl = ref("")
-
-const emit = defineEmits(['loading'])
 
 onBeforeMount(async () => {
 
