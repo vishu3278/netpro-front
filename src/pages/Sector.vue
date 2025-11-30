@@ -25,19 +25,19 @@ gsap.registerPlugin(ScrollTrigger)
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Service detail | NetProphets',
+  title: 'NetProphets Sector Impacts - Case Studies from Different Sectors',
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: 'Explore the diverse range of projects in our portfolio and discover how NetProphets Cyberworks delivers exceptional digital solutions for businesses.'
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: 'NetProphets Sector Impacts - Case Studies from Different Sectors'
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: 'Explore the diverse range of projects in our portfolio and discover how NetProphets Cyberworks delivers exceptional digital solutions for businesses.'
     },
     {
       property: 'og:image',
@@ -96,7 +96,6 @@ onBeforeMount(async () => {
 })
 
 onMounted( () => {
-
 
     SplitText.create("#hero h1", {
         type: "lines",

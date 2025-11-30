@@ -195,19 +195,19 @@ const apiurl = ref("")
 const emit = defineEmits(['loading'])
 
 useHead({
-  title: () => pageData.value?.title || 'About | NetProphets',
+  title: () => pageData.value?.title || 'The Best IT Solution Provider In India - NetProphets Cyberworks',
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: 'Discover top IT services company in India with NetProphets Cyberworks, your trusted IT solution provider. The reputed IT company in Noida, India helps brands succeed.'
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: 'The Best IT Solution Provider In India - NetProphets Cyberworks'
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: 'Discover top IT services company in India with NetProphets Cyberworks, your trusted IT solution provider. The reputed IT company in Noida, India helps brands succeed.'
     },
     {
       property: 'og:image',

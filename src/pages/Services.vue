@@ -24,19 +24,19 @@ import { motion } from "motion-v"
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Sector detail | NetProphets',
+  title: 'NetProphets Is Leading The Way In Digital IT Services In India',
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: 'Experience the best of digital services in India with NetProphets. As a trusted industry leader, we provide comprehensive solutions for digital services.'
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: 'NetProphets Is Leading The Way In Digital IT Services In India'
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: 'Experience the best of digital services in India with NetProphets. As a trusted industry leader, we provide comprehensive solutions for digital services.'
     },
     {
       property: 'og:image',

@@ -292,19 +292,19 @@ const mediaurl = ref("")
 const baseUrl = ref("")
 
 useHead({
-  title: () => pageData.value?.title || 'Home | NetProphets',
+  title: () => pageData.value?.title || 'Technology Consulting Company In India - NetProphets Cyberworks',
   meta: [
     {
       name: 'description',
-      content: () => pageData.value?.heading || "25+ years of building transformational technologies"
+      content: () => pageData.value?.heading || "For custom application development services, choose a custom software development company in India. Reach out to us, a premium technology consulting company, right away!"
     },
     {
       property: 'og:title',
-      content: () => pageData.value?.title || 'Home'
+      content: () => pageData.value?.title || 'Technology Consulting Company In India - NetProphets Cyberworks'
     },
     {
       property: 'og:description',
-      content: () => pageData.value?.heading || '25+ years of building transformational technologies'
+      content: () => pageData.value?.heading || 'For custom application development services, choose a custom software development company in India. Reach out to us, a premium technology consulting company, right away!'
     },
     {
       property: 'og:image',

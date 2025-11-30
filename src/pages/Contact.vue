@@ -92,19 +92,19 @@ import { motion, MotionConfig } from "motion-v"
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Contact Us | NetProphets',
+  title: 'Get In Touch For Digital Solution - NetProphets Cyberworks',
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: 'Get in touch with us for top-notch web development services. Contact us to discuss your business needs and take your online presence to new heights.'
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: 'Get In Touch For Digital Solution - NetProphets Cyberworks'
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: 'Get in touch with us for top-notch web development services. Contact us to discuss your business needs and take your online presence to new heights.'
     },
     {
       property: 'og:image',
