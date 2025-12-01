@@ -41,17 +41,15 @@ onMounted(() => {
         });
     });
 
-    console.log('Base URL:',
-        import.meta.env.VITE_APP_BASE_URL)
-    localStorage.setItem("base_url",
-        import.meta.env.VITE_APP_BASE_URL)
-    localStorage.setItem("media_url", import.meta.env.VITE_API_MEDIA_URL)
+    // console.log('Base URL:', import.meta.env.VITE_APP_BASE_URL)
+    localStorage.setItem("base_url", import.meta.env.VITE_APP_BASE_URL)
+    // localStorage.setItem("media_url", import.meta.env.VITE_API_MEDIA_URL)
 })
 
 
 watch(() => route.fullPath,
     (newPath, oldPath) => {
-        console.log('Route changed!');
+        // console.log('Route changed!');
         // console.log('Old path:', oldPath);
         // console.log('New path:', newPath);
         // You can perform any actions here based on the route change

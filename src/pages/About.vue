@@ -220,7 +220,6 @@ useHead({
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
-    // mediaurl.value = localStorage.getItem("media_url");
 
     try {
         loading.value = true
@@ -249,20 +248,17 @@ onBeforeMount(async () => {
 })
 
 onMounted(() => {
-    // console.log('About Base URL:', import.meta.env.VITE_APP_BASE_URL)
-    // bUrl.value = import.meta.env.VITE_APP_BASE_URL
-    // bUrl.value = localStorage.getItem("base_url")
-
-    onBeforeUnmount(() => {
+    
+    /*onBeforeUnmount(() => {
         console.info("before unmount")
-    })
+    })*/
 })
 
 onUpdated(() => {
     const heros = document.querySelectorAll("#impactful .image-move")
 
     heros.forEach(hero => {
-        console.log(hero)
+        // console.log(hero)
         const image = hero.querySelector('.image')
         // const output = document.querySelector('.output')
 

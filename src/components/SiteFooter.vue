@@ -20,28 +20,28 @@ onMounted(() => {
                 <div class="flex flex-col md:flex-row main-links">
                     <ul class="md:grow">
                         <li>
-                            <router-link to="/sectordetail">Education</router-link>
+                            <router-link to="/sector/education">Education</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Healthcare</router-link>
+                            <router-link to="/sector/healthcare">Healthcare</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Culture</router-link>
+                            <router-link to="/sector/culture">Culture</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Transport</router-link>
+                            <router-link to="/sector/transportation">Transport</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Skilling</router-link>
+                            <router-link to="/sector/skilling">Skilling</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Telecom</router-link>
+                            <router-link to="/sector/telecom">Telecom</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Public Service</router-link>
+                            <router-link to="/sector/public-service">Public Service</router-link>
                         </li>
                         <!-- <li>
-                            <router-link to="/sectordetail">E-Commerce</router-link>
+                            <router-link to="/sector/education">E-Commerce</router-link>
                         </li> -->
                     </ul>
                     <ul class="md:grow">
@@ -49,30 +49,30 @@ onMounted(() => {
                             <router-link to="/">Home</router-link>
                         </li>
                         <li>
-                            <router-link to="/about">About</router-link>
+                            <router-link to="/about-us">Who we are</router-link>
                         </li>
                         <li>
                             <router-link to="/service">Services</router-link>
                         </li>
-                        <li>
+                        <!-- <li>
                             <router-link to="/contact">Careers</router-link>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <router-link to="/blog">Blog</router-link>
-                        </li>
+                        </li> -->
                         <li>
                             <router-link to="/contact">Contact</router-link>
                         </li>
                     </ul>
                     <ul class="md:grow">
                         <li>
-                            <a href="#">X-Twitter</a>
+                            <a href="https://x.com/npglobal" target="_blank">X-Twitter</a>
                         </li>
                         <li>
-                            <a href="#">Instagram</a>
+                            <a href="https://www.instagram.com/netprophetscyberworks/" target="_blank">Instagram</a>
                         </li>
                         <li>
-                            <a href="#">LinkedIn</a>
+                            <a href="https://www.linkedin.com/company/netprophets-global-cyberworks/" target="_blank">LinkedIn</a>
                         </li>
                     </ul>
                 </div>
@@ -84,42 +84,42 @@ onMounted(() => {
                             <router-link to="/">Home</router-link>
                         </li>
                         <li>
-                            <router-link to="/about">About</router-link>
+                            <router-link to="/about-us">Who we are</router-link>
                         </li>
                         <li>
                             <router-link to="/service">Services</router-link>
                         </li>
-                        <li>
+                        <!-- <li>
                             <router-link to="/contact">Careers</router-link>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <router-link to="/blog">Blog</router-link>
-                        </li>
+                        </li> -->
                         <li>
                             <router-link to="/contact">Contact</router-link>
                         </li>
                     </ul>
                     <ul class="text-sm leading-loose">
                         <li>
-                            <router-link to="/sectordetail">Education</router-link>
+                            <router-link to="/sector/education">Education</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Healthcare</router-link>
+                            <router-link to="/sector/healthcare">Healthcare</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Culture</router-link>
+                            <router-link to="/sector/culture">Culture</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Transport</router-link>
+                            <router-link to="/sector/transportation">Transport</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Skilling</router-link>
+                            <router-link to="/sector/skilling">Skilling</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Telecom</router-link>
+                            <router-link to="/sector/telecom">Telecom</router-link>
                         </li>
                         <li>
-                            <router-link to="/sectordetail">Public Service</router-link>
+                            <router-link to="/sector/public-service">Public Service</router-link>
                         </li>
                         <!-- <li>
                             <router-link to="/sectordetail">E-Commerce</router-link>
@@ -129,13 +129,13 @@ onMounted(() => {
                 <div class="col2">
                     <ul class="text-sm leading-loose mb-8">
                         <li>
-                            <a href="#">X-Twitter</a>
+                            <a href="https://x.com/npglobal" target="_blank">X-Twitter</a>
                         </li>
                         <li>
-                            <a href="#">Instagram</a>
+                            <a href="https://www.instagram.com/netprophetscyberworks/" target="_blank">Instagram</a>
                         </li>
                         <li>
-                            <a href="#">LinkedIn</a>
+                            <a href="https://www.linkedin.com/company/netprophets-global-cyberworks/" target="_blank">LinkedIn</a>
                         </li>
                     </ul>
                     <p class="text-sm leading-loose">New Business: <br>hello@netprophetsglobal.com</p>
@@ -162,10 +162,10 @@ onMounted(() => {
                     <div class="copy pb-2 grow">
                         <p class="mb-4 border-b border-gray-800 lg:border-0 pb-3 leading-normal">© 2025 NetProphets Cyberworks Private Limited, Inc. All rights reserved</p>
                         <ul class="flex gap-2 lg:justify-between flex-wrap lg:flex-nowrap">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">POSH Policy</a></li>
-                            <li><a href="#">IT Policy</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/terms-service">Terms of Service</a></li>
+                            <li><a href="/posh-policy">POSH Policy</a></li>
+                            <li><a href="/it-policy">IT Policy</a></li>
                         </ul>
                     </div>
                 </div>

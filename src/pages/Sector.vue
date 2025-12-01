@@ -1,9 +1,9 @@
 <template>
     <section id="hero" class="hero pt-32 lg:pt-48 pb-6 px-4 flex items-center justify-center">
         <!-- <h1 class="text-center">Across every sector we touch, we build brands that move industries forward and make a difference in people’s lives.</h1> -->
-        <h1 class="text-center">{{pageData.main.heading}}</h1>
+        <h1 class="text-center">{{pageData?.main?.heading || 'Sector Impact'}}</h1>
     </section>
-    <section v-for="(sec, index) in pageData.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
+    <section v-for="(sec, index) in pageData?.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
         <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${sec.img})`}" :data-speed="speed[index]"></figure>
         <div class="title ">{{sec.name}}</div>
         <div class="count ">0{{index+1}}</div>
@@ -23,6 +23,15 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
 import { useHead } from '@unhead/vue'
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+
+const speed = ref([])
+
+const emit = defineEmits(['loading'])
 
 useHead({
   title: 'NetProphets Sector Impacts - Case Studies from Different Sectors',
@@ -46,20 +55,10 @@ useHead({
   ]
 })
 
-const loading = ref(false)
-const pageData = ref({})
-const error = ref(false)
-const apiurl = ref("")
-const mediaurl = ref("")
-
-const speed = ref([])
-
-const emit = defineEmits(['loading'])
 
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
-    mediaurl.value = localStorage.getItem("media_url");
 
     try {
         loading.value = true

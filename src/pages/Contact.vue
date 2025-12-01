@@ -67,7 +67,7 @@
                         </address>
                         <address class="pb-4 lg:pb-10">
                             Join the Team. <br>
-                            <strong>jobs@npglobal.in</strong>
+                            <strong>hr@npglobal.in</strong>
                         </address>
                     </div>
                 </div>

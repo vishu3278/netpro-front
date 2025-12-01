@@ -110,19 +110,19 @@ const error = ref(null)
 const emit = defineEmits(['loading'])
 
 useHead({
-  title: () => pageData.value?.title || 'Service detail | NetProphets',
+  title: () => pageData.value.meta?.meta_title || 'Service detail | NetProphets',
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: () => pageData.value.meta?.meta_title
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:image',
