@@ -14,7 +14,7 @@ onMounted(() => {
                 <div class="pb-6 md:pb-1">
                     <div class="title">
                         <motion.div :initial="{opacity:0, y:100}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 1}" id="footerh1" class="h1 mb-2 md:mb-8">Technology that drives meaningful change</motion.div>
-                        <motion.p :initial="{opacity:0, y:80}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 0.75, delay: 0.25}">New Business: <br>hello@netprophetsglobal.com</motion.p>
+                        <motion.p :initial="{opacity:0, y:80}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 0.75, delay: 0.25}">New Business: <br>info@npglobal.in</motion.p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row main-links">
@@ -138,7 +138,7 @@ onMounted(() => {
                             <a href="https://www.linkedin.com/company/netprophets-global-cyberworks/" target="_blank">LinkedIn</a>
                         </li>
                     </ul>
-                    <p class="text-sm leading-loose">New Business: <br>hello@netprophetsglobal.com</p>
+                    <p class="text-sm leading-loose">New Business: <br>info@npglobal.in</p>
                 </div>
             </div>
             <div class="grid md:grid-cols-2 footer-section2">
@@ -160,10 +160,10 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="copy pb-2 grow">
-                        <p class="mb-4 border-b border-gray-800 lg:border-0 pb-3 leading-normal">© 2025 NetProphets Cyberworks Private Limited, Inc. All rights reserved</p>
+                        <p class="mb-4 border-b border-gray-800 lg:border-0 pb-3 leading-normal">©Copyright 2000 - 2025. NetProphets Cyberworks Private Limited. All rights reserved</p>
                         <ul class="flex gap-2 lg:justify-between flex-wrap lg:flex-nowrap">
                             <li><a href="/privacy-policy">Privacy Policy</a></li>
-                            <li><a href="/terms-service">Terms of Service</a></li>
+                            <li><a href="/terms-conditions">Terms of Service</a></li>
                             <li><a href="/posh-policy">POSH Policy</a></li>
                             <li><a href="/it-policy">IT Policy</a></li>
                         </ul>

@@ -87,7 +87,7 @@
     </section>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion, MotionConfig } from "motion-v"
 import { useHead } from '@unhead/vue'
 
@@ -130,6 +130,8 @@ const error = ref(false)
 const success = ref(false)
 const apiurl = ref("")
 
+const emit = defineEmits(['loading'])
+
 // --- Validation rules ---
 function validate() {
     errors.value = {} // reset errors
@@ -149,14 +151,14 @@ function validate() {
         errors.value.email = 'Please enter a valid email address.'
     }
 
-    // Age: required, must be a number and >= 18
+    // contact: required, must be a number and >= 8
     const contact = Number(form.value.contact)
     if (!form.value.contact) {
         errors.value.contact = 'contact is required.'
     } else if (isNaN(contact)) {
         errors.value.contact = 'contact must be a number.'
-    } else if (form.value.contact.length < 10) {
-        errors.value.contact = 'contact must be 10 digits.'
+    } else if (form.value.contact.length < 8 || form.value.contact.length > 12) {
+        errors.value.contact = 'contact must be between 8 and 12 digits.'
     }
 
     // Query
@@ -177,7 +179,7 @@ const submitForm = async () => {
     
     if (validate()) {
         // alert('Form submitted successfully!')
-        console.log(form.value)
+        // console.log(form.value)
 
         // let formbody = { name: name.value, email: email.value, contact: contact.value, query: query.value }
         try {
@@ -189,7 +191,7 @@ const submitForm = async () => {
                 },
                 body: JSON.stringify(form.value)
             })
-            console.log(res)
+            // console.log(res.json())
             if (!res.ok) throw new Error('Failed to submit form')
             success.value = await res.json()
             form.value = {
@@ -211,9 +213,17 @@ const submitForm = async () => {
     }
 }
 
+onBeforeMount(() => {
+    emit('loading', true)
+
+})
+
 onMounted(() => {
     apiurl.value =
         import.meta.env.VITE_API_BASE_URL
+    setTimeout(() => {
+        emit('loading', false);
+    }, 800)
 })
 </script>
 <style lang="scss" scoped>

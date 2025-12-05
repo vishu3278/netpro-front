@@ -65,20 +65,23 @@
         <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
                 <div class="col">
-                    <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
-                    <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
-                    <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p>
-                    <router-link class="button button-dark" to="/about">Know the company</router-link>
+                    <h4 id="abouttitle" class="mb-5">
+                        {{pageData.heading}}
+                        <!-- 25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact --></h4>
+                    <!-- <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
+                    <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p> -->
+                    <p class="mb-12">{{pageData.content}}</p>
+                    <router-link class="button button-dark" to="/about-us">Know the company</router-link>
                 </div>
                 <div class="col">
                     <div class="stats">
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
+                        <motion.div v-for="s in pageData.stats" :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
-                                <div class="count">500M</div>
-                                <div class="detail">Citizen Lives positively impacted worldwide</div>
+                                <div class="count">{{s.count}}</div>
+                                <div class="detail">{{s.detail}}</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
+                        <!-- <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
@@ -89,7 +92,7 @@
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
                             </div>
-                        </motion.div>
+                        </motion.div> -->
                     </div>
                 </div>
             </div>
@@ -234,7 +237,7 @@
         </div>
     </section>
     <!-- testimonials -->
-    <Testimonial bgImg="/home/swastik-arora-unsplash.jpg" bgImgMobile="/home/swastik-arora-mobile.jpg"></Testimonial>
+    <Testimonial :testimonials="pageData.testimonial" bgImg="/home/swastik-arora-unsplash.jpg" bgImgMobile="/home/swastik-arora-mobile.jpg"></Testimonial>
     <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">

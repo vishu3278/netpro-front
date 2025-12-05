@@ -75,10 +75,10 @@
                         <template #addons>
                             <Navigation>
                                 <template #prev>
-                                    <img src="/white-arrow-left.svg" class="hover:opacity-70" alt="">
+                                    <img src="/white-arrow-left.png" class="hover:opacity-70" alt="">
                                 </template>
                                 <template #next>
-                                    <img src="/white-arrow-right.svg" class="hover:opacity-70" alt="">
+                                    <img src="/white-arrow-right.png" class="hover:opacity-70" alt="">
                                 </template>
                             </Navigation>
                             <Pagination />

@@ -89,10 +89,10 @@ const sectors = ref([
     { id: "education", img: "/sectors/education-small.jpg", title: "Education", link: "/sector/education" },
     { id: "healthcare", img: "/sectors/healthcare-small.jpg", title: "Healthcare", link: "/sector/healthcare" },
     { id: "sports", img: "/sectors/sports-small.jpg", title: "Sports", link: "/sector/sports" },
-    { id: "transport", img: "/sectors/transport-small.jpg", title: "Transportation", link: "/sector/transportation" },
+    { id: "transportation", img: "/sectors/transport-small.jpg", title: "Transportation", link: "/sector/transportation" },
     { id: "telecom", img: "/sectors/telecom-small.jpg", title: "Telecom", link: "/sector/telecom" },
     { id: "culture", img: "/sectors/culture-small.jpg", title: "Culture", link: "/sector/culture" },
-    { id: "publicservices", img: "/sectors/public-small.jpg", title: "Public Service", link: "/sector/public-service" },
+    { id: "public-service", img: "/sectors/public-small.jpg", title: "Public Service", link: "/sector/public-service" },
     { id: "skilling", img: "/sectors/skilling-small.jpg", title: "Skilling", link: "/sector/skilling" },
 ])
 
@@ -100,6 +100,7 @@ watch(
     () => route.params.id,
     (newId, oldId) => {
         if (route.path.includes("/sector/")) {
+            // console.info(newId)
             sectors.value = sectors.value.filter(s => s.id != newId)
         }
     }

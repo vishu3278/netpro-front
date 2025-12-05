@@ -27,11 +27,6 @@ const loading = ref(false)
 
 onMounted(() => {
     // create the scrollSmoother before your scrollTriggers
-    /*smoother.value = ScrollSmoother.create({
-        smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
-        effects: true, // looks for data-speed and data-lag attributes on elements
-        // smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-    });*/
 
     // Use a gsap.context to isolate GSAP animations
     let ctx = gsap.context(() => {
@@ -43,23 +38,26 @@ onMounted(() => {
 
     // console.log('Base URL:', import.meta.env.VITE_APP_BASE_URL)
     localStorage.setItem("base_url", import.meta.env.VITE_APP_BASE_URL)
-    // localStorage.setItem("media_url", import.meta.env.VITE_API_MEDIA_URL)
 })
 
-
-watch(() => route.fullPath,
-    (newPath, oldPath) => {
-        // console.log('Route changed!');
-        // console.log('Old path:', oldPath);
-        // console.log('New path:', newPath);
+watch(() => route.fullPath, (newPath, oldPath) => {
         // You can perform any actions here based on the route change
         // For example, update a global state, fetch data, or trigger animations.
         // Use ScrollSmoother's scrollTo method to smoothly scroll to the top
         if (smoother.value) {
+            // console.log('Route changed to', newPath);
+            smoother.value.scrollTo(0, true); // The second argument `true` makes it smooth
+        }
+    },
+);
+watch(
+    loading, (newValue) => {
+        if (smoother.value && !newValue) {
+            console.info('watch',!newValue)
             smoother.value.scrollTo(0, true); // The second argument `true` makes it smooth
         }
     }
-);
+)
 
 const loadingIndicate = (payload) => {
     loading.value = payload

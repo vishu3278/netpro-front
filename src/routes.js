@@ -22,7 +22,7 @@ const routes = [
   { path: '/blog', component: Blog },
   { path: '/blogdetail', component: BlogDetail },
   { path: "/privacy-policy", name: "privacy-policy", component: Static },
-  { path: "/terms-service", name: "terms-service", component: Static },
+  { path: "/terms-conditions", name: "terms-conditions", component: Static },
   { path: "/posh-policy", name: "posh-policy", component: Static },
   { path: "/it-policy", name: "it-policy", component: Static },
 ]

@@ -10,7 +10,7 @@
                                 <div class="carousel__item">
                                     <blockquote>
                                         <p class="mb-3">{{slide.content}}</p>
-                                        <small>{{slide.meta}}</small>
+                                        <small>{{slide.author}}</small>
                                     </blockquote>
                                 </div>
                             </Slide>
@@ -51,9 +51,9 @@ const props = defineProps({
         type: Array,
         default: () => {
             return [
-                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System" },
-                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students .', meta: "Keith Norman, Director, GTI System" },
-                { content: 'NetProphets has been crucial in helping us scale our education facilities and improve access to students nationwide.', meta: "Keith Norman, Director, GTI System" }
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students nationwide.', author: "Keith Norman, Director, GTI System" },
+                { content: 'NetProphets has been instrumental in helping us scale our education infrastructure and improve access to students .', author: "Keith Norman, Director, GTI System" },
+                { content: 'NetProphets has been crucial in helping us scale our education facilities and improve access to students nationwide.', author: "Keith Norman, Director, GTI System" }
             ]
         }
     }
