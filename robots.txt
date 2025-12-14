@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/login
+Disallow: /tmp/
+Disallow: /private/
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.netprophetsglobal.com/sitemap.xml

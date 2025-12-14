@@ -14,12 +14,12 @@
             </div>
         </div>
     </section> -->
-    <VideoCarousel v-if="isMobile" :slide1="{video: '/home/silhouette-engineer-and-inspector.mp4', title: '', text: 'Digital solutions that power India’s critical sectors and enable better public outcomes.'}" :slide2="{video: '/home/silhouette-of-a-sports-girl.mp4', title: '', text: 'Meaningful impact through citizen - First Governance Projects'}" />
+    <VideoCarousel v-if="isMobile" :slide1="{video: '/home/video1.mp4', poster: '/home/poster-video1.webp', title: '', text: 'Digital solutions that power India’s critical sectors and enable better public outcomes.'}" :slide2="{video: '/home/video2.mp4', poster: '/home/poster-video2.webp', title: '', text: 'Meaningful impact through citizen - First Governance Projects'}" />
     <section v-if="!isMobile" id="video2" class="video2 hidden md:block h-dvh relative overflow-clip">
         <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader src="/home/silhouette-engineer-and-inspector.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader src="/home/video1.mp4" poster="/home/poster-video1.webp" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -43,7 +43,7 @@
         <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader src="/home/silhouette-of-a-sports-girl.mp4" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader src="/home/video2.mp4" poster="/home/poster-video2.webp" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -704,8 +704,11 @@ onMounted(() => {
         font-size: 48px;
         line-height: 44px;
         font-weight: 100;
-        mix-blend-mode: overlay;
+        /*mix-blend-mode: overlay;*/
         letter-spacing: -1px;
+    }
+    h2 {
+        text-shadow: 1px 1px 1px rgba(50,50,50,0.2);
     }
 
     h3 {

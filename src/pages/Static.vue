@@ -15,6 +15,8 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
+
 const route = useRoute()
 const apiurl = ref("")
 // const pagetitle = ref("")
@@ -23,6 +25,28 @@ const loading = ref(true) // 👈 track loading state
 const error = ref(null)
 
 const emit = defineEmits(['loading'])
+
+useHead({
+  title: () => pageData.value?.meta_title || 'NetProphets',
+  meta: [
+    {
+      name: 'description',
+      content: () => pageData.value?.meta_description
+    },
+    {
+      property: 'og:title',
+      content: () => pageData.value?.meta_title
+    },
+    {
+      property: 'og:description',
+      content: () => pageData.value?.meta_description
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
 
 watch(
     () => route.path,

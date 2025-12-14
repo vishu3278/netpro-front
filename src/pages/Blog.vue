@@ -9,7 +9,7 @@
 
 			<!-- Blog Banner -->
 			<div class="relative rounded-2xl overflow-hidden h-100 md:h-100 bg-cover bg-center"
-				style="background-image: url('/blog/blog-banner.jpg');">
+				style="background-image: url('/blog/blog-banner.webp');">
 
 				<!-- Content Overlay -->
 				<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-between px-16 pt-16 md:py-6">
@@ -31,23 +31,88 @@
 						disucssion.
 					</p>
 
-					<!-- Button - Read More -->
-					<div>
+					<!-- <div>
 						<router-link to="/blogdetail" class="">
 							Read More <img src="/blog/arrow-right.svg" alt="">
 						</router-link>
-					</div>
+					</div> -->
 					</div>
 
 				</div>
 			</div>
+
 		</div>
 	</section><!--blogsection-->
 
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
+import { motion } from "motion-v"
+import { useHead } from '@unhead/vue'
+
+const loading = ref(false)
+const pageData = ref({})
+const metaData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+
+useHead({
+  title: metaData.value?.meta_title || 'NetProphets blogs',
+  meta: [
+    {
+      name: 'description',
+      content: () => metaData.value?.meta_description
+    },
+    {
+      property: 'og:title',
+      content: () => metaData.value?.meta_title
+    },
+    {
+      property: 'og:description',
+      content: () => metaData.value?.meta_description
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
+
+const emit = defineEmits(['loading'])
+
+
+onBeforeMount(async () => {
+
+    apiurl.value = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+        loading.value = true
+        emit('loading', true)
+
+        const res = await fetch(apiurl.value + '/blogs', {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        pageData.value = apidata.data
+        metaData.value = apidata.meta
+
+    }
+    catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    }
+    finally {
+        loading.value = false
+        emit('loading', false)
+    }
+})
 
 </script>
 

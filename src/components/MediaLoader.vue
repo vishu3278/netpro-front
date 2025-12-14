@@ -3,17 +3,17 @@
         <!-- LOADER -->
         <div v-if="!loaded && !error && isVisible" class="loader">
             <slot name="loading">
-                <img src="/logo-bg.svg" alt="Loading..." />
+                <img src="/spinner.svg" class="animate-spin" alt="Loading..." />
             </slot>
         </div>
         <!-- IMAGE -->
         <img v-if="isImage && isVisible" v-show="loaded" :src="src" :alt="alt" @load="onLoad" @error="onError" class="media" />
         <!-- VIDEO -->
-        <video v-else-if="isVisible" v-show="loaded" :src="src" :poster="poster" autoplay muted loop  @loadeddata="onLoad" @error="onError" class="media w-full h-full object-cover object-center" ></video>
+        <video v-else-if="isVisible" v-show="loaded" :src="src" type="video/mp4" :poster="poster" autoplay muted loop playsinline @loadeddata="onLoad" @error="onError" class="media w-full h-full object-cover object-center" ></video>
         <!-- ERROR FALLBACK -->
         <div v-if="error" class="error-fallback">
-            <img src="/frame-bg.svg" alt="Unavailable" />
-            <p>Failed to load media</p>
+            <img :src="poster || '/error-icon.svg'" class="w-full h-full object-cover" alt="Unavailable" />
+            <!-- <p>Failed to load media</p> -->
         </div>
     </div>
 </template>
@@ -104,9 +104,9 @@ onBeforeUnmount(() => {
         font-size: 0.9rem;
 
         img {
-            max-width: 16rem;
-            margin-bottom: 1rem;
-            opacity: 0.75;
+            /*max-width: 16rem;
+            margin-bottom: 1rem;*/
+            opacity: 0.65;
             mix-blend-mode: multiply;
         }
     }
