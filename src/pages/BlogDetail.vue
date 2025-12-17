@@ -136,8 +136,6 @@
 		</div>
 	</section><!--blogdetail-page-->
 
-
-
 	<section class="py-20">
 		<div class="container mx-auto">
 			<!-- Header -->
@@ -204,7 +202,6 @@
 		</div>
 	</section>
 
-
 </template>
 
 <script setup>
@@ -213,6 +210,7 @@ import { ref } from 'vue'
 </script>
 
 <style lang="scss" scoped>
+	
 h6 {
 	background: var(--Highlight-Stroke, linear-gradient(98deg, #171EEC 7.56%, #7000D9 93.65%));
 	background-clip: text;
