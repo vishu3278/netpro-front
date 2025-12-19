@@ -6,28 +6,31 @@
                 Latest from the blogs
             </h1>
             <!-- Blog Banner -->
-            <div class="relative rounded-2xl overflow-hidden bg-cover bg-center" style="background-image: url('/blog/featured.webp');">
+            <div class="relative rounded-2xl overflow-hidden bg-cover bg-center" :style="{backgroundImage: `url(${pageData?.featuredPost?.image || '/blog/featured.webp'})`}">
                 <!-- Content Overlay -->
-                <div class=" bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-between px-8 pt-8 pb-8 md:px-16 md:py-16 ">
+                <div class=" bg-gradient-to-r from-black/60 to-transparent px-8 pt-8 pb-8 md:px-14 md:pt-10 md:pb-20 ">
                     <!-- Featured Tag -->
-                    <span class=" w-fit mb-4">
+                    <span class="rounded-full w-fit mb-4 text-white border border-white">
                         Featured
                     </span>
-                    <div class="solutions-hd">
+                    <div class="my-6 text-white ">
+                        {{pageData?.featuredPost?.date}}
+                    </div>
+                    <div class="solutions-hd max-w-1/2">
                         <!-- Title -->
                         <h2 class="mb-3">
-                            Staying ahead in the game <br> via Smart IT Solutions
+                            <!-- Staying ahead in the game <br> via Smart IT Solutions -->
+                            {{pageData?.featuredPost?.title}}
                         </h2>
                         <!-- Description -->
                         <p class="max-w-md mb-6">
-                            For exclusive stories we have brought to you an insider story of companies that has made tech
-                            disucssion.
+                            {{pageData?.featuredPost?.link}}
                         </p>
                         <div>
-						<router-link to="/blogdetail" class="">
-							Read More <img src="/blog/arrow-right.svg" alt="">
-						</router-link>
-					</div>
+    						<router-link :to="`/blog/${pageData?.featuredPost?.link}`" class="featured-link">
+    							Read More <img src="/blog/arrow-right.svg" alt="">
+    						</router-link>
+    					</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +43,7 @@
                 <div class="flex justify-between items-center mb-10 border-b border-[#D7D7D7] pb-10">
                     <div class="flex gap-3 flex-wrap">
                         <button class="navtaps cursor-pointer bg-gray-900 !text-white">All Topics</button>
-                        <button v-for="cat in pageData.taxonomy_list" class="navtaps cursor-pointer transition hover:bg-gray-100">{{cat.name}}</button>
+                        <button v-for="cat in pageData.taxonomy_list" :key="cat.id" :data-name="cat.id" class="navtaps cursor-pointer transition hover:bg-gray-100">{{cat.name}}</button>
                         <!-- <button class="navtaps">Blogs</button>
                         <button class="navtaps">News</button>
                         <button class="navtaps">Events</button>
@@ -53,17 +56,23 @@
                 <!-- Blog Grid -->
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     <!-- Blog Card -->
-                    <div v-for="blog in pageData.blogs" class="rounded-2xl overflow-hidden border border-gray-200 bg-white relative">
-                        <img :src="blog.image || '/blog/placeholder.jpg'" class="w-full object-cover aspect-[1.85/1]" alt="">
-                        <div class="p-6">
-                            <span class="py-6">{{blog.date}}</span>
-                            <p class="mb-6">
-                                {{blog.title}}
-                            </p>
+                    <div v-for="blog in pageData.blogs" class="blog-card rounded-2xl flex flex-col justify-between overflow-hidden border border-gray-200 bg-white relative">
+                        <figure class="relative">
+                            <img :src="blog.image || '/blog/placeholder.jpg'" class="w-full object-cover aspect-[1.85/1]" alt="">
+                            <span class="py-5 px-6">{{blog.date}}</span>
+                        </figure>
+                        <p class="mb-auto pt-6 px-6 line-clamp-4">
+                            {{blog.title}}
+                        </p>
+                        <div class="p-6 ">
                             <router-link :to="'/blog/'+blog.link" class="text-sm inline-flex items-center gap-2">
                                 Read More <img src="/blog/arrow-right-solid.svg" alt="read more">
                             </router-link>
                         </div>
+                        <template v-for="cat in blog.taxonomy">
+                            <input type="hidden" name="cat" :value="cat.category_id">
+                        </template>
+                            
                     </div>
                     <!-- Blog Card -->
                     <!-- <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white relative">
@@ -253,12 +262,6 @@ h1 {
     span {
         display: inline-flex;
         padding: 6px 20px;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        border-radius: 55px;
-        border: 1px solid #FFF;
-        color: #FFF;
         font-size: 14px;
         font-weight: 600;
         line-height: 30px;
@@ -290,21 +293,14 @@ h1 {
         align-items: center;
         gap: 0px 10px;
     }
-
+    .featured-link {
+        &:hover {
+            img { margin-left: 0.5rem; transition: all 200ms ease-out;}
+        }
+    }
 }
 
 .blogpost-section {
-
-    span {
-        color: #fff;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 30px;
-        letter-spacing: -0.42px;
-        display: block;
-        position: absolute;
-        top: 0px;
-    }
 
     p {
         color: $rich-black;
@@ -358,5 +354,21 @@ h1 {
     }
 
 
+}
+
+.blog-card {
+    span {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: -0.42px;
+        display: block;
+        position: absolute;
+        top: 0px;
+    }
+    a:hover {
+        img { margin-left: 0.5rem; transition: all 200ms ease-out;}
+    }
 }
 </style>

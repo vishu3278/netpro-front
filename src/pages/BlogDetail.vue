@@ -29,9 +29,9 @@
                 </div>
                 
                 <div class="flex flex-wrap items-center gap-4 mb-2">
-                    <span>Published in Blog on August 5, 2025 </span>
+                    <span>Published in Blog on {{pageData.published_date}} </span>
                     <span>|</span>
-                    <span>Last Updated on August 04, 2025</span>
+                    <span>Last Updated on {{pageData.updated_date}}</span>
                     <span>|</span>
                 </div>
                 <div>
@@ -40,7 +40,7 @@
             </div>
             <!-- Blog Main Image -->
             <div class=" overflow-hidden mb-10 mt-5">
-                <img :src="pageData.featured_image || '/blog/placeholder.jpg'" class="w-full object-cover" alt="">
+                <img :src="pageData.featured_image || '/blog/placeholder.jpg'" class="w-full " alt="">
             </div>
             <div class="max-w-3xl mx-auto blog-content">
                 <div v-html="pageData.content"></div>
@@ -112,7 +112,7 @@
         </div>
     </section>
     <section class="py-20 px-4">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-4">
             <!-- Header -->
             <div class="flex justify-between items-center mb-10 border-t border-[#D7D7D7] pt-10">
                 <h4 class="">Read More</h4>
@@ -257,6 +257,7 @@ h1 {
     letter-spacing: -1.2px;
 }
 
+.blog-content p,
 p {
     color: $rich-black;
     font-size: 16px;
