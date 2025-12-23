@@ -47,7 +47,8 @@ body {
 
 }
 
-.sector-carousel {
+.sector-carousel,
+.blog-carousel {
   .carousel__next,
   .carousel__prev {
     inset-block-start: calc(100% + 3rem);
@@ -82,8 +83,9 @@ body {
 }
 
 @media screen and (width >= 64rem) {
-  .sector-carousel {
-    padding-bottom: 0;
+  .sector-carousel,
+  .blog-carousel {
+    /*padding-bottom: 0;*/
     .carousel__next,
     .carousel__prev {
       inset-block-start: -4rem;
@@ -95,6 +97,9 @@ body {
     .carousel__next{
       inset-inline-start: calc(100% - 3rem);
       inset-inline-end: 100%;
+    }
+    .carousel__pagination {
+      display: none;
     }
   }
 }

@@ -111,9 +111,11 @@
             </div> -->
         </div>
     </section>
-    <section class="py-20 px-4">
+    <!-- related blogs -->
+    <BlogCarousel :blogs="pageData.related_posts" />
+    <!-- <section class="py-20 px-4">
         <div class="container mx-auto px-4">
-            <!-- Header -->
+            
             <div class="flex justify-between items-center mb-10 border-t border-[#D7D7D7] pt-10">
                 <h4 class="">Read More</h4>
                 <div class="flex space-x-4">
@@ -125,9 +127,8 @@
                     </button>
                 </div>
             </div>
-            <!-- Blog Grid -->
+            
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Blog Card -->
                 <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white relative">
                     <img src="/blog/blog-banner.webp" class="w-full object-cover" alt="">
                     <div class="p-6">
@@ -140,7 +141,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Blog Card -->
                 <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white relative">
                     <img src="/blog/blog-banner.webp" class="w-full object-cover" alt="">
                     <div class="p-6">
@@ -153,7 +153,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Blog Card -->
                 <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white relative">
                     <img src="/blog/blog-banner.webp" class="w-full object-cover" alt="">
                     <div class="p-6">
@@ -168,10 +167,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </template>
 <script setup>
-import { ref, onBeforeMount, onMounted } from 'vue'
+    import BlogCarousel from '@/components/BlogCarousel.vue'
+import { ref, onBeforeMount, onMounted, watch } from 'vue'
 import { motion } from "motion-v"
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
@@ -182,6 +182,8 @@ const pageData = ref({})
 const metaData = ref({})
 const error = ref(false)
 const apiurl = ref("")
+
+const emit = defineEmits(['loading'])
 
 useHead({
     title: metaData.value?.meta_title || 'NetProphets blogs',
@@ -204,13 +206,48 @@ useHead({
     ]
 })
 
-const emit = defineEmits(['loading'])
+watch(
+    () => route.params.id,
+    (newId, oldId) => {
+        if (route.path.includes("/blog/")) {
+            // console.info(newId)
+            // sectors.value = sectors.value.filter(s => s.id != newId)
+            fetchData()
+        }
+    }
+)
 
 onBeforeMount(async () => {
 
     apiurl.value =
         import.meta.env.VITE_API_BASE_URL;
+    fetchData()
+    /*try {
+        loading.value = true
+        emit('loading', true)
 
+        const res = await fetch(apiurl.value + '/blog/' + route.params.id, {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        pageData.value = apidata
+        metaData.value = apidata.meta
+
+    } catch (err) {
+        error.value = err.message
+        // sectors.value.sectors = default_sectors
+    } finally {
+        loading.value = false
+        emit('loading', false)
+    }*/
+})
+const fetchData = async () => {
     try {
         loading.value = true
         emit('loading', true)
@@ -235,7 +272,7 @@ onBeforeMount(async () => {
         loading.value = false
         emit('loading', false)
     }
-})
+}
 </script>
 <style lang="scss" scoped>
 h6 {
