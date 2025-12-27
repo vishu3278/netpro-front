@@ -296,6 +296,7 @@ const baseUrl = ref("")
 
 useHead({
   title: () => pageData.value?.title || 'Technology Consulting Company In India - NetProphets Cyberworks',
+  link: [ { rel: 'canonical', href: "https://netprophetsglobal.com" } ],
   meta: [
     {
       name: 'description',

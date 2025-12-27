@@ -45,7 +45,7 @@
                     <div class="checkbox mt-8 mb-8 lg:mb-16">
                         <label>
                             <input type="checkbox" name="" id="" v-model="form.agree">
-                            <span>Yes, I do. I agree to the Terms of Service and Privacy Policy.</span>
+                            <span>Yes, I do. I agree to the <router-link to="/terms-conditions" class="underline">Terms of Service</router-link> and <router-link to="/privacy-policy" class="underline">Privacy Policy</router-link>.</span>
                         </label>
                         <p v-if="errors.agree" class="text-red-600 text-sm mt-1">{{ errors.agree }}</p>
                     </div>
@@ -63,11 +63,11 @@
                     <div class="grid grid-cols-2 mt-4 lg:mt-52">
                         <address class="pb-4 lg:pb-10">
                             New Business.<br>
-                            <strong>info@npglobal.in</strong>
+                            <strong><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></strong>
                         </address>
                         <address class="pb-4 lg:pb-10">
                             Join the Team. <br>
-                            <strong>hr@npglobal.in</strong>
+                            <strong><a href="mailto:hr@npglobal.in" target="_blank">hr@npglobal.in</a></strong>
                         </address>
                     </div>
                 </div>
@@ -90,9 +90,13 @@
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion, MotionConfig } from "motion-v"
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 useHead({
   title: 'Get In Touch For Digital Solution - NetProphets Cyberworks',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',

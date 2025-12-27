@@ -23,6 +23,9 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const loading = ref(false)
 const pageData = ref({})
@@ -35,6 +38,7 @@ const emit = defineEmits(['loading'])
 
 useHead({
   title: 'NetProphets Sector Impacts - Case Studies from Different Sectors',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',

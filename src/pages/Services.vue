@@ -22,6 +22,9 @@ import ServiceSection from "@/components/ServiceSection.vue"
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const loading = ref(false)
 const pageData = ref({})
@@ -30,6 +33,7 @@ const apiurl = ref("")
 
 useHead({
   title: 'NetProphets Is Leading The Way In Digital IT Services In India',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',

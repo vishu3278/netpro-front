@@ -183,6 +183,9 @@ import { motion } from "motion-v"
 
 import { gsap } from 'gsap'
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const { isMobile, activeBreakpoint } = viewport
 
@@ -195,6 +198,7 @@ const emit = defineEmits(['loading'])
 
 useHead({
   title: () => pageData.value?.title || 'The Best IT Solution Provider In India - NetProphets Cyberworks',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',

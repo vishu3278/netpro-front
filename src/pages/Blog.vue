@@ -6,7 +6,7 @@
                 Latest from the blogs
             </h1>
             <!-- Blog Banner -->
-            <div class="relative rounded-2xl overflow-hidden bg-cover bg-center" :style="{backgroundImage: `url(${pageData?.featuredPost?.image || '/blog/featured.webp'})`}">
+            <div class="relative rounded-2xl overflow-hidden bg-cover bg-center" :style="{backgroundImage: `url(${featuredPost?.image || '/blog/featured.webp'})`}">
                 <!-- Content Overlay -->
                 <div class=" bg-gradient-to-r from-black/60 to-transparent px-8 pt-8 pb-8 md:px-14 md:pt-10 md:pb-20 ">
                     <!-- Featured Tag -->
@@ -14,20 +14,20 @@
                         Featured
                     </span>
                     <div class="my-6 text-white ">
-                        {{pageData?.featuredPost?.date}}
+                        {{featuredPost?.date}}
                     </div>
-                    <div class="solutions-hd max-w-1/2">
+                    <div class="solutions-hd max-w-2xl md:max-w-1/2">
                         <!-- Title -->
                         <h2 class="mb-3">
                             <!-- Staying ahead in the game <br> via Smart IT Solutions -->
-                            {{pageData?.featuredPost?.title}}
+                            {{featuredPost?.title}}
                         </h2>
                         <!-- Description -->
                         <p class="max-w-md mb-6">
-                            {{pageData?.featuredPost?.link}}
+                            {{featuredPost?.link}}
                         </p>
                         <div>
-    						<router-link :to="`/blog/${pageData?.featuredPost?.link}`" class="featured-link">
+    						<router-link :to="`/blog/${featuredPost?.link}`" class="featured-link">
     							Read More <img src="/blog/arrow-right.svg" alt="">
     						</router-link>
     					</div>
@@ -36,27 +36,27 @@
             </div>
         </div>
     </section>
-    <section class="w-full bg-white py-8 md:pt-16 md:pb-20  blogpost-section">
+    <section class="w-full bg-white py-8 md:py-16 blogpost-section">
         <div class="container mx-auto px-4">
             <div class="">
                 <!-- Filters + View All -->
-                <div class="flex justify-between items-center mb-10 border-b border-[#D7D7D7] pb-10">
-                    <div class="flex gap-3 flex-wrap">
+                <div class="flex justify-between mb-10 border-b border-[#D7D7D7] pb-10">
+                    <div class="flex items-center gap-3 flex-wrap">
                         <button class="navtaps cursor-pointer bg-gray-900 !text-white">All Topics</button>
-                        <button v-for="cat in pageData.taxonomy_list" :key="cat.id" :data-name="cat.id" class="navtaps cursor-pointer transition hover:bg-gray-100">{{cat.name}}</button>
+                        <button v-for="cat in category" :key="cat.id" :data-name="cat.id" class="navtaps cursor-pointer transition hover:bg-gray-100">{{cat.name}}</button>
                         <!-- <button class="navtaps">Blogs</button>
                         <button class="navtaps">News</button>
                         <button class="navtaps">Events</button>
                         <button class="navtaps ">Resources</button> -->
                     </div>
-                    <a href="#" class="text-sm text-gray-600 hover:underline">
+                    <a href="#" class="text-sm text-gray-600 whitespace-nowrap hover:underline">
                         View All
                     </a>
                 </div>
                 <!-- Blog Grid -->
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     <!-- Blog Card -->
-                    <div v-for="blog in pageData.blogs" class="blog-card rounded-2xl flex flex-col justify-between overflow-hidden border border-gray-200 bg-white relative">
+                    <div v-for="blog in pageData.data" class="blog-card rounded-2xl flex flex-col justify-between overflow-hidden border border-gray-200 bg-white relative">
                         <figure class="relative">
                             <img :src="blog.image || '/blog/placeholder.jpg'" class="w-full object-cover aspect-[1.85/1]" alt="">
                             <span class="py-5 px-6">{{blog.date}}</span>
@@ -174,9 +174,11 @@
                 </div>
                 <!-- Load More -->
                 <div class="text-center mt-10">
-                    <button type="button" class="btn text-sm ">
-                        Load More
+                    <img v-if="loading" src="/spinner.svg" class="mx-auto mb-4 animate-spin">
+                    <button v-if="pageData?.pagination?.next_page_url" type="button" class="btn text-sm " @click="fetchNextPage">
+                         Load More
                     </button>
+                    <div v-else>No more blogs</div>
                 </div>
             </div>
         </div>
@@ -186,15 +188,21 @@
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const loading = ref(false)
 const pageData = ref({})
+const featuredPost = ref({})
+const category = ref([])
 const metaData = ref({})
 const error = ref(false)
 const apiurl = ref("")
 
 useHead({
     title: metaData.value?.meta_title || 'NetProphets blogs',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
     meta: [{
             name: 'description',
             content: () => metaData.value?.meta_description
@@ -235,8 +243,10 @@ onBeforeMount(async () => {
         // console.log(res.data)
         if (!res.ok) throw new Error('Failed to fetch page data')
         let apidata = await res.json()
-        // console.log(apidata.data)
-        pageData.value = apidata.data
+        console.log(apidata.data)
+        pageData.value = apidata.data.blogs
+        featuredPost.value = apidata.data.featuredPost
+        category.value = apidata.data.taxonomy_list
         metaData.value = apidata.meta
 
     } catch (err) {
@@ -247,6 +257,28 @@ onBeforeMount(async () => {
         emit('loading', false)
     }
 })
+
+const fetchNextPage = async() => {
+    if (!pageData.value.pagination.next_page_url) return
+    try{
+        loading.value = true
+        const res = await fetch(pageData.value.pagination.next_page_url, {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        console.log(apidata.data)
+        pageData.value.data.push(...apidata.data.blogs.data)
+        pageData.value.pagination = apidata.data.blogs.pagination
+    } catch(err) {
+        error.value = err.message
+    } finally {
+        loading.value = false
+    }
+}
 </script>
 <style lang="scss" scoped>
 h1 {
@@ -339,20 +371,27 @@ h1 {
 
     .navtaps {
         color: $grey-text;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 30px;
         letter-spacing: -0.54px;
         border-radius: 55px;
         border: 1px solid $border1;
         display: inline-flex;
-        height: 55px;
-        padding: 6px 20px;
+        /*height: 48px;*/
+        padding: 5px 15px;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        /*gap: 8px;*/
     }
-
+    @media screen and (width >= 64rem) {
+        .navtaps {
+            font-size: 18px;
+            line-height: 30px;
+            height: 55px;
+            padding: 6px 20px;
+        }
+    }
 
 }
 

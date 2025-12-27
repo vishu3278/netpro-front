@@ -17,7 +17,7 @@
                             <p class="mb-auto pt-6 px-6 min-h-[100px] line-clamp-2">
                                 {{slide.title}}
                             </p>
-                            <div class="p-6">
+                            <div class="pt-3 pb-6 px-6">
                                 <router-link :to="slide.link" class="text-sm inline-flex items-center gap-2">
                                     Read More <img src="/blog/arrow-right-solid.svg" alt="read more">
                                 </router-link>

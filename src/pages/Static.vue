@@ -28,6 +28,7 @@ const emit = defineEmits(['loading'])
 
 useHead({
   title: () => pageData.value?.meta_title || 'NetProphets',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',
