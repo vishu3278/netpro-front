@@ -4,7 +4,7 @@
             
             <Slide>
                 <div class="video2 carousel__item md:hidden h-dvh flex items-center justify-center relative overflow-clip" style="background: radial-gradient(circle, rgba(255, 243, 231, 1) 0%, rgba(217, 127, 64, 1) 29%, rgba(83, 47, 23, 1) 100%);">
-                    <MediaLoader :src="slide1?.video" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+                    <MediaLoader :src="slide1?.video" :poster="slide1?.poster" class="absolute inset-0 w-full h-full " />
                     <div class="content relative px-10 pt-12 space-y-4">
                         <h2>
                             {{slide1?.title}}
@@ -19,7 +19,7 @@
             </Slide>
             <Slide>
                 <div class="video2 carousel__item md:hidden h-dvh flex items-center justify-center relative overflow-clip" style="background: hsla(45, 25%, 91%, 1); background: radial-gradient(circle, hsla(45, 25%, 91%, 1) 0%, hsla(52, 18%, 65%, 1) 78%, hsla(66, 9%, 48%, 1) 100%);">
-                    <MediaLoader :src="slide2?.video" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+                    <MediaLoader :src="slide2?.video" :poster="slide2?.poster" class="absolute inset-0 w-full h-full " />
                     <div class="content relative px-10 pt-12 space-y-4">
                         <h2>{{slide2?.title}}</h2>
                         <p>{{slide2?.text}}</p>
@@ -64,8 +64,8 @@ const props = defineProps({
     // title: { type: String, default: "Our Testimonials" },
     // bgImg: { type: String, default: "home/swastik-arora-unsplash.jpg" },
     // btnLink: String
-    slide1: { type: Object, default: () => { return { video: "", title: "", text: "", btnText: "", btnLink: "" } } },
-    slide2: { type: Object, default: () => { return { video: "", title: "", text: "", btnText: "", btnLink: "" } } },
+    slide1: { type: Object, default: () => { return { video: "", poster: "", title: "", text: "", btnText: "", btnLink: "" } } },
+    slide2: { type: Object, default: () => { return { video: "", poster: "", title: "", text: "", btnText: "", btnLink: "" } } },
 })
 
 

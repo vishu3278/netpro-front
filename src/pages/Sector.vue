@@ -1,9 +1,9 @@
 <template>
     <section id="hero" class="hero pt-32 lg:pt-48 pb-6 px-4 flex items-center justify-center">
         <!-- <h1 class="text-center">Across every sector we touch, we build brands that move industries forward and make a difference in people’s lives.</h1> -->
-        <h1 class="text-center">{{pageData.main.heading}}</h1>
+        <h1 class="text-center">{{pageData?.main?.heading || 'Sector Impact'}}</h1>
     </section>
-    <section v-for="(sec, index) in pageData.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
+    <section v-for="(sec, index) in pageData?.sectors" :key="sec.id" class="sector relative flex items-center justify-center overflow-clip">
         <figure class="layer-img absolute lg:inset-0 -inset-16 bg-no-repeat bg-cover bg-center " :style="{'background-image': `url(${sec.img})`}" :data-speed="speed[index]"></figure>
         <div class="title ">{{sec.name}}</div>
         <div class="count ">0{{index+1}}</div>
@@ -23,21 +23,34 @@ gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger)
 
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+
+const speed = ref([])
+
+const emit = defineEmits(['loading'])
 
 useHead({
-  title: 'Service detail | NetProphets',
+  title: 'NetProphets Sector Impacts - Case Studies from Different Sectors',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: 'Explore the diverse range of projects in our portfolio and discover how NetProphets Cyberworks delivers exceptional digital solutions for businesses.'
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: 'NetProphets Sector Impacts - Case Studies from Different Sectors'
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: 'Explore the diverse range of projects in our portfolio and discover how NetProphets Cyberworks delivers exceptional digital solutions for businesses.'
     },
     {
       property: 'og:image',
@@ -46,20 +59,10 @@ useHead({
   ]
 })
 
-const loading = ref(false)
-const pageData = ref({})
-const error = ref(false)
-const apiurl = ref("")
-const mediaurl = ref("")
-
-const speed = ref([])
-
-const emit = defineEmits(['loading'])
 
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
-    mediaurl.value = localStorage.getItem("media_url");
 
     try {
         loading.value = true
@@ -79,7 +82,7 @@ onBeforeMount(async () => {
 
         for (var i = 0; i < 10; i++) {
             pageData.value.sectors[i]
-            let n = Math.random() * (1.0 - 0.4) + 0.5;
+            let n = Math.random() * (1.0 - 0.5) + 0.5;
             speed.value.push(n.toFixed(2))
         }
 
@@ -96,7 +99,6 @@ onBeforeMount(async () => {
 })
 
 onMounted( () => {
-
 
     SplitText.create("#hero h1", {
         type: "lines",

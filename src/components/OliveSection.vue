@@ -1,7 +1,7 @@
 <template>
-    <section id="olivesection" class="olive2-bg pt-12 pb-24 relative overflow-clip">
+    <section id="olivesection" class="olive2-bg py-8 md:py-12 lg:py-0 relative overflow-clip">
         <div class="container mx-auto px-4 ">
-            <div class="grid lg:grid-cols-2 place-items-center">
+            <div class="grid lg:grid-cols-2 lg:gap-4 place-items-center">
                 <div class="col">
                     <div class="content relative z-2">
                         <div class="title mb-6">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="col section-image absolute bottom-0 z-0 lg:static">
-                    <figure class="max-h-[670px] overflow-clip opacity-[15]">
+                    <figure class="max-h-[670px] overflow-clip opacity-[0.3]">
                         <img src="/frame-bg.svg" class="max-w-full max-h-full object-contain" alt="">
                     </figure>
                 </div>

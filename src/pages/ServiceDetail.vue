@@ -53,10 +53,10 @@
                     <template #addons>
                         <Navigation>
                             <template #prev>
-                                <img src="/white-arrow-left.svg" alt="">
+                                <img src="/white-arrow-left.png" class="hover:opacity-70" alt="">
                             </template>
                             <template #next>
-                                <img src="/white-arrow-right.svg" alt="">
+                                <img src="/white-arrow-right.png" class="hover:opacity-70" alt="">
                             </template>
                         </Navigation>
                         <Pagination />
@@ -98,20 +98,35 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 
+const route = useRoute()
+// let baseUrl = ref("/")
+const apiurl = ref("")
+// const mediaurl = ref("")
+// const sector = ref(null)
+const pageData = ref({})
+const loading = ref(true) // 👈 track loading state
+const error = ref(null)
+
+const emit = defineEmits(['loading'])
+
 useHead({
-  title: 'Service detail | NetProphets',
+  title: () => pageData.value.meta?.meta_title || 'Service detail | NetProphets',
+    link: [
+        { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` },
+        { rel: 'favicon', type: "image/png", href: "../favicon.png" }
+    ],
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: () => pageData.value.meta?.meta_title
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:image',
@@ -140,17 +155,6 @@ const carouselConfig = {
         }
     }
 }
-
-const route = useRoute()
-// let baseUrl = ref("/")
-const apiurl = ref("")
-// const mediaurl = ref("")
-// const sector = ref(null)
-const pageData = ref({})
-const loading = ref(true) // 👈 track loading state
-const error = ref(null)
-
-const emit = defineEmits(['loading'])
 
 watch(
     () => route.params.id,

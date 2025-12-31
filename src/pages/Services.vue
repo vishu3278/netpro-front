@@ -4,11 +4,11 @@
         <div class="container mx-auto px-4">
             <div class="content flex items-end">
                 <!-- <h1>Our Services</h1> -->
-                <h1>{{pageData.main.heading}}</h1>
+                <h1>{{pageData?.main?.heading}}</h1>
             </div>
         </div>
     </section>
-    <template v-for="(serv, index) in pageData.services">
+    <template v-for="(serv, index) in pageData?.services">
         <ServiceSection :title="serv.name" :list="serv.child" :image="serv.img" :flip="index%2!=0" :link="{text: `Explore ${serv.name}`, path: `/service/${serv.link}`}" />
     </template>
     <!-- <ServiceSection title="Technology Solutions (Tech Lab)" :flip="true" :list="techSolution" image="services/tech-solution.jpg" :link="{text: 'Explore Technology Solutions', path: '/service/technology-solutions'}" />
@@ -22,21 +22,30 @@ import ServiceSection from "@/components/ServiceSection.vue"
 import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion } from "motion-v"
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
 
 useHead({
-  title: 'Sector detail | NetProphets',
+  title: 'NetProphets Is Leading The Way In Digital IT Services In India',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: 'Experience the best of digital services in India with NetProphets. As a trusted industry leader, we provide comprehensive solutions for digital services.'
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: 'NetProphets Is Leading The Way In Digital IT Services In India'
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: 'Experience the best of digital services in India with NetProphets. As a trusted industry leader, we provide comprehensive solutions for digital services.'
     },
     {
       property: 'og:image',
@@ -85,16 +94,10 @@ const creativeWorks = ref([
     "Video and Visual Production"
 ])
 
-const loading = ref(false)
-const pageData = ref({})
-const error = ref(false)
-const apiurl = ref("")
-const mediaurl = ref("")
 
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
-    mediaurl.value = localStorage.getItem("media_url");
 
     try {
         loading.value = true
@@ -109,7 +112,7 @@ onBeforeMount(async () => {
         // console.log(res.data)
         if (!res.ok) throw new Error('Failed to fetch page data')
         let apidata = await res.json()
-        console.log(apidata.data)
+        // console.log(apidata.data)
         pageData.value = apidata.data
 
     }
@@ -120,7 +123,6 @@ onBeforeMount(async () => {
     finally {
         loading.value = false
         emit('loading', false)
-
     }
 })
 

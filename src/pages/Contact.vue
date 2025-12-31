@@ -45,7 +45,7 @@
                     <div class="checkbox mt-8 mb-8 lg:mb-16">
                         <label>
                             <input type="checkbox" name="" id="" v-model="form.agree">
-                            <span>Yes, I do. I agree to the Terms of Service and Privacy Policy.</span>
+                            <span>Yes, I do. I agree to the <router-link to="/terms-conditions" class="underline">Terms of Service</router-link> and <router-link to="/privacy-policy" class="underline">Privacy Policy</router-link>.</span>
                         </label>
                         <p v-if="errors.agree" class="text-red-600 text-sm mt-1">{{ errors.agree }}</p>
                     </div>
@@ -63,20 +63,22 @@
                     <div class="grid grid-cols-2 mt-4 lg:mt-52">
                         <address class="pb-4 lg:pb-10">
                             New Business.<br>
-                            <strong>info@npglobal.in</strong>
+                            <strong><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></strong>
                         </address>
                         <address class="pb-4 lg:pb-10">
                             Join the Team. <br>
-                            <strong>jobs@npglobal.in</strong>
+                            <strong><a href="mailto:hr@npglobal.in" target="_blank">hr@npglobal.in</a></strong>
                         </address>
                     </div>
                 </div>
                 <div class="border-t border-gray-300"></div>
                 <div class="border-t border-gray-300 grid grid-cols-2">
                     <address class="pt-4 lg:pt-10">
-                        6th Floor, C-56 A/12,<br>
-                        Sector 62, Noida,<br>
-                        Uttar Pradesh 201301
+                        <a href="https://maps.app.goo.gl/RdMxvBc5LzAtuC2Y9" target="_blank">
+                            6th Floor, C-56 A/12,<br>
+                            Sector 62, Noida,<br>
+                            Uttar Pradesh 201301
+                        </a>
                     </address>
                     <address class="pt-4 lg:pt-10">
                         0120-4784-999<br>
@@ -87,24 +89,28 @@
     </section>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
 import { motion, MotionConfig } from "motion-v"
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 useHead({
-  title: 'Contact Us | NetProphets',
+  title: 'Get In Touch For Digital Solution - NetProphets Cyberworks',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: 'Get in touch with us for top-notch web development services. Contact us to discuss your business needs and take your online presence to new heights.'
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: 'Get In Touch For Digital Solution - NetProphets Cyberworks'
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: 'Get in touch with us for top-notch web development services. Contact us to discuss your business needs and take your online presence to new heights.'
     },
     {
       property: 'og:image',
@@ -130,6 +136,8 @@ const error = ref(false)
 const success = ref(false)
 const apiurl = ref("")
 
+const emit = defineEmits(['loading'])
+
 // --- Validation rules ---
 function validate() {
     errors.value = {} // reset errors
@@ -149,14 +157,14 @@ function validate() {
         errors.value.email = 'Please enter a valid email address.'
     }
 
-    // Age: required, must be a number and >= 18
+    // contact: required, must be a number and >= 8
     const contact = Number(form.value.contact)
     if (!form.value.contact) {
         errors.value.contact = 'contact is required.'
     } else if (isNaN(contact)) {
         errors.value.contact = 'contact must be a number.'
-    } else if (form.value.contact.length < 10) {
-        errors.value.contact = 'contact must be 10 digits.'
+    } else if (form.value.contact.length < 8 || form.value.contact.length > 12) {
+        errors.value.contact = 'contact must be between 8 and 12 digits.'
     }
 
     // Query
@@ -177,7 +185,7 @@ const submitForm = async () => {
     
     if (validate()) {
         // alert('Form submitted successfully!')
-        console.log(form.value)
+        // console.log(form.value)
 
         // let formbody = { name: name.value, email: email.value, contact: contact.value, query: query.value }
         try {
@@ -189,7 +197,7 @@ const submitForm = async () => {
                 },
                 body: JSON.stringify(form.value)
             })
-            console.log(res)
+            // console.log(res.json())
             if (!res.ok) throw new Error('Failed to submit form')
             success.value = await res.json()
             form.value = {
@@ -211,9 +219,17 @@ const submitForm = async () => {
     }
 }
 
+onBeforeMount(() => {
+    emit('loading', true)
+
+})
+
 onMounted(() => {
     apiurl.value =
         import.meta.env.VITE_API_BASE_URL
+    setTimeout(() => {
+        emit('loading', false);
+    }, 800)
 })
 </script>
 <style lang="scss" scoped>

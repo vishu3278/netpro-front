@@ -3,16 +3,16 @@
         <p>{{ error }}</p>
     </div>
     <template v-else-if="pageData">
-        <section class="hero relative lg:h-[100vh] w-full bg-cover bg-center flex items-end pb-12 pt-[580px]" :style="{'background-image': `url('${pageData.bannerImage}')`}">
+        <section class="hero relative lg:h-[100vh] w-full bg-cover bg-center flex items-end pb-12 pt-[580px]" :style="{'background-image': `url('${pageData?.bannerImage}')`}">
             <!-- Overlay -->
             <div class="absolute inset-0 bgoverlay"></div>
             <!-- Content -->
             <div class="container mx-auto relative px-4 z-10">
                 <h1 class="mb-4">
-                    {{pageData.bannerTitle}}<br>
+                    {{pageData?.bannerTitle}}<br>
                 </h1>
                 <p class="">
-                    {{pageData.bannerText}}
+                    {{pageData?.bannerText}}
                 </p>
             </div>
         </section>
@@ -22,26 +22,26 @@
                     <!-- Left Text Content -->
                     <div class="space-y-6">
                         <h2 class="">
-                            {{pageData.statsTitle}}
+                            {{pageData?.statsTitle}}
                         </h2>
                         <p>
-                            <span>{{pageData.statsText}}</span>
+                            <span>{{pageData?.statsText}}</span>
                         </p>
                     </div>
                     <div class="md:flex hidden justify-end">
-                        <img :src="pageData.statsImage" :alt="pageData.title" class="w-72 lg:w-96">
+                        <img :src="pageData?.statsImage" :alt="pageData?.title" class="w-72 lg:w-96">
                     </div>
                 </div>
                 <!-- Stats Row -->
                 <div class="stats pt-10 lg:pt-20 grid grid-cols-1 sm:grid-cols-3 md:gap-4 lg:gap-10">
-                    <div v-for="st in pageData.stats" class="flex gap-4 lg:space-y-2 md:border-l md:border-white py-5 md:pl-5 lg:pl-10">
+                    <div v-for="st in pageData?.stats" class="flex gap-4 lg:space-y-2 md:border-l md:border-white py-5 md:pl-5 lg:pl-10">
                         <p><span class="text-gray-700">[{{st.id}}]</span></p>
                         <h3>{{st.text}}</h3>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="projects bg-white py-12 lg:py-16 px-4 md:px-20">
+        <section v-if="pageData?.projects && pageData?.projects.length > 0" class="projects bg-white py-12 lg:py-16 px-4 md:px-20">
             <div class="max-w-7xl mx-auto">
                 <h4 class="heading mb-8 lg:mb-12 text-center">Key Projects</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-5">
@@ -56,14 +56,14 @@
                 </div>
             </div>
         </section>
-        <section class="services bg-black text-white py-12 lg:py-20">
+        <section v-if="pageData?.services && pageData?.services.length > 0" class="services bg-black text-white py-12 lg:py-20">
             <div class="container mx-auto px-4">
                 <h4 class="font-medium mb-8 lg:mb-12 text-center lg:text-left">Services we offer</h4>
                 
                 <div class="services-carousel">
                     <Carousel v-bind="carouselConfig">
                         <!-- Card 1 -->
-                        <Slide v-for="(serv, index) in pageData.services" :key="index">
+                        <Slide v-for="(serv, index) in pageData?.services" :key="index">
                             <div class="rounded-xl lg:rounded-[20px] carousel__item border border-[#3E3E3E] bg-gradient-to-b from-[#141414] to-[#010101] p-8  hover:border-[#d6d1d1] transition-colors cursor-pointer">
                                 <figure class="services-icon mb-auto">
                                     <img :src="serv.icon" :alt="serv.title" class="" />
@@ -75,10 +75,10 @@
                         <template #addons>
                             <Navigation>
                                 <template #prev>
-                                    <img src="/white-arrow-left.svg" alt="">
+                                    <img src="/white-arrow-left.png" class="hover:opacity-70" alt="">
                                 </template>
                                 <template #next>
-                                    <img src="/white-arrow-right.svg" alt="">
+                                    <img src="/white-arrow-right.png" class="hover:opacity-70" alt="">
                                 </template>
                             </Navigation>
                             <Pagination />
@@ -87,12 +87,12 @@
                 </div>
             </div>
         </section>
-        <Testimonial :bgImg="pageData.testimonialImage" ></Testimonial>
+        <Testimonial :bgImg="pageData?.testimonialImage" ></Testimonial>
     </template>
     <div v-else class="py-80 container mx-auto px-10">
         <p class="text-red-400">Product not found.</p>
     </div>
-    <olive-section title="Partner with us to transform education" btn-text="Let’s Talk" btn-link="/contact" />
+    <olive-section title="Partner with us to transform your digital journey" btn-text="Let’s Talk" btn-link="/contact" />
     <SectorCarousel />
 </template>
 <script setup>
@@ -104,20 +104,33 @@ import { useRoute } from 'vue-router'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { useHead } from '@unhead/vue'
 
+const route = useRoute()
+const apiurl = ref("")
+// const sector = ref(null)
+const pageData = ref({})
+const loading = ref(true) // 👈 track loading state
+const error = ref(null)
+
+const emit = defineEmits(['loading'])
+
 useHead({
-  title: 'Sector detail | NetProphets',
+  title: () => pageData.value.meta?.meta_title || 'Sector detail | NetProphets',
+    link: [
+        { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` },
+        { rel: 'favicon', type: "image/png", href: "../favicon.png" }
+    ],
   meta: [
     {
       name: 'description',
-      content: 'This is the contact page of my website.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:title',
-      content: 'Contact Us'
+      content: () => pageData.value.meta?.meta_title
     },
     {
       property: 'og:description',
-      content: 'Learn more contact our services and team.'
+      content: () => pageData.value.meta?.meta_description
     },
     {
       property: 'og:image',
@@ -125,17 +138,6 @@ useHead({
     }
   ]
 })
-
-const route = useRoute()
-let baseUrl = ref("/")
-const apiurl = ref("")
-const mediaurl = ref("")
-const sector = ref(null)
-const pageData = ref({})
-const loading = ref(true) // 👈 track loading state
-const error = ref(null)
-
-const emit = defineEmits(['loading'])
 
 const carouselConfig = {
     autoplay: 7500,
@@ -162,24 +164,21 @@ watch(
     () => route.params.id,
     (newId, oldId) => {
         if (route.path.includes("/sector/")) {
-            // apiurl.value = import.meta.env.VITE_API_BASE_URL + "/sectors/" + newId
-            // fetchData()
+            apiurl.value = import.meta.env.VITE_API_BASE_URL + "/sectors/" + newId
+            // console.log("watch", newId)
+            fetchData()
         }
     }
 )
 
 onMounted(async () => {
-    baseUrl.value = localStorage.getItem("base_url")
     apiurl.value = import.meta.env.VITE_API_BASE_URL + "/sectors/" + route.params.id
-    mediaurl.value = localStorage.getItem("media_url");
-
+    // console.log("mounted", route.params.id)
     fetchData()
     // product.value = products.find(p => p.id === parseInt(route.params.id))
 })
 
 const fetchData = async () => {
-
-    // apiurl.value = import.meta.env.VITE_API_BASE_URL;
 
     try {
         loading.value = true
@@ -204,7 +203,7 @@ const fetchData = async () => {
     }
     finally {
         loading.value = false
-                emit('loading', false)
+        emit('loading', false)
 
     }
 }

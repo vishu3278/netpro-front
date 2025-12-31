@@ -17,7 +17,7 @@
                 <Carousel v-bind="carouselConfig">
                     <Slide v-for="(slide, index) in sectors" :key="slide.id">
                         <div class="relative rounded-xl overflow-hidden group cursor-pointer">
-                            <img :src="baseUrl+slide.img" :alt="slide.title" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img :src="slide.img" :alt="slide.title" class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                             <router-link :to="slide.link" class="absolute inset-8 flex items-end text-white transition-all duration-500 group-hover:pb-4">{{slide.title}}</router-link>
                         </div>
@@ -25,10 +25,10 @@
                     <template #addons>
                         <CarouselNavigation>
                             <template #prev>
-                                <img src="/left-arrow.svg" alt="">
+                                <img src="/left-arrow.svg" class="hover:opacity-70" alt="">
                             </template>
                             <template #next>
-                                <img src="/right-arrow.svg" alt="">
+                                <img src="/right-arrow.svg" class="hover:opacity-70" alt="">
                             </template>
                         </CarouselNavigation>
                         <Pagination />
@@ -53,7 +53,8 @@ import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-let baseUrl = ref("/")
+let apiurl = ref("/")
+const sectorsData = ref([])
 
 /*const props = defineProps({
     title: { type: String, default: "Ready to create change together?" },
@@ -85,30 +86,58 @@ const carouselConfig = {
 }
 
 const sectors = ref([
-    { id: "education", img: "sectors/education-small.jpg", title: "Education", link: "/sector/education" },
-    { id: "healthcare", img: "sectors/healthcare-small.jpg", title: "Healthcare", link: "/sector/healthcare" },
-    { id: "sports", img: "sectors/sports-small.jpg", title: "Sports", link: "/sector/sports" },
-    { id: "transport", img: "sectors/transport-small.jpg", title: "Transportation", link: "/sector/transport" },
-    { id: "telecom", img: "sectors/telecom-small.jpg", title: "Telecom", link: "/sector/telecom" },
-    { id: "culture", img: "sectors/culture-small.jpg", title: "Culture", link: "/sector/culture" },
-    { id: "publicservices", img: "sectors/public-small.jpg", title: "Public Service", link: "/sector/publicservices" },
-    { id: "skilling", img: "sectors/skilling-small.jpg", title: "Skilling", link: "/sector/skilling" },
+    { id: "education", img: "/sectors/education-small.jpg", title: "Education", link: "/sector/education" },
+    { id: "healthcare", img: "/sectors/healthcare-small.jpg", title: "Healthcare", link: "/sector/healthcare" },
+    { id: "sports", img: "/sectors/sports-small.jpg", title: "Sports", link: "/sector/sports" },
+    { id: "transportation", img: "/sectors/transport-small.jpg", title: "Transportation", link: "/sector/transportation" },
+    { id: "telecom", img: "/sectors/telecom-small.jpg", title: "Telecom", link: "/sector/telecom" },
+    { id: "culture", img: "/sectors/culture-small.jpg", title: "Culture", link: "/sector/culture" },
+    { id: "public-service", img: "/sectors/public-small.jpg", title: "Public Service", link: "/sector/public-service" },
+    { id: "skilling", img: "/sectors/skilling-small.jpg", title: "Skilling", link: "/sector/skilling" },
 ])
 
 watch(
     () => route.params.id,
     (newId, oldId) => {
         if (route.path.includes("/sector/")) {
+            // console.info(newId)
             sectors.value = sectors.value.filter(s => s.id != newId)
         }
     }
 )
 
-onMounted(() => {
-    baseUrl.value = localStorage.getItem("base_url")
+onMounted(async () => {
+    // baseUrl.value = localStorage.getItem("base_url")
     /*if (route.path.includes("/sector/")) {
         sectors.value = sectors.value.filter(s => s.id != route.params.id)
     }*/
+    apiurl.value = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+        // loading.value = true
+        // emit('loading', true)
+
+        const res = await fetch(apiurl.value + '/sectors', {
+            method: "GET",
+            headers: {
+                "X-Content-Type-Options": "nosniff"
+            }
+        })
+        // console.log(res.data)
+        if (!res.ok) throw new Error('Failed to fetch page data')
+        let apidata = await res.json()
+        // console.log(apidata.data)
+        sectorsData.value = apidata.data.sectors
+
+    }
+    catch (err) {
+        // error.value = err.message
+        sectorsData.value = sectors
+    }
+    finally {
+        // loading.value = false
+        // emit('loading', false)
+    }
 })
 </script>
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 <template>
     <section class="about-section pt-24 pb-12 lg:pt-60 lg:pb-10 w-full bg-white">
         <div class="container mx-auto px-4 relative">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 lg:gap-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 xl:gap-12">
                 <!-- Left: Heading -->
-                <div class="md:w-1/2">
+                <div class="md:w-1/2 xl:w-1/2">
                     <!-- <h2>
                         Building technology that
                         transforms India and improves
@@ -12,7 +12,7 @@
                     <h2>{{pageData.heading}}</h2>
                 </div>
                 <!-- Right: Paragraphs -->
-                <div class="md:w-1/3">
+                <div class="md:w-1/2 xl:w-1/3">
                     <!-- <p>
                         For over 25 years, we’ve been building technology that quietly powers lives—helping
                         students learn, citizens access services, and public systems work better. Our journey
@@ -26,16 +26,15 @@
                 </div>
             </div>
             <div class="about-banner py-4 md:py-8">
-                <img :src="pageData.bannerImage" alt="" class="w-full h-[345px] object-cover rounded-2xl">
+                <img :src="pageData.bannerImage" alt="" class="w-full h-[345px] md:h-[465px] xl:h-[600px] object-cover rounded-2xl">
             </div>
         </div>
     </section>
     <section class="our-mission pb-12 lg:pb-20">
         <div class="container mx-auto relative">
             <div class="our-heading text-center mb-4 mb:mb-10 ">
-                <h6>Our Mission</h6>
+                <h6 class="mb-3">Our Mission</h6>
                 <p class="max-w-[320px] lg:max-w-[998px] mx-auto">
-                    <!-- At the heart of what we do is a belief technology must serve people, not just systems. -->
                     {{pageData.mission}}
                 </p>
             </div>
@@ -133,7 +132,7 @@
             <LeadershipCarousel v-if="isMobile" key="lead" :data="pageData.leader" ></LeadershipCarousel>
             <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div v-for="(lead, index) in pageData.leader" :key="lead.id" class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <motion.img :src="lead.image" :initial="{opacity: 0 }" :whileInView="{ opacity: 1 }" :transition="{delay: 0.3, duration: 0.75, ease: 'easeOut'}" :alt="lead.name" class="w-full h-64 object-cover" />
+                    <motion.img :src="lead.image" :initial="{opacity: 0 }" :whileInView="{ opacity: 1 }" :transition="{delay: 0.3, duration: 0.75, ease: 'easeOut'}" :alt="lead.name" class="w-full object-cover aspect-390/380" />
                     <div class="p-8">
                         <h5 class="">
                             <span>{{lead.name}}</span>
@@ -150,7 +149,7 @@
         <div class="container mx-auto px-4">
             <div class=" ">
                 <h4 class="text-center mb-8 md:mb-14">Partnering With Visionaries Across Continents</h4>
-                <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center place-items-center">
+                <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 md:gap-12 xl:gap-x-16 items-center place-items-center">
                     <figure><img src="/icons/forevermark.svg" alt="forevermark"></figure>
                     <figure><img src="/icons/symantec.svg" alt="symantec"></figure>
                     <figure><img src="/icons/rtah.svg" alt="Road Transport and Highways"></figure>
@@ -184,21 +183,34 @@ import { motion } from "motion-v"
 
 import { gsap } from 'gsap'
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const { isMobile, activeBreakpoint } = viewport
+
+const loading = ref(false)
+const pageData = ref({})
+const error = ref(false)
+const apiurl = ref("")
+
+const emit = defineEmits(['loading'])
 
 useHead({
-  title: 'About | NetProphets',
+  title: () => pageData.value?.title || 'The Best IT Solution Provider In India - NetProphets Cyberworks',
+    link: [ { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` } ],
   meta: [
     {
       name: 'description',
-      content: 'This is the Service page of my website.'
+      content: 'Discover top IT services company in India with NetProphets Cyberworks, your trusted IT solution provider. The reputed IT company in Noida, India helps brands succeed.'
     },
     {
       property: 'og:title',
-      content: 'Service detail'
+      content: 'The Best IT Solution Provider In India - NetProphets Cyberworks'
     },
     {
       property: 'og:description',
-      content: 'Learn more about our services.'
+      content: 'Discover top IT services company in India with NetProphets Cyberworks, your trusted IT solution provider. The reputed IT company in Noida, India helps brands succeed.'
     },
     {
       property: 'og:image',
@@ -207,21 +219,10 @@ useHead({
   ]
 })
 
-// let bUrl = ref("")
-const { isMobile, activeBreakpoint } = viewport
-
-const loading = ref(false)
-const pageData = ref({})
-const error = ref(false)
-const apiurl = ref("")
-// const mediaurl = ref("")
-
-const emit = defineEmits(['loading'])
 
 onBeforeMount(async () => {
 
     apiurl.value = import.meta.env.VITE_API_BASE_URL;
-    // mediaurl.value = localStorage.getItem("media_url");
 
     try {
         loading.value = true
@@ -250,20 +251,17 @@ onBeforeMount(async () => {
 })
 
 onMounted(() => {
-    // console.log('About Base URL:', import.meta.env.VITE_APP_BASE_URL)
-    // bUrl.value = import.meta.env.VITE_APP_BASE_URL
-    // bUrl.value = localStorage.getItem("base_url")
-
-    onBeforeUnmount(() => {
+    
+    /*onBeforeUnmount(() => {
         console.info("before unmount")
-    })
+    })*/
 })
 
 onUpdated(() => {
     const heros = document.querySelectorAll("#impactful .image-move")
 
     heros.forEach(hero => {
-        console.log(hero)
+        // console.log(hero)
         const image = hero.querySelector('.image')
         // const output = document.querySelector('.output')
 
@@ -378,7 +376,7 @@ h4 {
         font-style: normal;
         font-weight: 100;
         line-height: 32px;
-        letter-spacing: -0.72px;
+        letter-spacing: -0.48px;
     }
 }
 
@@ -477,6 +475,18 @@ h4 {
         font-size: 16px;
         line-height: 26px;
         letter-spacing: -0.48px;
+    }
+
+    .our-mission {
+
+        p {
+            text-align: center;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 100;
+            line-height: 65px;
+            letter-spacing: -0.72px;
+        }
     }
 
     .expertise {

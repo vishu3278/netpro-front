@@ -9,7 +9,7 @@
                         </motion.div>
                         <ul class="tech-list my-2 lg:my-12">
                             <MotionConfig :transition="{ duration: 1, delay: 0.75 }">
-                                <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0}" :inViewOptions="{ once: true }" class="flex justify-between">{{li}} </motion.li>
+                                <motion.li v-for="(li, index) in list" :key="index" :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0}" :inViewOptions="{ once: true }" class="flex justify-between py-5">{{li}} </motion.li>
                             </MotionConfig>
                         </ul>
                         <motion.div :initial="{opacity: 0, y: 50}" :whileInView="{opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.75}}" :inViewOptions="{ once: true }" class="mt-6 ">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="col lg:w-1/2  " >
-                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 1}}" class="max-w-[660px] rounded-xl overflow-clip mb-8 lg:mb-4">
+                    <motion.figure :initial="{y: '20%', opacity: 0}" :whileInView="{opacity: 1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 1}}" :inViewOptions="{ once: true }" class="max-w-[660px] rounded-xl overflow-clip mb-8 lg:mb-4">
                         <img :src="image" class="max-w-full" alt="">
                     </motion.figure>
                 </div>
@@ -71,11 +71,10 @@ onMounted(() => {
 
     .tech-list {
         color: $rich-black;
-
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 60px;
+        /*line-height: 60px;*/
         letter-spacing: -0.48px;
 
         li {
@@ -124,10 +123,10 @@ onMounted(() => {
         }
 
         .tech-list {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            line-height: 80px;
-            letter-spacing: -0.6px;
+            /*line-height: 80px;*/
+            letter-spacing: -0.48px;
 
             li {
                 &::after {

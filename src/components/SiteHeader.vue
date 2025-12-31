@@ -16,7 +16,7 @@ const route = useRoute()
 const closeMenu = () => (isOpen.value = false)
 const mobileLinks = [
     {label: "Home", link: "/"},
-    {label: "About", link: "/about"},
+    {label: "Who we are", link: "/about-us"},
     {label: "Sectors", link: "/sector"},
     {label: "Services", link: "/service"},
     // {label: "Blog", link: "/blog"},
@@ -25,7 +25,7 @@ const mobileLinks = [
 watch(
   () => route.params.id,
   (newId, oldId) => {
-    console.log(newId)
+    // console.log(newId)
     isOpen.value = false
   }
 )
@@ -47,7 +47,7 @@ watch(
                 </svg>
             </button>
             <div v-if="!isMobile" class="links-wrap ">
-                <router-link class="nav-link" to="/about">Who we are</router-link>
+                <router-link class="nav-link" to="/about-us">Who we are</router-link>
                 <router-link class="nav-link" to="/sector">Sector Impact</router-link>
                 <router-link class="nav-link" to="/service">Services we offer</router-link>
                 <router-link class="nav-link contact border rounded-full" to="/contact">Get in Touch</router-link>
@@ -57,14 +57,14 @@ watch(
     <motion.div v-if="isOpen && isMobile" :animate="{'left': 0, opacity: 1, transition: {ease: 'backOut'}}" class="mobile-menu flex flex-col justify-between fixed inset-0 left-full opacity-0 z-40 bg-black  px-4 pt-4 pb-6">
         <div class="flex items-center justify-between">
             <div class="logo">
-                <img src="/footer-logo-white.svg" class="max-w-[154px]" alt="logo">
+                <router-link to="/" @click="closeMenu"><img src="/footer-logo-white.svg" class="max-w-[154px]" alt="logo"></router-link>
             </div>
             <button class="close-button py-2 px-6" @click="closeMenu">
                 Close
             </button>
         </div>
         <div class="links-wrap flex flex-col">
-            <router-link class="text-base inline-flex items-center mb-12">Let's talk <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+            <router-link to="/contact" @click="closeMenu" class="text-base inline-flex items-center mb-12">Let's talk <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <g clip-path="url(#clip0_1829_1230)">
                         <path d="M13.9265 8.46224L12.5637 13.5483L13.8904 13.8854L15.8891 6.42586L8.42958 4.42708L8.07076 5.76624L13.1397 7.12445L4.24047 12.2624L5.01019 13.5956L13.9265 8.46224Z" fill="white" />
                     </g>
@@ -76,12 +76,12 @@ watch(
                 </svg></router-link>
             <router-link v-for="item in mobileLinks" :key="item.label" class="nav-link" :to="item.link" @click="closeMenu">{{item.label}}</router-link>
         </div>
-        <ul class="social">
+        <ul class="social space-y-2">
             <li>
-                <a href="#">LinkedIn</a>
+                <a href="https://www.linkedin.com/company/netprophets-global-cyberworks/" target="_blank">LinkedIn</a>
             </li>
             <li>
-                <a href="#">Instagram</a>
+                <a href="https://www.instagram.com/netprophetscyberworks/" target="_blank">Instagram</a>
             </li>
         </ul>
     </motion.div>

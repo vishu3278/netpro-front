@@ -14,12 +14,12 @@
             </div>
         </div>
     </section> -->
-    <VideoCarousel v-if="isMobile" :slide1="{video: baseUrl+'home/silhouette-engineer-and-inspector.mp4', title: '', text: 'Digital solutions that power India’s critical sectors and enable better public outcomes.'}" :slide2="{video: baseUrl+'home/silhouette-of-a-sports-girl.mp4', title: '', text: 'Meaningful impact through citizen - First Governance Projects'}" />
+    <VideoCarousel v-if="isMobile" :slide1="{video: '/home/video1.mp4', poster: '/home/poster-video1.webp', title: '', text: 'Digital solutions that power India’s critical sectors and enable better public outcomes.'}" :slide2="{video: '/home/video2.mp4', poster: '/home/poster-video2.webp', title: '', text: 'Meaningful impact through citizen - First Governance Projects'}" />
     <section v-if="!isMobile" id="video2" class="video2 hidden md:block h-dvh relative overflow-clip">
         <!-- <video autoplay muted loop id="myVideo2" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-engineer-and-inspector.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader :src="baseUrl+'home/silhouette-engineer-and-inspector.mp4'" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader src="/home/video1.mp4" poster="/home/poster-video1.webp" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -43,7 +43,7 @@
         <!-- <video autoplay muted loop id="myVideo3" class="absolute inset-0 w-full h-full object-cover object-center">
             <source src="/home/silhouette-of-a-sports-girl.mp4" type="video/mp4">
         </video> -->
-        <MediaLoader :src="baseUrl+'home/silhouette-of-a-sports-girl.mp4'" poster="/logo-bg.svg" class="absolute inset-0 w-full h-full " />
+        <MediaLoader src="/home/video2.mp4" poster="/home/poster-video2.webp" class="absolute inset-0 w-full h-full " />
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 ">
                 <div class="col-start-2 col-end-3 ">
@@ -65,20 +65,23 @@
         <div class="container mx-auto px-4 ">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
                 <div class="col">
-                    <h4 id="abouttitle" class="mb-5">25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact</h4>
-                    <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
-                    <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p>
-                    <router-link class="button button-dark" to="/about">Know the company</router-link>
+                    <h4 id="abouttitle" class="mb-5">
+                        {{pageData.heading}}
+                        <!-- 25+ years of building transformational technologies that have delivered citizen, sectoral and economical impact --></h4>
+                    <!-- <p class="mb-6">With 25+ years of experience, 800+ professionals, and over ₹100 Cr in annual revenue, NetProphets delivers transformative technology solutions that power India’s public sector.</p>
+                    <p class="mb-12">But impact isn’t just measured in systems delivered. It’s seen in the people who build them. As a people-first organisation, many of our team members have grown with us over the years—building careers, communities, and futures alongside the solutions we create.</p> -->
+                    <p class="mb-12">{{pageData.content}}</p>
+                    <router-link class="button button-dark" to="/about-us">Know the company</router-link>
                 </div>
                 <div class="col">
                     <div class="stats">
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
+                        <motion.div v-for="s in pageData.stats" :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.3, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
-                                <div class="count">500M</div>
-                                <div class="detail">Citizen Lives positively impacted worldwide</div>
+                                <div class="count">{{s.count}}</div>
+                                <div class="detail">{{s.detail}}</div>
                             </div>
                         </motion.div>
-                        <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
+                        <!-- <motion.div :initial="{opacity: 0, y: 100}" :whileInView="{ opacity: 1, y: 0 }" :transition="{delay: 0.6, ease: 'easeOut'}" class="item border-t pb-12">
                             <div class="flex lg:justify-between gap-4 pt-12">
                                 <div class="count">1B+</div>
                                 <div class="detail">Investments in Digital Technology</div>
@@ -89,7 +92,7 @@
                                 <div class="count">1000+</div>
                                 <div class="detail">Successful Projects</div>
                             </div>
-                        </motion.div>
+                        </motion.div> -->
                     </div>
                 </div>
             </div>
@@ -135,7 +138,7 @@
                             <Carousel v-bind:="stateCarousel1">
                                 <Slide v-for="(state, index) in states1" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
-                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <img :src="state.img" :alt="state.name">
                                         <figcaption>{{state.name}}</figcaption>
                                     </figure>
                                 </Slide>
@@ -145,7 +148,7 @@
                             <Carousel v-bind="stateCarousel2">
                                 <Slide v-for="(state, index) in states2" :key="state.id">
                                     <figure class="carousel__item flex flex-col gap-3 justify-center">
-                                        <img :src="baseUrl+state.img" :alt="state.name">
+                                        <img :src="state.img" :alt="state.name">
                                         <figcaption>{{state.name}}</figcaption>
                                     </figure>
                                 </Slide>
@@ -189,7 +192,7 @@
                         <div class="grid grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 mb-2 mt-8 lg:my-8 lg:my-24 ">
                             <div v-for="item in certified" :key="item.id" class="flex flex-col">
                                 <figure class="h-20 mb-2 lg:mb-4">
-                                    <img :src="baseUrl+item.icon" class="mx-auto h-20 object-scale-down object-center" alt="">
+                                    <img :src="item.icon" class="mx-auto h-20 object-scale-down object-center" alt="">
                                 </figure>
                                 <label>{{item.title}}</label>
                             </div>
@@ -234,7 +237,7 @@
         </div>
     </section>
     <!-- testimonials -->
-    <Testimonial :bgImg="baseUrl+'home/swastik-arora-unsplash.jpg'" :bgImgMobile="baseUrl+'home/swastik-arora-mobile.jpg'"></Testimonial>
+    <Testimonial :testimonials="pageData.testimonial" bgImg="/home/swastik-arora-unsplash.jpg" bgImgMobile="/home/swastik-arora-mobile.jpg"></Testimonial>
     <olive-section btn-link="/contact" />
     <!-- cliets section -->
     <section id="clientsection" class="client-section">
@@ -251,7 +254,7 @@
             </div> -->
             <Carousel v-bind="logosConfig">
                 <Slide v-for="n in 43" :key="n">
-                    <img :src="baseUrl + 'logos/'+n+'.png'" alt="image" />
+                    <img :src="'/logos/'+n+'.png'" alt="image" />
                 </Slide>
                 <!-- <template #addons>
                     <Pagination />
@@ -282,28 +285,6 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 import { useHead } from '@unhead/vue'
 
-useHead({
-  title: 'Home | NetProphets',
-  meta: [
-    {
-      name: 'description',
-      content: 'This is the home page of my website.'
-    },
-    {
-      property: 'og:title',
-      content: 'Home'
-    },
-    {
-      property: 'og:description',
-      content: 'Learn more about our services and team.'
-    },
-    {
-      property: 'og:image',
-      content: '/logo.svg'
-    }
-  ]
-})
-
 const emit = defineEmits(['loading'])
 
 const loading = ref(false)
@@ -312,6 +293,29 @@ const error = ref(false)
 const apiurl = ref("")
 const mediaurl = ref("")
 const baseUrl = ref("")
+
+useHead({
+  title: () => pageData.value?.title || 'Technology Consulting Company In India - NetProphets Cyberworks',
+  link: [ { rel: 'canonical', href: "https://netprophetsglobal.com" } ],
+  meta: [
+    {
+      name: 'description',
+      content: () => pageData.value?.heading || "For custom application development services, choose a custom software development company in India. Reach out to us, a premium technology consulting company, right away!"
+    },
+    {
+      property: 'og:title',
+      content: () => pageData.value?.title || 'Technology Consulting Company In India - NetProphets Cyberworks'
+    },
+    {
+      property: 'og:description',
+      content: () => pageData.value?.heading || 'For custom application development services, choose a custom software development company in India. Reach out to us, a premium technology consulting company, right away!'
+    },
+    {
+      property: 'og:image',
+      content: '/logo.svg'
+    }
+  ]
+})
 
 onBeforeMount(async () => {
 
@@ -391,40 +395,40 @@ const allStates = [
     { "code": "WB", "name": "West Bengal" }
 ]
 const states1 = ref([
-    { code: "hp", name: "Himachal Pradesh", img: "home/himachal.png" },
-    { code: "dl", name: "New Delhi", img: "home/delhi.png" },
-    { code: "PB", name: "Punjab", img: "home/punjab.png" },
-    { code: "cgh", name: "Chattisgarh", img: "home/chattisgarh.png" },
-    { code: "ka", name: "Karnataka", img: "home/karnataka.png" },
-    { code: "gj", name: "Gujarat", img: "home/gujarat.png" },
-    { code: "ap", name: "Andhra Pradesh", img: "home/andhra-pradesh.png" },
-    { code: "ar", name: "Arunachal Pradesh", img: "home/arunachal-pradesh.png" },
-    { code: "as", name: "Assam", img: "home/assam.png" },
-    { code: "bh", name: "Bihar", img: "home/bihar.png" },
-    { code: "ga", name: "Goa", img: "home/goa.png" },
-    { code: "UK", name: "Uttarakhand", img:"home/uttarakhand.png" },
-    { code: "WB", name: "West Bengal", img:"home/west-bengal.png" }
+    { code: "hp", name: "Himachal Pradesh", img: "/home/himachal.png" },
+    { code: "dl", name: "New Delhi", img: "/home/delhi.png" },
+    { code: "PB", name: "Punjab", img: "/home/punjab.png" },
+    { code: "cgh", name: "Chattisgarh", img: "/home/chattisgarh.png" },
+    { code: "ka", name: "Karnataka", img: "/home/karnataka.png" },
+    { code: "gj", name: "Gujarat", img: "/home/gujarat.png" },
+    { code: "ap", name: "Andhra Pradesh", img: "/home/andhra-pradesh.png" },
+    { code: "ar", name: "Arunachal Pradesh", img: "/home/arunachal-pradesh.png" },
+    { code: "as", name: "Assam", img: "/home/assam.png" },
+    { code: "bh", name: "Bihar", img: "/home/bihar.png" },
+    { code: "ga", name: "Goa", img: "/home/goa.png" },
+    { code: "UK", name: "Uttarakhand", img:"/home/uttarakhand.png" },
+    { code: "WB", name: "West Bengal", img:"/home/west-bengal.png" }
 ])
 const states2 = ref([
-    { code: "up", name: "Uttar Pradesh", img: "home/uttar-pradesh.png" },
-    { code: "rj", name: "Rajasthan", img: "home/rajasthan.png" },
-    { code: "tlg", name: "Telangana", img: "home/telangana.png" },
-    { code: "mpr", name: "Manipur", img: "home/manipur.png" },
-    { code: "ML", name: "Meghalaya", img: "home/meghalaya.png" },
-    { code: "MZ", name: "Mizoram", img: "home/mizoram.png" },
-    { code: "OR", name: "Odisha", img: "home/odisha.png" },
-    { code: "HR", name: "Haryana", img: "home/haryana.png" },
-    { code: "JH", name: "Jharkhand", img: "home/jharkhand.png" },
-    { code: "KL", name: "Kerala", img: "home/kerala.png" },
-    { code: "MH", name: "Maharashtra", img: "home/maharashtra.png" },
-    { code: "SK", name: "Sikkim", img:"home/sikkim.png" },
-    { code: "TN", name: "Tamil Nadu", img:"home/tamilnadu.png" },
-    { code: "TR", name: "Tripura", img:"home/tripura.png" },
+    { code: "up", name: "Uttar Pradesh", img: "/home/uttar-pradesh.png" },
+    { code: "rj", name: "Rajasthan", img: "/home/rajasthan.png" },
+    { code: "tlg", name: "Telangana", img: "/home/telangana.png" },
+    { code: "mpr", name: "Manipur", img: "/home/manipur.png" },
+    { code: "ML", name: "Meghalaya", img: "/home/meghalaya.png" },
+    { code: "MZ", name: "Mizoram", img: "/home/mizoram.png" },
+    { code: "OR", name: "Odisha", img: "/home/odisha.png" },
+    { code: "HR", name: "Haryana", img: "/home/haryana.png" },
+    { code: "JH", name: "Jharkhand", img: "/home/jharkhand.png" },
+    { code: "KL", name: "Kerala", img: "/home/kerala.png" },
+    { code: "MH", name: "Maharashtra", img: "/home/maharashtra.png" },
+    { code: "SK", name: "Sikkim", img:"/home/sikkim.png" },
+    { code: "TN", name: "Tamil Nadu", img:"/home/tamilnadu.png" },
+    { code: "TR", name: "Tripura", img:"/home/tripura.png" },
 ])
 const certified = ref([
-    { id: "abc1234", icon: "icons/cmmi3.svg", title: "ISO 9001:2015" },
-    { id: "zyx1234", icon: "icons/iso-color.svg", title: "ISO/IEC 27001:2022" },
-    { id: "pqr1234", icon: "icons/pci-dss-color.svg", title: "ISO/IEC 20000-1:2018" }
+    { id: "abc1234", icon: "/icons/cmmi3.svg", title: "ISO 9001:2015" },
+    { id: "zyx1234", icon: "/icons/iso-color.svg", title: "ISO/IEC 27001:2022" },
+    { id: "pqr1234", icon: "/icons/pci-dss-color.svg", title: "ISO/IEC 20000-1:2018" }
 ])
 const techFaq = ref([
     { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Process Strategy & Optimisation <br>Enterprise Process Design<br>Business Process Transformation<br>Solution Architecture & Design<br>Skills Development & Capacity Building<br>Change Management support<br>Regulatory & Compliance advisory" },
@@ -701,8 +705,11 @@ onMounted(() => {
         font-size: 48px;
         line-height: 44px;
         font-weight: 100;
-        mix-blend-mode: overlay;
+        /*mix-blend-mode: overlay;*/
         letter-spacing: -1px;
+    }
+    h2 {
+        text-shadow: 1px 1px 1px rgba(50,50,50,0.2);
     }
 
     h3 {
