@@ -74,9 +74,11 @@
                 <div class="border-t border-gray-300"></div>
                 <div class="border-t border-gray-300 grid grid-cols-2">
                     <address class="pt-4 lg:pt-10">
-                        6th Floor, C-56 A/12,<br>
-                        Sector 62, Noida,<br>
-                        Uttar Pradesh 201301
+                        <a href="https://maps.app.goo.gl/RdMxvBc5LzAtuC2Y9" target="_blank">
+                            6th Floor, C-56 A/12,<br>
+                            Sector 62, Noida,<br>
+                            Uttar Pradesh 201301
+                        </a>
                     </address>
                     <address class="pt-4 lg:pt-10">
                         0120-4784-999<br>

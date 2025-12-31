@@ -113,6 +113,7 @@
     </section>
     <!-- related blogs -->
     <BlogCarousel :blogs="pageData.related_posts" />
+    
     <!-- <section class="py-20 px-4">
         <div class="container mx-auto px-4">
             
@@ -211,7 +212,6 @@ watch(
     (newId, oldId) => {
         if (route.path.includes("/blog/")) {
             // console.info(newId)
-            // sectors.value = sectors.value.filter(s => s.id != newId)
             fetchData()
         }
     }

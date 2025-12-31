@@ -113,7 +113,7 @@ useHead({
   title: () => pageData.value.meta?.meta_title || 'Service detail | NetProphets',
     link: [
         { rel: 'canonical', href: () => `https://netprophetsglobal.com${route.fullPath}` },
-        { rel: 'favicon', type: "image/png", href: "favicon.png" }
+        { rel: 'favicon', type: "image/png", href: "../favicon.png" }
     ],
   meta: [
     {

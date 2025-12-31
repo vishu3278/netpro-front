@@ -14,7 +14,7 @@ onMounted(() => {
                 <div class="pb-6 md:pb-1">
                     <div class="title">
                         <motion.div :initial="{opacity:0, y:100}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 1}" id="footerh1" class="h1 mb-2 md:mb-8">Technology that drives meaningful change</motion.div>
-                        <motion.p :initial="{opacity:0, y:80}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 0.75, delay: 0.25}">New Business: <br><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></motion.p>
+                        <motion.p :initial="{opacity:0, y:80}" :whileInView="{opacity: 1, y: 0}" :transition="{ease: 'easeOut', duration: 0.75, delay: 0.25}">Business Queries: <br><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></motion.p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row main-links">
@@ -142,7 +142,7 @@ onMounted(() => {
                         <li><a href="https://www.threads.com/@netprophetscyberworks" target="_blank">Threads</a></li>
                         <li><a href="https://www.youtube.com/@NetProphetsCyberworks" target="_blank">Youtube</a></li>
                     </ul>
-                    <p class="text-sm leading-loose">New Business: <br><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></p>
+                    <p class="text-sm leading-loose">Business Queries: <br><a href="mailto:info@npglobal.in" target="_blank">info@npglobal.in</a></p>
                 </div>
             </div>
             <div class="grid md:grid-cols-2 footer-section2">
