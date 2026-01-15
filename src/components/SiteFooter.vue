@@ -156,10 +156,10 @@ onMounted(() => {
                     <div class="icons hidden lg:block py-4 md:py-2">
                         <div class="flex md:flex-col lg:flex-row items-center gap-4">
                             <div class="max-w-[72px]">
-                                <img src="/icons/cmmi5.svg" class="w-full" alt="">
+                                <img src="/icons/cmmi3-grey.svg" class="w-[72px]" alt="">
                             </div>
                             <div class="max-w-[72px]">
-                                <img src="/icons/iso.svg" class="w-full" alt="">
+                                <img src="/icons/iso.svg" class="w-[72px]" alt="">
                             </div>
                         </div>
                     </div>

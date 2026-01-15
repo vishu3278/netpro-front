@@ -426,9 +426,9 @@ const states2 = ref([
     { code: "TR", name: "Tripura", img:"/home/tripura.png" },
 ])
 const certified = ref([
-    { id: "abc1234", icon: "/icons/cmmi3.svg", title: "ISO 9001:2015" },
-    { id: "zyx1234", icon: "/icons/iso-color.svg", title: "ISO/IEC 27001:2022" },
-    { id: "pqr1234", icon: "/icons/pci-dss-color.svg", title: "ISO/IEC 20000-1:2018" }
+    { id: "abc1234", icon: "/icons/cmmi3.svg", title: "" },
+    { id: "zyx1234", icon: "/icons/iso-color.svg", title: "" },
+    { id: "pqr1234", icon: "/icons/pci-dss-color.svg", title: "" }
 ])
 const techFaq = ref([
     { id: "01", title: "Technology Consulting", subtitle: "Advisory-driven solutions for systems that scale and serve.", description: "Process Strategy & Optimisation <br>Enterprise Process Design<br>Business Process Transformation<br>Solution Architecture & Design<br>Skills Development & Capacity Building<br>Change Management support<br>Regulatory & Compliance advisory" },
